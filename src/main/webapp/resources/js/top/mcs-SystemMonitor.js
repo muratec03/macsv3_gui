@@ -1314,9 +1314,14 @@ $(function() {
         sendValue: {
           //amhsId: amhsId,			// MACS4#MACSV2 Del
           //amhsType: amhsType		// MACS4#MACSV2 Del
-        	displayId:displayId,	// 20191225 DQY ADD
-        	displayName:displayName,// MACS4#MACSV2 Add
-        	memberGroup:memberGroup	// MACS4#MACSV2 Add
+          // STD APL 2020.02.19 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+//        	displayId:displayId,	// 20191225 DQY ADD
+//        	displayName:displayName,// MACS4#MACSV2 Add
+//        	memberGroup:memberGroup	// MACS4#MACSV2 Add
+        	llcId:llcId,	// 20191225 DQY ADD
+        	llcName:llcName,// MACS4#MACSV2 Add
+        	llcType:llcType	// MACS4#MACSV2 Add
+        	// END APL 2020.02.19 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         },
         limitWindow: screenValue.LimitIndividualMonitorNum,
         width: 1280,

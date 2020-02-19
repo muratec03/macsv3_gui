@@ -421,25 +421,15 @@ public class McsHandsOnTableService extends BaseService {
         for (IconInfo iconType : labelList) {
 //        	iconInfoList.clear();
 //        	String tscType = iconType.getMemberGroup();
-        	String tscType = iconType.getModuleName(); // MACS4#MACSV3 Add
-        	String tscTypeData = tscType+"Data";
+        	String moduleType = iconType.getModuleName(); // MACS4#MACSV3 Add
+        	String moduleData = moduleType+"Data";
         	ModuleExample configExample = new ModuleExample();
-        	configExample.createCriteria().andModuleNameEqualTo(tscType);
+        	configExample.createCriteria().andModuleNameEqualTo(moduleType);
         	iconInfoList = moduleMapper.selectByExample(configExample); // MACS4#MACSV2 Add
         	
-        	labelMap.put(tscType, rowNum); // MACS4#MACSV2 Add  //labelMap里面放的是每个类型名字，它对应的行号
+        	labelMap.put(moduleType, rowNum); // MACS4#MACSV2 Add  //labelMap里面放的是每个类型名字，它对应的行号
         	
         	//データの行巣　  
-        	// データは8個毎行
-        	/*if(iconInfoList.size()%8>0) {
-        		dataNum = iconInfoList.size() / 8 + 1;									 // MACS4#MACSV2 Add
-        	}
-        	else
-        	{
-        		dataNum = iconInfoList.size() / 8;
-        	}*/
-        	
-        	
         	//20191217 DQY ADD START
         	//データは20個毎行
         	if(iconInfoList.size()%dataNumRow >0) {       //如果某个类型的Icon数量比较多，数量大于dataNumRow了，就算出这些Icon需要多少行
@@ -452,7 +442,7 @@ public class McsHandsOnTableService extends BaseService {
         	//20191217 DQY ADD END
         	
         	//データの最終行番号  
-        	typeDataMap.put(tscTypeData, rowNum + dataNum);		//typeDataMap里面放的是某个类型它的所有Icon需要占用多少行，的最大行号					
+        	typeDataMap.put(moduleData, rowNum + dataNum);		//typeDataMap里面放的是某个类型它的所有Icon需要占用多少行，的最大行号					
         	
 //	        for (ScreenMonitorMember label : iconInfoList) {
 	            // 行番号,列番号,優先順位の位置情報を配列に格納
