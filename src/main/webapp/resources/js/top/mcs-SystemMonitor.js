@@ -1303,12 +1303,13 @@ $(function() {
   if ($('#hands-on-table').attr('data-auth') == 'true') {
     handsOnTableOption.judgeOnIconClick = function(icon) {
     //return icon.find('i.sample,i.undefined').length == 0 && !isNaN(icon.find('input[name="amhsType"]').val()); // MACS4#MACSV2 Del
-    return icon.find('i.sample,i.undefined').length == 0 && isNaN(icon.find('input[name="memberGroup"]').val());// MACS4#MACSV2 Add  //v2系统中input[name="amhsType"]取值是数值型，v4系统中input[name="memberGroup"]取值是字符串类型，所以本条语句把isNaN前面的！(非)去掉了
+//    return icon.find('i.sample,i.undefined').length == 0 && isNaN(icon.find('input[name="memberGroup"]').val());// MACS4#MACSV2 Add  //v2系统中input[name="amhsType"]取值是数值型，v4系统中input[name="memberGroup"]取值是字符串类型，所以本条语句把isNaN前面的！(非)去掉了
+    return icon.find('i.sample,i.undefined').length == 0 && isNaN(icon.find('input[name="llcType"]').val());// MACS4#MACSV2 Add  //v2系统中input[name="amhsType"]取值是数值型，v4系统中input[name="memberGroup"]取值是字符串类型，所以本条语句把isNaN前面的！(非)去掉了
     };
     var iconPopup = new McsPopupWinLoad();
     //handsOnTableOption.onIconClick = function(amhsId, amhsType) {// MACS4#MACSV2 Del
 //    handsOnTableOption.onIconClick = function(displayName, memberGroup) {	// MACS4#MACSV2 Add
-      handsOnTableOption.onIconClick = function(displayId,displayName, memberGroup) {	// MACS4#MACSV2 Add
+      handsOnTableOption.onIconClick = function(llcId,llcName, llcType) {	// MACS4#MACSV2 Add
       var options = {
         url: getUrl('Individual'),
         sendValue: {

@@ -147,6 +147,7 @@ public class McsHandsOnTableService extends BaseService {
 
     /** Label設定格納用配列 */
     Map<String, Integer> labelMap = new HashMap<String,Integer>();       // MACS4#MACSV2 Add
+    Map<String, Integer> llcTypeMap = new HashMap<String,Integer>();       // MACS4#MACSV3 Add
     Map<String, Integer> typeDataMap = new HashMap<String,Integer>();       // MACS4#MACSV2 Add
     
     int dataNumRow = 15;  //20191218 Song Add   //每行最多显示多少个Icon
@@ -195,149 +196,74 @@ public class McsHandsOnTableService extends BaseService {
      */
     //@formatter:on
     @Transactional
-    /*public List<McsHandsOnTableCellDataElemEntity> getIcon() throws McsException {
-
-        List<McsHandsOnTableCellDataElemEntity> cellDataElemList = new ArrayList<McsHandsOnTableCellDataElemEntity>();
-
-        // アイコンの色情報を取得
-        iconColors = getColors();
-
-        // アイコン情報を取得
-        List<IconInfo> iconInfoList = handsOnTableConfigMapper.selectIconInfo();
-
-        for (IconInfo iconInfo : iconInfoList) {
-
-            // 行番号,列番号,優先順位の位置情報を配列に格納
-            String[] positions = super.commaStrToArray(iconInfo.getPosition());
-
-            // アイコンの位置情報が不正ならば例外をthrow
-            if (positions.length != 3) {
-                throw new McsException(
-                        messageSource.getMessage("ERR0042", null, "ERR0042", LocaleContextHolder.getLocale()));
-            }
-
-            // アイコンを生成
-            McsHandsOnTableIconEntity iconEntity = new McsHandsOnTableIconEntity();
-            iconEntity.amhsId = iconInfo.getAmhsId();
-            iconEntity.amhsType = iconInfo.getAmhsType();
-            iconEntity.iconType = Short.valueOf(iconInfo.getIconType());
-            iconEntity.iconDomStr = createIconDomStr(iconInfo);
-
-            // セルデータにアイコンを格納
-            McsHandsOnTableCellDataElemEntity cellData = new McsHandsOnTableCellDataElemEntity();
-            cellData.row = Integer.valueOf(positions[0]);
-            cellData.col = Integer.valueOf(positions[1]);
-            cellData.priority = Integer.valueOf(positions[2]);
-            cellData.icon = iconEntity;
-
-            cellDataElemList.add(cellData);
-        }
-
-        return cellDataElemList;
-    }*/
     public List<McsHandsOnTableCellDataElemEntity> getIcon() throws McsException {
 
         List<McsHandsOnTableCellDataElemEntity> cellDataElemList = new ArrayList<McsHandsOnTableCellDataElemEntity>();
 
         // アイコンの色情報を取得
         //iconColors = getColors(); //MACSV4用
-        /* MACSV2 テスト用
-         * String[] colors = new String[1000];
-            try {
-                colors[0] = ComFunction.rgbToHex((short)100, (short)100, (short)100);//GRAY
-                colors[1] = ComFunction.rgbToHex((short)0, (short)255, (short)0);//GREEN
-                colors[2] = ComFunction.rgbToHex((short)255, (short)140, (short)0);//ORANGE
-                colors[3] = ComFunction.rgbToHex((short)255, (short)255, (short)0);//YELLOW
-            } catch (Exception ignored) {
-                // 不正なレコードは無視する。
-            }
-        iconColors =colors;*/
         // STD APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         // アイコン情報を取得
 //        List<IconInfo> iconInfoList = handsOnTableConfigMapper.selectIconInfo();// MACS4#MACSV2 Add
         List<IconInfo> labelList = moduleMapper.selectIconType(); // MACS4#MACSV3 Add  //全て種類を査問する「Shared,Module 1,Module 2」
         // END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-        
-        /*// STD APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-
-         * //20200111 Add Song Start
-        List<IconInfo> labelList = new ArrayList<IconInfo>() ; // MACS4#MACSV2 Add  //查询出所有的类型
-        
- 		for (ScreenMonitorMember screenMonitorMember : ScreenMonitorMemberList1) {
- 	
- 			String memberGroup = screenMonitorMember.getMemberGroup();
- 			IconInfo type = new IconInfo();
- 			type.setMemberGroup(memberGroup);
-			boolean flag = false;
-			for (IconInfo iconInfo : labelList) {
-				if(iconInfo.getMemberGroup().equals(memberGroup)) {
-					flag = true;
-				}
-			}
-			if(flag == false) {
-				labelList.add(type);
-			}
-		}
- 		//20200111 Add Song End	
-// END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-*/   	 		
    	 		
-   	 		for (IconInfo iconInfo : labelList) {
-   	 			int colNum = 0;//列号
+   	 	for (IconInfo iconInfo : labelList) {
+ 			int colNum = 0;//列号
 //		        ScreenMonitorMemberExample configExample = new ScreenMonitorMemberExample();
 //		        String tscType = iconInfo.getMemberGroup();   //tscType里面放的是类型名称
-   	 			// STD APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+ 			// STD APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
-		        String moduleName = iconInfo.getModuleName();   //tscType里面放的是类型名称
-		        List<IconInfo> llcTypeList = llcMapper.selectLlcType(moduleName); // MACS4#MACSV3 Add  //全てLLCType種類を査問する「CDC,OHBC,OHTC,OHTC2......」
-		        for (IconInfo llcInfo : llcTypeList) {
-		        	String llcType = llcInfo.getLlcType();   //llcTypeはLLC_TYPE
-		        	Llc llcPa = new Llc();
-		        	llcPa.setLlcType(llcType);
-		        	llcPa.setModuleName(moduleName);
-		        	
+	        String moduleName = iconInfo.getModuleName();   //tscType里面放的是类型名称
+	        List<IconInfo> llcTypeList = llcMapper.selectLlcType(moduleName); // MACS4#MACSV3 Add  //全てLLCType種類を査問する「CDC,OHBC,OHTC,OHTC2......」
+	        for (IconInfo llcInfo : llcTypeList) {
+	        	String llcType = llcInfo.getLlcType();   //llcTypeはLLC_TYPE
+	        	Llc llcPa = new Llc();
+	        	llcPa.setLlcType(llcType);
+	        	llcPa.setModuleName(moduleName);
+	        	String llcData = moduleName+llcType+"Data";
+	        	
 //		   	 		List<IconInfo> iconListType = llcMapper.selectIconInfoByType(moduleType,llcType);  //llcTypeによって、設備のデータを探す
-		   	 		List<IconInfo> iconListType = llcMapper.selectIconInfoByType(llcPa);  //llcTypeによって、設備のデータを探す
-		   	 	// END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-		        
-		   	 	Integer iconNum = labelMap.get(moduleName)+1;//Label番号  //labelMap里面放的是所有表头的类型和所在行号 ，再加1是Icon的行号
-	   	 		Integer dataNum = typeDataMap.get(moduleName+"Data")+1;  //typeDataMap里面放的是tscType类型的所有Icon需要占的最大行数，加上Data只是区分看labelMap里面的数据
-	   	 		
-			   	 	for (IconInfo LlclList : iconListType) {
-						
-	//		   	 		Integer iconNum = labelMap.get(tscType)+1;//Label番号//del
-	//		   	 		Integer dataNum = typeDataMap.get(tscType+"Data")+1;//del
-			   	 		// アイコンを生成
-			   	 		McsHandsOnTableIconEntity iconEntity = new McsHandsOnTableIconEntity();
-			   	 		
-			   	 		McsHandsOnTableCellDataElemEntity cellData = new McsHandsOnTableCellDataElemEntity();
-			   	 		//if(iconNum < dataNum && colNum <8 ) {
-			   	 		if(iconNum < dataNum && colNum < dataNumRow ) {  //dataNumRow里面放的是一行最多显示几个Icon
-			   	 			iconEntity.llcId = LlclList.getLlcId();
-			   	 			iconEntity.llcName = LlclList.getLlcName();
-			   	 			iconEntity.iconType    = LlclList.getIconType();
-			   	 			iconEntity.iconDomStr  = createIconDomStr(LlclList);
-			   	 			
-			   	 			cellData.row 	  = Integer.valueOf(iconNum); //row里面放的是Icon的行数
-			   	 			cellData.col	  = Integer.valueOf(0);   //col里面根据v4的数据库，应该放的都是0
-			   	 			cellData.priority = colNum;    //priority里面放的是Icon的列数
-			   	 			cellData.icon	  = iconEntity;
-			   	 			cellDataElemList.add(cellData);
-			   	 			colNum++;
-			   	 		}
-			   	 		
-			   	 		//if(colNum > 7) {
-			   	 		if(colNum > dataNumRow - 1) { 
-			   	 			iconNum ++;   //当每行放到最多dataNumRow，就换行
-			   	 			colNum = 0;
-			   	 		}
-					}
-			   	// STD APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-		        }
-			   	// END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-
-				
-			}
+	   	 		List<IconInfo> iconListType = llcMapper.selectIconInfoByType(llcPa);  //llcTypeによって、設備のデータを探す
+	   	 	// END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	        
+	   	 		Integer iconNum = labelMap.get(moduleName)+1;//Label番号  //labelMap里面放的是所有表头的类型和所在行号 ，再加1是Icon的行号
+//	   	 		Integer llcTypeNum = labelMap.get(llcType)+1;//Label番号  //labelMap里面放的是所有表头的类型和所在行号 ，再加1是Icon的行号
+	   	 		Integer dataNum = typeDataMap.get(llcData)+1;  //typeDataMap里面放的是tscType类型的所有Icon需要占的最大行数，加上Data只是区分看labelMap里面的数据
+   	 		
+		   	 	for (IconInfo LlclList : iconListType) {
+					
+//		   	 		Integer iconNum = labelMap.get(tscType)+1;//Label番号//del
+//		   	 		Integer dataNum = typeDataMap.get(tscType+"Data")+1;//del
+		   	 		// アイコンを生成
+		   	 		McsHandsOnTableIconEntity iconEntity = new McsHandsOnTableIconEntity();
+		   	 		
+		   	 		McsHandsOnTableCellDataElemEntity cellData = new McsHandsOnTableCellDataElemEntity();
+		   	 		//if(iconNum < dataNum && colNum <8 ) {
+		   	 		if(iconNum < dataNum && colNum < dataNumRow ) {  //dataNumRow里面放的是一行最多显示几个Icon
+		   	 			iconEntity.llcId = LlclList.getLlcId();
+		   	 			iconEntity.llcName = LlclList.getLlcName();
+		   	 			iconEntity.iconType    = LlclList.getIconType();
+		   	 			iconEntity.iconDomStr  = createIconDomStr(LlclList);
+		   	 			
+		   	 			cellData.row 	  = Integer.valueOf(iconNum); //row里面放的是Icon的行数
+		   	 			cellData.col	  = Integer.valueOf(0);   //col里面根据v4的数据库，应该放的都是0
+		   	 			cellData.priority = colNum;    //priority里面放的是Icon的列数
+		   	 			cellData.icon	  = iconEntity;
+		   	 			cellDataElemList.add(cellData);
+		   	 			colNum++;
+		   	 		}
+		   	 		
+		   	 		//if(colNum > 7) {
+		   	 		if(colNum > dataNumRow - 1) { 
+		   	 			iconNum ++;   //当每行放到最多dataNumRow，就换行
+		   	 			colNum = 0;
+		   	 		}
+				}
+		   	// STD APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	        }
+		   	// END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+		}
 
         return cellDataElemList;
     }
@@ -357,10 +283,6 @@ public class McsHandsOnTableService extends BaseService {
      * MACS4#0225  MACSV2→MACSV4対応                         天津村研　董
      ******************************************************************************
      */
-    
-   
-    
-    
     //@formatter:on
     @Transactional
     /*public List<McsHandsOnTableCellDataElemEntity> getLabel() throws McsException {
@@ -406,71 +328,95 @@ public class McsHandsOnTableService extends BaseService {
         List<McsHandsOnTableCellDataElemEntity> cellDataElemList = new ArrayList<McsHandsOnTableCellDataElemEntity>();
 
         // ラベル情報を取得
-//        HandsOnTableConfigExample configExample = new HandsOnTableConfigExample();
-//        configExample.createCriteria().andSectionEqualTo(ComConst.HandsOnTableConfig.LABEL);
-//        List<HandsOnTableConfig> labelList = handsOnTableConfigMapper.selectByExample(configExample);// MACS4#MACSV2 Del
-        
      // STD APL 2020.02.14 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-//        List<IconInfo> labelList = screenMonitorMemberMapper.selectIconType(); // MACS4#MACSV2 Add  //查询出所有的类型
         List<IconInfo> labelList = moduleMapper.selectIconType(); // MACS4#MACSV3 Add  //查询出所有的类型
         // END APL 2020.02.14 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         int rowNum = 0;
+        int typeNum = 0;// MACS4#MACSV3 Add llcType数値
         int dataNum = 0;
-        List<Module> iconInfoList = null;
-        //int dataNumRow = 20;
+//        List<Module> iconInfoList = null;
+        List<IconInfo> iconListType = null;
         for (IconInfo iconType : labelList) {
 //        	iconInfoList.clear();
-//        	String tscType = iconType.getMemberGroup();
-        	String moduleType = iconType.getModuleName(); // MACS4#MACSV3 Add
-        	String moduleData = moduleType+"Data";
+        	String moduleName = iconType.getModuleName(); // MACS4#MACSV3 Add
+//        	String moduleData = moduleName+"Data";
         	ModuleExample configExample = new ModuleExample();
-        	configExample.createCriteria().andModuleNameEqualTo(moduleType);
-        	iconInfoList = moduleMapper.selectByExample(configExample); // MACS4#MACSV2 Add
+        	configExample.createCriteria().andModuleNameEqualTo(moduleName);
         	
-        	labelMap.put(moduleType, rowNum); // MACS4#MACSV2 Add  //labelMap里面放的是每个类型名字，它对应的行号
+        	labelMap.put(moduleName, rowNum);   //labelMap里面放的是[Shared,Module 1,Module 2]，它对应的行号
+        	// STD APL 2020.02.19 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        	List<IconInfo> llcTypeList = llcMapper.selectLlcType(moduleName); // MACS4#MACSV3 Add  //全てLLCType種類を査問する「CDC,OHBC,OHTC,OHTC2......」
         	
-        	//データの行巣　  
-        	//20191217 DQY ADD START
-        	//データは20個毎行
-        	if(iconInfoList.size()%dataNumRow >0) {       //如果某个类型的Icon数量比较多，数量大于dataNumRow了，就算出这些Icon需要多少行
-        		dataNum = iconInfoList.size() / dataNumRow + 1;									
-        	}
-        	else
-        	{
-        		dataNum = iconInfoList.size() / dataNumRow;
-        	}
-        	//20191217 DQY ADD END
-        	
-        	//データの最終行番号  
-        	typeDataMap.put(moduleData, rowNum + dataNum);		//typeDataMap里面放的是某个类型它的所有Icon需要占用多少行，的最大行号					
-        	
-//	        for (ScreenMonitorMember label : iconInfoList) {
-	            // 行番号,列番号,優先順位の位置情報を配列に格納
-	           // String[] positions = super.commaStrToArray(label.getKey());
-//	        	Short positions = label.getGroupNumber();
-	        	Short positions = 0;
-	        	
-	            /*// ラベルの位置情報が不正ならば例外をthrow
-	            if (positions.length != 3) {
-	                throw new McsException(
-	                        messageSource.getMessage("ERR0042", null, "ERR0042", LocaleContextHolder.getLocale()));
-	            }*/
-	
-	            // セルデータにラベルを格納
-	            McsHandsOnTableCellDataElemEntity cellData = new McsHandsOnTableCellDataElemEntity();
-	            cellData.row = Integer.valueOf(rowNum);  //行
-	            cellData.col = Integer.valueOf(positions);  //这个值一直为0
-	            cellData.priority = Integer.valueOf(positions); //列
-	            /*// 言語設定によってラベルを切り替える
-	            cellData.label = (LocaleContextHolder.getLocale() == Locale.JAPANESE) ? label.getValue2()
-	                    : label.getValue1();*/
+        	Short positions = 0;
+        	// セルデータにラベルを格納
+            McsHandsOnTableCellDataElemEntity cellData = new McsHandsOnTableCellDataElemEntity();
+            cellData.row = Integer.valueOf(rowNum);  //行
+            cellData.col = Integer.valueOf(positions);  //这个值一直为0
+            cellData.priority = Integer.valueOf(positions); //列
+            /*// 言語設定によってラベルを切り替える
+            cellData.label = (LocaleContextHolder.getLocale() == Locale.JAPANESE) ? label.getValue2()
+                    : label.getValue1();*/
 //	            cellData.label = iconType.getMemberGroup();
-	            cellData.label = iconType.getModuleName();
-	
-	            cellDataElemList.add(cellData);
-	            rowNum++;				   // MACS4#MACSV2 Add
-	            rowNum = rowNum + dataNum ;// MACS4#MACSV2 Add
-//	        }
+            cellData.label = iconType.getModuleName();
+
+            cellDataElemList.add(cellData);
+        	
+        	
+        	for (IconInfo llcInfo : llcTypeList) {
+        		String llcType = llcInfo.getLlcType();   //llcTypeはLLC_TYPE
+        		String llcData = moduleName+llcType+"Data";
+        		
+        		typeNum = rowNum+1;
+        		llcTypeMap.put(llcType, typeNum); //llcTypeMapの中で「CDC、OHBC、OHBC2、OHTC.......」，它对应的行号
+        		
+        		Llc llcPa = new Llc();
+        		llcPa.setLlcType(llcType);
+        		llcPa.setModuleName(moduleName);
+        		iconListType = llcMapper.selectIconInfoByType(llcPa);  //llcTypeによって、設備のデータを探す
+        	// END APL 2020.02.19 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        	
+	        	//データの行巣　  
+	        	//20191217 DQY ADD START
+	        	//データは20個毎行
+	        	if(iconListType.size()%dataNumRow >0) {       //如果某个类型的Icon数量比较多，数量大于dataNumRow了，就算出这些Icon需要多少行
+	        		dataNum = iconListType.size() / dataNumRow + 1;									
+	        	}
+	        	else
+	        	{
+	        		dataNum = iconListType.size() / dataNumRow;
+	        	}
+	        	//20191217 DQY ADD END
+	        	
+	        	//データの最終行番号  
+	        	typeDataMap.put(llcData, typeNum + dataNum);		//typeDataMap里面放的是某个类型它的所有Icon需要占用多少行，的最大行号					
+	        	
+	//	        for (ScreenMonitorMember label : iconInfoList) {
+		            // 行番号,列番号,優先順位の位置情報を配列に格納
+		           // String[] positions = super.commaStrToArray(label.getKey());
+	//	        	Short positions = label.getGroupNumber();
+//		        	Short positions = 0;
+		        	
+		            /*// ラベルの位置情報が不正ならば例外をthrow
+		            if (positions.length != 3) {
+		                throw new McsException(
+		                        messageSource.getMessage("ERR0042", null, "ERR0042", LocaleContextHolder.getLocale()));
+		            }*/
+		
+		            // セルデータにラベルを格納
+//		            McsHandsOnTableCellDataElemEntity cellData = new McsHandsOnTableCellDataElemEntity();
+		            cellData.row = Integer.valueOf(typeNum);  //行
+		            cellData.col = Integer.valueOf(positions);  //这个值一直为0
+		            cellData.priority = Integer.valueOf(positions); //列
+		            /*// 言語設定によってラベルを切り替える
+		            cellData.label = (LocaleContextHolder.getLocale() == Locale.JAPANESE) ? label.getValue2()
+		                    : label.getValue1();*/
+	//	            cellData.label = iconType.getMemberGroup();
+		            cellData.label = iconType.getLlcType();
+		
+		            cellDataElemList.add(cellData);
+		            rowNum++;				   // MACS4#MACSV2 Add
+		            rowNum = typeNum + dataNum ;// MACS4#MACSV2 Add
+	        }
         }
 
         return cellDataElemList;
@@ -510,11 +456,11 @@ public class McsHandsOnTableService extends BaseService {
         int width0 = 0;
         int width3 = 3;
         int type0 = 0;
-        
+        Integer[] iconNums = new Integer[labelList.size()];
         //20191217 dqy add start
-        String tscType;
-        Integer[] iconNums= new Integer[labelList.size()];
+        String moduleName;
         Integer iconNum = 0 ;
+        Integer llcTypeNum = 0 ;//llcType番号
         Integer dataNum = 0 ;//データの行番号
         int lastRow =0 ;
         int LabelNum=0;//行号数组
@@ -522,17 +468,30 @@ public class McsHandsOnTableService extends BaseService {
         for (IconInfo iconInfo : labelList) {
         	// STD APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 //        	 tscType = iconInfo.getMemberGroup();
-        	 tscType = iconInfo.getModuleName();
+        	 moduleName = iconInfo.getModuleName();
+        	 List<IconInfo> llcTypeList = llcMapper.selectLlcType(moduleName); // MACS4#MACSV3 Add  //全てLLCType種類を査問する「CDC,OHBC,OHTC,OHTC2......」
         	 // END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         	 
-	   	 	 iconNum = labelMap.get(tscType);//Label番号
-	   	 	 dataNum = typeDataMap.get(tscType+"Data");
+	   	 	 iconNum = labelMap.get(moduleName);//Label番号
 	   	 	 iconNums[LabelNum] = iconNum;
 	   	 	 LabelNum++;
-	   	 	 if(labelList.size()==LabelNum)
-	   	 	 {
-	   	 		lastRow =typeDataMap.get(tscType+"Data") ; //lastRow这个变量里放的是最后也是最大行号
-	   	 	 }
+	   	 	 
+	   	 	 Integer[] llcTypeNums = new Integer[llcTypeList.size()];
+	   	 	 int typeNum=0;//llcType行号数组
+	   	 	 for (IconInfo llcInfo : llcTypeList) {
+	     		 String llcType = llcInfo.getLlcType();   //llcTypeはLLC_TYPE
+	     		 String llcData = moduleName+llcType+"Data";//データ
+	     		
+	     		 llcTypeNum = llcTypeMap.get(llcType);//llcType番号
+		   	 	
+		   	 	 dataNum = typeDataMap.get(llcData);
+		   	 	 llcTypeNums[typeNum] = llcTypeNum;
+		   	 	 typeNum++;
+		   	 	 if(llcTypeList.size()==llcTypeNum)
+		   	 	 {
+		   	 		lastRow = dataNum ; //lastRow这个变量里放的是最后也是最大行号
+		   	 	 }
+	   	 	  }
         }
         //20191217 dqy add
         int[] widths = new int[4];
@@ -762,30 +721,38 @@ public class McsHandsOnTableService extends BaseService {
         int length = labelList.size();
         List<Integer> heightList = new ArrayList<Integer>();
         int labelHeight = 23;
-//        int iconHeight = 60;//20191218 DQY DEL 
-        int iconHeight = 95;//20191218 DQY ADD  DATA HEIGHT
-//        Integer[] width = new Integer[] {};
-//        width = new Integer[] {23,60};
-//        List<Integer> widthList = new ArrayList<Integer>();
+        int iconHeight = 95; 
         
-        
-        //20191218 Song Add Start
-        String tscType;
-        Integer iconNum = 0 ;
-        Integer dataNum = 0 ;//データの行番号
+       // STD APL 2020.02.20 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+       // END APL 2020.02.20 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+//        String tscType;
+        String moduleName;      //Shared,Module 1,Module 2の名前
+        Integer iconNum = 0 ;   //Shared,Module 1,Module 2の行番号
+        Integer llcTypeNum = 0 ;//llcType番号
+        Integer dataNum = 0 ;   //データの行番号
         for (IconInfo iconInfo : labelList) {
-//        	 tscType = iconInfo.getMemberGroup();
-        	 tscType = iconInfo.getModuleName();
+        	moduleName = iconInfo.getModuleName();
         	 
-	   	 	 iconNum = labelMap.get(tscType);   
+	   	 	 iconNum = labelMap.get(moduleName);   
 	   	 	 heightList.add(labelHeight);      //每一个类型的高度是23
 	   	 	 
-	   	 	 dataNum = typeDataMap.get(tscType+"Data");  //dataNum里面是每个类型下面有多少行Icon的最大行号
-	   	 	 for (int i = 0; i < dataNum-iconNum; i++) {
-	   	 		heightList.add(iconHeight);     //每一个类型底下有若干行Icon,每行Icon的高度是60
-			 }
+	   	 	List<IconInfo> llcTypeList = llcMapper.selectLlcType(moduleName); // MACS4#MACSV3 Add  //全てLLCType種類を査問する「CDC,OHBC,OHTC,OHTC2......」
+	   	 	 Integer[] llcTypeNums = new Integer[llcTypeList.size()];
+	   	 	 int typeNum=0;//llcType行号数组
+	   	 	 for (IconInfo llcInfo : llcTypeList) {
+	     		 String llcType = llcInfo.getLlcType();   //llcTypeはLLC_TYPE
+	     		 String llcData = moduleName+llcType+"Data";//データ
+	     		
+	     		 llcTypeNum = llcTypeMap.get(llcType);//llcType番号
+		   	 	
+		   	 	 dataNum = typeDataMap.get(llcData);//dataNum里面是每个类型下面有多少行Icon的最大行号
+		   	 	 llcTypeNums[typeNum] = llcTypeNum;
+		   	 	 typeNum++;
+		   	 	 for (int i = 0; i < dataNum-iconNum-typeNum; i++) {
+		   	 		 heightList.add(iconHeight);     //每一个类型底下有若干行Icon,每行Icon的高度是60
+		   	 	 }
+	   	 	 }
         }
-        //20191218 Song Add End
         
         /*
          *  //20191218 Song Del Start
