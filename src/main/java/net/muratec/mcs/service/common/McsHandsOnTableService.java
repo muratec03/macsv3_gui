@@ -333,7 +333,6 @@ public class McsHandsOnTableService extends BaseService {
         // END APL 2020.02.14 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         int rowNum = 0;
         int typeNum = 0;// MACS4#MACSV3 Add llcType数値
-        int dataNum = 0;
 //        List<Module> iconInfoList = null;
         List<IconInfo> iconListType = null;
         for (IconInfo iconType : labelList) {
@@ -362,11 +361,14 @@ public class McsHandsOnTableService extends BaseService {
             cellDataElemList.add(cellData);
         	
         	
+            rowNum++;
         	for (IconInfo llcInfo : llcTypeList) {
+        		int dataNum = 0;
         		String llcType = llcInfo.getLlcType();   //llcTypeはLLC_TYPE
         		String llcData = moduleName+llcType+"Data";
         		
-        		typeNum = rowNum+1;
+//        		typeNum = rowNum+1;
+        		typeNum = rowNum;
         		llcTypeMap.put(llcType, typeNum); //llcTypeMapの中で「CDC、OHBC、OHBC2、OHTC.......」，它对应的行号
         		
         		Llc llcPa = new Llc();
@@ -411,10 +413,10 @@ public class McsHandsOnTableService extends BaseService {
 		            cellData.label = (LocaleContextHolder.getLocale() == Locale.JAPANESE) ? label.getValue2()
 		                    : label.getValue1();*/
 	//	            cellData.label = iconType.getMemberGroup();
-		            cellData.label = iconType.getLlcType();
+		            cellData.label = llcInfo.getLlcType();
 		
 		            cellDataElemList.add(cellData);
-		            rowNum++;				   // MACS4#MACSV2 Add
+		            typeNum++;				   // MACS4#MACSV2 Add
 		            rowNum = typeNum + dataNum ;// MACS4#MACSV2 Add
 	        }
         }
