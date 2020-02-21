@@ -43,8 +43,14 @@ public class ReqOpenIndMonEntity {
 
 //    public String amhsType;//20191218 DQY DEL
 //    public String amhsId;	 //20191218 DQY DEL
-    public String memberGroup;  //20191218 DQY ADD
-    public String displayName;  //20191218 DQY ADD
-    public String displayId;  //20191220 DQY ADD
+	// STD APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+//    public String memberGroup;  //20191218 DQY ADD
+//    public String displayName;  //20191218 DQY ADD
+//    public String displayId;  //20191220 DQY ADD
+	public String  moduleName;
+	public String  llcName;
+	public String  llcId;
+	public String  llcType;
+    // END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
 }

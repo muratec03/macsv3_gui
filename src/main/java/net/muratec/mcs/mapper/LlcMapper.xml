@@ -703,8 +703,7 @@
   <!-- STD APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
   <!-- <select id="selectIconInfoByType" parameterType="java.lang.String"  resultType="net.muratec.mcs.model.IconInfo" > -->
   <select id="selectIconInfoByType" parameterType="net.muratec.mcs.model.Llc"  resultType="net.muratec.mcs.model.IconInfo" >
-    
-    select
+    SELECT
       L.LLC_NAME,
       L.LLC_ID,
       L.LLC_TYPE,
@@ -721,31 +720,31 @@
            WHEN L.LLC_TYPE = 'CDC' THEN 1
            WHEN L.LLC_TYPE = 'OHBC' THEN 1
            WHEN L.LLC_TYPE = 'OHBC2' THEN 1
-           ELSE 7  END)ICON_TYPE,
-      T.TSC_MODE,
+           ELSE 7  END)ICON_TYPE
+      <!-- ,T.TSC_MODE,
       T.AVAILABLE,
-      T.ALARM_STATE
-    from
+      T.ALARM_STATE -->
+    FROM
       LLC L
-      left outer join TSC T on L.LLC_ID = T.LLC_ID
-      JOIN module M ON T.llc_id = M.llc_id
-      where L.LLC_TYPE = #{llcType,jdbcType=VARCHAR} 
-		  AND M.MODULE_NAME =  #{moduleName,jdbcType=VARCHAR}  
+      <!-- left outer join TSC T on L.LLC_ID = T.LLC_ID -->
+      JOIN MODULE M ON L.LLC_ID = M.LLC_ID
+      WHERE L.LLC_TYPE = #{llcType,jdbcType=VARCHAR} 
+		  AND M.MODULE_NAME =  #{moduleName,jdbcType=VARCHAR} 
+		  AND DISPLAY_FLG = 1 
       <!-- where L.LLC_TYPE = 'CDC'  
-		  AND M.MODULE_NAME = 'Module 1' -->
-		  AND L.LLC_TYPE !='DWCC'
+		  AND M.MODULE_NAME = 'Module 1' 
+		  AND L.LLC_TYPE !='DWCC'-->
       <!-- L.LLC_TYPE = #{llcType,jdbcType=VARCHAR}
       and M.MODULE_NAME = #{moduleName,jdbcType=VARCHAR} -->
-    order by L.LLC_ID
+      ORDER BY L.LLC_ID
   </select>
   
   <select id="selectLlcType" resultType="net.muratec.mcs.model.IconInfo">
   SELECT DISTINCT LLC_TYPE 
   FROM LLC L
-	left outer join MODULE M on L.LLC_ID = M.LLC_ID
-	 WHERE M.MODULE_NAME = #{moduleName,jdbcType=VARCHAR}
-	<!-- WHERE M.MODULE_NAME = 'Module 1'  -->
-		  AND L.LLC_TYPE !='DWCC'
+  LEFT OUTER JOIN MODULE M on L.LLC_ID = M.LLC_ID
+  WHERE M.MODULE_NAME = #{moduleName,jdbcType=VARCHAR}
+  ORDER BY REPLACE(LLC_TYPE,'DWCC')
   </select>
     <!-- END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
 </mapper>

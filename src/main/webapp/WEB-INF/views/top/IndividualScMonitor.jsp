@@ -91,8 +91,12 @@
   var screenValue = {
     <%--  amhsName: JSON.parse('${AmhsNameList}'), --%>  <%-- 20191223 Song Del 这是v2的代码不用 AmhsNameList了 改用displayNameList--%>
     <%--amhsId: '${amhsId}'--%>  <%-- 20191223 Song Del 这是v2的代码不用 amhsId了 改用displayId--%>
-    displayNames: JSON.parse('${displayNameList}'),
-    displayId: '${displayId}'
+    <%-- STD APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 --%>
+    <%--displayNames: JSON.parse('${displayNameList}'),
+    displayId: '${displayId}'--%>
+    llcNames: JSON.parse('${llcNameList}'),
+    llcId: '${llcId}'
+    <%-- END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 --%>
   };
 </script>
 

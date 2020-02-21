@@ -108,7 +108,12 @@ public class GuiEnvironment
 
 	public static final String TSC_TYPE_OCDC = "OCDC";
 	public static final String TSC_TYPE_XCDC = "XCDC";
-	
+	// STD APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	public static final String TSC_TYPE_OHBC2 = "OHBC2";
+	public static final String TSC_TYPE_DWCC = "DWCC";
+	public static final String TSC_TYPE_TWU = "TWU";
+	// END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+
 	/** �z�X�g�|�[�g�^�C�v */
 	public static final String STC_PORT = "STC_PORT";
 	public static final String EQP_PORT = "EQP_PORT";

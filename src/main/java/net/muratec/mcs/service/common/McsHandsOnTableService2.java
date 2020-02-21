@@ -1,4 +1,4 @@
-﻿//@formatter:off
+//@formatter:off
 
 /**
  ******************************************************************************
@@ -120,7 +120,7 @@ import net.muratec.mcs.model.ScreenMonitorMemberExample;
  */
 //@formatter:on
 @Service
-public class McsHandsOnTableService extends BaseService {
+public class McsHandsOnTableService2 extends BaseService {
 
     /** HandsOnTableの設定テーブルマッパー */
     @Autowired private HandsOnTableConfigMapper handsOnTableConfigMapper; // MACS4#MACSV2 Del
@@ -146,9 +146,9 @@ public class McsHandsOnTableService extends BaseService {
     private String[] iconColors = new String[1000];
 
     /** Label設定格納用配列 */
-    Map<String, Integer> labelMap = new HashMap<String,Integer>();       // MACS4#MACSV3 Add
-    Map<String, Integer> llcTypeMap = new HashMap<String,Integer>();     // MACS4#MACSV3 Add
-    Map<String, Integer> typeDataMap = new HashMap<String,Integer>();    // MACS4#MACSV3 Add
+    Map<String, Integer> labelMap = new HashMap<String,Integer>();       // MACS4#MACSV2 Add
+    Map<String, Integer> llcTypeMap = new HashMap<String,Integer>();       // MACS4#MACSV3 Add
+    Map<String, Integer> typeDataMap = new HashMap<String,Integer>();       // MACS4#MACSV2 Add
     
     int dataNumRow = 15;  //20191218 Song Add   //每行最多显示多少个Icon
     
@@ -215,40 +215,41 @@ public class McsHandsOnTableService extends BaseService {
  			// STD APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
 	        String moduleName = iconInfo.getModuleName();   //tscType里面放的是类型名称
-	        // STD APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-	   	 	Integer iconNum = labelMap.get(moduleName)+1;//Label番号  //labelMap里面放的是所有表头的类型和所在行号 ，再加1是Icon的行号
-	   	 	// END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-	        
-	   	 	List<IconInfo> llcTypeList = llcMapper.selectLlcType(moduleName); // MACS4#MACSV3 Add  //全てLLCType種類を査問する「CDC,OHBC,OHTC,OHTC2......」
+	        List<IconInfo> llcTypeList = llcMapper.selectLlcType(moduleName); // MACS4#MACSV3 Add  //全てLLCType種類を査問する「CDC,OHBC,OHTC,OHTC2......」
 	        for (IconInfo llcInfo : llcTypeList) {
 	        	String llcType = llcInfo.getLlcType();   //llcTypeはLLC_TYPE
 	        	Llc llcPa = new Llc();
 	        	llcPa.setLlcType(llcType);
 	        	llcPa.setModuleName(moduleName);
+	        	String llcData = moduleName+llcType+"Data";
 	        	
 //		   	 		List<IconInfo> iconListType = llcMapper.selectIconInfoByType(moduleType,llcType);  //llcTypeによって、設備のデータを探す
 	   	 		List<IconInfo> iconListType = llcMapper.selectIconInfoByType(llcPa);  //llcTypeによって、設備のデータを探す
-	   	 		// END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	   	 	// END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	        
 	   	 		// STD APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-        		String llcTypeM = moduleName+llcType;
-        		Integer llcTypeNum = llcTypeMap.get(llcTypeM)+1;//llcType番号 里面放的是所有表头的类型和所在行号 ，再加1是Icon的行号
-        		String llcDataM = moduleName+llcType+"Data";
-        		Integer dataNum = typeDataMap.get(llcDataM)+1;  //typeDataMap里面放的是tscType类型的所有Icon需要占的最大行数，加上Data只是区分看labelMap里面的数据
-        		// END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+				// END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
+	   	 		Integer iconNum = labelMap.get(moduleName)+1;//Label番号  //labelMap里面放的是所有表头的类型和所在行号 ，再加1是Icon的行号
+//	   	 		Integer llcTypeNum = labelMap.get(llcType)+1;//Label番号  //labelMap里面放的是所有表头的类型和所在行号 ，再加1是Icon的行号
+	   	 		Integer dataNum = typeDataMap.get(llcData)+1;  //typeDataMap里面放的是tscType类型的所有Icon需要占的最大行数，加上Data只是区分看labelMap里面的数据
+   	 		
 		   	 	for (IconInfo LlclList : iconListType) {
+					
+//		   	 		Integer iconNum = labelMap.get(tscType)+1;//Label番号//del
+//		   	 		Integer dataNum = typeDataMap.get(tscType+"Data")+1;//del
 		   	 		// アイコンを生成
 		   	 		McsHandsOnTableIconEntity iconEntity = new McsHandsOnTableIconEntity();
 		   	 		
 		   	 		McsHandsOnTableCellDataElemEntity cellData = new McsHandsOnTableCellDataElemEntity();
 		   	 		//if(iconNum < dataNum && colNum <8 ) {
-		   	 		if(llcTypeNum < dataNum && colNum < dataNumRow ) {  //dataNumRow里面放的是一行最多显示几个Icon
+		   	 		if(iconNum < dataNum && colNum < dataNumRow ) {  //dataNumRow里面放的是一行最多显示几个Icon
 		   	 			iconEntity.llcId = LlclList.getLlcId();
 		   	 			iconEntity.llcName = LlclList.getLlcName();
 		   	 			iconEntity.iconType    = LlclList.getIconType();
 		   	 			iconEntity.iconDomStr  = createIconDomStr(LlclList);
 		   	 			
-		   	 			cellData.row 	  = Integer.valueOf(llcTypeNum); //row里面放的是Icon的行数
+		   	 			cellData.row 	  = Integer.valueOf(iconNum); //row里面放的是Icon的行数
 		   	 			cellData.col	  = Integer.valueOf(0);   //col里面根据v4的数据库，应该放的都是0
 		   	 			cellData.priority = colNum;    //priority里面放的是Icon的列数
 		   	 			cellData.icon	  = iconEntity;
@@ -258,10 +259,7 @@ public class McsHandsOnTableService extends BaseService {
 		   	 		
 		   	 		//if(colNum > 7) {
 		   	 		if(colNum > dataNumRow - 1) { 
-		   	 			// STD APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-//		   	 			iconNum ++;   //当每行放到最多dataNumRow，就换行
-		   	 			llcTypeNum ++;   //当每行放到最多dataNumRow，就换行
-		   	 			// END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+		   	 			iconNum ++;   //当每行放到最多dataNumRow，就换行
 		   	 			colNum = 0;
 		   	 		}
 				}

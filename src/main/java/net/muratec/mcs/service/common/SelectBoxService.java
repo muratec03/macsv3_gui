@@ -50,6 +50,7 @@ import net.muratec.mcs.mapper.GrpMapper;
 import net.muratec.mcs.mapper.GuiFuncGroupMapper;
 import net.muratec.mcs.mapper.HostAliasMapper;
 import net.muratec.mcs.mapper.HostMapper;
+import net.muratec.mcs.mapper.LlcMapper;
 import net.muratec.mcs.mapper.ModuleMapper;
 import net.muratec.mcs.mapper.NodeMapper;
 import net.muratec.mcs.mapper.OhbMapper;
@@ -83,6 +84,8 @@ import net.muratec.mcs.model.GuiFuncGroup;
 import net.muratec.mcs.model.GuiFuncGroupExample;
 import net.muratec.mcs.model.Host;
 import net.muratec.mcs.model.HostExample;
+import net.muratec.mcs.model.Llc;
+import net.muratec.mcs.model.LlcExample;
 import net.muratec.mcs.model.Module;
 import net.muratec.mcs.model.ModuleExample;
 import net.muratec.mcs.model.Node;
@@ -305,7 +308,11 @@ public class SelectBoxService extends BaseService {
     // ----------------------------------------------
     @Autowired private EqpTypeMapper eqpTypeMapper;
 
-    @Autowired private ScreenMonitorMemberMapper screenMonitorMemberMapper;// MACSV2→MACSV4対応                         天津村研　董
+    // STD APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+//    @Autowired private ScreenMonitorMemberMapper screenMonitorMemberMapper;// MACSV2→MACSV4対応                         天津村研　董
+    @Autowired private LlcMapper llcMapper;// MACSV2→MACSV4対応                         天津村研　董
+    // END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+   
     //@formatter:off
     /**
      ******************************************************************************
@@ -771,7 +778,8 @@ public class SelectBoxService extends BaseService {
 
         return amhsNameSelList;
     }*/
-    public List<String[]> getControllerByType(List<String> tscTypeList) {
+    // STD APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    /*public List<String[]> getControllerByType(List<String> tscTypeList) {
     	
     	// 指定したAMHSタイプのAMHSIdの一覧を取得
     	ScreenMonitorMemberExample screenMonitorMemberExample = new ScreenMonitorMemberExample();
@@ -790,7 +798,28 @@ public class SelectBoxService extends BaseService {
     	}
     	
     	return amhsNameSelList;
-    }
+    }*/
+    	public List<String[]> getControllerByType(List<String> tscTypeList) {
+    	
+    	// 指定したAMHSタイプのAMHSIdの一覧を取得
+    	LlcExample llcExample = new LlcExample();
+    	
+    	for (String tscType : tscTypeList) {
+    		llcExample.or().andLlcTypeEqualTo(tscType);
+        }
+    	llcExample.setOrderByClause("LLC_ID asc");
+    	List<Llc> tscList = llcMapper.selectByExample(llcExample);
+    	
+    	// セレクトボックス用の配列に変換
+    	List<String[]> amhsNameSelList = new ArrayList<String[]>();
+    	for (Llc llcs : tscList) {
+    		amhsNameSelList.add(new String[] { String.valueOf(llcs.getLlcId()), llcs.getLlcName() + "(" + String.valueOf(llcs.getLlcId()) + ")" ,
+                    String.valueOf(llcs.getLlcType()) });
+    	}
+    	
+    	return amhsNameSelList;
+      }
+      // END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
     //@formatter:off
     /**
      ******************************************************************************

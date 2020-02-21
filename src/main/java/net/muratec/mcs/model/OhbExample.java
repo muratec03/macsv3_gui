@@ -334,763 +334,503 @@ public class OhbExample {
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationIsNull() {
-            addCriterion("OHB_ABBREVIATION is null");
+        public Criteria andAmhsIdIsNull() {
+            addCriterion("AMHS_ID is null");
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationIsNotNull() {
-            addCriterion("OHB_ABBREVIATION is not null");
+        public Criteria andAmhsIdIsNotNull() {
+            addCriterion("AMHS_ID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationEqualTo(String value) {
-            addCriterion("OHB_ABBREVIATION =", value, "ohbAbbreviation");
+        public Criteria andAmhsIdEqualTo(String value) {
+            addCriterion("AMHS_ID =", value, "amhsId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationNotEqualTo(String value) {
-            addCriterion("OHB_ABBREVIATION <>", value, "ohbAbbreviation");
+        public Criteria andAmhsIdNotEqualTo(String value) {
+            addCriterion("AMHS_ID <>", value, "amhsId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationGreaterThan(String value) {
-            addCriterion("OHB_ABBREVIATION >", value, "ohbAbbreviation");
+        public Criteria andAmhsIdGreaterThan(String value) {
+            addCriterion("AMHS_ID >", value, "amhsId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationGreaterThanOrEqualTo(String value) {
-            addCriterion("OHB_ABBREVIATION >=", value, "ohbAbbreviation");
+        public Criteria andAmhsIdGreaterThanOrEqualTo(String value) {
+            addCriterion("AMHS_ID >=", value, "amhsId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationLessThan(String value) {
-            addCriterion("OHB_ABBREVIATION <", value, "ohbAbbreviation");
+        public Criteria andAmhsIdLessThan(String value) {
+            addCriterion("AMHS_ID <", value, "amhsId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationLessThanOrEqualTo(String value) {
-            addCriterion("OHB_ABBREVIATION <=", value, "ohbAbbreviation");
+        public Criteria andAmhsIdLessThanOrEqualTo(String value) {
+            addCriterion("AMHS_ID <=", value, "amhsId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationLike(String value) {
-            addCriterion("OHB_ABBREVIATION like", value, "ohbAbbreviation");
+        public Criteria andAmhsIdLike(String value) {
+            addCriterion("AMHS_ID like", value, "amhsId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationNotLike(String value) {
-            addCriterion("OHB_ABBREVIATION not like", value, "ohbAbbreviation");
+        public Criteria andAmhsIdNotLike(String value) {
+            addCriterion("AMHS_ID not like", value, "amhsId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationIn(List<String> values) {
-            addCriterion("OHB_ABBREVIATION in", values, "ohbAbbreviation");
+        public Criteria andAmhsIdIn(List<String> values) {
+            addCriterion("AMHS_ID in", values, "amhsId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationNotIn(List<String> values) {
-            addCriterion("OHB_ABBREVIATION not in", values, "ohbAbbreviation");
+        public Criteria andAmhsIdNotIn(List<String> values) {
+            addCriterion("AMHS_ID not in", values, "amhsId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationBetween(String value1, String value2) {
-            addCriterion("OHB_ABBREVIATION between", value1, value2, "ohbAbbreviation");
+        public Criteria andAmhsIdBetween(String value1, String value2) {
+            addCriterion("AMHS_ID between", value1, value2, "amhsId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbAbbreviationNotBetween(String value1, String value2) {
-            addCriterion("OHB_ABBREVIATION not between", value1, value2, "ohbAbbreviation");
+        public Criteria andAmhsIdNotBetween(String value1, String value2) {
+            addCriterion("AMHS_ID not between", value1, value2, "amhsId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeIsNull() {
-            addCriterion("OHB_MODE is null");
+        public Criteria andShapeIdIsNull() {
+            addCriterion("SHAPE_ID is null");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeIsNotNull() {
-            addCriterion("OHB_MODE is not null");
+        public Criteria andShapeIdIsNotNull() {
+            addCriterion("SHAPE_ID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeEqualTo(String value) {
-            addCriterion("OHB_MODE =", value, "ohbMode");
+        public Criteria andShapeIdEqualTo(Short value) {
+            addCriterion("SHAPE_ID =", value, "shapeId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeNotEqualTo(String value) {
-            addCriterion("OHB_MODE <>", value, "ohbMode");
+        public Criteria andShapeIdNotEqualTo(Short value) {
+            addCriterion("SHAPE_ID <>", value, "shapeId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeGreaterThan(String value) {
-            addCriterion("OHB_MODE >", value, "ohbMode");
+        public Criteria andShapeIdGreaterThan(Short value) {
+            addCriterion("SHAPE_ID >", value, "shapeId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeGreaterThanOrEqualTo(String value) {
-            addCriterion("OHB_MODE >=", value, "ohbMode");
+        public Criteria andShapeIdGreaterThanOrEqualTo(Short value) {
+            addCriterion("SHAPE_ID >=", value, "shapeId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeLessThan(String value) {
-            addCriterion("OHB_MODE <", value, "ohbMode");
+        public Criteria andShapeIdLessThan(Short value) {
+            addCriterion("SHAPE_ID <", value, "shapeId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeLessThanOrEqualTo(String value) {
-            addCriterion("OHB_MODE <=", value, "ohbMode");
+        public Criteria andShapeIdLessThanOrEqualTo(Short value) {
+            addCriterion("SHAPE_ID <=", value, "shapeId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeLike(String value) {
-            addCriterion("OHB_MODE like", value, "ohbMode");
+        public Criteria andShapeIdIn(List<Short> values) {
+            addCriterion("SHAPE_ID in", values, "shapeId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeNotLike(String value) {
-            addCriterion("OHB_MODE not like", value, "ohbMode");
+        public Criteria andShapeIdNotIn(List<Short> values) {
+            addCriterion("SHAPE_ID not in", values, "shapeId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeIn(List<String> values) {
-            addCriterion("OHB_MODE in", values, "ohbMode");
+        public Criteria andShapeIdBetween(Short value1, Short value2) {
+            addCriterion("SHAPE_ID between", value1, value2, "shapeId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeNotIn(List<String> values) {
-            addCriterion("OHB_MODE not in", values, "ohbMode");
+        public Criteria andShapeIdNotBetween(Short value1, Short value2) {
+            addCriterion("SHAPE_ID not between", value1, value2, "shapeId");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeBetween(String value1, String value2) {
-            addCriterion("OHB_MODE between", value1, value2, "ohbMode");
+        public Criteria andOhbLStateIsNull() {
+            addCriterion("OHB_L_STATE is null");
             return (Criteria) this;
         }
 
-        public Criteria andOhbModeNotBetween(String value1, String value2) {
-            addCriterion("OHB_MODE not between", value1, value2, "ohbMode");
+        public Criteria andOhbLStateIsNotNull() {
+            addCriterion("OHB_L_STATE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTotalShelvesIsNull() {
-            addCriterion("TOTAL_SHELVES is null");
+        public Criteria andOhbLStateEqualTo(Short value) {
+            addCriterion("OHB_L_STATE =", value, "ohbLState");
             return (Criteria) this;
         }
 
-        public Criteria andTotalShelvesIsNotNull() {
-            addCriterion("TOTAL_SHELVES is not null");
+        public Criteria andOhbLStateNotEqualTo(Short value) {
+            addCriterion("OHB_L_STATE <>", value, "ohbLState");
             return (Criteria) this;
         }
 
-        public Criteria andTotalShelvesEqualTo(Integer value) {
-            addCriterion("TOTAL_SHELVES =", value, "totalShelves");
+        public Criteria andOhbLStateGreaterThan(Short value) {
+            addCriterion("OHB_L_STATE >", value, "ohbLState");
             return (Criteria) this;
         }
 
-        public Criteria andTotalShelvesNotEqualTo(Integer value) {
-            addCriterion("TOTAL_SHELVES <>", value, "totalShelves");
+        public Criteria andOhbLStateGreaterThanOrEqualTo(Short value) {
+            addCriterion("OHB_L_STATE >=", value, "ohbLState");
             return (Criteria) this;
         }
 
-        public Criteria andTotalShelvesGreaterThan(Integer value) {
-            addCriterion("TOTAL_SHELVES >", value, "totalShelves");
+        public Criteria andOhbLStateLessThan(Short value) {
+            addCriterion("OHB_L_STATE <", value, "ohbLState");
             return (Criteria) this;
         }
 
-        public Criteria andTotalShelvesGreaterThanOrEqualTo(Integer value) {
-            addCriterion("TOTAL_SHELVES >=", value, "totalShelves");
+        public Criteria andOhbLStateLessThanOrEqualTo(Short value) {
+            addCriterion("OHB_L_STATE <=", value, "ohbLState");
             return (Criteria) this;
         }
 
-        public Criteria andTotalShelvesLessThan(Integer value) {
-            addCriterion("TOTAL_SHELVES <", value, "totalShelves");
+        public Criteria andOhbLStateIn(List<Short> values) {
+            addCriterion("OHB_L_STATE in", values, "ohbLState");
             return (Criteria) this;
         }
 
-        public Criteria andTotalShelvesLessThanOrEqualTo(Integer value) {
-            addCriterion("TOTAL_SHELVES <=", value, "totalShelves");
+        public Criteria andOhbLStateNotIn(List<Short> values) {
+            addCriterion("OHB_L_STATE not in", values, "ohbLState");
             return (Criteria) this;
         }
 
-        public Criteria andTotalShelvesIn(List<Integer> values) {
-            addCriterion("TOTAL_SHELVES in", values, "totalShelves");
+        public Criteria andOhbLStateBetween(Short value1, Short value2) {
+            addCriterion("OHB_L_STATE between", value1, value2, "ohbLState");
             return (Criteria) this;
         }
 
-        public Criteria andTotalShelvesNotIn(List<Integer> values) {
-            addCriterion("TOTAL_SHELVES not in", values, "totalShelves");
+        public Criteria andOhbLStateNotBetween(Short value1, Short value2) {
+            addCriterion("OHB_L_STATE not between", value1, value2, "ohbLState");
             return (Criteria) this;
         }
 
-        public Criteria andTotalShelvesBetween(Integer value1, Integer value2) {
-            addCriterion("TOTAL_SHELVES between", value1, value2, "totalShelves");
+        public Criteria andOhbLStateSetTimeIsNull() {
+            addCriterion("OHB_L_STATE_SET_TIME is null");
             return (Criteria) this;
         }
 
-        public Criteria andTotalShelvesNotBetween(Integer value1, Integer value2) {
-            addCriterion("TOTAL_SHELVES not between", value1, value2, "totalShelves");
+        public Criteria andOhbLStateSetTimeIsNotNull() {
+            addCriterion("OHB_L_STATE_SET_TIME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEmptyShelvesIsNull() {
-            addCriterion("EMPTY_SHELVES is null");
+        public Criteria andOhbLStateSetTimeEqualTo(Object value) {
+            addCriterion("OHB_L_STATE_SET_TIME =", value, "ohbLStateSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andEmptyShelvesIsNotNull() {
-            addCriterion("EMPTY_SHELVES is not null");
+        public Criteria andOhbLStateSetTimeNotEqualTo(Object value) {
+            addCriterion("OHB_L_STATE_SET_TIME <>", value, "ohbLStateSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andEmptyShelvesEqualTo(Integer value) {
-            addCriterion("EMPTY_SHELVES =", value, "emptyShelves");
+        public Criteria andOhbLStateSetTimeGreaterThan(Object value) {
+            addCriterion("OHB_L_STATE_SET_TIME >", value, "ohbLStateSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andEmptyShelvesNotEqualTo(Integer value) {
-            addCriterion("EMPTY_SHELVES <>", value, "emptyShelves");
+        public Criteria andOhbLStateSetTimeGreaterThanOrEqualTo(Object value) {
+            addCriterion("OHB_L_STATE_SET_TIME >=", value, "ohbLStateSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andEmptyShelvesGreaterThan(Integer value) {
-            addCriterion("EMPTY_SHELVES >", value, "emptyShelves");
+        public Criteria andOhbLStateSetTimeLessThan(Object value) {
+            addCriterion("OHB_L_STATE_SET_TIME <", value, "ohbLStateSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andEmptyShelvesGreaterThanOrEqualTo(Integer value) {
-            addCriterion("EMPTY_SHELVES >=", value, "emptyShelves");
+        public Criteria andOhbLStateSetTimeLessThanOrEqualTo(Object value) {
+            addCriterion("OHB_L_STATE_SET_TIME <=", value, "ohbLStateSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andEmptyShelvesLessThan(Integer value) {
-            addCriterion("EMPTY_SHELVES <", value, "emptyShelves");
+        public Criteria andOhbLStateSetTimeIn(List<Object> values) {
+            addCriterion("OHB_L_STATE_SET_TIME in", values, "ohbLStateSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andEmptyShelvesLessThanOrEqualTo(Integer value) {
-            addCriterion("EMPTY_SHELVES <=", value, "emptyShelves");
+        public Criteria andOhbLStateSetTimeNotIn(List<Object> values) {
+            addCriterion("OHB_L_STATE_SET_TIME not in", values, "ohbLStateSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andEmptyShelvesIn(List<Integer> values) {
-            addCriterion("EMPTY_SHELVES in", values, "emptyShelves");
+        public Criteria andOhbLStateSetTimeBetween(Object value1, Object value2) {
+            addCriterion("OHB_L_STATE_SET_TIME between", value1, value2, "ohbLStateSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andEmptyShelvesNotIn(List<Integer> values) {
-            addCriterion("EMPTY_SHELVES not in", values, "emptyShelves");
+        public Criteria andOhbLStateSetTimeNotBetween(Object value1, Object value2) {
+            addCriterion("OHB_L_STATE_SET_TIME not between", value1, value2, "ohbLStateSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andEmptyShelvesBetween(Integer value1, Integer value2) {
-            addCriterion("EMPTY_SHELVES between", value1, value2, "emptyShelves");
+        public Criteria andOhbLStateSetAuthorIsNull() {
+            addCriterion("OHB_L_STATE_SET_AUTHOR is null");
             return (Criteria) this;
         }
 
-        public Criteria andEmptyShelvesNotBetween(Integer value1, Integer value2) {
-            addCriterion("EMPTY_SHELVES not between", value1, value2, "emptyShelves");
+        public Criteria andOhbLStateSetAuthorIsNotNull() {
+            addCriterion("OHB_L_STATE_SET_AUTHOR is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLEmptyShelvesIsNull() {
-            addCriterion("L_EMPTY_SHELVES is null");
+        public Criteria andOhbLStateSetAuthorEqualTo(String value) {
+            addCriterion("OHB_L_STATE_SET_AUTHOR =", value, "ohbLStateSetAuthor");
             return (Criteria) this;
         }
 
-        public Criteria andLEmptyShelvesIsNotNull() {
-            addCriterion("L_EMPTY_SHELVES is not null");
+        public Criteria andOhbLStateSetAuthorNotEqualTo(String value) {
+            addCriterion("OHB_L_STATE_SET_AUTHOR <>", value, "ohbLStateSetAuthor");
             return (Criteria) this;
         }
 
-        public Criteria andLEmptyShelvesEqualTo(Integer value) {
-            addCriterion("L_EMPTY_SHELVES =", value, "lEmptyShelves");
+        public Criteria andOhbLStateSetAuthorGreaterThan(String value) {
+            addCriterion("OHB_L_STATE_SET_AUTHOR >", value, "ohbLStateSetAuthor");
             return (Criteria) this;
         }
 
-        public Criteria andLEmptyShelvesNotEqualTo(Integer value) {
-            addCriterion("L_EMPTY_SHELVES <>", value, "lEmptyShelves");
+        public Criteria andOhbLStateSetAuthorGreaterThanOrEqualTo(String value) {
+            addCriterion("OHB_L_STATE_SET_AUTHOR >=", value, "ohbLStateSetAuthor");
             return (Criteria) this;
         }
 
-        public Criteria andLEmptyShelvesGreaterThan(Integer value) {
-            addCriterion("L_EMPTY_SHELVES >", value, "lEmptyShelves");
+        public Criteria andOhbLStateSetAuthorLessThan(String value) {
+            addCriterion("OHB_L_STATE_SET_AUTHOR <", value, "ohbLStateSetAuthor");
             return (Criteria) this;
         }
 
-        public Criteria andLEmptyShelvesGreaterThanOrEqualTo(Integer value) {
-            addCriterion("L_EMPTY_SHELVES >=", value, "lEmptyShelves");
+        public Criteria andOhbLStateSetAuthorLessThanOrEqualTo(String value) {
+            addCriterion("OHB_L_STATE_SET_AUTHOR <=", value, "ohbLStateSetAuthor");
             return (Criteria) this;
         }
 
-        public Criteria andLEmptyShelvesLessThan(Integer value) {
-            addCriterion("L_EMPTY_SHELVES <", value, "lEmptyShelves");
+        public Criteria andOhbLStateSetAuthorLike(String value) {
+            addCriterion("OHB_L_STATE_SET_AUTHOR like", value, "ohbLStateSetAuthor");
             return (Criteria) this;
         }
 
-        public Criteria andLEmptyShelvesLessThanOrEqualTo(Integer value) {
-            addCriterion("L_EMPTY_SHELVES <=", value, "lEmptyShelves");
+        public Criteria andOhbLStateSetAuthorNotLike(String value) {
+            addCriterion("OHB_L_STATE_SET_AUTHOR not like", value, "ohbLStateSetAuthor");
             return (Criteria) this;
         }
 
-        public Criteria andLEmptyShelvesIn(List<Integer> values) {
-            addCriterion("L_EMPTY_SHELVES in", values, "lEmptyShelves");
+        public Criteria andOhbLStateSetAuthorIn(List<String> values) {
+            addCriterion("OHB_L_STATE_SET_AUTHOR in", values, "ohbLStateSetAuthor");
             return (Criteria) this;
         }
 
-        public Criteria andLEmptyShelvesNotIn(List<Integer> values) {
-            addCriterion("L_EMPTY_SHELVES not in", values, "lEmptyShelves");
+        public Criteria andOhbLStateSetAuthorNotIn(List<String> values) {
+            addCriterion("OHB_L_STATE_SET_AUTHOR not in", values, "ohbLStateSetAuthor");
             return (Criteria) this;
         }
 
-        public Criteria andLEmptyShelvesBetween(Integer value1, Integer value2) {
-            addCriterion("L_EMPTY_SHELVES between", value1, value2, "lEmptyShelves");
+        public Criteria andOhbLStateSetAuthorBetween(String value1, String value2) {
+            addCriterion("OHB_L_STATE_SET_AUTHOR between", value1, value2, "ohbLStateSetAuthor");
             return (Criteria) this;
         }
 
-        public Criteria andLEmptyShelvesNotBetween(Integer value1, Integer value2) {
-            addCriterion("L_EMPTY_SHELVES not between", value1, value2, "lEmptyShelves");
+        public Criteria andOhbLStateSetAuthorNotBetween(String value1, String value2) {
+            addCriterion("OHB_L_STATE_SET_AUTHOR not between", value1, value2, "ohbLStateSetAuthor");
             return (Criteria) this;
         }
 
-        public Criteria andHighWaterMarkIsNull() {
-            addCriterion("HIGH_WATER_MARK is null");
+        public Criteria andNearTransferFlagIsNull() {
+            addCriterion("NEAR_TRANSFER_FLAG is null");
             return (Criteria) this;
         }
 
-        public Criteria andHighWaterMarkIsNotNull() {
-            addCriterion("HIGH_WATER_MARK is not null");
+        public Criteria andNearTransferFlagIsNotNull() {
+            addCriterion("NEAR_TRANSFER_FLAG is not null");
             return (Criteria) this;
         }
 
-        public Criteria andHighWaterMarkEqualTo(Integer value) {
-            addCriterion("HIGH_WATER_MARK =", value, "highWaterMark");
+        public Criteria andNearTransferFlagEqualTo(Short value) {
+            addCriterion("NEAR_TRANSFER_FLAG =", value, "nearTransferFlag");
             return (Criteria) this;
         }
 
-        public Criteria andHighWaterMarkNotEqualTo(Integer value) {
-            addCriterion("HIGH_WATER_MARK <>", value, "highWaterMark");
+        public Criteria andNearTransferFlagNotEqualTo(Short value) {
+            addCriterion("NEAR_TRANSFER_FLAG <>", value, "nearTransferFlag");
             return (Criteria) this;
         }
 
-        public Criteria andHighWaterMarkGreaterThan(Integer value) {
-            addCriterion("HIGH_WATER_MARK >", value, "highWaterMark");
+        public Criteria andNearTransferFlagGreaterThan(Short value) {
+            addCriterion("NEAR_TRANSFER_FLAG >", value, "nearTransferFlag");
             return (Criteria) this;
         }
 
-        public Criteria andHighWaterMarkGreaterThanOrEqualTo(Integer value) {
-            addCriterion("HIGH_WATER_MARK >=", value, "highWaterMark");
+        public Criteria andNearTransferFlagGreaterThanOrEqualTo(Short value) {
+            addCriterion("NEAR_TRANSFER_FLAG >=", value, "nearTransferFlag");
             return (Criteria) this;
         }
 
-        public Criteria andHighWaterMarkLessThan(Integer value) {
-            addCriterion("HIGH_WATER_MARK <", value, "highWaterMark");
+        public Criteria andNearTransferFlagLessThan(Short value) {
+            addCriterion("NEAR_TRANSFER_FLAG <", value, "nearTransferFlag");
             return (Criteria) this;
         }
 
-        public Criteria andHighWaterMarkLessThanOrEqualTo(Integer value) {
-            addCriterion("HIGH_WATER_MARK <=", value, "highWaterMark");
+        public Criteria andNearTransferFlagLessThanOrEqualTo(Short value) {
+            addCriterion("NEAR_TRANSFER_FLAG <=", value, "nearTransferFlag");
             return (Criteria) this;
         }
 
-        public Criteria andHighWaterMarkIn(List<Integer> values) {
-            addCriterion("HIGH_WATER_MARK in", values, "highWaterMark");
+        public Criteria andNearTransferFlagIn(List<Short> values) {
+            addCriterion("NEAR_TRANSFER_FLAG in", values, "nearTransferFlag");
             return (Criteria) this;
         }
 
-        public Criteria andHighWaterMarkNotIn(List<Integer> values) {
-            addCriterion("HIGH_WATER_MARK not in", values, "highWaterMark");
+        public Criteria andNearTransferFlagNotIn(List<Short> values) {
+            addCriterion("NEAR_TRANSFER_FLAG not in", values, "nearTransferFlag");
             return (Criteria) this;
         }
 
-        public Criteria andHighWaterMarkBetween(Integer value1, Integer value2) {
-            addCriterion("HIGH_WATER_MARK between", value1, value2, "highWaterMark");
+        public Criteria andNearTransferFlagBetween(Short value1, Short value2) {
+            addCriterion("NEAR_TRANSFER_FLAG between", value1, value2, "nearTransferFlag");
             return (Criteria) this;
         }
 
-        public Criteria andHighWaterMarkNotBetween(Integer value1, Integer value2) {
-            addCriterion("HIGH_WATER_MARK not between", value1, value2, "highWaterMark");
+        public Criteria andNearTransferFlagNotBetween(Short value1, Short value2) {
+            addCriterion("NEAR_TRANSFER_FLAG not between", value1, value2, "nearTransferFlag");
             return (Criteria) this;
         }
 
-        public Criteria andLowWaterMarkIsNull() {
-            addCriterion("LOW_WATER_MARK is null");
+        public Criteria andOhbTypeIsNull() {
+            addCriterion("OHB_TYPE is null");
             return (Criteria) this;
         }
 
-        public Criteria andLowWaterMarkIsNotNull() {
-            addCriterion("LOW_WATER_MARK is not null");
+        public Criteria andOhbTypeIsNotNull() {
+            addCriterion("OHB_TYPE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLowWaterMarkEqualTo(Integer value) {
-            addCriterion("LOW_WATER_MARK =", value, "lowWaterMark");
+        public Criteria andOhbTypeEqualTo(Short value) {
+            addCriterion("OHB_TYPE =", value, "ohbType");
             return (Criteria) this;
         }
 
-        public Criteria andLowWaterMarkNotEqualTo(Integer value) {
-            addCriterion("LOW_WATER_MARK <>", value, "lowWaterMark");
+        public Criteria andOhbTypeNotEqualTo(Short value) {
+            addCriterion("OHB_TYPE <>", value, "ohbType");
             return (Criteria) this;
         }
 
-        public Criteria andLowWaterMarkGreaterThan(Integer value) {
-            addCriterion("LOW_WATER_MARK >", value, "lowWaterMark");
+        public Criteria andOhbTypeGreaterThan(Short value) {
+            addCriterion("OHB_TYPE >", value, "ohbType");
             return (Criteria) this;
         }
 
-        public Criteria andLowWaterMarkGreaterThanOrEqualTo(Integer value) {
-            addCriterion("LOW_WATER_MARK >=", value, "lowWaterMark");
+        public Criteria andOhbTypeGreaterThanOrEqualTo(Short value) {
+            addCriterion("OHB_TYPE >=", value, "ohbType");
             return (Criteria) this;
         }
 
-        public Criteria andLowWaterMarkLessThan(Integer value) {
-            addCriterion("LOW_WATER_MARK <", value, "lowWaterMark");
+        public Criteria andOhbTypeLessThan(Short value) {
+            addCriterion("OHB_TYPE <", value, "ohbType");
             return (Criteria) this;
         }
 
-        public Criteria andLowWaterMarkLessThanOrEqualTo(Integer value) {
-            addCriterion("LOW_WATER_MARK <=", value, "lowWaterMark");
+        public Criteria andOhbTypeLessThanOrEqualTo(Short value) {
+            addCriterion("OHB_TYPE <=", value, "ohbType");
             return (Criteria) this;
         }
 
-        public Criteria andLowWaterMarkIn(List<Integer> values) {
-            addCriterion("LOW_WATER_MARK in", values, "lowWaterMark");
+        public Criteria andOhbTypeIn(List<Short> values) {
+            addCriterion("OHB_TYPE in", values, "ohbType");
             return (Criteria) this;
         }
 
-        public Criteria andLowWaterMarkNotIn(List<Integer> values) {
-            addCriterion("LOW_WATER_MARK not in", values, "lowWaterMark");
+        public Criteria andOhbTypeNotIn(List<Short> values) {
+            addCriterion("OHB_TYPE not in", values, "ohbType");
             return (Criteria) this;
         }
 
-        public Criteria andLowWaterMarkBetween(Integer value1, Integer value2) {
-            addCriterion("LOW_WATER_MARK between", value1, value2, "lowWaterMark");
+        public Criteria andOhbTypeBetween(Short value1, Short value2) {
+            addCriterion("OHB_TYPE between", value1, value2, "ohbType");
             return (Criteria) this;
         }
 
-        public Criteria andLowWaterMarkNotBetween(Integer value1, Integer value2) {
-            addCriterion("LOW_WATER_MARK not between", value1, value2, "lowWaterMark");
+        public Criteria andOhbTypeNotBetween(Short value1, Short value2) {
+            addCriterion("OHB_TYPE not between", value1, value2, "ohbType");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeIsNull() {
-            addCriterion("MODE_SET_TIME is null");
+        public Criteria andIoModeIsNull() {
+            addCriterion("IO_MODE is null");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeIsNotNull() {
-            addCriterion("MODE_SET_TIME is not null");
+        public Criteria andIoModeIsNotNull() {
+            addCriterion("IO_MODE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeEqualTo(String value) {
-            addCriterion("MODE_SET_TIME =", value, "modeSetTime");
+        public Criteria andIoModeEqualTo(Short value) {
+            addCriterion("IO_MODE =", value, "ioMode");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeNotEqualTo(String value) {
-            addCriterion("MODE_SET_TIME <>", value, "modeSetTime");
+        public Criteria andIoModeNotEqualTo(Short value) {
+            addCriterion("IO_MODE <>", value, "ioMode");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeGreaterThan(String value) {
-            addCriterion("MODE_SET_TIME >", value, "modeSetTime");
+        public Criteria andIoModeGreaterThan(Short value) {
+            addCriterion("IO_MODE >", value, "ioMode");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeGreaterThanOrEqualTo(String value) {
-            addCriterion("MODE_SET_TIME >=", value, "modeSetTime");
+        public Criteria andIoModeGreaterThanOrEqualTo(Short value) {
+            addCriterion("IO_MODE >=", value, "ioMode");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeLessThan(String value) {
-            addCriterion("MODE_SET_TIME <", value, "modeSetTime");
+        public Criteria andIoModeLessThan(Short value) {
+            addCriterion("IO_MODE <", value, "ioMode");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeLessThanOrEqualTo(String value) {
-            addCriterion("MODE_SET_TIME <=", value, "modeSetTime");
+        public Criteria andIoModeLessThanOrEqualTo(Short value) {
+            addCriterion("IO_MODE <=", value, "ioMode");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeLike(String value) {
-            addCriterion("MODE_SET_TIME like", value, "modeSetTime");
+        public Criteria andIoModeIn(List<Short> values) {
+            addCriterion("IO_MODE in", values, "ioMode");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeNotLike(String value) {
-            addCriterion("MODE_SET_TIME not like", value, "modeSetTime");
+        public Criteria andIoModeNotIn(List<Short> values) {
+            addCriterion("IO_MODE not in", values, "ioMode");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeIn(List<String> values) {
-            addCriterion("MODE_SET_TIME in", values, "modeSetTime");
+        public Criteria andIoModeBetween(Short value1, Short value2) {
+            addCriterion("IO_MODE between", value1, value2, "ioMode");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeNotIn(List<String> values) {
-            addCriterion("MODE_SET_TIME not in", values, "modeSetTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetTimeBetween(String value1, String value2) {
-            addCriterion("MODE_SET_TIME between", value1, value2, "modeSetTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetTimeNotBetween(String value1, String value2) {
-            addCriterion("MODE_SET_TIME not between", value1, value2, "modeSetTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetSidIsNull() {
-            addCriterion("MODE_SET_SID is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetSidIsNotNull() {
-            addCriterion("MODE_SET_SID is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetSidEqualTo(Integer value) {
-            addCriterion("MODE_SET_SID =", value, "modeSetSid");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetSidNotEqualTo(Integer value) {
-            addCriterion("MODE_SET_SID <>", value, "modeSetSid");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetSidGreaterThan(Integer value) {
-            addCriterion("MODE_SET_SID >", value, "modeSetSid");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetSidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("MODE_SET_SID >=", value, "modeSetSid");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetSidLessThan(Integer value) {
-            addCriterion("MODE_SET_SID <", value, "modeSetSid");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetSidLessThanOrEqualTo(Integer value) {
-            addCriterion("MODE_SET_SID <=", value, "modeSetSid");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetSidIn(List<Integer> values) {
-            addCriterion("MODE_SET_SID in", values, "modeSetSid");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetSidNotIn(List<Integer> values) {
-            addCriterion("MODE_SET_SID not in", values, "modeSetSid");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetSidBetween(Integer value1, Integer value2) {
-            addCriterion("MODE_SET_SID between", value1, value2, "modeSetSid");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetSidNotBetween(Integer value1, Integer value2) {
-            addCriterion("MODE_SET_SID not between", value1, value2, "modeSetSid");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorIsNull() {
-            addCriterion("MODE_SET_ORIGINATOR is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorIsNotNull() {
-            addCriterion("MODE_SET_ORIGINATOR is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorEqualTo(String value) {
-            addCriterion("MODE_SET_ORIGINATOR =", value, "modeSetOriginator");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorNotEqualTo(String value) {
-            addCriterion("MODE_SET_ORIGINATOR <>", value, "modeSetOriginator");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorGreaterThan(String value) {
-            addCriterion("MODE_SET_ORIGINATOR >", value, "modeSetOriginator");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorGreaterThanOrEqualTo(String value) {
-            addCriterion("MODE_SET_ORIGINATOR >=", value, "modeSetOriginator");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorLessThan(String value) {
-            addCriterion("MODE_SET_ORIGINATOR <", value, "modeSetOriginator");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorLessThanOrEqualTo(String value) {
-            addCriterion("MODE_SET_ORIGINATOR <=", value, "modeSetOriginator");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorLike(String value) {
-            addCriterion("MODE_SET_ORIGINATOR like", value, "modeSetOriginator");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorNotLike(String value) {
-            addCriterion("MODE_SET_ORIGINATOR not like", value, "modeSetOriginator");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorIn(List<String> values) {
-            addCriterion("MODE_SET_ORIGINATOR in", values, "modeSetOriginator");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorNotIn(List<String> values) {
-            addCriterion("MODE_SET_ORIGINATOR not in", values, "modeSetOriginator");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorBetween(String value1, String value2) {
-            addCriterion("MODE_SET_ORIGINATOR between", value1, value2, "modeSetOriginator");
-            return (Criteria) this;
-        }
-
-        public Criteria andModeSetOriginatorNotBetween(String value1, String value2) {
-            addCriterion("MODE_SET_ORIGINATOR not between", value1, value2, "modeSetOriginator");
-            return (Criteria) this;
-        }
-
-        public Criteria andDisplayFlgIsNull() {
-            addCriterion("DISPLAY_FLG is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDisplayFlgIsNotNull() {
-            addCriterion("DISPLAY_FLG is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDisplayFlgEqualTo(Short value) {
-            addCriterion("DISPLAY_FLG =", value, "displayFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDisplayFlgNotEqualTo(Short value) {
-            addCriterion("DISPLAY_FLG <>", value, "displayFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDisplayFlgGreaterThan(Short value) {
-            addCriterion("DISPLAY_FLG >", value, "displayFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDisplayFlgGreaterThanOrEqualTo(Short value) {
-            addCriterion("DISPLAY_FLG >=", value, "displayFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDisplayFlgLessThan(Short value) {
-            addCriterion("DISPLAY_FLG <", value, "displayFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDisplayFlgLessThanOrEqualTo(Short value) {
-            addCriterion("DISPLAY_FLG <=", value, "displayFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDisplayFlgIn(List<Short> values) {
-            addCriterion("DISPLAY_FLG in", values, "displayFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDisplayFlgNotIn(List<Short> values) {
-            addCriterion("DISPLAY_FLG not in", values, "displayFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDisplayFlgBetween(Short value1, Short value2) {
-            addCriterion("DISPLAY_FLG between", value1, value2, "displayFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDisplayFlgNotBetween(Short value1, Short value2) {
-            addCriterion("DISPLAY_FLG not between", value1, value2, "displayFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andSearchFlgIsNull() {
-            addCriterion("SEARCH_FLG is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSearchFlgIsNotNull() {
-            addCriterion("SEARCH_FLG is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSearchFlgEqualTo(Short value) {
-            addCriterion("SEARCH_FLG =", value, "searchFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andSearchFlgNotEqualTo(Short value) {
-            addCriterion("SEARCH_FLG <>", value, "searchFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andSearchFlgGreaterThan(Short value) {
-            addCriterion("SEARCH_FLG >", value, "searchFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andSearchFlgGreaterThanOrEqualTo(Short value) {
-            addCriterion("SEARCH_FLG >=", value, "searchFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andSearchFlgLessThan(Short value) {
-            addCriterion("SEARCH_FLG <", value, "searchFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andSearchFlgLessThanOrEqualTo(Short value) {
-            addCriterion("SEARCH_FLG <=", value, "searchFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andSearchFlgIn(List<Short> values) {
-            addCriterion("SEARCH_FLG in", values, "searchFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andSearchFlgNotIn(List<Short> values) {
-            addCriterion("SEARCH_FLG not in", values, "searchFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andSearchFlgBetween(Short value1, Short value2) {
-            addCriterion("SEARCH_FLG between", value1, value2, "searchFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andSearchFlgNotBetween(Short value1, Short value2) {
-            addCriterion("SEARCH_FLG not between", value1, value2, "searchFlg");
+        public Criteria andIoModeNotBetween(Short value1, Short value2) {
+            addCriterion("IO_MODE not between", value1, value2, "ioMode");
             return (Criteria) this;
         }
     }
