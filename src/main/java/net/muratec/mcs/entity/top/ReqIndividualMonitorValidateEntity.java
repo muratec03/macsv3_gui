@@ -47,6 +47,7 @@ public class ReqIndividualMonitorValidateEntity extends AjaxReqBaseEntity {
 
 //    @NotBlank @FieldNameKey(key = "IT-001-11-002") public String amhsId;//20191220 DQY DEL
 //    @NotBlank @FieldNameKey(key = "IT-001-11-002") public String displayName;//20191220 DQY ADD
-    @NotBlank @FieldNameKey(key = "IT-001-11-002") public String displayId;//20191220 DQY ADD
+//    @NotBlank @FieldNameKey(key = "IT-001-11-002") public String displayId;//20191220 DQY ADD
+    @NotBlank @FieldNameKey(key = "IT-001-11-002") public String llcId;//20191220 DQY ADD
     public String ctrlChgFlag;
 }

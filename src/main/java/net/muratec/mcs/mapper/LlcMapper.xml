@@ -740,11 +740,15 @@
   </select>
   
   <select id="selectLlcType" resultType="net.muratec.mcs.model.IconInfo">
-  SELECT DISTINCT LLC_TYPE 
-  FROM LLC L
-  LEFT OUTER JOIN MODULE M on L.LLC_ID = M.LLC_ID
-  WHERE M.MODULE_NAME = #{moduleName,jdbcType=VARCHAR}
-  ORDER BY REPLACE(LLC_TYPE,'DWCC')
+  	SELECT DISTINCT LLC_TYPE,
+  	<!-- STD APL 2020.02.22 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 ADD TYPE -->
+		(case  L.LLC_TYPE when 'AGVC' then 100 ELSE 1 end) TYPE
+  	<!-- END APL 2020.02.22 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+	FROM LLC L
+	LEFT OUTER JOIN MODULE M
+	ON L.LLC_ID         = M.LLC_ID
+	WHERE M.MODULE_NAME = #{moduleName,jdbcType=VARCHAR}
+	ORDER BY TYPE,REPLACE(LLC_TYPE,'DWCC') ASC
   </select>
     <!-- END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
 </mapper>
