@@ -239,8 +239,8 @@ public class SystemMonitorAjaxController extends BaseAjaxController {
 
         // セルサイズ取得
         List<List<Integer>> sizeList = handsOnTableService.getRowColSize();//DQY DEL MACSV3
-//        resEntity.body.widths = sizeList.get(0);//DQY DEL MACSV3
-//        resEntity.body.heights = sizeList.get(1);//DQY DEL MACSV3
+        resEntity.body.widths = sizeList.get(0);//DQY DEL MACSV3
+        resEntity.body.heights = sizeList.get(1);//DQY DEL MACSV3
 
         // マージ情報取得
         resEntity.body.mergeCells = handsOnTableService.getMerge();

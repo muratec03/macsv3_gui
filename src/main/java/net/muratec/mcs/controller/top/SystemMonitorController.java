@@ -133,8 +133,9 @@ public class SystemMonitorController extends BaseController {
      */
     //@formatter:on
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    //public String systemMonitor(HttpSession session, Locale locale, Model model) throws McsException {  //20200111 Song Del
-    public String systemMonitor(HttpServletRequest  request,HttpSession session, Locale locale, Model model) throws McsException {//20200111 Song Add    
+    public String systemMonitor(HttpSession session, Locale locale, Model model) throws McsException {  //20200111 Song Del
+    /*// STD APL 2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+ //    public String systemMonitor(HttpServletRequest  request,HttpSession session, Locale locale, Model model) throws McsException {//20200111 Song Add    
     	
     	//20200107 Song Add Start FOR DB→CSV
     	screenMonitorList1.clear();
@@ -162,7 +163,8 @@ public class SystemMonitorController extends BaseController {
         //}
         
         //20200107 Song Add End
-        
+// END APL 2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+*/        
 
         // ------------------------------------
         // ユーザ情報のチェック＆セット
@@ -174,6 +176,7 @@ public class SystemMonitorController extends BaseController {
         // ------------------------------------
         autoReload.setIntervalByKey(model, ComConst.SystemParameter.Key.AUTO_RELOAD_INTERVAL_SYSTEM_MONITOR);
 
+// STD APL 2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         // ----------------------------------------------
         // AMHS_TYPE_STRING用セレクトボックスを生成
         // ----------------------------------------------
@@ -241,6 +244,8 @@ public class SystemMonitorController extends BaseController {
             }
         }
         model.addAttribute("IM_905_01_001", super.objectToJson(ohbLStateDispList));
+// END APL 2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        
         // ----------------------------------------------
         // MCS_LOGICAL_STATE_STRING用セレクトボックスを生成
         // ----------------------------------------------

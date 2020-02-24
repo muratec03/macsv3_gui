@@ -42,10 +42,10 @@ $(function() {
   // AMHS選択用セレクトボックス生成
   var amhsSelBox = new McsSelectBox($('#sel-amhs'));
   //var amhsNameList = screenValue.amhsName;  //20191223 Song Del
-  var amhsNameList = screenValue.displayNames;  //20191223 Song Add
+  var amhsNameList = screenValue.llcNames;  //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
   amhsSelBox.setList(amhsNameList);
   //amhsSelBox.setValue(screenValue.amhsId);  //20191223 Song Del
-  amhsSelBox.setValue(screenValue.displayId); //20191223 Song Add
+  amhsSelBox.setValue(screenValue.llcId); //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
 
   amhsSelBox.onChange(function() {
     /* Step4 2017_08_16 */
@@ -58,7 +58,7 @@ $(function() {
   var selComp = new McsComponentManager();
   /* Step4 2017_08_16 */
   //selComp.add('amhsId', amhsSelBox);  //20191223 Song Del
-  selComp.add('displayId', amhsSelBox);  //20191223 Song Add
+  selComp.add('llcId', amhsSelBox);  //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
 
   // スライドメニュー生成
   var slideMenuTop = McsSlideMenu.primaryMenuSlide;
@@ -579,11 +579,11 @@ $(function() {
    ******************************************************************************
    */
     //function getState(amhsId, ctrlChgFlag, scrollFixFlag, autoReloadFlag) { //20191225 Song DEL
-   function getState(displayId, ctrlChgFlag, scrollFixFlag, autoReloadFlag) {//20191225 Song ADD   
+   function getState(llcId, ctrlChgFlag, scrollFixFlag, autoReloadFlag) {//20191225 Song ADD   
     var url = getUrl('/Individual/GetScStateInfo');
     var cond = {
       //amhsId: amhsId,      //20191223 Song Del
-      displayId: displayId,	 //20191223 Song Add
+      llcId: llcId,	 //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
       ctrlChgFlag: ctrlChgFlag
     };
 
@@ -591,7 +591,7 @@ $(function() {
     var onSuccess = function(retObj) {
       // 直近の検索成功時のAMHSIDを更新
       //latestAmhsId = amhsId;   //20191223 Song Del
-      latestAmhsId = displayId;  //20191223 Song Add
+      latestAmhsId = llcId;  //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
 
       // スクロール位置を保持
       var top = stateTable.getScrollTop();
@@ -749,11 +749,11 @@ $(function() {
    ******************************************************************************
    */
   //function getPort(amhsId, ctrlChgFlag, scrollFixFlag, autoReloadFlag) { //20191223 Song Del
-   function getPort(displayId, ctrlChgFlag, scrollFixFlag, autoReloadFlag) {//20191223 Song Add
+   function getPort(llcId, ctrlChgFlag, scrollFixFlag, autoReloadFlag) {//2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
     var url = getUrl('/Individual/GetScPortInfo');
     var cond = {
       //amhsId: amhsId,      //20191223 Song Del
-      displayId: displayId,  //20191223 Song Add
+    		llcId: llcId,  //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
       ctrlChgFlag: ctrlChgFlag
     };
 
@@ -761,7 +761,7 @@ $(function() {
     var onSuccess = function(retObj) {
       // 直近の検索成功時のAMHSIDを更新
       //latestAmhsId = amhsId;   //20191223 Song Del
-      latestAmhsId = displayId;  //20191223 Song Add
+      latestAmhsId = llcId;  //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
 
       // テーブルのスクロール位置を保持
       var top = portTable.getScrollTop();

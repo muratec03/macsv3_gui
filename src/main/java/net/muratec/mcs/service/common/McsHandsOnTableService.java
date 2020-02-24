@@ -74,6 +74,7 @@ import net.muratec.mcs.model.HandsOnTableConfig;
 import net.muratec.mcs.model.HandsOnTableConfigExample;
 import net.muratec.mcs.model.IconInfo;
 import net.muratec.mcs.model.Llc;
+import net.muratec.mcs.model.LlcExample;
 import net.muratec.mcs.model.Module;
 import net.muratec.mcs.model.ModuleExample;
 import net.muratec.mcs.model.ScreenColorMaster;
@@ -137,7 +138,7 @@ public class McsHandsOnTableService extends BaseService {
     @Autowired private ScreenColorMasterMapper screenColorMasterMapper;   //MACS4#MACSV2 Add Song 20191210
     
     /** 色設定テーブルマッパー */
-    @Autowired private ScreenMonitorMapper screenMonitorMapper;   //MACS4#MACSV2 Add Song 20191211
+//    @Autowired private ScreenMonitorMapper screenMonitorMapper;   //MACS4#MACSV2 Add Song 20191211
     
     /** メッセージリソース */
     @Autowired private MessageSource messageSource;
@@ -751,6 +752,10 @@ public class McsHandsOnTableService extends BaseService {
 	     		 String llcDataM = moduleName+llcType+"Data";//データ
 	     		 String llcTypeM = moduleName+llcType;//データ
 	     		
+	     		 // STD APL 2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	     		 heightList.add(labelHeight);      //llcTypeのHeighは23
+	     		 // END APL 2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	     		 
 	     		 llcTypeNum = llcTypeMap.get(llcTypeM);//llcType番号
 		   	 	
 		   	 	 dataNum = typeDataMap.get(llcDataM);//dataNum里面是每个类型下面有多少行Icon的最大行号
@@ -761,15 +766,6 @@ public class McsHandsOnTableService extends BaseService {
 		   	 	 }
 	   	 	 }
         }
-        
-        /*
-         *  //20191218 Song Del Start
-        for(int i=0; i<length;i++) {  
-        	heightList.add(labelHeight);
-        	heightList.add(iconHeight);
-        }
-         //20191218 Song Del Start
-        */ 
         
         /*for (int i = 0; i < widthStrArr.length; i++) {
             widthList.add(Integer.valueOf(widthStrArr[i]));
@@ -1051,7 +1047,7 @@ public class McsHandsOnTableService extends BaseService {
         svg.appendChild(text);
 
         // STD APL 2020.02.18 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 carrier circle del
-/*        //20191230 Song Mod Start
+        //20191230 Song Mod Start
 //        Element rect1 = createStatusBoxRect(svgDoc, iconInfo, 1, commStateColor, "1.37", "25.16"); //DQY Del
         //Element rect1 = createStatusBoxRect(svgDoc, iconInfo, 1, commStateColor, "6.37", "30.16"); //Song Del
         //svg.appendChild(rect1);  //Song Del
@@ -1080,8 +1076,10 @@ public class McsHandsOnTableService extends BaseService {
         occupancy = null;
         
         
+        /*// STD APL 2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
         String displayId = iconInfo.getDisplayId();
+//        String llcId = iconInfo.getLlcId();
 
     	List<ScreenMonitor> screenMonitorListForCircle = new ArrayList<ScreenMonitor>();
     	for (ScreenMonitor screenMonitor : screenMonitorList1) {
@@ -1132,8 +1130,8 @@ public class McsHandsOnTableService extends BaseService {
             svg.appendChild(circle3);
     	}
         //20191230 Song Mod End
-*/        // END APL 2020.02.18 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000       
-        return rootDiv;
+        // END APL 2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000       
+*/        return rootDiv;
     }
 
     //@formatter:off
@@ -1937,7 +1935,7 @@ public class McsHandsOnTableService extends BaseService {
     
     private McsHandsOnTableIconColorEntity getControllerStateColor(IconInfo iconInfo) {
     	
-    	/* //DQY DEL 2020218
+    	 /*//DQY DEL 2020218
     	 //20200107 Song Add Start
     	String smText = iconInfo.getDisplayName();
     	List<ScreenMonitor> screenMonitorList2 = new ArrayList<ScreenMonitor>();
@@ -1950,12 +1948,12 @@ public class McsHandsOnTableService extends BaseService {
 */
         McsHandsOnTableIconColorEntity retEntity = new McsHandsOnTableIconColorEntity();
         
-        /*//20200110 DQY DEL START FRO DB→CSV
-        ScreenMonitorExample configExample = new ScreenMonitorExample();							// MACS4#MACSV2 Add
-   	 	String screenMonitorText = iconInfo.getDisplayName();										// MACS4#MACSV2 Add
-    	configExample.createCriteria().andTextEqualTo(screenMonitorText);							// MACS4#MACSV2 Add
-    	List<ScreenMonitor> screenMonitorList = screenMonitorMapper.selectByExample(configExample); // MACS4#MACSV2 Add
-         */  
+        //20200110 DQY DEL START FRO DB→CSV
+        LlcExample configExample = new LlcExample();							// MACS4#MACSV2 Add
+   	 	String llcText = iconInfo.getLlcName();										// MACS4#MACSV2 Add
+    	configExample.createCriteria().andLlcNameEqualTo(llcText);							// MACS4#MACSV2 Add
+    	List<Llc> llcList = llcMapper.selectByExample(configExample); // MACS4#MACSV2 Add
+           
 /*//DQY DEL 2020218
         String screenMonitorColor ;																	// MACS4#MACSV2 Add
     	

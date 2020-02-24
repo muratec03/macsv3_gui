@@ -120,7 +120,7 @@
         <table>
             <tr>
                 <%-- <td><span><spring:message code="IT-001-11-002" /></span></td>  --%>   <%-- 20200103 Song Del  --%>
-                <td><span>${memberGroupName}</span></td>     <%-- 20200103 Song Add  --%>
+                <td><span>${llcType}</span></td>     <%-- 2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  --%>
                
                 <td class="mcs-td-selectbox">
                     <div id="sel-amhs"></div>
@@ -204,7 +204,7 @@
                 <div>
                     <div>
                        <!-- <span><spring:message code="IT-001-11-009" /></span>  -->  <!--20200103 Song Del -->
-                       <span>${memberGroupName} State</span>  <!--20200103 Song Add -->
+                       <span>${llcType} State</span>  <!--2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
                     </div>
                     <div id="state-system-state"></div>
                 </div>
@@ -223,7 +223,7 @@
                 <div>
                     <div>
                        <!-- <span><spring:message code="IT-001-11-017" /></span> -->  <!--20200103 Song Del -->
-                       <span>${memberGroupName} Mode</span>  <!--20200103 Song Add -->
+                       <span>${llcType} Mode</span>  <!--2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
                     </div>
                     <div id="OCDC-mode"></div>
                 </div>
@@ -236,7 +236,7 @@
                 <div>
                     <div>
                          <!-- <span><spring:message code="IT-001-11-011" /></span> -->  <!--20200103 Song Del -->
-                         <span>${memberGroupName} Available</span>  <!--20200103 Song Add -->
+                         <span>${llcType} Available</span>  <!--2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
                     </div>
                     <div id="state-available"></div>
                 </div>
