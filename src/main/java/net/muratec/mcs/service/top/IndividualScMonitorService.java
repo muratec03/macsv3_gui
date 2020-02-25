@@ -156,9 +156,9 @@ public class IndividualScMonitorService extends BaseService {
         // -----------------------------------------
         // アラーム一覧取得
         // -----------------------------------------
-        /*AlarmExample example = new AlarmExample();//2025 del dqy
+        AlarmExample example = new AlarmExample();//2025 del dqy
         //example.createCriteria().andAmhsIdEqualTo(reqEntity.amhsId);  //v4版本用的是amhsId , 现在v2版本用下面的displayId  //20191223 Song Del
-        example.createCriteria().andTscIdEqualTo(reqEntity.llcId);  //20191223 Song Add
+        example.createCriteria().andLlcIdEqualTo(reqEntity.llcId);  //20191223 Song Add
         example.setOrderByClause("SET_TIME desc");
         List<Alarm> alarmRecList = alarmMapper.selectByExample(example);
 
@@ -167,20 +167,7 @@ public class IndividualScMonitorService extends BaseService {
         // -----------------------------------------
         // 状態データ
         
-        //20191225 Song Mod Start FOR MCSV2
-        
-        resEntity.state.commState = stateRec.getCommState();
-        resEntity.state.controlState = stateRec.getControlState();
-        resEntity.state.systemState = stateRec.getSystemState();
-        resEntity.state.available = stateRec.getAvailable();
-        resEntity.state.zoneOccupied = stateRec.getZoneOccupied();
-        resEntity.state.zoneCapacity = stateRec.getZoneCapacity();
-        resEntity.state.zoneUtility = decimalToPerNumString(stateRec.getZoneUtility());
-        resEntity.state.amhsLState = stateRec.getAmhsLState();
-        
-       
-        
-        for (ScreenMonitorMember tscStateRec : stateRec) {
+        for (Llc tscStateRec : stateRec) {
             // 状態データ
             if(!State.COMM_STATE_COMMUNICATING.equals(tscStateRec.getCommState())) 
             {
@@ -191,19 +178,20 @@ public class IndividualScMonitorService extends BaseService {
             	resEntity.state.available = State.TSC_SYSTEM_NONE;
             	resEntity.state.tscMode = State.TSC_SYSTEM_NONE;
             	resEntity.state.alarmState = tscStateRec.getAlarmState();
-            	resEntity.state.pieceMode = tscStateRec.getPieceMode();
-            	resEntity.state.pieceAvailable = tscStateRec.getPieceAvailable();
             }
             else 
             {
-    	        resEntity.state.commState = tscStateRec.getCommState();
+    	        resEntity.state.llcName = tscStateRec.getLlcName();
+    	        resEntity.state.llcId = tscStateRec.getLlcId();
+    	        resEntity.state.llcType = tscStateRec.getLlcType();
+    	        resEntity.state.llcMode = tscStateRec.getLlcModel();
+    	        resEntity.state.available = tscStateRec.getAvailable();
     	        resEntity.state.controlState = tscStateRec.getControlState();
-    	        resEntity.state.systemState = tscStateRec.getSystemState();
-    	        resEntity.state.available = tscStateRec.getTscAvailable();
     	        resEntity.state.alarmState = tscStateRec.getAlarmState();
-    	        resEntity.state.tscMode = tscStateRec.getTscMode();
-    	        resEntity.state.pieceMode = tscStateRec.getPieceMode();
-    	        resEntity.state.pieceAvailable = tscStateRec.getPieceAvailable();
+    	        resEntity.state.commState = tscStateRec.getCommState();
+    	        resEntity.state.systemState = tscStateRec.getSystemState();
+//    	        resEntity.state.tscMode = tscStateRec.getTscMode();
+//    	        resEntity.state.tscAvailable = tscStateRec.getTscAvailable();
             }
         }
         //20191225 Song Mod End FOR MCSV2
@@ -217,10 +205,10 @@ public class IndividualScMonitorService extends BaseService {
             alarmRes.alarmId = alarmRec.getAlarmId();
             alarmRes.alarmText = alarmRec.getAlarmText();
             alarmRes.alarmLoc = alarmRec.getAlarmLoc();
-            alarmRes.vehicleId = alarmRec.getVehicleId();
+//            alarmRes.vehicleId = alarmRec.getVehicleId();
             resEntity.alarmList.add(alarmRes);
         }
-*/
+
         return resEntity;
     }
 
@@ -276,10 +264,10 @@ public class IndividualScMonitorService extends BaseService {
         resEntity.state.controlState = stateRec[1];
         resEntity.state.systemState = stateRec[2];
         resEntity.state.available = stateRec[3];
-        resEntity.state.zoneOccupied = stateRec[4].length() > 0 ? Short.parseShort(stateRec[4]) : null;
-        resEntity.state.zoneCapacity = stateRec[5].length() > 0 ? Short.parseShort(stateRec[5]) : null;
-        resEntity.state.zoneUtility = decimalToPerNumString(stateRec[6]);
-        resEntity.state.amhsLState = stateRec[7];
+//        resEntity.state.zoneOccupied = stateRec[4].length() > 0 ? Short.parseShort(stateRec[4]) : null;
+//        resEntity.state.zoneCapacity = stateRec[5].length() > 0 ? Short.parseShort(stateRec[5]) : null;
+//        resEntity.state.zoneUtility = decimalToPerNumString(stateRec[6]);
+//        resEntity.state.amhsLState = stateRec[7];
 
         // アラーム一覧
         for (String[] alarmRec : alarmColumnList) {

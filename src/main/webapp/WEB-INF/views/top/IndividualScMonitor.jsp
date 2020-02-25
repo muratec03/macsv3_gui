@@ -190,63 +190,101 @@
             <div id="state-table-target"></div>
         </div>
         --%>
-        <div id="state-screen" class="mcs-content mcs-with-subheader mcs-with-subtitle">
             <div class="mcs-content-subtitle">
                 <span><spring:message code="IT-001-11-004" /></span>
             </div>
             <div id="state-text-target">
                 <div>
                     <div>
-                        <span><spring:message code="IT-001-11-007" /></span>
-                    </div>
-                    <div id="state-control-state"></div>
-                </div>
-                <div>
-                    <div>
-                       <!-- <span><spring:message code="IT-001-11-009" /></span>  -->  <!--20200103 Song Del -->
-                       <span>${llcType} State</span>  <!--2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
-                    </div>
-                    <div id="state-system-state"></div>
-                </div>
-                <div>
-                    <div>
-                        <span><spring:message code="IT-001-11-016" /></span>
-                    </div>
-                    <div id="alarm-state"></div>
-                </div>
-                <div>
-                    <div>
                         <span><spring:message code="IT-001-11-005" /></span>
                     </div>
-                    <div id="state-comm-state"></div>
+                    <div id="state-llc-name"></div>
                 </div>
                 <div>
                     <div>
-                       <!-- <span><spring:message code="IT-001-11-017" /></span> -->  <!--20200103 Song Del -->
-                       <span>${llcType} Mode</span>  <!--2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
+                        <span><spring:message code="IT-001-11-007" /></span>
                     </div>
-                    <div id="OCDC-mode"></div>
+                    <div id="state-llc-mode"></div>
                 </div>
-                <div>
+                <!--2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+                <!-- <div>
                     <div>
-                        <span><spring:message code="IT-001-11-018" /></span>
+                         <span>${llcType} Available</span>
                     </div>
-                    <div id="piece-mode"></div>
-                </div>
+                    <div id="state-available"></div>
+                </div> -->
                 <div>
                     <div>
-                         <!-- <span><spring:message code="IT-001-11-011" /></span> -->  <!--20200103 Song Del -->
-                         <span>${llcType} Available</span>  <!--2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+                        <span><spring:message code="IT-001-11-009" /></span>
                     </div>
                     <div id="state-available"></div>
                 </div>
                 <div>
                     <div>
-                        <span><spring:message code="IT-001-11-019" /></span>
+                        <span><spring:message code="IT-001-11-011" /></span>
                     </div>
-                    <div id="piece-available"></div>
+                    <div id="state-control-state"></div>
+                </div>
+                <div>
+                    <div>
+                        <span><spring:message code="IT-001-11-013" /></span>
+                    </div>
+                    <div id="state-alarm-state"></div>
+                </div>
+                <div>
+                    <div>
+                        <span><spring:message code="IT-001-11-015" /></span>
+                    </div>
+                    <div id="state-comm-state"></div>
+                </div>
+                <!--2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
+                <!-- <div>
+                    <div>
+                       <span>${llcType} Mode</span>  
+                    </div>
+                    <div id="OCDC-mode"></div>
+                </div> -->
+            </div>
+            
+            <div id="state-text-target1">
+                <div>
+                    <div>
+                        <span><spring:message code="IT-001-11-005" /></span>
+                    </div>
+                    <div id="state-llc-name"></div>
+                </div>
+                <div>
+                    <div>
+                        <span><spring:message code="IT-001-11-007" /></span>
+                    </div>
+                    <div id="state-llc-mode"></div>
+                </div>
+                <div>
+                    <div>
+                        <span><spring:message code="IT-001-11-009" /></span>
+                    </div>
+                    <div id="state-available"></div>
+                </div>
+                <div>
+                    <div>
+                        <span><spring:message code="IT-001-11-011" /></span>
+                    </div>
+                    <div id="state-control-state"></div>
+                </div>
+                <div>
+                    <div>
+                        <span><spring:message code="IT-001-11-013" /></span>
+                    </div>
+                    <div id="state-alarm-state"></div>
+                </div>
+                <div>
+                    <div>
+                        <span><spring:message code="IT-001-11-015" /></span>
+                    </div>
+                    <div id="state-comm-state"></div>
                 </div>
             </div>
+            
             <div id="state-table-target"></div>
         </div> 
         <!-- 20191225 Song Mod End -->
