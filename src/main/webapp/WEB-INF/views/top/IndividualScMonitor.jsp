@@ -283,6 +283,12 @@
                     </div>
                     <div id="state-comm-state"></div>
                 </div>
+                <div>
+                    <div>
+                        <span><spring:message code="IT-001-11-017" /></span>
+                    </div>
+                    <div id="state-system-state"></div>
+                </div>
             </div>
             
             <div id="state-table-target"></div>

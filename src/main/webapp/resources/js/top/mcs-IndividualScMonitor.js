@@ -67,11 +67,19 @@ $(function() {
   // ---------------------------------------
   // 状態画面コンポーネント生成
   // ---------------------------------------
+
   // テキストボックス
-  var stateCommState = new McsTextBox($('#state-comm-state'));
-  var stateControlState = new McsTextBox($('#state-control-state'));
-  var stateSystemState = new McsTextBox($('#state-system-state'));
+  //STD APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+  var stateLlcName = new McsTextBox($('#state-llc-name'));
+//  var stateLlcId = new McsTextBox($('#'));
+//  var stateLlcType= new McsTextBox($('#'));
+  var stateLlcMode = new McsTextBox($('#state-llc-mode'));
   var stateAvailable = new McsTextBox($('#state-available'));
+  var stateControlStat= new McsTextBox($('#state-control-state'));
+  var stateAlarmState = new McsTextBox($('#state-alarm-state'));
+  var stateCommState = new McsTextBox($('#state-comm-state'));
+  var stateSystemState = new McsTextBox($('#state-system-state'));
+  //END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
   
   //20191225 Song Del Start
   //var stateZoneOccupied = new McsTextBox($('#state-zone-occupied'), 'number');
@@ -81,10 +89,13 @@ $(function() {
   //20191225 Song Del End
   
   // テキストボックス読み取り専用化
-  stateCommState.setReadonly(true);
-  stateControlState.setReadonly(true);
-  stateSystemState.setReadonly(true);
+  stateLlcName.setReadonly(true);
+  stateLlcMode.setReadonly(true); 
   stateAvailable.setReadonly(true);
+  stateControlStat.setReadonly(true);
+  stateAlarmState.setReadonly(true);
+  stateCommState.setReadonly(true);
+  stateSystemState.setReadonly(true);
   
   //20191225 Song Del Start
   //stateZoneOccupied.setReadonly(true);
@@ -94,15 +105,15 @@ $(function() {
   //20191225 Song Del End
   
   //20191225 Song ADD START
-  var alarmState = new McsTextBox($('#alarm-state'));
-  var ocdcMode = new McsTextBox($('#OCDC-mode'));
-  var pieceMode = new McsTextBox($('#piece-mode'));
-  var pieceAvailable = new McsTextBox($('#piece-available'));
+//  var alarmState = new McsTextBox($('#alarm-state'));
+//  var ocdcMode = new McsTextBox($('#OCDC-mode'));
+//  var pieceMode = new McsTextBox($('#piece-mode'));
+//  var pieceAvailable = new McsTextBox($('#piece-available'));
   
-  alarmState.setReadonly(true);
-  ocdcMode.setReadonly(true);
-  pieceMode.setReadonly(true);
-  pieceAvailable.setReadonly(true);
+//  alarmState.setReadonly(true);
+//  ocdcMode.setReadonly(true);
+//  pieceMode.setReadonly(true);
+//  pieceAvailable.setReadonly(true);
   //20191225 Song ADD END
 
   // テーブル
@@ -607,6 +618,9 @@ $(function() {
         var tableValue = retObj.body.alarmList;
 
         // データをテキストボックスにセット
+        stateLlcName.setValue(textValue.llcName);
+        stateLlcMode.setValue(textValue.llcMode); 
+        stateAlarmState.setValue(textValue.alarmState);
         stateCommState.setValue(textValue.commState);
         stateControlState.setValue(textValue.controlState);
         stateSystemState.setValue(textValue.systemState);
@@ -619,11 +633,11 @@ $(function() {
         //stateAmhsLState.setValue(textValue.amhsLState);
         //20191225 Song Del End
         
-        //20191225 Song ADD START FOR MCSV2 STATE
-        alarmState.setValue(textValue.alarmState);
-        ocdcMode.setValue(textValue.ocdcMode);
-        pieceMode.setValue(textValue.pieceMode);
-        pieceAvailable.setValue(textValue.pieceAvailable);
+        //20200225 dqy del  START FOR MCSV3 STATE
+//        alarmState.setValue(textValue.alarmState);
+//        ocdcMode.setValue(textValue.ocdcMode);
+//        pieceMode.setValue(textValue.pieceMode);
+//        pieceAvailable.setValue(textValue.pieceAvailable);
         
         //20191225 Song ADD START FOR COLORS 
         //CONTROL_STATE
