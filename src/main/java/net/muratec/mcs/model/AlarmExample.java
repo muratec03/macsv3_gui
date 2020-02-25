@@ -314,6 +314,68 @@ public class AlarmExample {
             return (Criteria) this;
         }
 
+     // STD APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        public Criteria andLlcIdIsNull() {
+                    addCriterion("LLC_ID is null");
+                    return (Criteria) this;
+                }
+
+                public Criteria andLlcIdIsNotNull() {
+                    addCriterion("LLC_ID is not null");
+                    return (Criteria) this;
+                }
+
+                public Criteria andLlcIdEqualTo(String value) {
+                    addCriterion("LLC_ID =", value, "LlcId");
+                    return (Criteria) this;
+                }
+
+                public Criteria andLlcIdNotEqualTo(String value) {
+                    addCriterion("LLC_ID <>", value, "LlcId");
+                    return (Criteria) this;
+                }
+
+                public Criteria andLlcIdGreaterThan(String value) {
+                    addCriterion("LLC_ID >", value, "LlcId");
+                    return (Criteria) this;
+                }
+
+                public Criteria andLlcIdGreaterThanOrEqualTo(String value) {
+                    addCriterion("LLC_ID >=", value, "LlcId");
+                    return (Criteria) this;
+                }
+
+                public Criteria andLlcIdLessThan(String value) {
+                    addCriterion("LLC_ID <", value, "LlcId");
+                    return (Criteria) this;
+                }
+
+                public Criteria andLlcIdLessThanOrEqualTo(String value) {
+                    addCriterion("LLC_ID <=", value, "LlcId");
+                    return (Criteria) this;
+                }
+
+                public Criteria andLlcIdIn(List<String> values) {
+                    addCriterion("LLC_ID in", values, "LlcId");
+                    return (Criteria) this;
+                }
+
+                public Criteria andLlcIdNotIn(List<String> values) {
+                    addCriterion("LLC_ID not in", values, "LlcId");
+                    return (Criteria) this;
+                }
+
+                public Criteria andLlcIdBetween(String value1, String value2) {
+                    addCriterion("LLC_ID between", value1, value2, "LlcId");
+                    return (Criteria) this;
+                }
+
+                public Criteria andLlcIdNotBetween(String value1, String value2) {
+                    addCriterion("LLC_ID not between", value1, value2, "LlcId");
+                    return (Criteria) this;
+                }
+        // END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        
         public Criteria andAlarmCodeIsNull() {
             addCriterion("ALARM_CODE is null");
             return (Criteria) this;
