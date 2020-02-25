@@ -41,6 +41,7 @@ import net.muratec.mcs.mapper.AlarmMapper;
 import net.muratec.mcs.mapper.GuiColorMapper;
 import net.muratec.mcs.mapper.IndividualMonitorMapper;
 import net.muratec.mcs.mapper.JobPriorityMapper;
+import net.muratec.mcs.mapper.LlcMapper;
 import net.muratec.mcs.mapper.ScreenMonitorMemberMapper;
 import net.muratec.mcs.model.Alarm;
 import net.muratec.mcs.model.AlarmExample;
@@ -49,6 +50,8 @@ import net.muratec.mcs.model.GuiColorExample;
 import net.muratec.mcs.model.IndividualMonitorStateInfo;
 import net.muratec.mcs.model.IndividualMonitorTransferJob;
 import net.muratec.mcs.model.JobPriority;
+import net.muratec.mcs.model.Llc;
+import net.muratec.mcs.model.LlcExample;
 import net.muratec.mcs.model.ScreenMonitorMember;
 import net.muratec.mcs.model.ScreenMonitorMemberExample;
 import net.muratec.mcs.service.common.BaseService;
@@ -100,8 +103,12 @@ public class IndividualScMonitorService extends BaseService {
     /** 外部ファイル参照用サービス生成 */
     @Autowired ExeForeignFileService exeForeignFileService;
     
-    /** ScreenMonitorMemberMapper用サービス生成 */
+    // STD APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+  /*  *//** ScreenMonitorMemberMapper用サービス生成 *//*
     @Autowired private ScreenMonitorMemberMapper ScreenMonitorMemberMapper;//20191225 Song ADD FOR STATEINFO OF THE MAIN
+*/    /** ScreenMonitorMemberMapper用サービス生成 */
+    @Autowired private LlcMapper llcMapper;//20191225 Song ADD FOR STATEINFO OF THE MAIN
+    // END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
     //@formatter:off
     /**
@@ -132,11 +139,16 @@ public class IndividualScMonitorService extends BaseService {
         
         //IndividualMonitorStateInfo stateRec = iMonitorMapper.getScMonitorState(reqEntity);  //20191225 Song DEL FOR TABLE CHANGE TO ScreenMonitorMember
         //20191225 Song Add Start
-        ScreenMonitorMemberExample configExample = new ScreenMonitorMemberExample();
-        configExample.createCriteria().andDisplayIdEqualTo(reqEntity.displayId);
-        List<ScreenMonitorMember> stateRec = ScreenMonitorMemberMapper.selectByExample(configExample);
+//        ScreenMonitorMemberExample configExample = new ScreenMonitorMemberExample();
+//        configExample.createCriteria().andDisplayIdEqualTo(reqEntity.displayId);
+//        List<ScreenMonitorMember> stateRec = ScreenMonitorMemberMapper.selectByExample(configExample);
         //20191225 Song Add End
-        
+	     // STD APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        LlcExample configExample = new LlcExample();
+        configExample.createCriteria().andLlcIdEqualTo(reqEntity.llcId);
+        List<Llc> stateRec = llcMapper.selectByExample(configExample);
+	     // END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+
         if (stateRec == null) {
             return null;
         }
@@ -144,9 +156,9 @@ public class IndividualScMonitorService extends BaseService {
         // -----------------------------------------
         // アラーム一覧取得
         // -----------------------------------------
-        AlarmExample example = new AlarmExample();
+        /*AlarmExample example = new AlarmExample();//2025 del dqy
         //example.createCriteria().andAmhsIdEqualTo(reqEntity.amhsId);  //v4版本用的是amhsId , 现在v2版本用下面的displayId  //20191223 Song Del
-        example.createCriteria().andTscIdEqualTo(reqEntity.displayId);  //20191223 Song Add
+        example.createCriteria().andTscIdEqualTo(reqEntity.llcId);  //20191223 Song Add
         example.setOrderByClause("SET_TIME desc");
         List<Alarm> alarmRecList = alarmMapper.selectByExample(example);
 
@@ -156,7 +168,7 @@ public class IndividualScMonitorService extends BaseService {
         // 状態データ
         
         //20191225 Song Mod Start FOR MCSV2
-        /*
+        
         resEntity.state.commState = stateRec.getCommState();
         resEntity.state.controlState = stateRec.getControlState();
         resEntity.state.systemState = stateRec.getSystemState();
@@ -165,7 +177,7 @@ public class IndividualScMonitorService extends BaseService {
         resEntity.state.zoneCapacity = stateRec.getZoneCapacity();
         resEntity.state.zoneUtility = decimalToPerNumString(stateRec.getZoneUtility());
         resEntity.state.amhsLState = stateRec.getAmhsLState();
-        */
+        
        
         
         for (ScreenMonitorMember tscStateRec : stateRec) {
@@ -208,7 +220,7 @@ public class IndividualScMonitorService extends BaseService {
             alarmRes.vehicleId = alarmRec.getVehicleId();
             resEntity.alarmList.add(alarmRes);
         }
-
+*/
         return resEntity;
     }
 

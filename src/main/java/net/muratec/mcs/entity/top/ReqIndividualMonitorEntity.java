@@ -44,6 +44,9 @@ import net.muratec.mcs.entity.common.AjaxReqBaseEntity;
 public class ReqIndividualMonitorEntity extends AjaxReqBaseEntity {
 
 //    @FieldNameKey(key = "IT-001-11-002") public String amhsId; 	 //20191218 DQY DEL
-    @FieldNameKey(key = "IT-001-11-002") public Integer displayId;	 //20191218 DQY ADD
+	// STD APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	//    @FieldNameKey(key = "IT-001-11-002") public Integer displayId;	 //20191218 DQY ADD
+    @FieldNameKey(key = "IT-001-11-002") public String llcId;
+    // END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
     public boolean ctrlChgFlag;
 }

@@ -57,4 +57,10 @@ public class IndividualMonitorStateInfoEntity extends AjaxResBaseEntity {
     public String pieceMode = null;
     public String pieceAvailable = null;
     //20191223 DQY ADD START FOR MCSV2 END
+	// STD APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    public String llcName = null;
+    public String llcId = null;
+    public String llcType= null;
+	// END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+
 }

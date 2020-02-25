@@ -704,18 +704,15 @@
   <!-- <select id="selectIconInfoByType" parameterType="java.lang.String"  resultType="net.muratec.mcs.model.IconInfo" > -->
   <select id="selectIconInfoByType" parameterType="net.muratec.mcs.model.Llc"  resultType="net.muratec.mcs.model.IconInfo" >
     SELECT
-      L.LLC_NAME,
       L.LLC_ID,
+      L.LLC_NAME,
       L.LLC_TYPE,
-      L.LLC_MODE,
-      L.AVAILABLE,
       L.CONTROL_STATE,
+	  L.SYSTEM_STATE,
       L.ALARM_STATE,
       L.COMM_STATE,
-      L.LLC_NAME,
-	  L.SYSTEM_STATE,
-	  L.ALARM_STATE,
-	  L.AVAILABLE,
+      L.LLC_MODE,
+      L.AVAILABLE,
       (CASE 
            WHEN L.LLC_TYPE = 'CDC' THEN 1
            WHEN L.LLC_TYPE = 'OHBC' THEN 1

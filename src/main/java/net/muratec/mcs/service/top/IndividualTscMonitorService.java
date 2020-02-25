@@ -39,6 +39,7 @@ import net.muratec.mcs.exception.McsException;
 import net.muratec.mcs.mapper.AlarmMapper;
 import net.muratec.mcs.mapper.GuiColorMapper;
 import net.muratec.mcs.mapper.IndividualMonitorMapper;
+import net.muratec.mcs.mapper.LlcMapper;
 import net.muratec.mcs.mapper.ModuleMapper;
 import net.muratec.mcs.mapper.ScreenMonitorMemberMapper;
 import net.muratec.mcs.mapper.VehicleMapper;
@@ -46,6 +47,8 @@ import net.muratec.mcs.model.Alarm;
 import net.muratec.mcs.model.AlarmExample;
 import net.muratec.mcs.model.GuiColor;
 import net.muratec.mcs.model.GuiColorExample;
+import net.muratec.mcs.model.Llc;
+import net.muratec.mcs.model.LlcExample;
 import net.muratec.mcs.model.ScreenMonitorMember;
 import net.muratec.mcs.model.ScreenMonitorMemberExample;
 import net.muratec.mcs.model.VehicleExample;
@@ -81,7 +84,10 @@ public class IndividualTscMonitorService extends BaseService {
 
     /** 個別モニタ用マッパー生成 */
     @Autowired private IndividualMonitorMapper iMonitorMapper;
-    @Autowired private ScreenMonitorMemberMapper ScreenMonitorMemberMapper;//20191220 DQY ADD FOR STATEINFO OF THE LIMC MAIN
+    // STD APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+//    @Autowired private ScreenMonitorMemberMapper ScreenMonitorMemberMapper;//20191220 DQY ADD FOR STATEINFO OF THE LIMC MAIN
+    @Autowired private LlcMapper llcMapper;
+    // END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
     @Autowired private VehicleMapper vehicleMapper;//20191220 DQY ADD FOR STATEINFO OF THE MAIN
 
     /** GUI_COLORマッパー生成 */
@@ -123,9 +129,14 @@ public class IndividualTscMonitorService extends BaseService {
         // 状態データ取得
         // -----------------------------------------
 //        IndividualMonitorStateInfo stateRec = iMonitorMapper.getConvAndTscMonitorState(reqEntity);//20191220 DQY DEL FOR TABLE CHANGE TO ScreenMonitorMember 
-      ScreenMonitorMemberExample configExample = new ScreenMonitorMemberExample();
-      configExample.createCriteria().andDisplayIdEqualTo(reqEntity.displayId);
-      List<ScreenMonitorMember> stateRec = ScreenMonitorMemberMapper.selectByExample(configExample);
+     // STD APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+//      ScreenMonitorMemberExample configExample = new ScreenMonitorMemberExample();
+//      configExample.createCriteria().andDisplayIdEqualTo(reqEntity.displayId);
+//      List<ScreenMonitorMember> stateRec = ScreenMonitorMemberMapper.selectByExample(configExample);
+      LlcExample configExample = new LlcExample();
+      configExample.createCriteria().andLlcIdEqualTo(reqEntity.llcId);
+      List<Llc> stateRec = llcMapper.selectByExample(configExample);
+      // END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
         if (stateRec == null) {
             return null;
@@ -136,14 +147,14 @@ public class IndividualTscMonitorService extends BaseService {
         // -----------------------------------------
         AlarmExample example = new AlarmExample();
 //        example.createCriteria().andAmhsIdEqualTo(reqEntity.amhsId);	  //20191218 DQY DEL
-        example.createCriteria().andTscIdEqualTo(reqEntity.displayId);	  //20191220 DQY ADD
+        example.createCriteria().andAlarmTextEqualTo(reqEntity.llcId);	  //20191220 DQY ADD
         example.setOrderByClause("SET_TIME desc");
         List<Alarm> alarmRecList = alarmMapper.selectByExample(example);
 
         // -----------------------------------------
         // エンティティ形式に変換
         // -----------------------------------------
-        for (ScreenMonitorMember tscStateRec : stateRec) {
+        for (Llc tscStateRec : stateRec) {
 	        // 状態データ
 	        if(!State.COMM_STATE_COMMUNICATING.equals(tscStateRec.getCommState())) 
 	        {
@@ -154,20 +165,20 @@ public class IndividualTscMonitorService extends BaseService {
 	        	resEntity.state.available = State.TSC_SYSTEM_NONE;
 	        	resEntity.state.tscMode = State.TSC_SYSTEM_NONE;
 	        	resEntity.state.alarmState = tscStateRec.getAlarmState();
-	        	resEntity.state.pieceMode = tscStateRec.getPieceMode();
-	        	resEntity.state.pieceAvailable = tscStateRec.getPieceAvailable();
+//	        	resEntity.state.pieceMode = tscStateRec.getPieceMode();
+//	        	resEntity.state.pieceAvailable = tscStateRec.getPieceAvailable();
 	        }
 	        else 
 	        {
 		        resEntity.state.commState = tscStateRec.getCommState();
 		        resEntity.state.controlState = tscStateRec.getControlState();
 		        resEntity.state.systemState = tscStateRec.getSystemState();
-		        resEntity.state.available = tscStateRec.getTscAvailable();
+//		        resEntity.state.available = tscStateRec.getTscAvailable();
 		        //20191223 DQY ADD START FOR MCSV2 STATE
 		        resEntity.state.alarmState = tscStateRec.getAlarmState();
-		        resEntity.state.tscMode = tscStateRec.getTscMode();
-		        resEntity.state.pieceMode = tscStateRec.getPieceMode();
-		        resEntity.state.pieceAvailable = tscStateRec.getPieceAvailable();
+//		        resEntity.state.tscMode = tscStateRec.getTscMode();
+//		        resEntity.state.pieceMode = tscStateRec.getPieceMode();
+//		        resEntity.state.pieceAvailable = tscStateRec.getPieceAvailable();
 	        }
 	        //20191223 DQY ADD START FOR MCSV2 END
 	        
@@ -180,7 +191,7 @@ public class IndividualTscMonitorService extends BaseService {
             alarmRes.alarmId = alarmRec.getAlarmId();
             alarmRes.alarmText = alarmRec.getAlarmText();
             alarmRes.alarmLoc = alarmRec.getAlarmLoc();//20200102 DQY ADD
-            alarmRes.vehicleId = alarmRec.getVehicleId();//20200102 DQY ADD
+//            alarmRes.vehicleId = alarmRec.getVehicleId();//20200102 DQY ADD
             
             resEntity.alarmList.add(alarmRes);
         }
