@@ -41,26 +41,26 @@ import net.muratec.mcs.entity.common.AjaxResBaseEntity;
 @Setter
 public class IndividualMonitorStateInfoEntity extends AjaxResBaseEntity {
 
-    public String commState = null;
-    public String controlState = null;
-    public String systemState = null;
-    public String available = null;
-    public Short zoneOccupied = null;
-    public Short zoneCapacity = null;
-//    public Short zoneEmpty = null;//20191225 DQY DEL
-    public String zoneUtility = null;
-    public String amhsLState = null;
+//    public Short zoneOccupied = null;
+//    public Short zoneCapacity = null;
+//    public String zoneUtility = null;
     
-    //20191223 DQY ADD START FOR MCSV2 STATE
-    public String alarmState = null;
-    public String tscMode = null;
-    public String pieceMode = null;
-    public String pieceAvailable = null;
-    //20191223 DQY ADD START FOR MCSV2 END
 	// STD APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
     public String llcName = null;
     public String llcId = null;
     public String llcType= null;
+    public String llcMode= null;
+    public String available = null;
+    public String controlState = null;
+    public String alarmState = null;
+    public String commState = null;
+    public String systemState = null;
+    public String tscName = null;
+    public String tscMode= null;
+    public String tscAvailable = null;
+    public String craneId = null;
+    public String craneStatus = null;
+    public String craneAvailable = null;
 	// END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
 }
