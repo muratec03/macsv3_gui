@@ -75,7 +75,7 @@ $(function() {
 //  var stateLlcType= new McsTextBox($('#'));
   var stateLlcMode = new McsTextBox($('#state-llc-mode'));
   var stateAvailable = new McsTextBox($('#state-available'));
-  var stateControlStat= new McsTextBox($('#state-control-state'));
+  var stateControlState= new McsTextBox($('#state-control-state'));
   var stateAlarmState = new McsTextBox($('#state-alarm-state'));
   var stateCommState = new McsTextBox($('#state-comm-state'));
   var stateSystemState = new McsTextBox($('#state-system-state'));
@@ -988,6 +988,9 @@ $(function() {
    */
   function clearState() {
     // 状態画面のテキストボックスをクリア
+	stateLlcName.clear();
+    stateLlcMode.clear();
+    stateAlarmState.clear();
     stateCommState.clear();
     stateControlState.clear();
     stateSystemState.clear();
@@ -997,10 +1000,10 @@ $(function() {
     //stateZoneCapacity.clear();
     //stateZoneUtility.clear();
     //stateAmhsLState.clear();
-    alarmState.clear();
+/*    alarmState.clear();
     ocdcMode.clear();
     pieceMode.clear();
-    pieceAvailable.clear();
+    pieceAvailable.clear();*/
     //20191225 Song Mod End
     // 状態画面のテーブルをクリア
     stateTable.clear();
