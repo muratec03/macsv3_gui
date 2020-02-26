@@ -75,7 +75,7 @@ $(function() {
 //  var stateLlcType= new McsTextBox($('#'));
   var stateLlcMode = new McsTextBox($('#state-llc-mode'));
   var stateAvailable = new McsTextBox($('#state-available'));
-  var stateControlState= new McsTextBox($('#state-control-state'));
+  var stateControlState = new McsTextBox($('#state-control-state'));
   var stateAlarmState = new McsTextBox($('#state-alarm-state'));
   var stateCommState = new McsTextBox($('#state-comm-state'));
   var stateSystemState = new McsTextBox($('#state-system-state'));
