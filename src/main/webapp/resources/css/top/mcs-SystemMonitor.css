@@ -74,8 +74,32 @@
     float: left;
 }
 
+/*ADD STD APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000*/
+#Vehicles-btn {
+    width: 100px;
+    float: right;
+    align: right;
+    margin-right: 150px;
+}
+
+#Ports-btn {
+    width: 100px;
+    float: right;
+    align: right;
+    margin-right: 20px;
+}
+
+#Alarms-btn {
+    width: 100px;
+    float: right;
+    align: right;
+    margin-right: 20px;
+}
+/*ADD END APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000*/
+
 /* システムモニタ／サイトマップ切替セレクトボックス */
 #mcs-selb-content {
+	margin-top: 0px;  /*ADD APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000*/
     width: 200px;
     float: right;
     align: right;

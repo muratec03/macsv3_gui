@@ -44,7 +44,10 @@
     headerText: {
       loginBtn: '<spring:message code="IT-001-01-009"/>',
       logoutBtn: '<spring:message code="IT-001-01-010"/>',
-      remarksBtn: '<spring:message code="IT-001-10-003" />'
+      remarksBtn: '<spring:message code="IT-001-10-003" />',
+      Alarmsbtn: '<spring:message code="IT-001-10-007" />', // ADD APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  
+      Portsbtn: '<spring:message code="IT-001-10-008" />', // ADD APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  
+      Vehiclesbtn: '<spring:message code="IT-001-10-009" />', // ADD APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  
     },
     selectBox: {
       systemMonitor: '<spring:message code="IT-001-10-004" />',
@@ -541,6 +544,9 @@
         <div id="remarks-btn"></div>
         <!-- システムモニタ／サイトマップ切替セレクトボックス -->
         <div id="mcs-selb-content"></div>
+        <div id="Vehicles-btn"></div>   <!-- ADD APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+        <div id="Ports-btn"></div>      <!-- ADD APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+        <div id="Alarms-btn"></div>     <!-- ADD APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
     </div>
     <div class="mcs-content mcs-content-top">
         <div id="hands-on-table" style="width: 100%; height: 100%" data-auth="${T001_REF}"></div>

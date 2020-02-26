@@ -1110,7 +1110,11 @@ $(function() {
     $('#hands-on-table').hide();
     $('#siteMap-largeTable').hide();
     $('#remarks-btn').hide();
-
+    //ADD STD APL 2020.02.21 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    $('#Vehicles-btn').hide();
+    $('#Ports-btn').hide();
+    $('#Alarms-btn').hide();
+    //ADD END APL 2020.02.21 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
     switch(value){
     case "1": // サイトマップ
       $('#siteMap-largeTable').show();
@@ -1123,6 +1127,11 @@ $(function() {
     default:
       $('#hands-on-table').show();
       $('#remarks-btn').show();
+      //ADD STD APL 2020.02.21 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+      $('#Vehicles-btn').show();
+      $('#Ports-btn').show();
+      $('#Alarms-btn').show();
+      //ADD END APL 2020.02.21 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
       handsOnTable.reload();
       break;
     }
@@ -1333,6 +1342,43 @@ $(function() {
   }
   // データの取得
   handsOnTable.getDataAjax(handsOnTableOption);
+  
+  //ADD STD APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+  var alarmsbtn = new McsButton($('#Alarms-btn'), screenText.headerText.Alarmsbtn);
+  var alarmsPopup = new McsPopupWinLoad();
+  alarmsbtn.onClick(function() {
+    var options = {
+      url: getUrl('Alarms'),
+      winName: 'Alarms',
+      width: 1280,
+      height: 800
+    };
+    alarmsPopup.open(options);
+  });
+  var portBtn = new McsButton($('#Ports-btn'), screenText.headerText.Portsbtn);
+  var portPopup = new McsPopupWinLoad();
+  portBtn.onClick(function() {
+    var options = {
+      url: getUrl('Ports'),
+      winName: 'Ports',
+      width: 1280,
+      height: 800
+    };
+    portPopup.open(options);
+  });
+ 
+  var vehiclesBtn = new McsButton($('#Vehicles-btn'), screenText.headerText.Vehiclesbtn);
+  var vehiclesPopup = new McsPopupWinLoad();
+  vehiclesBtn.onClick(function() {
+    var options = {
+      url: getUrl('Vehicles'),
+      winName: 'Vehicles',
+      width: 1280,
+      height: 800
+    };
+    vehiclesPopup.open(options);
+  });
+  //ADD END APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
   // 凡例ボタン生成
   var remarksBtn = new McsButton($('#remarks-btn'), screenText.headerText.remarksBtn);
