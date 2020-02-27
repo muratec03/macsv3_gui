@@ -8,6 +8,11 @@
     -->
     <result column="SET_TIME" jdbcType="OTHER" property="setTime" />
     <result column="ALARM_ID" jdbcType="DECIMAL" property="alarmId" />
+    <!-- STD 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+    <result column="LLC_ID" jdbcType="VARCHAR" property="llcId" />
+    <result column="VEHICLE_ID" jdbcType="VARCHAR" property="vehicleId" />
+    <result column="TSC_ID" jdbcType="VARCHAR" property="tscId" />
+    <!-- END 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
     <result column="ALARM_CODE" jdbcType="DECIMAL" property="alarmCode" />
     <result column="ALARM_SUB_CODE" jdbcType="DECIMAL" property="alarmSubCode" />
     <result column="ALARM_LOC" jdbcType="VARCHAR" property="alarmLoc" />
