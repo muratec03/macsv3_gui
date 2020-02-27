@@ -66,4 +66,9 @@ public class AlarmModel {
     private String carrierId;
     private String eqpInfo;
     private Integer amhsType;        // MACS4#0114 Add
+    //ADD STD APL 2020.02.22 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
+    public String llcId;
+    public String llcName;
+    public String setTime;
+    //ADD END APL 2020.02.22 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
 }
