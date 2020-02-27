@@ -444,6 +444,7 @@
     where TSC_ID = #{tscId,jdbcType=VARCHAR}
   </update>
   <!-- STD APL 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
+  <!-- &lt;&gt; 这是转义字符 <> -->
   <select id="selectTscInfoById" parameterType="net.muratec.mcs.model.Tsc"  resultType="net.muratec.mcs.model.IconInfo" >
     
   SELECT tsc.tsc_id,
@@ -466,18 +467,18 @@ LEFT OUTER JOIN   (SELECT p.tsc_id,    COUNT(p.port_id) down_count
   FROM  (SELECT port_id, tsc_id, available, ibsem_avail, port_mode 
   		 FROM port
     	 UNION SELECT ohb_port_id port_id,tsc_id,available,ibsem_avail, ohb_port_mode port_mode FROM ohb_port) p
- 		 WHERE (p.available <> 'Available'   
- 		 		OR p.ibsem_avail   <> 'Available'
-  				OR p.port_mode     <> 'Up')
+ 		 WHERE (p.available &lt;&gt; 'Available'   
+ 		 		OR p.ibsem_avail   &lt;&gt; 'Available'
+  				OR p.port_mode     &lt;&gt; 'Up')
   		GROUP BY p.tsc_id
   UNION
   SELECT t.tsc_id, COUNT(op.ohb_port_id) down_count
   FROM ohb_port op, tsc t
   WHERE op.set_vendor  = t.llc_id
 		  AND set_vendor      IS NOT NULL
-		  AND(op.available    <> 'Available'
-		  OR op.ibsem_avail   <> 'Available'
-		  OR op.ohb_port_mode <> 'Up')
+		  AND(op.available    &lt;&gt; 'Available'
+		  OR op.ibsem_avail   &lt;&gt; 'Available'
+		  OR op.ohb_port_mode &lt;&gt; 'Up')
   GROUP BY t.tsc_id
   ) down_ports
 ON tsc.tsc_id = down_ports.tsc_id
@@ -515,7 +516,7 @@ LEFT OUTER JOIN
   ON ohbz.tsc_id          = ohbres.tsc_id
   ) shelves ON tsc.tsc_id = shelves.tsc_id
 WHERE tsc_name           IS NOT NULL
-	 AND tsc_name             <> 'MGV'
+	 AND tsc_name             &lt;&gt; 'MGV'
 	 AND tsc.llc_id = #{llcId,jdbcType=VARCHAR} 
 	 AND tsc.tsc_id =  #{tscId,jdbcType=VARCHAR} 
 ORDER BY tsc.tsc_id
