@@ -97,6 +97,6 @@ public interface TscMapper {
      */
     int updateByPrimaryKey(Tsc record);
     // STD APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-//    List<IconInfo> selectIconInfoById(Tsc record);
+    List<IconInfo> selectIconInfoById(Tsc record);
 	// END APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 }
