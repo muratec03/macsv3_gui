@@ -43,6 +43,7 @@ $(function() {
   var amhsSelBox = new McsSelectBox($('#sel-amhs'));
   //var amhsNameList = screenValue.amhsName;  //20191223 Song Del
   var amhsNameList = screenValue.llcNames;  //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
+  var tscId = screenValue.tscId;  //2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
   amhsSelBox.setList(amhsNameList);
   //amhsSelBox.setValue(screenValue.amhsId);  //20191223 Song Del
   amhsSelBox.setValue(screenValue.llcId); //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000

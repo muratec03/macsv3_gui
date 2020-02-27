@@ -152,12 +152,12 @@ public class IndividualScMonitorService extends BaseService {
 	     // END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         
         // STD APL 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-       /* Tsc tscPa = new Tsc();
+        Tsc tscPa = new Tsc();
         tscPa.setLlcId(reqEntity.llcId);
         tscPa.setTscId(reqEntity.tscId);
-	 	List<IconInfo> tscState = tscMapper.selectIconInfoById(tscPa);  //llcTypeによって、設備のデータを探す
+	 	List<IconInfo> tscState = tscMapper.selectTscInfoById(tscPa);  //llcTypeによって、設備のデータを探す
 //	 	if (llcState == null || tscState == null) {
-        */
+        
         if (llcState == null ) {
             return null;
         }

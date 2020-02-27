@@ -677,7 +677,9 @@ McsHandsOnTable.prototype = {
         var llcName = $(elem.currentTarget).closest('div.container').find('input[name="llcName"]').val();// MACS4#MACSV3 Add
         var llcType = $(elem.currentTarget).closest('div.container').find('input[name="llcType"]').val();// MACS4#MACSV3 Add
 //        callback(displayId,displayName, memberGroup);// 20201218 DQY DEL
-        callback(llcId,llcName, llcType);// 20201218 DQY ADD
+        var tscId = $(elem.currentTarget).closest('div.container').find('input[name="tscId"]').val();    // MACS4#MACSV3 Add
+//        callback(llcId,llcName, llcType);// 20200218 DQY ADD
+        callback(llcId,llcName, llcType,tscId);// 20200227 DQY ADD
       });
       
       var icon1 = $(this.containerDiv).find('div.container-cdc').filter(function(index) {
@@ -692,7 +694,9 @@ McsHandsOnTable.prototype = {
     	var llcType = $(elem.currentTarget).closest('div.container-cdc').find('input[name="llcType"]').val();// MACS4#MACSV3 Add
 //    	callback(displayName, memberGroup);// 20191225 DQY DEL
 //    	callback(displayId,displayName, memberGroup);// 20200218 DQY Del
-    	callback(llcId,llcName, llcType);// MACS4#MACSV3 Add
+    	var tscId = $(elem.currentTarget).closest('div.container-cdc').find('input[name="tscId"]').val();    // MACS4#MACSV3 Add
+//    	callback(llcId,llcName, llcType);// MACS4#MACSV3 Add
+    	callback(llcId,llcName, llcType,tscId);// 20200227 DQY ADD
       });
       // END APL 2020.02.18 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
     }

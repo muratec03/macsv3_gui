@@ -95,7 +95,8 @@
     <%--displayNames: JSON.parse('${displayNameList}'),
     displayId: '${displayId}'--%>
     llcNames: JSON.parse('${llcNameList}'),
-    llcId: '${llcId}'
+    llcId: '${llcId}',
+    tscId: '${tscId}'<%-- dqy add 20200227 --%>
     <%-- END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 --%>
   };
 </script>

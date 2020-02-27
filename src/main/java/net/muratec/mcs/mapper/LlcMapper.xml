@@ -718,12 +718,13 @@
            WHEN L.LLC_TYPE = 'OHBC' THEN 1
            WHEN L.LLC_TYPE = 'OHBC2' THEN 1
            ELSE 7  END)ICON_TYPE
+      ,T.TSC_ID <!-- 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
       <!-- ,T.TSC_MODE,
       T.AVAILABLE,
       T.ALARM_STATE -->
     FROM
       LLC L
-      <!-- left outer join TSC T on L.LLC_ID = T.LLC_ID -->
+      left outer join TSC T on L.LLC_ID = T.LLC_ID <!-- 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
       JOIN MODULE M ON L.LLC_ID = M.LLC_ID
       WHERE L.LLC_TYPE = #{llcType,jdbcType=VARCHAR} 
 		  AND M.MODULE_NAME =  #{moduleName,jdbcType=VARCHAR} 

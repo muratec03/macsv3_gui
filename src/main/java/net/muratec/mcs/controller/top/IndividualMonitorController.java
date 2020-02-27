@@ -293,6 +293,7 @@ public class IndividualMonitorController extends BaseController {
 //        model.addAttribute("amhsId", reqEntity.amhsId);
 //        model.addAttribute("displayName", reqEntity.displayName);//20191220 DQY DEL
         model.addAttribute("llcId", reqEntity.llcId);	   //20191220 DQY ADD
+        model.addAttribute("tscId", reqEntity.tscId);	   //20200227 DQY ADD
 
         // 正常時に操作ログ出力
         opeLogService.getOpeLog(opeLogInfo.logCode, null, opeLogInfo.userName, opeLogInfo.ipAddress);

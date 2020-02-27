@@ -516,9 +516,32 @@ LEFT OUTER JOIN
   ON ohbz.tsc_id          = ohbres.tsc_id
   ) shelves ON tsc.tsc_id = shelves.tsc_id
 WHERE tsc_name           IS NOT NULL
-	 AND tsc_name             &lt;&gt; 'MGV'
+	 AND tsc_name   &lt;&gt; 'MGV'
 	 AND tsc.llc_id = #{llcId,jdbcType=VARCHAR} 
 	 AND tsc.tsc_id =  #{tscId,jdbcType=VARCHAR} 
+	 AND llc.llc_type =  #{llcType,jdbcType=VARCHAR} 
 ORDER BY tsc.tsc_id
 </select>
+
+<!-- STD APL 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+<select id="selectTscInfoByLlcType" parameterType="net.muratec.mcs.model.Tsc"  resultType="net.muratec.mcs.model.IconInfo" >
+  
+	SELECT tsc.tsc_id,
+	  tsc.llc_id,
+	  tsc.tsc_name,
+	  tsc.tsc_mode,
+	  tsc.available,
+	  tsc.alarm_state,
+	  llc.llc_type,
+	  module.module_name
+	FROM tsc
+	JOIN llc ON tsc.llc_id   = llc.llc_id AND display_flg = 1
+	JOIN module ON tsc.llc_id = module.llc_id
+	WHERE tsc_name           IS NOT NULL
+		 AND tsc_name &lt;&gt; 'MGV'
+		 AND llc.llc_type =  #{llcType,jdbcType=VARCHAR} 
+	   	 AND module.module_name = #{modulename,jdbcType=VARCHAR} 
+	ORDER BY tsc.tsc_id
+</select>
+<!-- END APL 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
 </mapper>

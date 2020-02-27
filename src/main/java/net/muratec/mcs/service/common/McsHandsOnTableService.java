@@ -68,6 +68,7 @@ import net.muratec.mcs.mapper.ModuleMapper;
 import net.muratec.mcs.mapper.ScreenColorMasterMapper;
 import net.muratec.mcs.mapper.ScreenMonitorMapper;
 import net.muratec.mcs.mapper.ScreenMonitorMemberMapper;
+import net.muratec.mcs.mapper.TscMapper;
 import net.muratec.mcs.model.GuiColor;
 import net.muratec.mcs.model.GuiColorExample;
 import net.muratec.mcs.model.HandsOnTableConfig;
@@ -81,6 +82,7 @@ import net.muratec.mcs.model.ScreenColorMaster;
 import net.muratec.mcs.model.ScreenMonitor;
 import net.muratec.mcs.model.ScreenMonitorMember;
 import net.muratec.mcs.model.ScreenMonitorMemberExample;
+import net.muratec.mcs.model.Tsc;
 
 //@formatter:off
 /**
@@ -239,6 +241,7 @@ public class McsHandsOnTableService extends BaseService {
 		   	 		McsHandsOnTableIconEntity iconEntity = new McsHandsOnTableIconEntity();
 		   	 		
 		   	 		McsHandsOnTableCellDataElemEntity cellData = new McsHandsOnTableCellDataElemEntity();
+		   	 		
 		   	 		//if(iconNum < dataNum && colNum <8 ) {
 		   	 		if(llcTypeNum < dataNum && colNum < dataNumRow ) {  //dataNumRow里面放的是一行最多显示几个Icon
 		   	 			iconEntity.llcId = LlclList.getLlcId();
@@ -947,11 +950,11 @@ public class McsHandsOnTableService extends BaseService {
 
             // STD APL 2020.02.18 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
             // アイコンにdisplayIdを埋め込む
-            Element inputLlcyId = svgDoc.createElement("input");
-            inputLlcyId.setAttribute("type", "hidden");
-            inputLlcyId.setAttribute("name", "llcId");
-            inputLlcyId.setAttribute("value", iconInfo.getLlcId());
-            div.appendChild(inputLlcyId);
+            Element inputLlcId = svgDoc.createElement("input");
+            inputLlcId.setAttribute("type", "hidden");
+            inputLlcId.setAttribute("name", "llcId");
+            inputLlcId.setAttribute("value", iconInfo.getLlcId());
+            div.appendChild(inputLlcId);
             // END APL 2020.02.18 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
             
             // アイコンにamhsIdを埋め込む
@@ -975,6 +978,15 @@ public class McsHandsOnTableService extends BaseService {
             inputLlcType.setAttribute("value", String.valueOf(iconInfo.getLlcType()));// MACS4#MACSV3 Add
             div.appendChild(inputLlcType);
             // END APL 2020.02.18 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+            
+            // アイコンにdisplayIdを埋め込む
+            Element inputTscId = svgDoc.createElement("input");
+            inputTscId.setAttribute("type", "hidden");
+            inputTscId.setAttribute("name", "tscId");
+            inputTscId.setAttribute("value", iconInfo.getTscId());
+            div.appendChild(inputTscId);
+            // END APL 2020.02.18 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+            
 
             // 生成したDOMを文字列に変換する
             DOMSource domSource = new DOMSource(div);

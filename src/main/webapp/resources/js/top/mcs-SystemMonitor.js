@@ -1318,7 +1318,8 @@ $(function() {
     var iconPopup = new McsPopupWinLoad();
     //handsOnTableOption.onIconClick = function(amhsId, amhsType) {// MACS4#MACSV2 Del
 //    handsOnTableOption.onIconClick = function(displayName, memberGroup) {	// MACS4#MACSV2 Add
-      handsOnTableOption.onIconClick = function(llcId,llcName, llcType) {	// MACS4#MACSV2 Add
+//      handsOnTableOption.onIconClick = function(llcId,llcName, llcType) {	// MACS4#MACSV2 Add
+      handsOnTableOption.onIconClick = function(llcId,llcName, llcType,tscId) {	// MACS4#MACSV3 DQY 20200227 Add
       var options = {
         url: getUrl('Individual'),
         sendValue: {
@@ -1331,6 +1332,7 @@ $(function() {
         	llcId:llcId,	// 20191225 DQY ADD
         	llcName:llcName,// MACS4#MACSV2 Add
         	llcType:llcType	// MACS4#MACSV2 Add
+        	,tscId:tscId	// 20200227 DQY ADD
         	// END APL 2020.02.19 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         },
         limitWindow: screenValue.LimitIndividualMonitorNum,
