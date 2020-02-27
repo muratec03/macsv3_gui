@@ -92,7 +92,7 @@ $(function() {
   stateLlcName.setReadonly(true);
   stateLlcMode.setReadonly(true); 
   stateAvailable.setReadonly(true);
-  stateControlStat.setReadonly(true);
+  stateControlState.setReadonly(true);
   stateAlarmState.setReadonly(true);
   stateCommState.setReadonly(true);
   stateSystemState.setReadonly(true);
@@ -639,9 +639,90 @@ $(function() {
 //        pieceMode.setValue(textValue.pieceMode);
 //        pieceAvailable.setValue(textValue.pieceAvailable);
         
-        //20191225 Song ADD START FOR COLORS 
-        //CONTROL_STATE
-        var stateControlStateValue = stateControlState.getValue();
+        // STD APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        /**
+    	 * LLCのステータスに基づきコントローラの背景色を設定します。
+    	 */
+        //LLC_NAME
+        if(stateCommState.getValue()!="Communicating"){
+        	// Communication State Error PINK
+        	$("#state-llc-name input[name='colorText']").css('background-color','#FF00FF');
+        }
+        else if(stateLlcMode.getValue()!="Up"){
+        	// Down YELLOW
+        	$("#state-llc-name input[name='colorText']").css('background-color','#FFD700');
+        }
+        else if(stateAvailable.getValue()!="Available"){
+        	// Error RED
+        	$("#state-llc-name input[name='colorText']").css('background-color','#FF0000');
+        }
+        else if(stateAlarmState.getValue()!="NoAlarms"){
+        	// アラーム発生 ORANGE
+        	$("#state-llc-name input[name='colorText']").css('background-color','#FF7536');
+        }
+        else if(stateControlState.getValue()!="Online/Remote"){
+        	// Control State Error PURPLE
+        	$("#state-llc-name input[name='colorText']").css('background-color','#7575FF');
+        }
+        else  if(stateSystemState.getValue()!="Auto"){
+        	// System State Error LIGHTBLUE
+        	$("#state-llc-name input[name='colorText']").css('background-color','#75FFFF');
+        }
+        else{
+        	$("#state-llc-name input[name='colorText']").css('background-color','#90EE90');
+        }
+        
+ 		//CONTROL_STATE
+    	if(stateCommState.getValue()!="Communicating"){
+        	// Communication State Error PINK
+        	$("#state-comm-state input[name='colorText']").css('background-color','#FF00FF');
+        }
+    	else{
+        	$("#state-comm-state input[name='colorText']").css('background-color','#90EE90');
+        }
+    	
+    	if(stateLlcMode.getValue()!="Up"){
+        	// Down YELLOW
+        	$("#state-llc-mode input[name='colorText']").css('background-color','#FFD700');
+        }
+        else{
+        	$("#state-llc-mode input[name='colorText']").css('background-color','#90EE90');
+        }
+    	
+        if(stateAvailable.getValue()!="Available"){
+        	// Error RED
+        	$("#state-available input[name='colorText']").css('background-color','#FF0000');
+        }
+        else{
+        	$("#state-available input[name='colorText']").css('background-color','#90EE90');
+        }
+        //ALARM_STATE
+        if(stateAlarmState.getValue()!="NoAlarms"){
+        	// アラーム発生 ORANGE
+        	$("#state-alarm-state input[name='colorText']").css('background-color','#FF7536');
+        }
+        else{
+        	$("#state-alarm-state input[name='colorText']").css('background-color','#90EE90');
+        }
+        
+        if(stateControlState.getValue()!="Online/Remote"){
+        	// Control State Error PURPLE
+        	$("#state-control-state input[name='colorText']").css('background-color','#7575FF');
+        }
+        else{
+        	$("#state-control-state input[name='colorText']").css('background-color','#90EE90');
+        }
+        //SYSTEM_STATE(OCDC State)
+        if(stateSystemState.getValue()!="Auto"){
+        	// System State Error LIGHTBLUE
+        	$("#state-system-state input[name='colorText']").css('background-color','#75FFFF');
+        }
+        else{
+        	$("#state-system-state input[name='colorText']").css('background-color','#90EE90');
+        }
+        // END APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        
+       /* //CONTROL_STATE
         if(stateControlState.getValue()!="Online/Remote"){
         	$("#state-control-state input[name='colorText']").css('background-color','#ff0000');
         }
@@ -712,9 +793,7 @@ $(function() {
         		$("#piece-available input[name='colorText']").css('background-color','#38FF61');
         	}
         	
-        }
-        //20191225 Song ADD END FOR COLORS 
-        //20191225 Song ADD END FOR MCSV2 STATE
+        }*/
         
         // データをテーブルにセット
         stateTable.addDataList(tableValue);

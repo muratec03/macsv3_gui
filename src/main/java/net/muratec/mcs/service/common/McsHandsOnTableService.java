@@ -761,7 +761,8 @@ public class McsHandsOnTableService extends BaseService {
 		   	 	 dataNum = typeDataMap.get(llcDataM);//dataNum里面是每个类型下面有多少行Icon的最大行号
 		   	 	 llcTypeNums[typeNum] = llcTypeNum;
 		   	 	 typeNum++;
-		   	 	 for (int i = 0; i < dataNum-iconNum-typeNum; i++) {
+		   	 	 for (int i = 0; i < dataNum-iconNum-typeNum; i++) {//20200226 DQY DEL
+//		   	 	 for (int i = 0; i < dataNum-iconNum-llcTypeNum; i++) {
 		   	 		 heightList.add(iconHeight);     //每一个类型底下有若干行Icon,每行Icon的高度是60
 		   	 	 }
 	   	 	 }

@@ -56,6 +56,7 @@ public class IndividualMonitorStateInfoEntity extends AjaxResBaseEntity {
     public String commState = null;
     public String systemState = null;
     public String tscName = null;
+    public String tscId = null;
     public String tscMode= null;
     public String tscAvailable = null;
     public String craneId = null;

@@ -84,6 +84,26 @@ public class Alarm {
     //private String class;//DQY DEL D20200225
     private String classs;
     // END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	// STD APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    private String vehicleId;
+    private String llcId;
+    public String getLlcId() {
+		return llcId;
+	}
+
+	public void setLlcId(String llcId) {
+		this.llcId = llcId;
+	}
+
+	public String getTscId() {
+		return tscId;
+	}
+
+	public void setTscId(String tscId) {
+		this.tscId = tscId;
+	}
+	private String tscId;
+    // END APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
     /**
      *
@@ -695,5 +715,11 @@ public class Alarm {
      */
     public void setEqpInfo(String eqpInfo) {
         this.eqpInfo = eqpInfo == null ? null : eqpInfo.trim();
+    }
+    public String getVehicleId() {
+        return alarmLoc;
+    }
+    public void setVehicleId(String vehicleId) {
+        this.vehicleId = vehicleId == null ? null : vehicleId.trim();
     }
 }

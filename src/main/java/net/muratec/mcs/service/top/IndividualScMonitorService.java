@@ -28,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import net.muratec.mcs.common.Constants;
 import net.muratec.mcs.common.ComFunction;
 import net.muratec.mcs.common.defines.State;
 import net.muratec.mcs.entity.top.IndividualMonitorAlarmInfoEntity;
@@ -42,18 +43,18 @@ import net.muratec.mcs.mapper.GuiColorMapper;
 import net.muratec.mcs.mapper.IndividualMonitorMapper;
 import net.muratec.mcs.mapper.JobPriorityMapper;
 import net.muratec.mcs.mapper.LlcMapper;
-import net.muratec.mcs.mapper.ScreenMonitorMemberMapper;
+import net.muratec.mcs.mapper.TscMapper;
 import net.muratec.mcs.model.Alarm;
 import net.muratec.mcs.model.AlarmExample;
 import net.muratec.mcs.model.GuiColor;
 import net.muratec.mcs.model.GuiColorExample;
-import net.muratec.mcs.model.IndividualMonitorStateInfo;
+import net.muratec.mcs.model.IconInfo;
 import net.muratec.mcs.model.IndividualMonitorTransferJob;
 import net.muratec.mcs.model.JobPriority;
 import net.muratec.mcs.model.Llc;
 import net.muratec.mcs.model.LlcExample;
-import net.muratec.mcs.model.ScreenMonitorMember;
-import net.muratec.mcs.model.ScreenMonitorMemberExample;
+import net.muratec.mcs.model.Tsc;
+import net.muratec.mcs.model.TscExample;
 import net.muratec.mcs.service.common.BaseService;
 import net.muratec.mcs.service.common.ExeForeignFileService;
 
@@ -107,7 +108,8 @@ public class IndividualScMonitorService extends BaseService {
   /*  *//** ScreenMonitorMemberMapper用サービス生成 *//*
     @Autowired private ScreenMonitorMemberMapper ScreenMonitorMemberMapper;//20191225 Song ADD FOR STATEINFO OF THE MAIN
 */    /** ScreenMonitorMemberMapper用サービス生成 */
-    @Autowired private LlcMapper llcMapper;//20191225 Song ADD FOR STATEINFO OF THE MAIN
+    @Autowired private LlcMapper llcMapper;
+    @Autowired private TscMapper tscMapper;
     // END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
     //@formatter:off
@@ -146,12 +148,20 @@ public class IndividualScMonitorService extends BaseService {
 	     // STD APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         LlcExample configExample = new LlcExample();
         configExample.createCriteria().andLlcIdEqualTo(reqEntity.llcId);
-        List<Llc> stateRec = llcMapper.selectByExample(configExample);
+        List<Llc> llcState = llcMapper.selectByExample(configExample);
 	     // END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-
-        if (stateRec == null) {
+        
+        // STD APL 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+       /* Tsc tscPa = new Tsc();
+        tscPa.setLlcId(reqEntity.llcId);
+        tscPa.setTscId(reqEntity.tscId);
+	 	List<IconInfo> tscState = tscMapper.selectIconInfoById(tscPa);  //llcTypeによって、設備のデータを探す
+//	 	if (llcState == null || tscState == null) {
+        */
+        if (llcState == null ) {
             return null;
         }
+        // END APL 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
         // -----------------------------------------
         // アラーム一覧取得
@@ -161,35 +171,38 @@ public class IndividualScMonitorService extends BaseService {
         example.createCriteria().andLlcIdEqualTo(reqEntity.llcId);  //20191223 Song Add
         example.setOrderByClause("SET_TIME desc");
         List<Alarm> alarmRecList = alarmMapper.selectByExample(example);
-
+        
         // -----------------------------------------
         // エンティティ形式に変換
         // -----------------------------------------
         // 状態データ
         
-        for (Llc tscStateRec : stateRec) {
+        for (Llc llcStateRec : llcState) {
             // 状態データ
-            if(!State.COMM_STATE_COMMUNICATING.equals(tscStateRec.getCommState())) 
+            if(!State.COMM_STATE_COMMUNICATING.equals(llcStateRec.getCommState())) 
             {
-            	
-            	resEntity.state.commState = tscStateRec.getCommState();
+            	resEntity.state.llcName = llcStateRec.getLlcName();
+    	        resEntity.state.llcId = llcStateRec.getLlcId();
+    	        resEntity.state.llcType = llcStateRec.getLlcType();
+            	resEntity.state.commState = llcStateRec.getCommState();
+            	resEntity.state.llcMode = State.TSC_SYSTEM_NONE;
             	resEntity.state.controlState = State.TSC_SYSTEM_NONE;
             	resEntity.state.systemState = State.TSC_SYSTEM_NONE;
             	resEntity.state.available = State.TSC_SYSTEM_NONE;
             	resEntity.state.tscMode = State.TSC_SYSTEM_NONE;
-            	resEntity.state.alarmState = tscStateRec.getAlarmState();
+//            	resEntity.state.alarmState = tscStateRec.getAlarmState();
             }
             else 
             {
-    	        resEntity.state.llcName = tscStateRec.getLlcName();
-    	        resEntity.state.llcId = tscStateRec.getLlcId();
-    	        resEntity.state.llcType = tscStateRec.getLlcType();
-    	        resEntity.state.llcMode = tscStateRec.getLlcModel();
-    	        resEntity.state.available = tscStateRec.getAvailable();
-    	        resEntity.state.controlState = tscStateRec.getControlState();
-    	        resEntity.state.alarmState = tscStateRec.getAlarmState();
-    	        resEntity.state.commState = tscStateRec.getCommState();
-    	        resEntity.state.systemState = tscStateRec.getSystemState();
+    	        resEntity.state.llcName = llcStateRec.getLlcName();
+    	        resEntity.state.llcId = llcStateRec.getLlcId();
+    	        resEntity.state.llcType = llcStateRec.getLlcType();
+    	        resEntity.state.llcMode = llcStateRec.getLlcMode();
+    	        resEntity.state.available = llcStateRec.getAvailable();
+    	        resEntity.state.controlState = llcStateRec.getControlState();
+    	        resEntity.state.alarmState = llcStateRec.getAlarmState();
+    	        resEntity.state.commState = llcStateRec.getCommState();
+    	        resEntity.state.systemState = llcStateRec.getSystemState();
 //    	        resEntity.state.tscMode = tscStateRec.getTscMode();
 //    	        resEntity.state.tscAvailable = tscStateRec.getTscAvailable();
             }
@@ -205,7 +218,7 @@ public class IndividualScMonitorService extends BaseService {
             alarmRes.alarmId = alarmRec.getAlarmId();
             alarmRes.alarmText = alarmRec.getAlarmText();
             alarmRes.alarmLoc = alarmRec.getAlarmLoc();
-//            alarmRes.vehicleId = alarmRec.getVehicleId();
+            alarmRes.vehicleId = alarmRec.getVehicleId();
             resEntity.alarmList.add(alarmRes);
         }
 

@@ -1,6 +1,9 @@
 package net.muratec.mcs.mapper;
 
 import java.util.List;
+
+import net.muratec.mcs.model.IconInfo;
+import net.muratec.mcs.model.Llc;
 import net.muratec.mcs.model.Tsc;
 import net.muratec.mcs.model.TscExample;
 import org.apache.ibatis.annotations.Param;
@@ -93,4 +96,7 @@ public interface TscMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(Tsc record);
+    // STD APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+//    List<IconInfo> selectIconInfoById(Tsc record);
+	// END APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 }
