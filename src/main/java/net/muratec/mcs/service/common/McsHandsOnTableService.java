@@ -745,7 +745,7 @@ public class McsHandsOnTableService extends BaseService {
 	   	 	 heightList.add(labelHeight);      //每一个类型的高度是23
 	   	 	 
 	   	 	List<IconInfo> llcTypeList = llcMapper.selectLlcType(moduleName); // MACS4#MACSV3 Add  //全てLLCType種類を査問する「CDC,OHBC,OHTC,OHTC2......」
-	   	 	 Integer[] llcTypeNums = new Integer[llcTypeList.size()];
+	   	 	// Integer[] llcTypeNums = new Integer[llcTypeList.size()];  ///////////song  del
 	   	 	 int typeNum=0;//llcType行号数组
 	   	 	 for (IconInfo llcInfo : llcTypeList) {
 	     		 String llcType = llcInfo.getLlcType();   //llcTypeはLLC_TYPE
@@ -759,9 +759,10 @@ public class McsHandsOnTableService extends BaseService {
 	     		 llcTypeNum = llcTypeMap.get(llcTypeM);//llcType番号
 		   	 	
 		   	 	 dataNum = typeDataMap.get(llcDataM);//dataNum里面是每个类型下面有多少行Icon的最大行号
-		   	 	 llcTypeNums[typeNum] = llcTypeNum;
-		   	 	 typeNum++;
-		   	 	 for (int i = 0; i < dataNum-iconNum-typeNum; i++) {//20200226 DQY DEL
+		   	 	 //llcTypeNums[typeNum] = llcTypeNum; ///////////song  del
+		   	 	 //typeNum++;                         ///////////song  del
+		   	 	 for (int i = 0; i < dataNum-llcTypeNum; i++) {
+		   	 	 //for (int i = 0; i < dataNum-iconNum-typeNum; i++) {//20200226 DQY DEL
 //		   	 	 for (int i = 0; i < dataNum-iconNum-llcTypeNum; i++) {
 		   	 		 heightList.add(iconHeight);     //每一个类型底下有若干行Icon,每行Icon的高度是60
 		   	 	 }
