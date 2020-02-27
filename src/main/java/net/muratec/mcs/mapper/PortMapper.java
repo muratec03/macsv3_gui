@@ -1,8 +1,12 @@
 package net.muratec.mcs.mapper;
 
 import java.util.List;
+
+import net.muratec.mcs.entity.top.ReqGetPortsListEntity;
 import net.muratec.mcs.model.Port;
 import net.muratec.mcs.model.PortExample;
+import net.muratec.mcs.model.PortsModel;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PortMapper {
@@ -93,4 +97,41 @@ public interface PortMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(Port record);
+    
+ // =============================
+    // MCS_v3 Unique Function From Here
+    // =============================
+    //@formatter:off
+    /**
+     ******************************************************************************
+     * @brief       Select Ports List
+     * @param       reqEntity   (search criteria)
+     * @return      Ports List
+     * @retval      List of Ports Model Style
+     * @attention
+     * @note        Select Ports List that matches search criteria.
+     * ----------------------------------------------------------------------------
+     * DATE       VER.        DESCRIPTION                                    AUTHOR
+     * ----------------------------------------------------------------------------
+     ******************************************************************************
+     */
+    //@formatter:on
+    List<PortsModel> selectList(ReqGetPortsListEntity reqEntity);
+    
+  //@formatter:off
+    /**
+     ******************************************************************************
+     * @brief     Get the total number of Ports List
+     * @param     reqEntity     (search criteria)
+     * @return    the total number of Ports List
+     * @retval    int Style
+     * @attention
+     * @note      Get the total number of Ports List that matches search criteria.
+     * ----------------------------------------------------------------------------
+     * DATE       VER.        DESCRIPTION                                    AUTHOR
+     * ----------------------------------------------------------------------------
+     ******************************************************************************
+     */
+    //@formatter:on
+    int getCount(ReqGetPortsListEntity reqEntity);
 }

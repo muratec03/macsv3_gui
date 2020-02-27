@@ -1,8 +1,12 @@
 package net.muratec.mcs.mapper;
 
 import java.util.List;
+
+import net.muratec.mcs.entity.top.ReqGetVehiclesListEntity;
 import net.muratec.mcs.model.Vehicle;
 import net.muratec.mcs.model.VehicleExample;
+import net.muratec.mcs.model.VehiclesModel;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface VehicleMapper {
@@ -93,4 +97,41 @@ public interface VehicleMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(Vehicle record);
+    
+    // =============================
+    // MCS_v3 Unique Function From Here
+    // =============================
+    //@formatter:off
+    /**
+     ******************************************************************************
+     * @brief       Select Vehicles List
+     * @param       reqEntity   (search criteria)
+     * @return      Vehicles List
+     * @retval      List of Vehicles Model Style
+     * @attention
+     * @note        Select Vehicles List that matches search criteria.
+     * ----------------------------------------------------------------------------
+     * DATE       VER.        DESCRIPTION                                    AUTHOR
+     * ----------------------------------------------------------------------------
+     ******************************************************************************
+     */
+    //@formatter:on
+    List<VehiclesModel> selectList(ReqGetVehiclesListEntity reqEntity);
+    
+    //@formatter:off
+    /**
+     ******************************************************************************
+     * @brief     Get the total number of Vehicles List
+     * @param     reqEntity     (search criteria)
+     * @return    the total number of Vehicles List
+     * @retval    int Style
+     * @attention
+     * @note      Get the total number of Vehicles List that matches search criteria.
+     * ----------------------------------------------------------------------------
+     * DATE       VER.        DESCRIPTION                                    AUTHOR
+     * ----------------------------------------------------------------------------
+     ******************************************************************************
+     */
+    //@formatter:on
+    int getCount(ReqGetVehiclesListEntity reqEntity);
 }

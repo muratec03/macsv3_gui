@@ -490,4 +490,37 @@
       CURRENT_BCU = #{currentBcu,jdbcType=VARCHAR}
     where VEHICLE_ID = #{vehicleId,jdbcType=VARCHAR}
   </update>
+  <!--
+    条件に合致したCarrier情報のレコード数を取得する。
+  -->
+  <select id="getCount" parameterType="net.muratec.mcs.entity.top.ReqGetVehiclesListEntity" resultType="java.lang.Integer">
+    select
+      count(*)
+    from
+      Port
+  </select>
+  
+  <resultMap id="SearchResultMap" type="net.muratec.mcs.model.VehiclesModel">
+    <id column="Vehicle_ID" jdbcType="VARCHAR" property="vehicleId" />
+    <result column="LLC_Name" jdbcType="VARCHAR" property="llcName" />
+    <result column="ALARM_TEXT" jdbcType="VARCHAR" property="alarmText" />
+    <result column="Vehicle_Kind" jdbcType="VARCHAR" property="vehicleKind" />
+    <result column="Vehicle_State" jdbcType="VARCHAR" property="vehicleState" />
+  </resultMap>
+  <!--  Ports情報一覧を取得する。 -->
+   <select id="selectList" parameterType="net.muratec.mcs.entity.top.ReqGetVehiclesListEntity" resultMap="SearchResultMap">
+      SELECT  
+			v.vehicle_id,  
+			l.llc_id,  
+			l.llc_name,  
+			NVL(a.alarm_text, '-') alarm_text,  
+			v.vehicle_carrier_type_id vehicle_kind,  
+			v.vehicle_state  
+		FROM vehicle v  
+		JOIN llc l ON v.llc_id = l.llc_id  
+		LEFT OUTER JOIN alarm a ON v.vehicle_id = a.machine_id  
+		WHERE ((v.vehicle_state IN ('Offline', 'Removed')) OR a.alarm_text IS NOT NULL)
+	    ORDER BY llc_name, vehicle_id
+  </select>
+  
 </mapper>

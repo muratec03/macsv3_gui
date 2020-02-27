@@ -553,4 +553,47 @@
       FLOOR = #{floor,jdbcType=VARCHAR}
     where PORT_ID = #{portId,jdbcType=VARCHAR}
   </update>
+  
+   <!--
+    条件に合致したCarrier情報のレコード数を取得する。
+  -->
+  <select id="getCount" parameterType="net.muratec.mcs.entity.top.ReqGetPortsListEntity" resultType="java.lang.Integer">
+    select
+      count(*)
+    from
+      Port
+  </select>
+  
+  <resultMap id="SearchResultMap" type="net.muratec.mcs.model.PortsModel">
+    <id column="PORT_ID" jdbcType="VARCHAR" property="portId" />
+    <result column="TSC_ID" jdbcType="VARCHAR" property="tscId" />
+    <result column="ALARM_TEXT" jdbcType="VARCHAR" property="alarmText" />
+    <result column="AVAILABLE" jdbcType="VARCHAR" property="available" />
+    <result column="IBSEM_AVAIL" jdbcType="VARCHAR" property="ibsemAvail" />
+    <result column="PORT_MODE" jdbcType="VARCHAR" property="portMode" />
+    <result column="CARRIER_ID" jdbcType="VARCHAR" property="carrierId" />
+  </resultMap>
+  <!--  Ports情報一覧を取得する。 -->
+   <select id="selectList" parameterType="net.muratec.mcs.entity.top.ReqGetPortsListEntity" resultMap="SearchResultMap">
+      SELECT  
+			p.port_id,  
+			p.tsc_id,  
+			NVL(a.alarm_text, '-') alarm_text,  
+			p.available,  
+			p.ibsem_avail,  
+			p.port_mode,  
+			NVL(c.carrier_id, ' ') carrier_id  
+		FROM ( 
+			SELECT port_id, tsc_id, available, ibsem_avail, port_mode FROM port  
+			UNION  
+			SELECT ohb_port_id port_id, tsc_id, available, ibsem_avail, ohb_port_mode port_mode FROM ohb_port  
+		) p  
+		LEFT OUTER JOIN alarm a ON p.port_id = a.alarm_loc  
+		LEFT OUTER JOIN carrier c ON p.port_id = c.current_loc  
+		WHERE (a.alarm_text IS NOT NULL  
+			OR ( 
+			    p.available &lt;&gt; 'Available' OR p.ibsem_avail &lt;&gt; 'Available' OR p.port_mode &lt;&gt; 'Up'  
+			)) 
+       ORDER BY tsc_id, port_id
+  </select>
 </mapper>
