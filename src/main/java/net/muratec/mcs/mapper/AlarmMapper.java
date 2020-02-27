@@ -1,8 +1,12 @@
 package net.muratec.mcs.mapper;
 
 import java.util.List;
+
+import net.muratec.mcs.entity.top.ReqGetAlarmListEntity;
 import net.muratec.mcs.model.Alarm;
 import net.muratec.mcs.model.AlarmExample;
+import net.muratec.mcs.model.AlarmModel;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface AlarmMapper {
@@ -61,4 +65,41 @@ public interface AlarmMapper {
      * @mbg.generated
      */
     int updateByExample(@Param("record") Alarm record, @Param("example") AlarmExample example);
+    
+ // =============================
+    // MCS Unique Function From Here
+    // =============================
+    //@formatter:off
+    /**
+     ******************************************************************************
+     * @brief       Select Alarm List
+     * @param       reqEntity   (search criteria)
+     * @return      Alarm List
+     * @retval      List of Alarm Model Style
+     * @attention
+     * @note        Select Alarm List that matches search criteria.
+     * ----------------------------------------------------------------------------
+     * DATE       VER.        DESCRIPTION                                    AUTHOR
+     * ----------------------------------------------------------------------------
+     ******************************************************************************
+     */
+    //@formatter:on
+    List<AlarmModel> selectList(ReqGetAlarmListEntity reqEntity);
+
+    //@formatter:off
+    /**
+     ******************************************************************************
+     * @brief     Get the total number of Alarm List
+     * @param     reqEntity     (search criteria)
+     * @return    the total number of Alarm List
+     * @retval    int Style
+     * @attention
+     * @note      Get the total number of Alarm List that matches search criteria.
+     * ----------------------------------------------------------------------------
+     * DATE       VER.        DESCRIPTION                                    AUTHOR
+     * ----------------------------------------------------------------------------
+     ******************************************************************************
+     */
+    //@formatter:on
+    int getCount(ReqGetAlarmListEntity reqEntity);
 }

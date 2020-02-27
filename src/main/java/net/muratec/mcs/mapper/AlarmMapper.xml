@@ -416,4 +416,147 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+  
+    <!--　ここより、独自SQLを記載する　-->
+
+  <!-- Alarm情報取得  -->
+
+  <resultMap id="SearchResultMap" type="net.muratec.mcs.model.AlarmModel">
+    <!-- DEL STD APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+    <!--
+    <result column="ALARM_CODE" jdbcType="VARCHAR" property="alarmCode" />
+    <result column="ALARM_SUB_CODE" jdbcType="VARCHAR" property="alarmSubCode" />
+    <result column="ALARM_LEVEL" jdbcType="VARCHAR" property="alarmLevel" />
+    <result column="ERROR_ID" jdbcType="VARCHAR" property="errorId" />
+    <result column="CLASS" jdbcType="VARCHAR" property="classInformation" />
+    <result column="RECOVERY_OPTION" jdbcType="VARCHAR" property="recoveryOption" />
+    <result column="MACHINE_ID" jdbcType="VARCHAR" property="machineId" />
+    <result column="ZONE_ID" jdbcType="VARCHAR" property="zoneId" />
+    <result column="STOCKER_UNIT_ID" jdbcType="VARCHAR" property="stockerUnitId" />
+    <result column="STOCKER_UNIT_STATE" jdbcType="VARCHAR" property="stockerUnitState" />
+    <result column="CARRIER_JOB_ID" jdbcType="VARCHAR" property="carrierJobId" />
+    <result column="AMHS_ID" jdbcType="VARCHAR" property="amhsId" />
+    <result column="SRC_LOC" jdbcType="VARCHAR" property="sourceLocation" />
+    <result column="DST_LOC" jdbcType="VARCHAR" property="destinationLocation" />
+    <result column="AMHS_TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="CARRIER_ID" jdbcType="VARCHAR" property="carrierId" />
+    <result column="EQP_INFO" jdbcType="VARCHAR" property="eqpInfo" />
+    <result column="AMHS_TYPE_CODE" jdbcType="DECIMAL" property="amhsType" />
+     -->
+    <!-- DEL END APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+    
+    
+    <!--  <id column="SET_TIME" jdbcType="TIMESTAMP" property="occurrenceTime" />  --><!-- DEL APL 2020.02.22 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+    <id column="SET_TIME" jdbcType="VARCHAR" property="setTime" />  <!-- ADD APL 2020.02.22 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+    <result column="alarm_id" jdbcType="VARCHAR" property="alarmId" />
+    <result column="alarm_loc" jdbcType="VARCHAR" property="alarmLocation" />
+    <result column="alarm_text" jdbcType="VARCHAR" property="alarmText" />
+    <!-- ADD STD APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+    <result column="llc_id" jdbcType="VARCHAR" property="llcId" />
+    <result column="llc_name" jdbcType="VARCHAR" property="llcName" />
+    <!-- ADD END APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+  </resultMap>
+
+  <!--
+    Alarm情報一覧を取得する。
+  -->
+  <!-- MACS4#0114 Mod -->
+  
+  <!-- MODEL STD APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+  <!--
+  <select id="selectList" parameterType="net.muratec.mcs.entity.info.ReqGetAlarmListEntity" resultMap="SearchResultMap">
+    select
+        SET_TIME
+      , ALARM_ID
+      , ALARM_CODE
+      , ALARM_SUB_CODE
+      , ALARM_LOC
+      , ALARM_LEVEL
+      , ALARM_TEXT
+      , ERROR_ID
+      , CLASS
+      , RECOVERY_OPTION
+      , MACHINE_ID
+      , ZONE_ID
+      , STOCKER_UNIT_ID
+      , STOCKER_UNIT_STATE
+      , CARRIER_JOB_ID
+      , AMHS_ID
+      , SRC_LOC
+      , DST_LOC
+      , AMHS_TYPE
+      , CARRIER_ID
+      , EQP_INFO
+      , AMHS_TYPE_CODE
+    from (
+      select
+          ROW_NUMBER() over(order by SET_TIME asc) rn
+        , SET_TIME
+        , ALARM_ID
+        , ALARM_CODE
+        , ALARM_SUB_CODE
+        , ALARM_LOC
+        , (select STRING from STRING_MASTER where KEY = 'ALARM_LEVEL_STRING' and CODE = ALARM_LEVEL) AS ALARM_LEVEL
+        , ALARM_TEXT
+        , ERROR_ID
+        , CLASS
+        , RECOVERY_OPTION
+        , MACHINE_ID
+        , ZONE_ID
+        , STOCKER_UNIT_ID
+        , (select STRING from STRING_MASTER where KEY = 'STOCKER_UNIT_STATE_STRING' and CODE = ALARM.STOCKER_UNIT_STATE) AS STOCKER_UNIT_STATE
+        , CARRIER_JOB_ID
+        , AMHS_ID
+        , SRC_LOC
+        , DST_LOC
+        , (select STRING from STRING_MASTER where KEY = 'AMHS_TYPE_STRING' and CODE = ALARM.AMHS_TYPE) AS AMHS_TYPE
+        , CARRIER_ID
+        , EQP_INFO
+        , AMHS_TYPE AS AMHS_TYPE_CODE
+      from
+        ALARM
+      order by
+        SET_TIME asc
+    )
+    <include refid="selectRecordWhere" />
+  </select>
+  -->
+  
+    <select id="selectList" parameterType="net.muratec.mcs.entity.top.ReqGetAlarmListEntity" resultMap="SearchResultMap">
+       select
+			alarm.set_time,
+			alarm.llc_id,  
+			NVL(TSC.tsc_id, NVL(LLC.llc_name, alarm.llc_id)) llc_name,  
+			alarm.alarm_id,  
+			alarm.alarm_loc,  
+			alarm.alarm_text 
+		from alarm  
+		  left outer join LLC on alarm.llc_id = LLC.llc_id
+		  left outer join TSC on alarm.tsc_id is not null and  alarm.tsc_id = TSC.tsc_id
+        order by
+          set_time DESC
+  </select>
+  <!-- MODEL END APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+  
+  
+  <!--
+    条件に合致したCarrier情報のレコード数を取得する。
+  -->
+  <select id="getCount" parameterType="net.muratec.mcs.entity.top.ReqGetAlarmListEntity" resultType="java.lang.Integer">
+    select
+      count(*)
+    from
+      ALARM
+  </select>
+
+  <!--
+    レコード取得範囲。
+  -->
+  <sql id="selectRecordWhere">
+    <where>
+      <if test="fromRecordNum != null and toRecordNum != null">
+        rn between #{fromRecordNum,jdbcType=DECIMAL} and #{toRecordNum,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </sql>
 </mapper>

@@ -42,6 +42,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import net.muratec.mcs.annotation.OpLog;
 import net.muratec.mcs.common.ComConst;
 import net.muratec.mcs.common.ComFunction;
 import net.muratec.mcs.controller.common.BaseController;
@@ -340,6 +341,123 @@ public class SystemMonitorController extends BaseController {
 
         return "/top/Remarks";
     }
+    
+    
+    //ADD STD APL 2020.02.22 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
+    
+    //@formatter:off
+    /**
+     ******************************************************************************
+     * @brief     凡例画面を表示する機能
+     * @param     session        セッション情報（Frameworkより付加）
+     * @param     locale         ロケーション情報（Frameworkより付加）
+     * @param     model          モデル情報（Frameworkより付加）
+     * @return    遷移先パス
+     * @retval
+     * @attention
+     * @note
+     * ----------------------------------------------------------------------------
+     * VER.        DESCRIPTION                                               AUTHOR
+     * ----------------------------------------------------------------------------
+     ******************************************************************************
+     */
+    //@formatter:on
+    @RequestMapping(value = "/Alarms", method = RequestMethod.POST)
+    @OpLog(screenInfo = ComConst.ScreenInfo.INFO_ALARM, logOperationType = ComConst.LogOperationType.GET, number = 1L)
+    public String alarms(HttpSession session, Locale locale, Model model) throws McsException {
+
+        // ----------------------------------------------
+        // アクセス権情報等
+        // ----------------------------------------------
+        super.setUserInfo(session, model, locale, ComConst.ScreenInfo.INFO_ALARM.getRefAuthFuncId());
+
+        // ----------------------------------------------
+        // 自動更新機能の有効化
+        // ----------------------------------------------
+        autoReload.setInterval(model);
+
+        // バージョン情報付与
+        ComFunction.setVersion(model);
+
+        return "top/Alarm";
+    }
+    
+    //@formatter:off
+    /**
+     ******************************************************************************
+     * @brief     凡例画面を表示する機能
+     * @param     session        セッション情報（Frameworkより付加）
+     * @param     locale         ロケーション情報（Frameworkより付加）
+     * @param     model          モデル情報（Frameworkより付加）
+     * @return    遷移先パス
+     * @retval
+     * @attention
+     * @note
+     * ----------------------------------------------------------------------------
+     * VER.        DESCRIPTION                                               AUTHOR
+     * ----------------------------------------------------------------------------
+     ******************************************************************************
+     */
+    //@formatter:on
+    @RequestMapping(value = "/Ports", method = RequestMethod.POST)
+    @OpLog(screenInfo = ComConst.ScreenInfo.INFO_ALARM, logOperationType = ComConst.LogOperationType.GET, number = 1L)
+    public String ports(HttpSession session, Locale locale, Model model) throws McsException {
+
+        // ----------------------------------------------
+        // アクセス権情報等
+        // ----------------------------------------------
+        super.setUserInfo(session, model, locale, ComConst.ScreenInfo.INFO_ALARM.getRefAuthFuncId());
+
+        // ----------------------------------------------
+        // 自動更新機能の有効化
+        // ----------------------------------------------
+        autoReload.setInterval(model);
+
+        // バージョン情報付与
+        ComFunction.setVersion(model);
+
+        return "top/Ports";
+    }
+    
+    //@formatter:off
+    /**
+     ******************************************************************************
+     * @brief     凡例画面を表示する機能
+     * @param     session        セッション情報（Frameworkより付加）
+     * @param     locale         ロケーション情報（Frameworkより付加）
+     * @param     model          モデル情報（Frameworkより付加）
+     * @return    遷移先パス
+     * @retval
+     * @attention
+     * @note
+     * ----------------------------------------------------------------------------
+     * VER.        DESCRIPTION                                               AUTHOR
+     * ----------------------------------------------------------------------------
+     ******************************************************************************
+     */
+    //@formatter:on
+    @RequestMapping(value = "/Vehicles", method = RequestMethod.POST)
+    //@OpLog(screenInfo = ComConst.ScreenInfo.INFO_ALARM, logOperationType = ComConst.LogOperationType.GET, number = 1L)
+    public String vehicles(HttpSession session, Locale locale, Model model) throws McsException {
+
+        // ----------------------------------------------
+        // アクセス権情報等
+        // ----------------------------------------------
+        super.setUserInfo(session, model, locale, ComConst.ScreenInfo.INFO_ALARM.getRefAuthFuncId());
+
+        // ----------------------------------------------
+        // 自動更新機能の有効化
+        // ----------------------------------------------
+        autoReload.setInterval(model);
+
+        // バージョン情報付与
+        ComFunction.setVersion(model);
+
+        return "top/Vehicles";
+    }
+    
+   //ADD END APL 2020.02.22 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
+    
     
   //20200106 DQY ADD START
     // MACS4#MACSV2  MACSV2→MACSV4対応                                  天津村研　董
