@@ -334,63 +334,213 @@ public class PortExample {
             return (Criteria) this;
         }
 
-        public Criteria andManagementTscIdIsNull() {
-            addCriterion("MANAGEMENT_TSC_ID is null");
+        public Criteria andPortModeSetTimeIsNull() {
+            addCriterion("PORT_MODE_SET_TIME is null");
             return (Criteria) this;
         }
 
-        public Criteria andManagementTscIdIsNotNull() {
-            addCriterion("MANAGEMENT_TSC_ID is not null");
+        public Criteria andPortModeSetTimeIsNotNull() {
+            addCriterion("PORT_MODE_SET_TIME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andManagementTscIdEqualTo(Integer value) {
-            addCriterion("MANAGEMENT_TSC_ID =", value, "managementTscId");
+        public Criteria andPortModeSetTimeEqualTo(String value) {
+            addCriterion("PORT_MODE_SET_TIME =", value, "portModeSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andManagementTscIdNotEqualTo(Integer value) {
-            addCriterion("MANAGEMENT_TSC_ID <>", value, "managementTscId");
+        public Criteria andPortModeSetTimeNotEqualTo(String value) {
+            addCriterion("PORT_MODE_SET_TIME <>", value, "portModeSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andManagementTscIdGreaterThan(Integer value) {
-            addCriterion("MANAGEMENT_TSC_ID >", value, "managementTscId");
+        public Criteria andPortModeSetTimeGreaterThan(String value) {
+            addCriterion("PORT_MODE_SET_TIME >", value, "portModeSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andManagementTscIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("MANAGEMENT_TSC_ID >=", value, "managementTscId");
+        public Criteria andPortModeSetTimeGreaterThanOrEqualTo(String value) {
+            addCriterion("PORT_MODE_SET_TIME >=", value, "portModeSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andManagementTscIdLessThan(Integer value) {
-            addCriterion("MANAGEMENT_TSC_ID <", value, "managementTscId");
+        public Criteria andPortModeSetTimeLessThan(String value) {
+            addCriterion("PORT_MODE_SET_TIME <", value, "portModeSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andManagementTscIdLessThanOrEqualTo(Integer value) {
-            addCriterion("MANAGEMENT_TSC_ID <=", value, "managementTscId");
+        public Criteria andPortModeSetTimeLessThanOrEqualTo(String value) {
+            addCriterion("PORT_MODE_SET_TIME <=", value, "portModeSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andManagementTscIdIn(List<Integer> values) {
-            addCriterion("MANAGEMENT_TSC_ID in", values, "managementTscId");
+        public Criteria andPortModeSetTimeLike(String value) {
+            addCriterion("PORT_MODE_SET_TIME like", value, "portModeSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andManagementTscIdNotIn(List<Integer> values) {
-            addCriterion("MANAGEMENT_TSC_ID not in", values, "managementTscId");
+        public Criteria andPortModeSetTimeNotLike(String value) {
+            addCriterion("PORT_MODE_SET_TIME not like", value, "portModeSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andManagementTscIdBetween(Integer value1, Integer value2) {
-            addCriterion("MANAGEMENT_TSC_ID between", value1, value2, "managementTscId");
+        public Criteria andPortModeSetTimeIn(List<String> values) {
+            addCriterion("PORT_MODE_SET_TIME in", values, "portModeSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andManagementTscIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("MANAGEMENT_TSC_ID not between", value1, value2, "managementTscId");
+        public Criteria andPortModeSetTimeNotIn(List<String> values) {
+            addCriterion("PORT_MODE_SET_TIME not in", values, "portModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetTimeBetween(String value1, String value2) {
+            addCriterion("PORT_MODE_SET_TIME between", value1, value2, "portModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetTimeNotBetween(String value1, String value2) {
+            addCriterion("PORT_MODE_SET_TIME not between", value1, value2, "portModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorIsNull() {
+            addCriterion("PORT_MODE_SET_ORIGINATOR is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorIsNotNull() {
+            addCriterion("PORT_MODE_SET_ORIGINATOR is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorEqualTo(String value) {
+            addCriterion("PORT_MODE_SET_ORIGINATOR =", value, "portModeSetOriginator");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorNotEqualTo(String value) {
+            addCriterion("PORT_MODE_SET_ORIGINATOR <>", value, "portModeSetOriginator");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorGreaterThan(String value) {
+            addCriterion("PORT_MODE_SET_ORIGINATOR >", value, "portModeSetOriginator");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorGreaterThanOrEqualTo(String value) {
+            addCriterion("PORT_MODE_SET_ORIGINATOR >=", value, "portModeSetOriginator");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorLessThan(String value) {
+            addCriterion("PORT_MODE_SET_ORIGINATOR <", value, "portModeSetOriginator");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorLessThanOrEqualTo(String value) {
+            addCriterion("PORT_MODE_SET_ORIGINATOR <=", value, "portModeSetOriginator");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorLike(String value) {
+            addCriterion("PORT_MODE_SET_ORIGINATOR like", value, "portModeSetOriginator");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorNotLike(String value) {
+            addCriterion("PORT_MODE_SET_ORIGINATOR not like", value, "portModeSetOriginator");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorIn(List<String> values) {
+            addCriterion("PORT_MODE_SET_ORIGINATOR in", values, "portModeSetOriginator");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorNotIn(List<String> values) {
+            addCriterion("PORT_MODE_SET_ORIGINATOR not in", values, "portModeSetOriginator");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorBetween(String value1, String value2) {
+            addCriterion("PORT_MODE_SET_ORIGINATOR between", value1, value2, "portModeSetOriginator");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortModeSetOriginatorNotBetween(String value1, String value2) {
+            addCriterion("PORT_MODE_SET_ORIGINATOR not between", value1, value2, "portModeSetOriginator");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateIsNull() {
+            addCriterion("PORT_ALARM_STATE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateIsNotNull() {
+            addCriterion("PORT_ALARM_STATE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateEqualTo(String value) {
+            addCriterion("PORT_ALARM_STATE =", value, "portAlarmState");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateNotEqualTo(String value) {
+            addCriterion("PORT_ALARM_STATE <>", value, "portAlarmState");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateGreaterThan(String value) {
+            addCriterion("PORT_ALARM_STATE >", value, "portAlarmState");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateGreaterThanOrEqualTo(String value) {
+            addCriterion("PORT_ALARM_STATE >=", value, "portAlarmState");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateLessThan(String value) {
+            addCriterion("PORT_ALARM_STATE <", value, "portAlarmState");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateLessThanOrEqualTo(String value) {
+            addCriterion("PORT_ALARM_STATE <=", value, "portAlarmState");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateLike(String value) {
+            addCriterion("PORT_ALARM_STATE like", value, "portAlarmState");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateNotLike(String value) {
+            addCriterion("PORT_ALARM_STATE not like", value, "portAlarmState");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateIn(List<String> values) {
+            addCriterion("PORT_ALARM_STATE in", values, "portAlarmState");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateNotIn(List<String> values) {
+            addCriterion("PORT_ALARM_STATE not in", values, "portAlarmState");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateBetween(String value1, String value2) {
+            addCriterion("PORT_ALARM_STATE between", value1, value2, "portAlarmState");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortAlarmStateNotBetween(String value1, String value2) {
+            addCriterion("PORT_ALARM_STATE not between", value1, value2, "portAlarmState");
             return (Criteria) this;
         }
 
@@ -534,276 +684,6 @@ public class PortExample {
             return (Criteria) this;
         }
 
-        public Criteria andPortAbbreviationIsNull() {
-            addCriterion("PORT_ABBREVIATION is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPortAbbreviationIsNotNull() {
-            addCriterion("PORT_ABBREVIATION is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPortAbbreviationEqualTo(String value) {
-            addCriterion("PORT_ABBREVIATION =", value, "portAbbreviation");
-            return (Criteria) this;
-        }
-
-        public Criteria andPortAbbreviationNotEqualTo(String value) {
-            addCriterion("PORT_ABBREVIATION <>", value, "portAbbreviation");
-            return (Criteria) this;
-        }
-
-        public Criteria andPortAbbreviationGreaterThan(String value) {
-            addCriterion("PORT_ABBREVIATION >", value, "portAbbreviation");
-            return (Criteria) this;
-        }
-
-        public Criteria andPortAbbreviationGreaterThanOrEqualTo(String value) {
-            addCriterion("PORT_ABBREVIATION >=", value, "portAbbreviation");
-            return (Criteria) this;
-        }
-
-        public Criteria andPortAbbreviationLessThan(String value) {
-            addCriterion("PORT_ABBREVIATION <", value, "portAbbreviation");
-            return (Criteria) this;
-        }
-
-        public Criteria andPortAbbreviationLessThanOrEqualTo(String value) {
-            addCriterion("PORT_ABBREVIATION <=", value, "portAbbreviation");
-            return (Criteria) this;
-        }
-
-        public Criteria andPortAbbreviationLike(String value) {
-            addCriterion("PORT_ABBREVIATION like", value, "portAbbreviation");
-            return (Criteria) this;
-        }
-
-        public Criteria andPortAbbreviationNotLike(String value) {
-            addCriterion("PORT_ABBREVIATION not like", value, "portAbbreviation");
-            return (Criteria) this;
-        }
-
-        public Criteria andPortAbbreviationIn(List<String> values) {
-            addCriterion("PORT_ABBREVIATION in", values, "portAbbreviation");
-            return (Criteria) this;
-        }
-
-        public Criteria andPortAbbreviationNotIn(List<String> values) {
-            addCriterion("PORT_ABBREVIATION not in", values, "portAbbreviation");
-            return (Criteria) this;
-        }
-
-        public Criteria andPortAbbreviationBetween(String value1, String value2) {
-            addCriterion("PORT_ABBREVIATION between", value1, value2, "portAbbreviation");
-            return (Criteria) this;
-        }
-
-        public Criteria andPortAbbreviationNotBetween(String value1, String value2) {
-            addCriterion("PORT_ABBREVIATION not between", value1, value2, "portAbbreviation");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameIsNull() {
-            addCriterion("VENDOR_PORT_NAME is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameIsNotNull() {
-            addCriterion("VENDOR_PORT_NAME is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameEqualTo(String value) {
-            addCriterion("VENDOR_PORT_NAME =", value, "vendorPortName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameNotEqualTo(String value) {
-            addCriterion("VENDOR_PORT_NAME <>", value, "vendorPortName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameGreaterThan(String value) {
-            addCriterion("VENDOR_PORT_NAME >", value, "vendorPortName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameGreaterThanOrEqualTo(String value) {
-            addCriterion("VENDOR_PORT_NAME >=", value, "vendorPortName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameLessThan(String value) {
-            addCriterion("VENDOR_PORT_NAME <", value, "vendorPortName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameLessThanOrEqualTo(String value) {
-            addCriterion("VENDOR_PORT_NAME <=", value, "vendorPortName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameLike(String value) {
-            addCriterion("VENDOR_PORT_NAME like", value, "vendorPortName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameNotLike(String value) {
-            addCriterion("VENDOR_PORT_NAME not like", value, "vendorPortName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameIn(List<String> values) {
-            addCriterion("VENDOR_PORT_NAME in", values, "vendorPortName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameNotIn(List<String> values) {
-            addCriterion("VENDOR_PORT_NAME not in", values, "vendorPortName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameBetween(String value1, String value2) {
-            addCriterion("VENDOR_PORT_NAME between", value1, value2, "vendorPortName");
-            return (Criteria) this;
-        }
-
-        public Criteria andVendorPortNameNotBetween(String value1, String value2) {
-            addCriterion("VENDOR_PORT_NAME not between", value1, value2, "vendorPortName");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrFlgIsNull() {
-            addCriterion("IDR_FLG is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrFlgIsNotNull() {
-            addCriterion("IDR_FLG is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrFlgEqualTo(Short value) {
-            addCriterion("IDR_FLG =", value, "idrFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrFlgNotEqualTo(Short value) {
-            addCriterion("IDR_FLG <>", value, "idrFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrFlgGreaterThan(Short value) {
-            addCriterion("IDR_FLG >", value, "idrFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrFlgGreaterThanOrEqualTo(Short value) {
-            addCriterion("IDR_FLG >=", value, "idrFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrFlgLessThan(Short value) {
-            addCriterion("IDR_FLG <", value, "idrFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrFlgLessThanOrEqualTo(Short value) {
-            addCriterion("IDR_FLG <=", value, "idrFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrFlgIn(List<Short> values) {
-            addCriterion("IDR_FLG in", values, "idrFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrFlgNotIn(List<Short> values) {
-            addCriterion("IDR_FLG not in", values, "idrFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrFlgBetween(Short value1, Short value2) {
-            addCriterion("IDR_FLG between", value1, value2, "idrFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrFlgNotBetween(Short value1, Short value2) {
-            addCriterion("IDR_FLG not between", value1, value2, "idrFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeIsNull() {
-            addCriterion("IDR_MODE is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeIsNotNull() {
-            addCriterion("IDR_MODE is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeEqualTo(String value) {
-            addCriterion("IDR_MODE =", value, "idrMode");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeNotEqualTo(String value) {
-            addCriterion("IDR_MODE <>", value, "idrMode");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeGreaterThan(String value) {
-            addCriterion("IDR_MODE >", value, "idrMode");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeGreaterThanOrEqualTo(String value) {
-            addCriterion("IDR_MODE >=", value, "idrMode");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeLessThan(String value) {
-            addCriterion("IDR_MODE <", value, "idrMode");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeLessThanOrEqualTo(String value) {
-            addCriterion("IDR_MODE <=", value, "idrMode");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeLike(String value) {
-            addCriterion("IDR_MODE like", value, "idrMode");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeNotLike(String value) {
-            addCriterion("IDR_MODE not like", value, "idrMode");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeIn(List<String> values) {
-            addCriterion("IDR_MODE in", values, "idrMode");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeNotIn(List<String> values) {
-            addCriterion("IDR_MODE not in", values, "idrMode");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeBetween(String value1, String value2) {
-            addCriterion("IDR_MODE between", value1, value2, "idrMode");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdrModeNotBetween(String value1, String value2) {
-            addCriterion("IDR_MODE not between", value1, value2, "idrMode");
-            return (Criteria) this;
-        }
-
         public Criteria andPortTypeIsNull() {
             addCriterion("PORT_TYPE is null");
             return (Criteria) this;
@@ -814,52 +694,62 @@ public class PortExample {
             return (Criteria) this;
         }
 
-        public Criteria andPortTypeEqualTo(Short value) {
+        public Criteria andPortTypeEqualTo(String value) {
             addCriterion("PORT_TYPE =", value, "portType");
             return (Criteria) this;
         }
 
-        public Criteria andPortTypeNotEqualTo(Short value) {
+        public Criteria andPortTypeNotEqualTo(String value) {
             addCriterion("PORT_TYPE <>", value, "portType");
             return (Criteria) this;
         }
 
-        public Criteria andPortTypeGreaterThan(Short value) {
+        public Criteria andPortTypeGreaterThan(String value) {
             addCriterion("PORT_TYPE >", value, "portType");
             return (Criteria) this;
         }
 
-        public Criteria andPortTypeGreaterThanOrEqualTo(Short value) {
+        public Criteria andPortTypeGreaterThanOrEqualTo(String value) {
             addCriterion("PORT_TYPE >=", value, "portType");
             return (Criteria) this;
         }
 
-        public Criteria andPortTypeLessThan(Short value) {
+        public Criteria andPortTypeLessThan(String value) {
             addCriterion("PORT_TYPE <", value, "portType");
             return (Criteria) this;
         }
 
-        public Criteria andPortTypeLessThanOrEqualTo(Short value) {
+        public Criteria andPortTypeLessThanOrEqualTo(String value) {
             addCriterion("PORT_TYPE <=", value, "portType");
             return (Criteria) this;
         }
 
-        public Criteria andPortTypeIn(List<Short> values) {
+        public Criteria andPortTypeLike(String value) {
+            addCriterion("PORT_TYPE like", value, "portType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortTypeNotLike(String value) {
+            addCriterion("PORT_TYPE not like", value, "portType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPortTypeIn(List<String> values) {
             addCriterion("PORT_TYPE in", values, "portType");
             return (Criteria) this;
         }
 
-        public Criteria andPortTypeNotIn(List<Short> values) {
+        public Criteria andPortTypeNotIn(List<String> values) {
             addCriterion("PORT_TYPE not in", values, "portType");
             return (Criteria) this;
         }
 
-        public Criteria andPortTypeBetween(Short value1, Short value2) {
+        public Criteria andPortTypeBetween(String value1, String value2) {
             addCriterion("PORT_TYPE between", value1, value2, "portType");
             return (Criteria) this;
         }
 
-        public Criteria andPortTypeNotBetween(Short value1, Short value2) {
+        public Criteria andPortTypeNotBetween(String value1, String value2) {
             addCriterion("PORT_TYPE not between", value1, value2, "portType");
             return (Criteria) this;
         }
@@ -934,213 +824,1103 @@ public class PortExample {
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortIsNull() {
-            addCriterion("REJECT_PORT is null");
+        public Criteria andIdrFlgIsNull() {
+            addCriterion("IDR_FLG is null");
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortIsNotNull() {
-            addCriterion("REJECT_PORT is not null");
+        public Criteria andIdrFlgIsNotNull() {
+            addCriterion("IDR_FLG is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortEqualTo(String value) {
-            addCriterion("REJECT_PORT =", value, "rejectPort");
+        public Criteria andIdrFlgEqualTo(String value) {
+            addCriterion("IDR_FLG =", value, "idrFlg");
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortNotEqualTo(String value) {
-            addCriterion("REJECT_PORT <>", value, "rejectPort");
+        public Criteria andIdrFlgNotEqualTo(String value) {
+            addCriterion("IDR_FLG <>", value, "idrFlg");
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortGreaterThan(String value) {
-            addCriterion("REJECT_PORT >", value, "rejectPort");
+        public Criteria andIdrFlgGreaterThan(String value) {
+            addCriterion("IDR_FLG >", value, "idrFlg");
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortGreaterThanOrEqualTo(String value) {
-            addCriterion("REJECT_PORT >=", value, "rejectPort");
+        public Criteria andIdrFlgGreaterThanOrEqualTo(String value) {
+            addCriterion("IDR_FLG >=", value, "idrFlg");
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortLessThan(String value) {
-            addCriterion("REJECT_PORT <", value, "rejectPort");
+        public Criteria andIdrFlgLessThan(String value) {
+            addCriterion("IDR_FLG <", value, "idrFlg");
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortLessThanOrEqualTo(String value) {
-            addCriterion("REJECT_PORT <=", value, "rejectPort");
+        public Criteria andIdrFlgLessThanOrEqualTo(String value) {
+            addCriterion("IDR_FLG <=", value, "idrFlg");
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortLike(String value) {
-            addCriterion("REJECT_PORT like", value, "rejectPort");
+        public Criteria andIdrFlgLike(String value) {
+            addCriterion("IDR_FLG like", value, "idrFlg");
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortNotLike(String value) {
-            addCriterion("REJECT_PORT not like", value, "rejectPort");
+        public Criteria andIdrFlgNotLike(String value) {
+            addCriterion("IDR_FLG not like", value, "idrFlg");
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortIn(List<String> values) {
-            addCriterion("REJECT_PORT in", values, "rejectPort");
+        public Criteria andIdrFlgIn(List<String> values) {
+            addCriterion("IDR_FLG in", values, "idrFlg");
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortNotIn(List<String> values) {
-            addCriterion("REJECT_PORT not in", values, "rejectPort");
+        public Criteria andIdrFlgNotIn(List<String> values) {
+            addCriterion("IDR_FLG not in", values, "idrFlg");
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortBetween(String value1, String value2) {
-            addCriterion("REJECT_PORT between", value1, value2, "rejectPort");
+        public Criteria andIdrFlgBetween(String value1, String value2) {
+            addCriterion("IDR_FLG between", value1, value2, "idrFlg");
             return (Criteria) this;
         }
 
-        public Criteria andRejectPortNotBetween(String value1, String value2) {
-            addCriterion("REJECT_PORT not between", value1, value2, "rejectPort");
+        public Criteria andIdrFlgNotBetween(String value1, String value2) {
+            addCriterion("IDR_FLG not between", value1, value2, "idrFlg");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeIsNull() {
-            addCriterion("E10_PORT_MODE is null");
+        public Criteria andIdrModeIsNull() {
+            addCriterion("IDR_MODE is null");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeIsNotNull() {
-            addCriterion("E10_PORT_MODE is not null");
+        public Criteria andIdrModeIsNotNull() {
+            addCriterion("IDR_MODE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeEqualTo(String value) {
-            addCriterion("E10_PORT_MODE =", value, "e10PortMode");
+        public Criteria andIdrModeEqualTo(String value) {
+            addCriterion("IDR_MODE =", value, "idrMode");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeNotEqualTo(String value) {
-            addCriterion("E10_PORT_MODE <>", value, "e10PortMode");
+        public Criteria andIdrModeNotEqualTo(String value) {
+            addCriterion("IDR_MODE <>", value, "idrMode");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeGreaterThan(String value) {
-            addCriterion("E10_PORT_MODE >", value, "e10PortMode");
+        public Criteria andIdrModeGreaterThan(String value) {
+            addCriterion("IDR_MODE >", value, "idrMode");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeGreaterThanOrEqualTo(String value) {
-            addCriterion("E10_PORT_MODE >=", value, "e10PortMode");
+        public Criteria andIdrModeGreaterThanOrEqualTo(String value) {
+            addCriterion("IDR_MODE >=", value, "idrMode");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeLessThan(String value) {
-            addCriterion("E10_PORT_MODE <", value, "e10PortMode");
+        public Criteria andIdrModeLessThan(String value) {
+            addCriterion("IDR_MODE <", value, "idrMode");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeLessThanOrEqualTo(String value) {
-            addCriterion("E10_PORT_MODE <=", value, "e10PortMode");
+        public Criteria andIdrModeLessThanOrEqualTo(String value) {
+            addCriterion("IDR_MODE <=", value, "idrMode");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeLike(String value) {
-            addCriterion("E10_PORT_MODE like", value, "e10PortMode");
+        public Criteria andIdrModeLike(String value) {
+            addCriterion("IDR_MODE like", value, "idrMode");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeNotLike(String value) {
-            addCriterion("E10_PORT_MODE not like", value, "e10PortMode");
+        public Criteria andIdrModeNotLike(String value) {
+            addCriterion("IDR_MODE not like", value, "idrMode");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeIn(List<String> values) {
-            addCriterion("E10_PORT_MODE in", values, "e10PortMode");
+        public Criteria andIdrModeIn(List<String> values) {
+            addCriterion("IDR_MODE in", values, "idrMode");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeNotIn(List<String> values) {
-            addCriterion("E10_PORT_MODE not in", values, "e10PortMode");
+        public Criteria andIdrModeNotIn(List<String> values) {
+            addCriterion("IDR_MODE not in", values, "idrMode");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeBetween(String value1, String value2) {
-            addCriterion("E10_PORT_MODE between", value1, value2, "e10PortMode");
+        public Criteria andIdrModeBetween(String value1, String value2) {
+            addCriterion("IDR_MODE between", value1, value2, "idrMode");
             return (Criteria) this;
         }
 
-        public Criteria andE10PortModeNotBetween(String value1, String value2) {
-            addCriterion("E10_PORT_MODE not between", value1, value2, "e10PortMode");
+        public Criteria andIdrModeNotBetween(String value1, String value2) {
+            addCriterion("IDR_MODE not between", value1, value2, "idrMode");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeIsNull() {
-            addCriterion("E10_SET_TIME is null");
+        public Criteria andIdrAvailableIsNull() {
+            addCriterion("IDR_AVAILABLE is null");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeIsNotNull() {
-            addCriterion("E10_SET_TIME is not null");
+        public Criteria andIdrAvailableIsNotNull() {
+            addCriterion("IDR_AVAILABLE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeEqualTo(String value) {
-            addCriterion("E10_SET_TIME =", value, "e10SetTime");
+        public Criteria andIdrAvailableEqualTo(String value) {
+            addCriterion("IDR_AVAILABLE =", value, "idrAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeNotEqualTo(String value) {
-            addCriterion("E10_SET_TIME <>", value, "e10SetTime");
+        public Criteria andIdrAvailableNotEqualTo(String value) {
+            addCriterion("IDR_AVAILABLE <>", value, "idrAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeGreaterThan(String value) {
-            addCriterion("E10_SET_TIME >", value, "e10SetTime");
+        public Criteria andIdrAvailableGreaterThan(String value) {
+            addCriterion("IDR_AVAILABLE >", value, "idrAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeGreaterThanOrEqualTo(String value) {
-            addCriterion("E10_SET_TIME >=", value, "e10SetTime");
+        public Criteria andIdrAvailableGreaterThanOrEqualTo(String value) {
+            addCriterion("IDR_AVAILABLE >=", value, "idrAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeLessThan(String value) {
-            addCriterion("E10_SET_TIME <", value, "e10SetTime");
+        public Criteria andIdrAvailableLessThan(String value) {
+            addCriterion("IDR_AVAILABLE <", value, "idrAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeLessThanOrEqualTo(String value) {
-            addCriterion("E10_SET_TIME <=", value, "e10SetTime");
+        public Criteria andIdrAvailableLessThanOrEqualTo(String value) {
+            addCriterion("IDR_AVAILABLE <=", value, "idrAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeLike(String value) {
-            addCriterion("E10_SET_TIME like", value, "e10SetTime");
+        public Criteria andIdrAvailableLike(String value) {
+            addCriterion("IDR_AVAILABLE like", value, "idrAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeNotLike(String value) {
-            addCriterion("E10_SET_TIME not like", value, "e10SetTime");
+        public Criteria andIdrAvailableNotLike(String value) {
+            addCriterion("IDR_AVAILABLE not like", value, "idrAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeIn(List<String> values) {
-            addCriterion("E10_SET_TIME in", values, "e10SetTime");
+        public Criteria andIdrAvailableIn(List<String> values) {
+            addCriterion("IDR_AVAILABLE in", values, "idrAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeNotIn(List<String> values) {
-            addCriterion("E10_SET_TIME not in", values, "e10SetTime");
+        public Criteria andIdrAvailableNotIn(List<String> values) {
+            addCriterion("IDR_AVAILABLE not in", values, "idrAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeBetween(String value1, String value2) {
-            addCriterion("E10_SET_TIME between", value1, value2, "e10SetTime");
+        public Criteria andIdrAvailableBetween(String value1, String value2) {
+            addCriterion("IDR_AVAILABLE between", value1, value2, "idrAvailable");
             return (Criteria) this;
         }
 
-        public Criteria andE10SetTimeNotBetween(String value1, String value2) {
-            addCriterion("E10_SET_TIME not between", value1, value2, "e10SetTime");
+        public Criteria andIdrAvailableNotBetween(String value1, String value2) {
+            addCriterion("IDR_AVAILABLE not between", value1, value2, "idrAvailable");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgIsNull() {
+            addCriterion("MGV_FLG is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgIsNotNull() {
+            addCriterion("MGV_FLG is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgEqualTo(String value) {
+            addCriterion("MGV_FLG =", value, "mgvFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgNotEqualTo(String value) {
+            addCriterion("MGV_FLG <>", value, "mgvFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgGreaterThan(String value) {
+            addCriterion("MGV_FLG >", value, "mgvFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgGreaterThanOrEqualTo(String value) {
+            addCriterion("MGV_FLG >=", value, "mgvFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgLessThan(String value) {
+            addCriterion("MGV_FLG <", value, "mgvFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgLessThanOrEqualTo(String value) {
+            addCriterion("MGV_FLG <=", value, "mgvFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgLike(String value) {
+            addCriterion("MGV_FLG like", value, "mgvFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgNotLike(String value) {
+            addCriterion("MGV_FLG not like", value, "mgvFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgIn(List<String> values) {
+            addCriterion("MGV_FLG in", values, "mgvFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgNotIn(List<String> values) {
+            addCriterion("MGV_FLG not in", values, "mgvFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgBetween(String value1, String value2) {
+            addCriterion("MGV_FLG between", value1, value2, "mgvFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvFlgNotBetween(String value1, String value2) {
+            addCriterion("MGV_FLG not between", value1, value2, "mgvFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeIsNull() {
+            addCriterion("MGV_MODE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeIsNotNull() {
+            addCriterion("MGV_MODE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeEqualTo(String value) {
+            addCriterion("MGV_MODE =", value, "mgvMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeNotEqualTo(String value) {
+            addCriterion("MGV_MODE <>", value, "mgvMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeGreaterThan(String value) {
+            addCriterion("MGV_MODE >", value, "mgvMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeGreaterThanOrEqualTo(String value) {
+            addCriterion("MGV_MODE >=", value, "mgvMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeLessThan(String value) {
+            addCriterion("MGV_MODE <", value, "mgvMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeLessThanOrEqualTo(String value) {
+            addCriterion("MGV_MODE <=", value, "mgvMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeLike(String value) {
+            addCriterion("MGV_MODE like", value, "mgvMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeNotLike(String value) {
+            addCriterion("MGV_MODE not like", value, "mgvMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeIn(List<String> values) {
+            addCriterion("MGV_MODE in", values, "mgvMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeNotIn(List<String> values) {
+            addCriterion("MGV_MODE not in", values, "mgvMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeBetween(String value1, String value2) {
+            addCriterion("MGV_MODE between", value1, value2, "mgvMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeNotBetween(String value1, String value2) {
+            addCriterion("MGV_MODE not between", value1, value2, "mgvMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgIsNull() {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgIsNotNull() {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgEqualTo(String value) {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG =", value, "mgvModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgNotEqualTo(String value) {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG <>", value, "mgvModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgGreaterThan(String value) {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG >", value, "mgvModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgGreaterThanOrEqualTo(String value) {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG >=", value, "mgvModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgLessThan(String value) {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG <", value, "mgvModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgLessThanOrEqualTo(String value) {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG <=", value, "mgvModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgLike(String value) {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG like", value, "mgvModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgNotLike(String value) {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG not like", value, "mgvModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgIn(List<String> values) {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG in", values, "mgvModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgNotIn(List<String> values) {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG not in", values, "mgvModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgBetween(String value1, String value2) {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG between", value1, value2, "mgvModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeAutoChgFlgNotBetween(String value1, String value2) {
+            addCriterion("MGV_MODE_AUTO_CHG_FLG not between", value1, value2, "mgvModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveIsNull() {
+            addCriterion("MGV_MODE_RESERVE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveIsNotNull() {
+            addCriterion("MGV_MODE_RESERVE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveEqualTo(String value) {
+            addCriterion("MGV_MODE_RESERVE =", value, "mgvModeReserve");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveNotEqualTo(String value) {
+            addCriterion("MGV_MODE_RESERVE <>", value, "mgvModeReserve");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveGreaterThan(String value) {
+            addCriterion("MGV_MODE_RESERVE >", value, "mgvModeReserve");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveGreaterThanOrEqualTo(String value) {
+            addCriterion("MGV_MODE_RESERVE >=", value, "mgvModeReserve");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveLessThan(String value) {
+            addCriterion("MGV_MODE_RESERVE <", value, "mgvModeReserve");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveLessThanOrEqualTo(String value) {
+            addCriterion("MGV_MODE_RESERVE <=", value, "mgvModeReserve");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveLike(String value) {
+            addCriterion("MGV_MODE_RESERVE like", value, "mgvModeReserve");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveNotLike(String value) {
+            addCriterion("MGV_MODE_RESERVE not like", value, "mgvModeReserve");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveIn(List<String> values) {
+            addCriterion("MGV_MODE_RESERVE in", values, "mgvModeReserve");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveNotIn(List<String> values) {
+            addCriterion("MGV_MODE_RESERVE not in", values, "mgvModeReserve");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveBetween(String value1, String value2) {
+            addCriterion("MGV_MODE_RESERVE between", value1, value2, "mgvModeReserve");
+            return (Criteria) this;
+        }
+
+        public Criteria andMgvModeReserveNotBetween(String value1, String value2) {
+            addCriterion("MGV_MODE_RESERVE not between", value1, value2, "mgvModeReserve");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgIsNull() {
+            addCriterion("IN_OUT_FLG is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgIsNotNull() {
+            addCriterion("IN_OUT_FLG is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgEqualTo(String value) {
+            addCriterion("IN_OUT_FLG =", value, "inOutFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgNotEqualTo(String value) {
+            addCriterion("IN_OUT_FLG <>", value, "inOutFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgGreaterThan(String value) {
+            addCriterion("IN_OUT_FLG >", value, "inOutFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgGreaterThanOrEqualTo(String value) {
+            addCriterion("IN_OUT_FLG >=", value, "inOutFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgLessThan(String value) {
+            addCriterion("IN_OUT_FLG <", value, "inOutFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgLessThanOrEqualTo(String value) {
+            addCriterion("IN_OUT_FLG <=", value, "inOutFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgLike(String value) {
+            addCriterion("IN_OUT_FLG like", value, "inOutFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgNotLike(String value) {
+            addCriterion("IN_OUT_FLG not like", value, "inOutFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgIn(List<String> values) {
+            addCriterion("IN_OUT_FLG in", values, "inOutFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgNotIn(List<String> values) {
+            addCriterion("IN_OUT_FLG not in", values, "inOutFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgBetween(String value1, String value2) {
+            addCriterion("IN_OUT_FLG between", value1, value2, "inOutFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutFlgNotBetween(String value1, String value2) {
+            addCriterion("IN_OUT_FLG not between", value1, value2, "inOutFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgIsNull() {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgIsNotNull() {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgEqualTo(String value) {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG =", value, "inOutModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgNotEqualTo(String value) {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG <>", value, "inOutModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgGreaterThan(String value) {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG >", value, "inOutModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgGreaterThanOrEqualTo(String value) {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG >=", value, "inOutModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgLessThan(String value) {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG <", value, "inOutModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgLessThanOrEqualTo(String value) {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG <=", value, "inOutModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgLike(String value) {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG like", value, "inOutModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgNotLike(String value) {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG not like", value, "inOutModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgIn(List<String> values) {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG in", values, "inOutModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgNotIn(List<String> values) {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG not in", values, "inOutModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgBetween(String value1, String value2) {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG between", value1, value2, "inOutModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeAutoChgFlgNotBetween(String value1, String value2) {
+            addCriterion("IN_OUT_MODE_AUTO_CHG_FLG not between", value1, value2, "inOutModeAutoChgFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeChgTimerIsNull() {
+            addCriterion("IN_OUT_MODE_CHG_TIMER is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeChgTimerIsNotNull() {
+            addCriterion("IN_OUT_MODE_CHG_TIMER is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeChgTimerEqualTo(Integer value) {
+            addCriterion("IN_OUT_MODE_CHG_TIMER =", value, "inOutModeChgTimer");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeChgTimerNotEqualTo(Integer value) {
+            addCriterion("IN_OUT_MODE_CHG_TIMER <>", value, "inOutModeChgTimer");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeChgTimerGreaterThan(Integer value) {
+            addCriterion("IN_OUT_MODE_CHG_TIMER >", value, "inOutModeChgTimer");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeChgTimerGreaterThanOrEqualTo(Integer value) {
+            addCriterion("IN_OUT_MODE_CHG_TIMER >=", value, "inOutModeChgTimer");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeChgTimerLessThan(Integer value) {
+            addCriterion("IN_OUT_MODE_CHG_TIMER <", value, "inOutModeChgTimer");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeChgTimerLessThanOrEqualTo(Integer value) {
+            addCriterion("IN_OUT_MODE_CHG_TIMER <=", value, "inOutModeChgTimer");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeChgTimerIn(List<Integer> values) {
+            addCriterion("IN_OUT_MODE_CHG_TIMER in", values, "inOutModeChgTimer");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeChgTimerNotIn(List<Integer> values) {
+            addCriterion("IN_OUT_MODE_CHG_TIMER not in", values, "inOutModeChgTimer");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeChgTimerBetween(Integer value1, Integer value2) {
+            addCriterion("IN_OUT_MODE_CHG_TIMER between", value1, value2, "inOutModeChgTimer");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeChgTimerNotBetween(Integer value1, Integer value2) {
+            addCriterion("IN_OUT_MODE_CHG_TIMER not between", value1, value2, "inOutModeChgTimer");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeIsNull() {
+            addCriterion("IN_OUT_MODE_SET_TIME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeIsNotNull() {
+            addCriterion("IN_OUT_MODE_SET_TIME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeEqualTo(String value) {
+            addCriterion("IN_OUT_MODE_SET_TIME =", value, "inOutModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeNotEqualTo(String value) {
+            addCriterion("IN_OUT_MODE_SET_TIME <>", value, "inOutModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeGreaterThan(String value) {
+            addCriterion("IN_OUT_MODE_SET_TIME >", value, "inOutModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeGreaterThanOrEqualTo(String value) {
+            addCriterion("IN_OUT_MODE_SET_TIME >=", value, "inOutModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeLessThan(String value) {
+            addCriterion("IN_OUT_MODE_SET_TIME <", value, "inOutModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeLessThanOrEqualTo(String value) {
+            addCriterion("IN_OUT_MODE_SET_TIME <=", value, "inOutModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeLike(String value) {
+            addCriterion("IN_OUT_MODE_SET_TIME like", value, "inOutModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeNotLike(String value) {
+            addCriterion("IN_OUT_MODE_SET_TIME not like", value, "inOutModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeIn(List<String> values) {
+            addCriterion("IN_OUT_MODE_SET_TIME in", values, "inOutModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeNotIn(List<String> values) {
+            addCriterion("IN_OUT_MODE_SET_TIME not in", values, "inOutModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeBetween(String value1, String value2) {
+            addCriterion("IN_OUT_MODE_SET_TIME between", value1, value2, "inOutModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andInOutModeSetTimeNotBetween(String value1, String value2) {
+            addCriterion("IN_OUT_MODE_SET_TIME not between", value1, value2, "inOutModeSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdIsNull() {
+            addCriterion("TSC_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdIsNotNull() {
+            addCriterion("TSC_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdEqualTo(String value) {
+            addCriterion("TSC_ID =", value, "tscId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdNotEqualTo(String value) {
+            addCriterion("TSC_ID <>", value, "tscId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdGreaterThan(String value) {
+            addCriterion("TSC_ID >", value, "tscId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdGreaterThanOrEqualTo(String value) {
+            addCriterion("TSC_ID >=", value, "tscId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdLessThan(String value) {
+            addCriterion("TSC_ID <", value, "tscId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdLessThanOrEqualTo(String value) {
+            addCriterion("TSC_ID <=", value, "tscId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdLike(String value) {
+            addCriterion("TSC_ID like", value, "tscId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdNotLike(String value) {
+            addCriterion("TSC_ID not like", value, "tscId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdIn(List<String> values) {
+            addCriterion("TSC_ID in", values, "tscId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdNotIn(List<String> values) {
+            addCriterion("TSC_ID not in", values, "tscId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdBetween(String value1, String value2) {
+            addCriterion("TSC_ID between", value1, value2, "tscId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTscIdNotBetween(String value1, String value2) {
+            addCriterion("TSC_ID not between", value1, value2, "tscId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgIsNull() {
+            addCriterion("DUMMY_FLG is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgIsNotNull() {
+            addCriterion("DUMMY_FLG is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgEqualTo(String value) {
+            addCriterion("DUMMY_FLG =", value, "dummyFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgNotEqualTo(String value) {
+            addCriterion("DUMMY_FLG <>", value, "dummyFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgGreaterThan(String value) {
+            addCriterion("DUMMY_FLG >", value, "dummyFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgGreaterThanOrEqualTo(String value) {
+            addCriterion("DUMMY_FLG >=", value, "dummyFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgLessThan(String value) {
+            addCriterion("DUMMY_FLG <", value, "dummyFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgLessThanOrEqualTo(String value) {
+            addCriterion("DUMMY_FLG <=", value, "dummyFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgLike(String value) {
+            addCriterion("DUMMY_FLG like", value, "dummyFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgNotLike(String value) {
+            addCriterion("DUMMY_FLG not like", value, "dummyFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgIn(List<String> values) {
+            addCriterion("DUMMY_FLG in", values, "dummyFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgNotIn(List<String> values) {
+            addCriterion("DUMMY_FLG not in", values, "dummyFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgBetween(String value1, String value2) {
+            addCriterion("DUMMY_FLG between", value1, value2, "dummyFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDummyFlgNotBetween(String value1, String value2) {
+            addCriterion("DUMMY_FLG not between", value1, value2, "dummyFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdIsNull() {
+            addCriterion("OHB_PORT_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdIsNotNull() {
+            addCriterion("OHB_PORT_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdEqualTo(String value) {
+            addCriterion("OHB_PORT_ID =", value, "ohbPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdNotEqualTo(String value) {
+            addCriterion("OHB_PORT_ID <>", value, "ohbPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdGreaterThan(String value) {
+            addCriterion("OHB_PORT_ID >", value, "ohbPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdGreaterThanOrEqualTo(String value) {
+            addCriterion("OHB_PORT_ID >=", value, "ohbPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdLessThan(String value) {
+            addCriterion("OHB_PORT_ID <", value, "ohbPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdLessThanOrEqualTo(String value) {
+            addCriterion("OHB_PORT_ID <=", value, "ohbPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdLike(String value) {
+            addCriterion("OHB_PORT_ID like", value, "ohbPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdNotLike(String value) {
+            addCriterion("OHB_PORT_ID not like", value, "ohbPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdIn(List<String> values) {
+            addCriterion("OHB_PORT_ID in", values, "ohbPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdNotIn(List<String> values) {
+            addCriterion("OHB_PORT_ID not in", values, "ohbPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdBetween(String value1, String value2) {
+            addCriterion("OHB_PORT_ID between", value1, value2, "ohbPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbPortIdNotBetween(String value1, String value2) {
+            addCriterion("OHB_PORT_ID not between", value1, value2, "ohbPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbSearchCountIsNull() {
+            addCriterion("OHB_SEARCH_COUNT is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbSearchCountIsNotNull() {
+            addCriterion("OHB_SEARCH_COUNT is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbSearchCountEqualTo(Short value) {
+            addCriterion("OHB_SEARCH_COUNT =", value, "ohbSearchCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbSearchCountNotEqualTo(Short value) {
+            addCriterion("OHB_SEARCH_COUNT <>", value, "ohbSearchCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbSearchCountGreaterThan(Short value) {
+            addCriterion("OHB_SEARCH_COUNT >", value, "ohbSearchCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbSearchCountGreaterThanOrEqualTo(Short value) {
+            addCriterion("OHB_SEARCH_COUNT >=", value, "ohbSearchCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbSearchCountLessThan(Short value) {
+            addCriterion("OHB_SEARCH_COUNT <", value, "ohbSearchCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbSearchCountLessThanOrEqualTo(Short value) {
+            addCriterion("OHB_SEARCH_COUNT <=", value, "ohbSearchCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbSearchCountIn(List<Short> values) {
+            addCriterion("OHB_SEARCH_COUNT in", values, "ohbSearchCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbSearchCountNotIn(List<Short> values) {
+            addCriterion("OHB_SEARCH_COUNT not in", values, "ohbSearchCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbSearchCountBetween(Short value1, Short value2) {
+            addCriterion("OHB_SEARCH_COUNT between", value1, value2, "ohbSearchCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOhbSearchCountNotBetween(Short value1, Short value2) {
+            addCriterion("OHB_SEARCH_COUNT not between", value1, value2, "ohbSearchCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdIsNull() {
+            addCriterion("REJECT_PORT_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdIsNotNull() {
+            addCriterion("REJECT_PORT_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdEqualTo(String value) {
+            addCriterion("REJECT_PORT_ID =", value, "rejectPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdNotEqualTo(String value) {
+            addCriterion("REJECT_PORT_ID <>", value, "rejectPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdGreaterThan(String value) {
+            addCriterion("REJECT_PORT_ID >", value, "rejectPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdGreaterThanOrEqualTo(String value) {
+            addCriterion("REJECT_PORT_ID >=", value, "rejectPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdLessThan(String value) {
+            addCriterion("REJECT_PORT_ID <", value, "rejectPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdLessThanOrEqualTo(String value) {
+            addCriterion("REJECT_PORT_ID <=", value, "rejectPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdLike(String value) {
+            addCriterion("REJECT_PORT_ID like", value, "rejectPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdNotLike(String value) {
+            addCriterion("REJECT_PORT_ID not like", value, "rejectPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdIn(List<String> values) {
+            addCriterion("REJECT_PORT_ID in", values, "rejectPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdNotIn(List<String> values) {
+            addCriterion("REJECT_PORT_ID not in", values, "rejectPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdBetween(String value1, String value2) {
+            addCriterion("REJECT_PORT_ID between", value1, value2, "rejectPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRejectPortIdNotBetween(String value1, String value2) {
+            addCriterion("REJECT_PORT_ID not between", value1, value2, "rejectPortId");
             return (Criteria) this;
         }
 
@@ -1384,333 +2164,1083 @@ public class PortExample {
             return (Criteria) this;
         }
 
-        public Criteria andDstChangeCountIsNull() {
-            addCriterion("DST_CHANGE_COUNT is null");
+        public Criteria andWaitoutRetryCountIsNull() {
+            addCriterion("WAITOUT_RETRY_COUNT is null");
             return (Criteria) this;
         }
 
-        public Criteria andDstChangeCountIsNotNull() {
-            addCriterion("DST_CHANGE_COUNT is not null");
+        public Criteria andWaitoutRetryCountIsNotNull() {
+            addCriterion("WAITOUT_RETRY_COUNT is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDstChangeCountEqualTo(Short value) {
-            addCriterion("DST_CHANGE_COUNT =", value, "dstChangeCount");
+        public Criteria andWaitoutRetryCountEqualTo(Short value) {
+            addCriterion("WAITOUT_RETRY_COUNT =", value, "waitoutRetryCount");
             return (Criteria) this;
         }
 
-        public Criteria andDstChangeCountNotEqualTo(Short value) {
-            addCriterion("DST_CHANGE_COUNT <>", value, "dstChangeCount");
+        public Criteria andWaitoutRetryCountNotEqualTo(Short value) {
+            addCriterion("WAITOUT_RETRY_COUNT <>", value, "waitoutRetryCount");
             return (Criteria) this;
         }
 
-        public Criteria andDstChangeCountGreaterThan(Short value) {
-            addCriterion("DST_CHANGE_COUNT >", value, "dstChangeCount");
+        public Criteria andWaitoutRetryCountGreaterThan(Short value) {
+            addCriterion("WAITOUT_RETRY_COUNT >", value, "waitoutRetryCount");
             return (Criteria) this;
         }
 
-        public Criteria andDstChangeCountGreaterThanOrEqualTo(Short value) {
-            addCriterion("DST_CHANGE_COUNT >=", value, "dstChangeCount");
+        public Criteria andWaitoutRetryCountGreaterThanOrEqualTo(Short value) {
+            addCriterion("WAITOUT_RETRY_COUNT >=", value, "waitoutRetryCount");
             return (Criteria) this;
         }
 
-        public Criteria andDstChangeCountLessThan(Short value) {
-            addCriterion("DST_CHANGE_COUNT <", value, "dstChangeCount");
+        public Criteria andWaitoutRetryCountLessThan(Short value) {
+            addCriterion("WAITOUT_RETRY_COUNT <", value, "waitoutRetryCount");
             return (Criteria) this;
         }
 
-        public Criteria andDstChangeCountLessThanOrEqualTo(Short value) {
-            addCriterion("DST_CHANGE_COUNT <=", value, "dstChangeCount");
+        public Criteria andWaitoutRetryCountLessThanOrEqualTo(Short value) {
+            addCriterion("WAITOUT_RETRY_COUNT <=", value, "waitoutRetryCount");
             return (Criteria) this;
         }
 
-        public Criteria andDstChangeCountIn(List<Short> values) {
-            addCriterion("DST_CHANGE_COUNT in", values, "dstChangeCount");
+        public Criteria andWaitoutRetryCountIn(List<Short> values) {
+            addCriterion("WAITOUT_RETRY_COUNT in", values, "waitoutRetryCount");
             return (Criteria) this;
         }
 
-        public Criteria andDstChangeCountNotIn(List<Short> values) {
-            addCriterion("DST_CHANGE_COUNT not in", values, "dstChangeCount");
+        public Criteria andWaitoutRetryCountNotIn(List<Short> values) {
+            addCriterion("WAITOUT_RETRY_COUNT not in", values, "waitoutRetryCount");
             return (Criteria) this;
         }
 
-        public Criteria andDstChangeCountBetween(Short value1, Short value2) {
-            addCriterion("DST_CHANGE_COUNT between", value1, value2, "dstChangeCount");
+        public Criteria andWaitoutRetryCountBetween(Short value1, Short value2) {
+            addCriterion("WAITOUT_RETRY_COUNT between", value1, value2, "waitoutRetryCount");
             return (Criteria) this;
         }
 
-        public Criteria andDstChangeCountNotBetween(Short value1, Short value2) {
-            addCriterion("DST_CHANGE_COUNT not between", value1, value2, "dstChangeCount");
+        public Criteria andWaitoutRetryCountNotBetween(Short value1, Short value2) {
+            addCriterion("WAITOUT_RETRY_COUNT not between", value1, value2, "waitoutRetryCount");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeIsNull() {
-            addCriterion("MODE_SET_TIME is null");
+        public Criteria andDstChgCountIsNull() {
+            addCriterion("DST_CHG_COUNT is null");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeIsNotNull() {
-            addCriterion("MODE_SET_TIME is not null");
+        public Criteria andDstChgCountIsNotNull() {
+            addCriterion("DST_CHG_COUNT is not null");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeEqualTo(String value) {
-            addCriterion("MODE_SET_TIME =", value, "modeSetTime");
+        public Criteria andDstChgCountEqualTo(Short value) {
+            addCriterion("DST_CHG_COUNT =", value, "dstChgCount");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeNotEqualTo(String value) {
-            addCriterion("MODE_SET_TIME <>", value, "modeSetTime");
+        public Criteria andDstChgCountNotEqualTo(Short value) {
+            addCriterion("DST_CHG_COUNT <>", value, "dstChgCount");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeGreaterThan(String value) {
-            addCriterion("MODE_SET_TIME >", value, "modeSetTime");
+        public Criteria andDstChgCountGreaterThan(Short value) {
+            addCriterion("DST_CHG_COUNT >", value, "dstChgCount");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeGreaterThanOrEqualTo(String value) {
-            addCriterion("MODE_SET_TIME >=", value, "modeSetTime");
+        public Criteria andDstChgCountGreaterThanOrEqualTo(Short value) {
+            addCriterion("DST_CHG_COUNT >=", value, "dstChgCount");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeLessThan(String value) {
-            addCriterion("MODE_SET_TIME <", value, "modeSetTime");
+        public Criteria andDstChgCountLessThan(Short value) {
+            addCriterion("DST_CHG_COUNT <", value, "dstChgCount");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeLessThanOrEqualTo(String value) {
-            addCriterion("MODE_SET_TIME <=", value, "modeSetTime");
+        public Criteria andDstChgCountLessThanOrEqualTo(Short value) {
+            addCriterion("DST_CHG_COUNT <=", value, "dstChgCount");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeLike(String value) {
-            addCriterion("MODE_SET_TIME like", value, "modeSetTime");
+        public Criteria andDstChgCountIn(List<Short> values) {
+            addCriterion("DST_CHG_COUNT in", values, "dstChgCount");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeNotLike(String value) {
-            addCriterion("MODE_SET_TIME not like", value, "modeSetTime");
+        public Criteria andDstChgCountNotIn(List<Short> values) {
+            addCriterion("DST_CHG_COUNT not in", values, "dstChgCount");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeIn(List<String> values) {
-            addCriterion("MODE_SET_TIME in", values, "modeSetTime");
+        public Criteria andDstChgCountBetween(Short value1, Short value2) {
+            addCriterion("DST_CHG_COUNT between", value1, value2, "dstChgCount");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeNotIn(List<String> values) {
-            addCriterion("MODE_SET_TIME not in", values, "modeSetTime");
+        public Criteria andDstChgCountNotBetween(Short value1, Short value2) {
+            addCriterion("DST_CHG_COUNT not between", value1, value2, "dstChgCount");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeBetween(String value1, String value2) {
-            addCriterion("MODE_SET_TIME between", value1, value2, "modeSetTime");
+        public Criteria andDownSetTimeIsNull() {
+            addCriterion("DOWN_SET_TIME is null");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetTimeNotBetween(String value1, String value2) {
-            addCriterion("MODE_SET_TIME not between", value1, value2, "modeSetTime");
+        public Criteria andDownSetTimeIsNotNull() {
+            addCriterion("DOWN_SET_TIME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetSidIsNull() {
-            addCriterion("MODE_SET_SID is null");
+        public Criteria andDownSetTimeEqualTo(String value) {
+            addCriterion("DOWN_SET_TIME =", value, "downSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetSidIsNotNull() {
-            addCriterion("MODE_SET_SID is not null");
+        public Criteria andDownSetTimeNotEqualTo(String value) {
+            addCriterion("DOWN_SET_TIME <>", value, "downSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetSidEqualTo(Integer value) {
-            addCriterion("MODE_SET_SID =", value, "modeSetSid");
+        public Criteria andDownSetTimeGreaterThan(String value) {
+            addCriterion("DOWN_SET_TIME >", value, "downSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetSidNotEqualTo(Integer value) {
-            addCriterion("MODE_SET_SID <>", value, "modeSetSid");
+        public Criteria andDownSetTimeGreaterThanOrEqualTo(String value) {
+            addCriterion("DOWN_SET_TIME >=", value, "downSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetSidGreaterThan(Integer value) {
-            addCriterion("MODE_SET_SID >", value, "modeSetSid");
+        public Criteria andDownSetTimeLessThan(String value) {
+            addCriterion("DOWN_SET_TIME <", value, "downSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetSidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("MODE_SET_SID >=", value, "modeSetSid");
+        public Criteria andDownSetTimeLessThanOrEqualTo(String value) {
+            addCriterion("DOWN_SET_TIME <=", value, "downSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetSidLessThan(Integer value) {
-            addCriterion("MODE_SET_SID <", value, "modeSetSid");
+        public Criteria andDownSetTimeLike(String value) {
+            addCriterion("DOWN_SET_TIME like", value, "downSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetSidLessThanOrEqualTo(Integer value) {
-            addCriterion("MODE_SET_SID <=", value, "modeSetSid");
+        public Criteria andDownSetTimeNotLike(String value) {
+            addCriterion("DOWN_SET_TIME not like", value, "downSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetSidIn(List<Integer> values) {
-            addCriterion("MODE_SET_SID in", values, "modeSetSid");
+        public Criteria andDownSetTimeIn(List<String> values) {
+            addCriterion("DOWN_SET_TIME in", values, "downSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetSidNotIn(List<Integer> values) {
-            addCriterion("MODE_SET_SID not in", values, "modeSetSid");
+        public Criteria andDownSetTimeNotIn(List<String> values) {
+            addCriterion("DOWN_SET_TIME not in", values, "downSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetSidBetween(Integer value1, Integer value2) {
-            addCriterion("MODE_SET_SID between", value1, value2, "modeSetSid");
+        public Criteria andDownSetTimeBetween(String value1, String value2) {
+            addCriterion("DOWN_SET_TIME between", value1, value2, "downSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetSidNotBetween(Integer value1, Integer value2) {
-            addCriterion("MODE_SET_SID not between", value1, value2, "modeSetSid");
+        public Criteria andDownSetTimeNotBetween(String value1, String value2) {
+            addCriterion("DOWN_SET_TIME not between", value1, value2, "downSetTime");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorIsNull() {
-            addCriterion("MODE_SET_ORIGINATOR is null");
+        public Criteria andBayIdIsNull() {
+            addCriterion("BAY_ID is null");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorIsNotNull() {
-            addCriterion("MODE_SET_ORIGINATOR is not null");
+        public Criteria andBayIdIsNotNull() {
+            addCriterion("BAY_ID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorEqualTo(String value) {
-            addCriterion("MODE_SET_ORIGINATOR =", value, "modeSetOriginator");
+        public Criteria andBayIdEqualTo(String value) {
+            addCriterion("BAY_ID =", value, "bayId");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorNotEqualTo(String value) {
-            addCriterion("MODE_SET_ORIGINATOR <>", value, "modeSetOriginator");
+        public Criteria andBayIdNotEqualTo(String value) {
+            addCriterion("BAY_ID <>", value, "bayId");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorGreaterThan(String value) {
-            addCriterion("MODE_SET_ORIGINATOR >", value, "modeSetOriginator");
+        public Criteria andBayIdGreaterThan(String value) {
+            addCriterion("BAY_ID >", value, "bayId");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorGreaterThanOrEqualTo(String value) {
-            addCriterion("MODE_SET_ORIGINATOR >=", value, "modeSetOriginator");
+        public Criteria andBayIdGreaterThanOrEqualTo(String value) {
+            addCriterion("BAY_ID >=", value, "bayId");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorLessThan(String value) {
-            addCriterion("MODE_SET_ORIGINATOR <", value, "modeSetOriginator");
+        public Criteria andBayIdLessThan(String value) {
+            addCriterion("BAY_ID <", value, "bayId");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorLessThanOrEqualTo(String value) {
-            addCriterion("MODE_SET_ORIGINATOR <=", value, "modeSetOriginator");
+        public Criteria andBayIdLessThanOrEqualTo(String value) {
+            addCriterion("BAY_ID <=", value, "bayId");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorLike(String value) {
-            addCriterion("MODE_SET_ORIGINATOR like", value, "modeSetOriginator");
+        public Criteria andBayIdLike(String value) {
+            addCriterion("BAY_ID like", value, "bayId");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorNotLike(String value) {
-            addCriterion("MODE_SET_ORIGINATOR not like", value, "modeSetOriginator");
+        public Criteria andBayIdNotLike(String value) {
+            addCriterion("BAY_ID not like", value, "bayId");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorIn(List<String> values) {
-            addCriterion("MODE_SET_ORIGINATOR in", values, "modeSetOriginator");
+        public Criteria andBayIdIn(List<String> values) {
+            addCriterion("BAY_ID in", values, "bayId");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorNotIn(List<String> values) {
-            addCriterion("MODE_SET_ORIGINATOR not in", values, "modeSetOriginator");
+        public Criteria andBayIdNotIn(List<String> values) {
+            addCriterion("BAY_ID not in", values, "bayId");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorBetween(String value1, String value2) {
-            addCriterion("MODE_SET_ORIGINATOR between", value1, value2, "modeSetOriginator");
+        public Criteria andBayIdBetween(String value1, String value2) {
+            addCriterion("BAY_ID between", value1, value2, "bayId");
             return (Criteria) this;
         }
 
-        public Criteria andModeSetOriginatorNotBetween(String value1, String value2) {
-            addCriterion("MODE_SET_ORIGINATOR not between", value1, value2, "modeSetOriginator");
+        public Criteria andBayIdNotBetween(String value1, String value2) {
+            addCriterion("BAY_ID not between", value1, value2, "bayId");
             return (Criteria) this;
         }
 
-        public Criteria andFloorIsNull() {
-            addCriterion("FLOOR is null");
+        public Criteria andDispDirectionIsNull() {
+            addCriterion("DISP_DIRECTION is null");
             return (Criteria) this;
         }
 
-        public Criteria andFloorIsNotNull() {
-            addCriterion("FLOOR is not null");
+        public Criteria andDispDirectionIsNotNull() {
+            addCriterion("DISP_DIRECTION is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFloorEqualTo(String value) {
-            addCriterion("FLOOR =", value, "floor");
+        public Criteria andDispDirectionEqualTo(String value) {
+            addCriterion("DISP_DIRECTION =", value, "dispDirection");
             return (Criteria) this;
         }
 
-        public Criteria andFloorNotEqualTo(String value) {
-            addCriterion("FLOOR <>", value, "floor");
+        public Criteria andDispDirectionNotEqualTo(String value) {
+            addCriterion("DISP_DIRECTION <>", value, "dispDirection");
             return (Criteria) this;
         }
 
-        public Criteria andFloorGreaterThan(String value) {
-            addCriterion("FLOOR >", value, "floor");
+        public Criteria andDispDirectionGreaterThan(String value) {
+            addCriterion("DISP_DIRECTION >", value, "dispDirection");
             return (Criteria) this;
         }
 
-        public Criteria andFloorGreaterThanOrEqualTo(String value) {
-            addCriterion("FLOOR >=", value, "floor");
+        public Criteria andDispDirectionGreaterThanOrEqualTo(String value) {
+            addCriterion("DISP_DIRECTION >=", value, "dispDirection");
             return (Criteria) this;
         }
 
-        public Criteria andFloorLessThan(String value) {
-            addCriterion("FLOOR <", value, "floor");
+        public Criteria andDispDirectionLessThan(String value) {
+            addCriterion("DISP_DIRECTION <", value, "dispDirection");
             return (Criteria) this;
         }
 
-        public Criteria andFloorLessThanOrEqualTo(String value) {
-            addCriterion("FLOOR <=", value, "floor");
+        public Criteria andDispDirectionLessThanOrEqualTo(String value) {
+            addCriterion("DISP_DIRECTION <=", value, "dispDirection");
             return (Criteria) this;
         }
 
-        public Criteria andFloorLike(String value) {
-            addCriterion("FLOOR like", value, "floor");
+        public Criteria andDispDirectionLike(String value) {
+            addCriterion("DISP_DIRECTION like", value, "dispDirection");
             return (Criteria) this;
         }
 
-        public Criteria andFloorNotLike(String value) {
-            addCriterion("FLOOR not like", value, "floor");
+        public Criteria andDispDirectionNotLike(String value) {
+            addCriterion("DISP_DIRECTION not like", value, "dispDirection");
             return (Criteria) this;
         }
 
-        public Criteria andFloorIn(List<String> values) {
-            addCriterion("FLOOR in", values, "floor");
+        public Criteria andDispDirectionIn(List<String> values) {
+            addCriterion("DISP_DIRECTION in", values, "dispDirection");
             return (Criteria) this;
         }
 
-        public Criteria andFloorNotIn(List<String> values) {
-            addCriterion("FLOOR not in", values, "floor");
+        public Criteria andDispDirectionNotIn(List<String> values) {
+            addCriterion("DISP_DIRECTION not in", values, "dispDirection");
             return (Criteria) this;
         }
 
-        public Criteria andFloorBetween(String value1, String value2) {
-            addCriterion("FLOOR between", value1, value2, "floor");
+        public Criteria andDispDirectionBetween(String value1, String value2) {
+            addCriterion("DISP_DIRECTION between", value1, value2, "dispDirection");
             return (Criteria) this;
         }
 
-        public Criteria andFloorNotBetween(String value1, String value2) {
-            addCriterion("FLOOR not between", value1, value2, "floor");
+        public Criteria andDispDirectionNotBetween(String value1, String value2) {
+            addCriterion("DISP_DIRECTION not between", value1, value2, "dispDirection");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionIsNull() {
+            addCriterion("DEFAULT_DIRECTION is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionIsNotNull() {
+            addCriterion("DEFAULT_DIRECTION is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionEqualTo(String value) {
+            addCriterion("DEFAULT_DIRECTION =", value, "defaultDirection");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionNotEqualTo(String value) {
+            addCriterion("DEFAULT_DIRECTION <>", value, "defaultDirection");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionGreaterThan(String value) {
+            addCriterion("DEFAULT_DIRECTION >", value, "defaultDirection");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionGreaterThanOrEqualTo(String value) {
+            addCriterion("DEFAULT_DIRECTION >=", value, "defaultDirection");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionLessThan(String value) {
+            addCriterion("DEFAULT_DIRECTION <", value, "defaultDirection");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionLessThanOrEqualTo(String value) {
+            addCriterion("DEFAULT_DIRECTION <=", value, "defaultDirection");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionLike(String value) {
+            addCriterion("DEFAULT_DIRECTION like", value, "defaultDirection");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionNotLike(String value) {
+            addCriterion("DEFAULT_DIRECTION not like", value, "defaultDirection");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionIn(List<String> values) {
+            addCriterion("DEFAULT_DIRECTION in", values, "defaultDirection");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionNotIn(List<String> values) {
+            addCriterion("DEFAULT_DIRECTION not in", values, "defaultDirection");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionBetween(String value1, String value2) {
+            addCriterion("DEFAULT_DIRECTION between", value1, value2, "defaultDirection");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultDirectionNotBetween(String value1, String value2) {
+            addCriterion("DEFAULT_DIRECTION not between", value1, value2, "defaultDirection");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeIsNull() {
+            addCriterion("HOST_PORT_TYPE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeIsNotNull() {
+            addCriterion("HOST_PORT_TYPE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeEqualTo(String value) {
+            addCriterion("HOST_PORT_TYPE =", value, "hostPortType");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeNotEqualTo(String value) {
+            addCriterion("HOST_PORT_TYPE <>", value, "hostPortType");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeGreaterThan(String value) {
+            addCriterion("HOST_PORT_TYPE >", value, "hostPortType");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("HOST_PORT_TYPE >=", value, "hostPortType");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeLessThan(String value) {
+            addCriterion("HOST_PORT_TYPE <", value, "hostPortType");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeLessThanOrEqualTo(String value) {
+            addCriterion("HOST_PORT_TYPE <=", value, "hostPortType");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeLike(String value) {
+            addCriterion("HOST_PORT_TYPE like", value, "hostPortType");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeNotLike(String value) {
+            addCriterion("HOST_PORT_TYPE not like", value, "hostPortType");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeIn(List<String> values) {
+            addCriterion("HOST_PORT_TYPE in", values, "hostPortType");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeNotIn(List<String> values) {
+            addCriterion("HOST_PORT_TYPE not in", values, "hostPortType");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeBetween(String value1, String value2) {
+            addCriterion("HOST_PORT_TYPE between", value1, value2, "hostPortType");
+            return (Criteria) this;
+        }
+
+        public Criteria andHostPortTypeNotBetween(String value1, String value2) {
+            addCriterion("HOST_PORT_TYPE not between", value1, value2, "hostPortType");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeIsNull() {
+            addCriterion("H_SHOW_PORT_MODE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeIsNotNull() {
+            addCriterion("H_SHOW_PORT_MODE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeEqualTo(String value) {
+            addCriterion("H_SHOW_PORT_MODE =", value, "hShowPortMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeNotEqualTo(String value) {
+            addCriterion("H_SHOW_PORT_MODE <>", value, "hShowPortMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeGreaterThan(String value) {
+            addCriterion("H_SHOW_PORT_MODE >", value, "hShowPortMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeGreaterThanOrEqualTo(String value) {
+            addCriterion("H_SHOW_PORT_MODE >=", value, "hShowPortMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeLessThan(String value) {
+            addCriterion("H_SHOW_PORT_MODE <", value, "hShowPortMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeLessThanOrEqualTo(String value) {
+            addCriterion("H_SHOW_PORT_MODE <=", value, "hShowPortMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeLike(String value) {
+            addCriterion("H_SHOW_PORT_MODE like", value, "hShowPortMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeNotLike(String value) {
+            addCriterion("H_SHOW_PORT_MODE not like", value, "hShowPortMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeIn(List<String> values) {
+            addCriterion("H_SHOW_PORT_MODE in", values, "hShowPortMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeNotIn(List<String> values) {
+            addCriterion("H_SHOW_PORT_MODE not in", values, "hShowPortMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeBetween(String value1, String value2) {
+            addCriterion("H_SHOW_PORT_MODE between", value1, value2, "hShowPortMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowPortModeNotBetween(String value1, String value2) {
+            addCriterion("H_SHOW_PORT_MODE not between", value1, value2, "hShowPortMode");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeIsNull() {
+            addCriterion("H_SHOW_SET_TIME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeIsNotNull() {
+            addCriterion("H_SHOW_SET_TIME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeEqualTo(String value) {
+            addCriterion("H_SHOW_SET_TIME =", value, "hShowSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeNotEqualTo(String value) {
+            addCriterion("H_SHOW_SET_TIME <>", value, "hShowSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeGreaterThan(String value) {
+            addCriterion("H_SHOW_SET_TIME >", value, "hShowSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeGreaterThanOrEqualTo(String value) {
+            addCriterion("H_SHOW_SET_TIME >=", value, "hShowSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeLessThan(String value) {
+            addCriterion("H_SHOW_SET_TIME <", value, "hShowSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeLessThanOrEqualTo(String value) {
+            addCriterion("H_SHOW_SET_TIME <=", value, "hShowSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeLike(String value) {
+            addCriterion("H_SHOW_SET_TIME like", value, "hShowSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeNotLike(String value) {
+            addCriterion("H_SHOW_SET_TIME not like", value, "hShowSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeIn(List<String> values) {
+            addCriterion("H_SHOW_SET_TIME in", values, "hShowSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeNotIn(List<String> values) {
+            addCriterion("H_SHOW_SET_TIME not in", values, "hShowSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeBetween(String value1, String value2) {
+            addCriterion("H_SHOW_SET_TIME between", value1, value2, "hShowSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andHShowSetTimeNotBetween(String value1, String value2) {
+            addCriterion("H_SHOW_SET_TIME not between", value1, value2, "hShowSetTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdIsNull() {
+            addCriterion("EQP_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdIsNotNull() {
+            addCriterion("EQP_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdEqualTo(String value) {
+            addCriterion("EQP_ID =", value, "eqpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdNotEqualTo(String value) {
+            addCriterion("EQP_ID <>", value, "eqpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdGreaterThan(String value) {
+            addCriterion("EQP_ID >", value, "eqpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdGreaterThanOrEqualTo(String value) {
+            addCriterion("EQP_ID >=", value, "eqpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdLessThan(String value) {
+            addCriterion("EQP_ID <", value, "eqpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdLessThanOrEqualTo(String value) {
+            addCriterion("EQP_ID <=", value, "eqpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdLike(String value) {
+            addCriterion("EQP_ID like", value, "eqpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdNotLike(String value) {
+            addCriterion("EQP_ID not like", value, "eqpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdIn(List<String> values) {
+            addCriterion("EQP_ID in", values, "eqpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdNotIn(List<String> values) {
+            addCriterion("EQP_ID not in", values, "eqpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdBetween(String value1, String value2) {
+            addCriterion("EQP_ID between", value1, value2, "eqpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpIdNotBetween(String value1, String value2) {
+            addCriterion("EQP_ID not between", value1, value2, "eqpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdIsNull() {
+            addCriterion("EQP_PORT_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdIsNotNull() {
+            addCriterion("EQP_PORT_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdEqualTo(String value) {
+            addCriterion("EQP_PORT_ID =", value, "eqpPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdNotEqualTo(String value) {
+            addCriterion("EQP_PORT_ID <>", value, "eqpPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdGreaterThan(String value) {
+            addCriterion("EQP_PORT_ID >", value, "eqpPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdGreaterThanOrEqualTo(String value) {
+            addCriterion("EQP_PORT_ID >=", value, "eqpPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdLessThan(String value) {
+            addCriterion("EQP_PORT_ID <", value, "eqpPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdLessThanOrEqualTo(String value) {
+            addCriterion("EQP_PORT_ID <=", value, "eqpPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdLike(String value) {
+            addCriterion("EQP_PORT_ID like", value, "eqpPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdNotLike(String value) {
+            addCriterion("EQP_PORT_ID not like", value, "eqpPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdIn(List<String> values) {
+            addCriterion("EQP_PORT_ID in", values, "eqpPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdNotIn(List<String> values) {
+            addCriterion("EQP_PORT_ID not in", values, "eqpPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdBetween(String value1, String value2) {
+            addCriterion("EQP_PORT_ID between", value1, value2, "eqpPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andEqpPortIdNotBetween(String value1, String value2) {
+            addCriterion("EQP_PORT_ID not between", value1, value2, "eqpPortId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgIsNull() {
+            addCriterion("BLOCK_REQ_FLG is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgIsNotNull() {
+            addCriterion("BLOCK_REQ_FLG is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgEqualTo(String value) {
+            addCriterion("BLOCK_REQ_FLG =", value, "blockReqFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgNotEqualTo(String value) {
+            addCriterion("BLOCK_REQ_FLG <>", value, "blockReqFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgGreaterThan(String value) {
+            addCriterion("BLOCK_REQ_FLG >", value, "blockReqFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgGreaterThanOrEqualTo(String value) {
+            addCriterion("BLOCK_REQ_FLG >=", value, "blockReqFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgLessThan(String value) {
+            addCriterion("BLOCK_REQ_FLG <", value, "blockReqFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgLessThanOrEqualTo(String value) {
+            addCriterion("BLOCK_REQ_FLG <=", value, "blockReqFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgLike(String value) {
+            addCriterion("BLOCK_REQ_FLG like", value, "blockReqFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgNotLike(String value) {
+            addCriterion("BLOCK_REQ_FLG not like", value, "blockReqFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgIn(List<String> values) {
+            addCriterion("BLOCK_REQ_FLG in", values, "blockReqFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgNotIn(List<String> values) {
+            addCriterion("BLOCK_REQ_FLG not in", values, "blockReqFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgBetween(String value1, String value2) {
+            addCriterion("BLOCK_REQ_FLG between", value1, value2, "blockReqFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andBlockReqFlgNotBetween(String value1, String value2) {
+            addCriterion("BLOCK_REQ_FLG not between", value1, value2, "blockReqFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgIsNull() {
+            addCriterion("VEHICLE_ID_READ_FLG is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgIsNotNull() {
+            addCriterion("VEHICLE_ID_READ_FLG is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgEqualTo(String value) {
+            addCriterion("VEHICLE_ID_READ_FLG =", value, "vehicleIdReadFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgNotEqualTo(String value) {
+            addCriterion("VEHICLE_ID_READ_FLG <>", value, "vehicleIdReadFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgGreaterThan(String value) {
+            addCriterion("VEHICLE_ID_READ_FLG >", value, "vehicleIdReadFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgGreaterThanOrEqualTo(String value) {
+            addCriterion("VEHICLE_ID_READ_FLG >=", value, "vehicleIdReadFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgLessThan(String value) {
+            addCriterion("VEHICLE_ID_READ_FLG <", value, "vehicleIdReadFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgLessThanOrEqualTo(String value) {
+            addCriterion("VEHICLE_ID_READ_FLG <=", value, "vehicleIdReadFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgLike(String value) {
+            addCriterion("VEHICLE_ID_READ_FLG like", value, "vehicleIdReadFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgNotLike(String value) {
+            addCriterion("VEHICLE_ID_READ_FLG not like", value, "vehicleIdReadFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgIn(List<String> values) {
+            addCriterion("VEHICLE_ID_READ_FLG in", values, "vehicleIdReadFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgNotIn(List<String> values) {
+            addCriterion("VEHICLE_ID_READ_FLG not in", values, "vehicleIdReadFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgBetween(String value1, String value2) {
+            addCriterion("VEHICLE_ID_READ_FLG between", value1, value2, "vehicleIdReadFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andVehicleIdReadFlgNotBetween(String value1, String value2) {
+            addCriterion("VEHICLE_ID_READ_FLG not between", value1, value2, "vehicleIdReadFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickupErrorCountIsNull() {
+            addCriterion("PICKUP_ERROR_COUNT is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickupErrorCountIsNotNull() {
+            addCriterion("PICKUP_ERROR_COUNT is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickupErrorCountEqualTo(Short value) {
+            addCriterion("PICKUP_ERROR_COUNT =", value, "pickupErrorCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickupErrorCountNotEqualTo(Short value) {
+            addCriterion("PICKUP_ERROR_COUNT <>", value, "pickupErrorCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickupErrorCountGreaterThan(Short value) {
+            addCriterion("PICKUP_ERROR_COUNT >", value, "pickupErrorCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickupErrorCountGreaterThanOrEqualTo(Short value) {
+            addCriterion("PICKUP_ERROR_COUNT >=", value, "pickupErrorCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickupErrorCountLessThan(Short value) {
+            addCriterion("PICKUP_ERROR_COUNT <", value, "pickupErrorCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickupErrorCountLessThanOrEqualTo(Short value) {
+            addCriterion("PICKUP_ERROR_COUNT <=", value, "pickupErrorCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickupErrorCountIn(List<Short> values) {
+            addCriterion("PICKUP_ERROR_COUNT in", values, "pickupErrorCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickupErrorCountNotIn(List<Short> values) {
+            addCriterion("PICKUP_ERROR_COUNT not in", values, "pickupErrorCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickupErrorCountBetween(Short value1, Short value2) {
+            addCriterion("PICKUP_ERROR_COUNT between", value1, value2, "pickupErrorCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickupErrorCountNotBetween(Short value1, Short value2) {
+            addCriterion("PICKUP_ERROR_COUNT not between", value1, value2, "pickupErrorCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andBatchWaitTmIsNull() {
+            addCriterion("BATCH_WAIT_TM is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBatchWaitTmIsNotNull() {
+            addCriterion("BATCH_WAIT_TM is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBatchWaitTmEqualTo(Short value) {
+            addCriterion("BATCH_WAIT_TM =", value, "batchWaitTm");
+            return (Criteria) this;
+        }
+
+        public Criteria andBatchWaitTmNotEqualTo(Short value) {
+            addCriterion("BATCH_WAIT_TM <>", value, "batchWaitTm");
+            return (Criteria) this;
+        }
+
+        public Criteria andBatchWaitTmGreaterThan(Short value) {
+            addCriterion("BATCH_WAIT_TM >", value, "batchWaitTm");
+            return (Criteria) this;
+        }
+
+        public Criteria andBatchWaitTmGreaterThanOrEqualTo(Short value) {
+            addCriterion("BATCH_WAIT_TM >=", value, "batchWaitTm");
+            return (Criteria) this;
+        }
+
+        public Criteria andBatchWaitTmLessThan(Short value) {
+            addCriterion("BATCH_WAIT_TM <", value, "batchWaitTm");
+            return (Criteria) this;
+        }
+
+        public Criteria andBatchWaitTmLessThanOrEqualTo(Short value) {
+            addCriterion("BATCH_WAIT_TM <=", value, "batchWaitTm");
+            return (Criteria) this;
+        }
+
+        public Criteria andBatchWaitTmIn(List<Short> values) {
+            addCriterion("BATCH_WAIT_TM in", values, "batchWaitTm");
+            return (Criteria) this;
+        }
+
+        public Criteria andBatchWaitTmNotIn(List<Short> values) {
+            addCriterion("BATCH_WAIT_TM not in", values, "batchWaitTm");
+            return (Criteria) this;
+        }
+
+        public Criteria andBatchWaitTmBetween(Short value1, Short value2) {
+            addCriterion("BATCH_WAIT_TM between", value1, value2, "batchWaitTm");
+            return (Criteria) this;
+        }
+
+        public Criteria andBatchWaitTmNotBetween(Short value1, Short value2) {
+            addCriterion("BATCH_WAIT_TM not between", value1, value2, "batchWaitTm");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeIsNull() {
+            addCriterion("COMP_TIME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeIsNotNull() {
+            addCriterion("COMP_TIME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeEqualTo(String value) {
+            addCriterion("COMP_TIME =", value, "compTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeNotEqualTo(String value) {
+            addCriterion("COMP_TIME <>", value, "compTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeGreaterThan(String value) {
+            addCriterion("COMP_TIME >", value, "compTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeGreaterThanOrEqualTo(String value) {
+            addCriterion("COMP_TIME >=", value, "compTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeLessThan(String value) {
+            addCriterion("COMP_TIME <", value, "compTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeLessThanOrEqualTo(String value) {
+            addCriterion("COMP_TIME <=", value, "compTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeLike(String value) {
+            addCriterion("COMP_TIME like", value, "compTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeNotLike(String value) {
+            addCriterion("COMP_TIME not like", value, "compTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeIn(List<String> values) {
+            addCriterion("COMP_TIME in", values, "compTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeNotIn(List<String> values) {
+            addCriterion("COMP_TIME not in", values, "compTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeBetween(String value1, String value2) {
+            addCriterion("COMP_TIME between", value1, value2, "compTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompTimeNotBetween(String value1, String value2) {
+            addCriterion("COMP_TIME not between", value1, value2, "compTime");
             return (Criteria) this;
         }
     }
