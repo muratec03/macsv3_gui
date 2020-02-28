@@ -62,6 +62,8 @@ public class IndividualMonitorStateInfoEntity extends AjaxResBaseEntity {
     public String craneId = null;
     public String craneStatus = null;
     public String craneAvailable = null;
+    public String stokerAvailable = null;
+    public String stokerAlarmState = null;
 	// END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
 }
