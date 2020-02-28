@@ -90,6 +90,21 @@ public class IconInfo {
 	 private String  tscName;
 	 private String  tscMode;
 	// END APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	 // STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	 private String  type;
+	 private String  tscAvailable;
+	 private String  tscAlarmState;
+	 private String  craneId;
+	 private String  craneStatus;
+	 private String  craneAvailable;
+	 private String  stokerAvailable;
+	 private String  stokerAlarmState;
+	 private String  downCount;
+	 private String  empty;
+	 private String  occupied;
+	 private String  reserved;
+	 private String  total;
+	 // END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
     //@formatter:off
     /**

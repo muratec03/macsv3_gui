@@ -53,6 +53,7 @@ import net.muratec.mcs.model.IndividualMonitorTransferJob;
 import net.muratec.mcs.model.JobPriority;
 import net.muratec.mcs.model.Llc;
 import net.muratec.mcs.model.LlcExample;
+import net.muratec.mcs.model.StockerExample;
 import net.muratec.mcs.model.Tsc;
 import net.muratec.mcs.model.TscExample;
 import net.muratec.mcs.service.common.BaseService;
@@ -156,12 +157,39 @@ public class IndividualScMonitorService extends BaseService {
         tscPa.setLlcId(reqEntity.llcId);
         tscPa.setTscId(reqEntity.tscId);
 	 	List<IconInfo> tscState = tscMapper.selectTscInfoById(tscPa);  //llcTypeによって、設備のデータを探す
-//	 	if (llcState == null || tscState == null) {
-        
+	 	// END APL 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	 	
+	 	
+	 	// STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 TSC Table Data
+	 	for (IconInfo tscStateRec : tscState) {
+        	resEntity.state.tscName = tscStateRec.getTscName();
+        	resEntity.state.tscMode = tscStateRec.getTscMode();
+        	resEntity.state.tscAvailable = tscStateRec.getTscAvailable();
+//        	resEntity.state.craneId = tscStateRec.getTscAvailable();
+//        	resEntity.state.craneStatus = tscStateRec.getTscAvailable();
+//        	resEntity.state.craneAvailable = tscStateRec.getTscAvailable();
+//        	resEntity.state.stokerAvailable = tscStateRec.getTscAvailable();
+//        	resEntity.state.stokerAlarmState = tscStateRec.getTscAvailable();
+	 	}   
+	 	// END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	 	
+	 	// STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 Stocker Table Data
+	 	/*StockerExample stockerConfigExample = new StockerExample();
+	 	stockerConfigExample.createCriteria().andTscIdEqualTo(reqEntity.llcId);
+        List<Llc> stockerState = llcMapper.selectByExample(configExample);//tscIdによって、Stokerのデータを探す
+	 	
+	 	for (IconInfo tscStateRec : tscState) {
+//        	resEntity.state.craneId = tscStateRec.getTscAvailable();
+//        	resEntity.state.craneStatus = tscStateRec.getTscAvailable();
+//        	resEntity.state.craneAvailable = tscStateRec.getTscAvailable();
+//        	resEntity.state.stokerAvailable = tscStateRec.getTscAvailable();
+//        	resEntity.state.stokerAlarmState = tscStateRec.getTscAvailable();
+	 	}   */
+	 	// END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 Stocker Table Data
+	 	
         if (llcState == null ) {
             return null;
         }
-        // END APL 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
         // -----------------------------------------
         // アラーム一覧取得

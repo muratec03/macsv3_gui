@@ -451,8 +451,8 @@
   tsc.llc_id,
   tsc.tsc_name,
   tsc.tsc_mode,
-  tsc.available,
-  tsc.alarm_state,
+  tsc.available tsc_available,
+  tsc.alarm_state tsc_alarm_state,
   NVL(down_ports.down_count, 0) down_count,
   llc.llc_type,
   module.module_name,
@@ -519,7 +519,7 @@ WHERE tsc_name           IS NOT NULL
 	 AND tsc_name   &lt;&gt; 'MGV'
 	 AND tsc.llc_id = #{llcId,jdbcType=VARCHAR} 
 	 AND tsc.tsc_id =  #{tscId,jdbcType=VARCHAR} 
-	 AND llc.llc_type =  #{llcType,jdbcType=VARCHAR} 
+	 <!-- AND llc.llc_type =  #{llcType,jdbcType=VARCHAR}  -->
 ORDER BY tsc.tsc_id
 </select>
 
