@@ -45,12 +45,8 @@ $(function() {
   var amhsNameList = screenValue.llcNames;  //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
   var tscId = screenValue.tscId;  //2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
   amhsSelBox.setList(amhsNameList);
-  //amhsSelBox.setValue(screenValue.amhsId);  //20191223 Song Del
   amhsSelBox.setValue(screenValue.llcId); //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
-//  amhsSelBox.setValue(tscId); //2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
 
-  var test999 = amhsSelBox.getValue();
-  
   amhsSelBox.onChange(function() {
     /* Step4 2017_08_16 */
     // エラー表示をクリア
@@ -90,13 +86,24 @@ $(function() {
   //END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
   
   //STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+  //TSC DATA
   var stateTscName = new McsTextBox($('#state-tsc-name'));
   var stateTscMode = new McsTextBox($('#state-tsc-mode'));
   var stateTscAvailable = new McsTextBox($('#state-tsc-available'));
+  //STOKER DATA
+  var stateCraneId = new McsTextBox($('#state-crane-id'));
+  var stateCraneState = new McsTextBox($('#state-crane-state'));
+  var stateStokerAvailable = new McsTextBox($('#state-stoker-available'));
+  var stateStokerAlarmState = new McsTextBox($('#state-stoker-alarm-state'));
   
   stateTscName.setReadonly(true);
   stateTscMode.setReadonly(true);
   stateTscAvailable.setReadonly(true);
+  
+  stateCraneId.setReadonly(true); 
+  stateCraneState.setReadonly(true); 
+  stateStokerAvailable.setReadonly(true); 
+  stateStokerAlarmState.setReadonly(true);
   //END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
   
@@ -665,6 +672,11 @@ $(function() {
         stateTscName.setValue(textValue.tscName);
         stateTscMode.setValue(textValue.tscMode);
         stateTscAvailable.setValue(textValue.tscAvailable);
+        
+        stateCraneId.setValue(textValue.craneId); 
+        stateCraneState.setValue(textValue.craneStatus); 
+        stateStokerAvailable.setValue(textValue.stokerAvailable); 
+        stateStokerAlarmState.setValue(textValue.stokerAlarmState);
         
         //20191225 Song Del Start
         //stateZoneOccupied.setValue(textValue.zoneOccupied);

@@ -43,6 +43,7 @@ import net.muratec.mcs.mapper.GuiColorMapper;
 import net.muratec.mcs.mapper.IndividualMonitorMapper;
 import net.muratec.mcs.mapper.JobPriorityMapper;
 import net.muratec.mcs.mapper.LlcMapper;
+import net.muratec.mcs.mapper.StockerMapper;
 import net.muratec.mcs.mapper.TscMapper;
 import net.muratec.mcs.model.Alarm;
 import net.muratec.mcs.model.AlarmExample;
@@ -53,6 +54,7 @@ import net.muratec.mcs.model.IndividualMonitorTransferJob;
 import net.muratec.mcs.model.JobPriority;
 import net.muratec.mcs.model.Llc;
 import net.muratec.mcs.model.LlcExample;
+import net.muratec.mcs.model.Stocker;
 import net.muratec.mcs.model.StockerExample;
 import net.muratec.mcs.model.Tsc;
 import net.muratec.mcs.model.TscExample;
@@ -112,6 +114,10 @@ public class IndividualScMonitorService extends BaseService {
     @Autowired private LlcMapper llcMapper;
     @Autowired private TscMapper tscMapper;
     // END APL 2020.02.25 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    
+    // STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    @Autowired private StockerMapper stockerMapper;
+    // END APL 2020.02.85 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
     //@formatter:off
     /**
@@ -165,26 +171,20 @@ public class IndividualScMonitorService extends BaseService {
         	resEntity.state.tscName = tscStateRec.getTscName();
         	resEntity.state.tscMode = tscStateRec.getTscMode();
         	resEntity.state.tscAvailable = tscStateRec.getTscAvailable();
-//        	resEntity.state.craneId = tscStateRec.getTscAvailable();
-//        	resEntity.state.craneStatus = tscStateRec.getTscAvailable();
-//        	resEntity.state.craneAvailable = tscStateRec.getTscAvailable();
-//        	resEntity.state.stokerAvailable = tscStateRec.getTscAvailable();
-//        	resEntity.state.stokerAlarmState = tscStateRec.getTscAvailable();
 	 	}   
 	 	// END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 	 	
 	 	// STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 Stocker Table Data
-	 	/*StockerExample stockerConfigExample = new StockerExample();
-	 	stockerConfigExample.createCriteria().andTscIdEqualTo(reqEntity.llcId);
-        List<Llc> stockerState = llcMapper.selectByExample(configExample);//tscIdによって、Stokerのデータを探す
+	 	StockerExample stockerConfigExample = new StockerExample();
+	 	stockerConfigExample.createCriteria().andTscIdEqualTo(reqEntity.tscId);
+        List<Stocker> stockerState = stockerMapper.selectByExample(stockerConfigExample);//tscIdによって、Stokerのデータを探す
 	 	
-	 	for (IconInfo tscStateRec : tscState) {
-//        	resEntity.state.craneId = tscStateRec.getTscAvailable();
-//        	resEntity.state.craneStatus = tscStateRec.getTscAvailable();
-//        	resEntity.state.craneAvailable = tscStateRec.getTscAvailable();
-//        	resEntity.state.stokerAvailable = tscStateRec.getTscAvailable();
-//        	resEntity.state.stokerAlarmState = tscStateRec.getTscAvailable();
-	 	}   */
+	 	for (Stocker stockerStateRec : stockerState) {
+        	resEntity.state.craneId = stockerStateRec.getCraneId();
+        	resEntity.state.craneStatus = stockerStateRec.getCraneState();
+        	resEntity.state.stokerAvailable = stockerStateRec.getAvailable();
+        	resEntity.state.stokerAlarmState = stockerStateRec.getCraneAlarmState();
+	 	}   
 	 	// END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 Stocker Table Data
 	 	
         if (llcState == null ) {

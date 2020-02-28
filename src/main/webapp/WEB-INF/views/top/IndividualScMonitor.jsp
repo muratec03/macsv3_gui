@@ -272,30 +272,30 @@
                     </div>
                     <div id="state-tsc-available"></div>
                 </div>
-                <!-- <div>
+                <div>
                     <div>
-                        <span><spring:message code="IT-001-11-011" /></span>
+                        <span><spring:message code="IT-001-11-032" /></span>
                     </div>
-                    <div id="state-control-state"></div>
+                    <div id="state-crane-id"></div>
                 </div>
                 <div>
                     <div>
-                        <span><spring:message code="IT-001-11-013" /></span>
+                        <span><spring:message code="IT-001-11-034" /></span>
                     </div>
-                    <div id="state-alarm-state"></div>
+                    <div id="state-crane-state"></div>
                 </div>
                 <div>
                     <div>
-                        <span><spring:message code="IT-001-11-015" /></span>
+                        <span><spring:message code="IT-001-11-036" /></span>
                     </div>
-                    <div id="state-comm-state"></div>
+                    <div id="state-stoker-available"></div>
                 </div>
                 <div>
                     <div>
-                        <span><spring:message code="IT-001-11-017" /></span>
+                        <span><spring:message code="IT-001-11-038" /></span>
                     </div>
-                    <div id="state-system-state"></div>
-                </div> -->
+                    <div id="state-stoker-alarm-state"></div>
+                </div>
             </div>
             
             <div id="state-table-target"></div>
