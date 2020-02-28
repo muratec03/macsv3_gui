@@ -42,4 +42,5 @@ public class IndividualMonitorStateEntity extends AjaxResBaseEntity {
 
     public IndividualMonitorStateInfoEntity state = new IndividualMonitorStateInfoEntity();
     public List<IndividualMonitorAlarmInfoEntity> alarmList = new ArrayList<IndividualMonitorAlarmInfoEntity>();
+    public List<IndividualMonitorStokerInfoEntity> stokerZoneList = new ArrayList<IndividualMonitorStokerInfoEntity>();
 }

@@ -41,7 +41,6 @@ $(function() {
 
   // AMHS選択用セレクトボックス生成
   var amhsSelBox = new McsSelectBox($('#sel-amhs'));
-  //var amhsNameList = screenValue.amhsName;  //20191223 Song Del
   var amhsNameList = screenValue.llcNames;  //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
   var tscId = screenValue.tscId;  //2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
   amhsSelBox.setList(amhsNameList);
@@ -61,7 +60,6 @@ $(function() {
   // コンポーネントマネージャ
   var selComp = new McsComponentManager();
   /* Step4 2017_08_16 */
-  //selComp.add('amhsId', amhsSelBox);  //20191223 Song Del
   selComp.add('llcId', amhsSelBox);  //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
 
   // スライドメニュー生成
@@ -105,14 +103,6 @@ $(function() {
   stateStokerAvailable.setReadonly(true); 
   stateStokerAlarmState.setReadonly(true);
   //END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-
-  
-  //20191225 Song Del Start
-  //var stateZoneOccupied = new McsTextBox($('#state-zone-occupied'), 'number');
-  //var stateZoneCapacity = new McsTextBox($('#state-zone-capacity'), 'number');
-  //var stateZoneUtility = new McsTextBox($('#state-zone-utility'), 'number');
-  //var stateAmhsLState = new McsTextBox($('#state-amhs-l-state'));
-  //20191225 Song Del End
   
   // テキストボックス読み取り専用化
   stateLlcName.setReadonly(true);
@@ -123,29 +113,10 @@ $(function() {
   stateCommState.setReadonly(true);
   stateSystemState.setReadonly(true);
   
-  //20191225 Song Del Start
-  //stateZoneOccupied.setReadonly(true);
-  //stateZoneCapacity.setReadonly(true);
-  //stateZoneUtility.setReadonly(true);
-  //stateAmhsLState.setReadonly(true);
-  //20191225 Song Del End
-  
-  //20191225 Song ADD START
-//  var alarmState = new McsTextBox($('#alarm-state'));
-//  var ocdcMode = new McsTextBox($('#OCDC-mode'));
-//  var pieceMode = new McsTextBox($('#piece-mode'));
-//  var pieceAvailable = new McsTextBox($('#piece-available'));
-  
-//  alarmState.setReadonly(true);
-//  ocdcMode.setReadonly(true);
-//  pieceMode.setReadonly(true);
-//  pieceAvailable.setReadonly(true);
-  //20191225 Song ADD END
-
   // テーブル
   var stateTable = new McsTable($('#state-table-target'));
   stateTable.setNotRowSelect(true);
-
+  
   // 状態テーブルヘッダ(状態テーブル)
   var stateHeader = [{
     name: 'setTime',
@@ -172,6 +143,30 @@ $(function() {
   // ヘッダ設定(状態テーブル)
   stateTable.setHeader(stateHeader);
   stateTable.setBodyHeight($('.mcs-content.mcs-with-subheader.mcs-with-subtitle').outerHeight() - 40);
+
+  //STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+  var stokerZoneTable = new McsTable($('#state-stokerZoneTable-target'));
+  stokerZoneTable.setNotRowSelect(true);
+  
+  // 状態テーブルヘッダ(状態テーブル)
+  var stokerZoneHeader = [{
+    name: 'empty',
+    text: screenText.stokerZone.empty,
+    display: true
+  }, {
+    name: 'occupied',
+    text: screenText.stokerZone.occupied,
+    display: true
+  }, {
+    name: 'reserved',
+    text: screenText.stokerZone.reserved,
+    display: true
+  }];
+  
+  // ヘッダ設定(状態テーブル)
+  stokerZoneTable.setHeader(stokerZoneHeader);
+  stokerZoneTable.setBodyHeight($('.mcs-content.mcs-with-subheader.mcs-with-subtitle').outerHeight() - 40);
+  //END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
   // ---------------------------------------
   // ポート画面コンポーネント生成
@@ -469,6 +464,7 @@ $(function() {
 
     // テーブルのヘッダ幅調整
     stateTable.resizeColWidth();
+    stokerZoneTable.resizeColWidth();//DQY ADD 20200228
   }
 
   /**
@@ -650,6 +646,7 @@ $(function() {
         var textValue = retObj.body.state;
         // テーブルのデータ
         var tableValue = retObj.body.alarmList;
+        var stokerZoneTableValue = retObj.body.stokerZoneList;
 
 	    // STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         var tscMode = textValue.tscMode;
@@ -677,19 +674,6 @@ $(function() {
         stateCraneState.setValue(textValue.craneStatus); 
         stateStokerAvailable.setValue(textValue.stokerAvailable); 
         stateStokerAlarmState.setValue(textValue.stokerAlarmState);
-        
-        //20191225 Song Del Start
-        //stateZoneOccupied.setValue(textValue.zoneOccupied);
-        //stateZoneCapacity.setValue(textValue.zoneCapacity);
-        //stateZoneUtility.setValue(textValue.zoneUtility);
-        //stateAmhsLState.setValue(textValue.amhsLState);
-        //20191225 Song Del End
-        
-        //20200225 dqy del  START FOR MCSV3 STATE
-//        alarmState.setValue(textValue.alarmState);
-//        ocdcMode.setValue(textValue.ocdcMode);
-//        pieceMode.setValue(textValue.pieceMode);
-//        pieceAvailable.setValue(textValue.pieceAvailable);
         
         // STD APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         /**
@@ -827,51 +811,9 @@ $(function() {
         	//green
         	$("#state-tsc-available input[name='colorText']").css('background-color','#90EE90');
         }
-        
         // END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
-       /* //CONTROL_STATE
-        if(stateControlState.getValue()!="Online/Remote"){
-        	$("#state-control-state input[name='colorText']").css('background-color','#ff0000');
-        }
-        else{
-        	$("#state-control-state input[name='colorText']").css('background-color','#38FF61');
-        }
-        //SYSTEM_STATE(OCDC State)
-        if(stateSystemState.getValue()!="Auto"){
-        	$("#state-system-state input[name='colorText']").css('background-color','#ff0000');
-        }
-        else{
-        	$("#state-system-state input[name='colorText']").css('background-color','#38FF61');
-        }
-        //ALARM_STATE
-        if(alarmState.getValue()!="NoAlarms"){
-        	$("#alarm-state input[name='colorText']").css('background-color','#ff0000');
-        }
-        else{
-        	$("#alarm-state input[name='colorText']").css('background-color','#38FF61');
-        }
-        //COMM_STATE
-        if(stateCommState.getValue()!="Communicating"){
-        	$("#state-comm-state input[name='colorText']").css('background-color','#ff0000');
-        }
-        else{
-        	$("#state-comm-state input[name='colorText']").css('background-color','#38FF61');
-        }
-        // TSC_MODE
-        if(ocdcMode.getValue()!="Up"){
-        	$("#OCDC-mode input[name='colorText']").css('background-color','#ff0000');
-        }
-        else{
-        	$("#OCDC-mode input[name='colorText']").css('background-color','#38FF61');
-        }
-        // TSC_AVAILABLE
-        if(stateAvailable.getValue()!="Available"){
-        	$("#state-available input[name='colorText']").css('background-color','#ff0000');
-        }
-        else{
-        	$("#state-available input[name='colorText']").css('background-color','#38FF61');
-        }
+       /* 
         //PIECE_MODE
         if(textValue.pieceMode==null || textValue.pieceMode == "")
         {
@@ -886,25 +828,14 @@ $(function() {
             	$("#piece-mode input[name='colorText']").css('background-color','#38FF61');
             }
         	
-        }
-        //PIECE_AVAILABLE
-        if(textValue.pieceAvailable==null || pieceAvailable.pieceMode == "")
-        {
-        	pieceAvailable.setDisabled(true);
-        }
-        else{
-        	pieceAvailable.setDisabled(false);
-        	if(pieceAvailable.getValue()!="Available"){
-        		$("#piece-available input[name='colorText']").css('background-color','#ff0000');
-        	}
-        	else{
-        		$("#piece-available input[name='colorText']").css('background-color','#38FF61');
-        	}
-        	
         }*/
         
         // データをテーブルにセット
         stateTable.addDataList(tableValue);
+        
+     // STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        stokerZoneTable.addDataList(stokerZoneTableValue);
+     // END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
       }
 
       // 選択したコントローラのAMHSタイプによる状態の項目表示切替
@@ -1194,5 +1125,6 @@ $(function() {
     //20191225 Song Mod End
     // 状態画面のテーブルをクリア
     stateTable.clear();
+    stokerZoneTable.clear();//DQY ADD 20200228
   }
 });

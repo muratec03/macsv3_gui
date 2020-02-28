@@ -45,6 +45,12 @@
       vehicleId: '<spring:message code="IT-001-11-025"/>'
     },
     
+    stokerZone: {
+    	empty: '<spring:message code="IT-001-11-040"/>',
+    	occupied: '<spring:message code="IT-001-11-041"/>',
+    	reserved: '<spring:message code="IT-001-11-042"/>'
+      },
+    
     port: {
       portId: '<spring:message code="IT-001-12-005"/>',
       ioMode: '<spring:message code="IT-001-12-007"/>',
@@ -132,65 +138,6 @@
 
     <div class="mcs-content mcs-with-subheader mcs-with-subtitle">
         <!-- 状態表示画面 start -->
-        <!-- 20191225 Song Mod Start -->
-        <%-- 
-        <div id="state-screen" class="mcs-content mcs-with-subheader mcs-with-subtitle">
-            <div class="mcs-content-subtitle">
-                <span><spring:message code="IT-001-11-004" /></span>
-            </div>
-            <div id="state-text-target">
-                <div>
-                    <div>
-                        <span><spring:message code="IT-001-11-005" /></span>
-                    </div>
-                    <div id="state-comm-state"></div>
-                </div>
-                <div>
-                    <div>
-                        <span><spring:message code="IT-001-11-007" /></span>
-                    </div>
-                    <div id="state-control-state"></div>
-                </div>
-                <div>
-                    <div>
-                        <span><spring:message code="IT-001-11-009" /></span>
-                    </div>
-                    <div id="state-system-state"></div>
-                </div>
-                <div>
-                    <div>
-                        <span><spring:message code="IT-001-11-011" /></span>
-                    </div>
-                    <div id="state-available"></div>
-                </div>
-                <div class="state-stocker-zone-rlt">
-                    <div>
-                        <span><spring:message code="IT-001-11-013" /></span>
-                    </div>
-                    <div id="state-zone-occupied"></div>
-                </div>
-                <div class="state-stocker-zone-rlt">
-                    <div>
-                        <span><spring:message code="IT-001-11-015" /></span>
-                    </div>
-                    <div id="state-zone-capacity"></div>
-                </div>
-                <div class="state-stocker-zone-rlt">
-                    <div>
-                        <span><spring:message code="IT-001-11-017" /></span>
-                    </div>
-                    <div id="state-zone-utility"></div>
-                </div>
-                <div>
-                    <div>
-                        <span><spring:message code="IT-001-11-019" /></span>
-                    </div>
-                    <div id="state-amhs-l-state"></div>
-                </div>
-            </div>
-            <div id="state-table-target"></div>
-        </div>
-        --%>
             <div class="mcs-content-subtitle">
                 <span><spring:message code="IT-001-11-004" /></span>
             </div>
@@ -298,6 +245,8 @@
                 </div>
             </div>
             
+            <!-- 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+            <div id="state-stokerZoneTable-target"></div>
             <div id="state-table-target"></div>
         </div> 
         <!-- 状態表示画面 end -->

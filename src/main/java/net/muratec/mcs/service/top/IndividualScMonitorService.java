@@ -37,6 +37,7 @@ import net.muratec.mcs.entity.top.ReqIndividualMonitorEntity;
 import net.muratec.mcs.exception.McsException;
 import net.muratec.mcs.entity.top.IndividualMonitorPortEntity;
 import net.muratec.mcs.entity.top.IndividualMonitorStateEntity;
+import net.muratec.mcs.entity.top.IndividualMonitorStokerInfoEntity;
 import net.muratec.mcs.entity.top.IndividualMonitorTransferJobEntity;
 import net.muratec.mcs.mapper.AlarmMapper;
 import net.muratec.mcs.mapper.GuiColorMapper;
@@ -184,7 +185,17 @@ public class IndividualScMonitorService extends BaseService {
         	resEntity.state.craneStatus = stockerStateRec.getCraneState();
         	resEntity.state.stokerAvailable = stockerStateRec.getAvailable();
         	resEntity.state.stokerAlarmState = stockerStateRec.getCraneAlarmState();
-	 	}   
+	 	} 
+	 	
+	 	for (IconInfo stockerZoneStateRec : tscState) {
+	 		IndividualMonitorStokerInfoEntity stockerZoneRes = new IndividualMonitorStokerInfoEntity();
+
+	 		stockerZoneRes.total = stockerZoneStateRec.getTotal();
+	 		stockerZoneRes.empty = stockerZoneStateRec.getEmpty();
+	 		stockerZoneRes.occupied = stockerZoneStateRec.getOccupied();
+	 		stockerZoneRes.reserved = stockerZoneStateRec.getReserved();
+            resEntity.stokerZoneList.add(stockerZoneRes);
+        }
 	 	// END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 Stocker Table Data
 	 	
         if (llcState == null ) {
