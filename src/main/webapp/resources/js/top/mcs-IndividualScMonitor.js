@@ -1,4 +1,4 @@
-﻿/**
+﻿﻿/**
  ******************************************************************************
  * @file        mcs-IndividualScMonitor.js
  * @brief       個別モニタ(SCモニタ)関連のJavaScript
@@ -675,6 +675,8 @@ $(function() {
         stateStokerAvailable.setValue(textValue.stokerAvailable); 
         stateStokerAlarmState.setValue(textValue.stokerAlarmState);
         
+        var test = stateStokerAlarmState.getValue();
+        
         // STD APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         /**
     	 * LLCのステータスに基づきコントローラの背景色を設定します。
@@ -812,6 +814,73 @@ $(function() {
         	$("#state-tsc-available input[name='colorText']").css('background-color','#90EE90');
         }
         // END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        
+        // STD APL 2020.03.01 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        //STOCKER STATE COLOR
+        
+        //CraneId color
+        if(stateStokerAvailable.getValue()!="Available"){
+        	// Error RED
+        	$("#state-crane-id input[name='colorText']").css('background-color','#FF5555');
+        }
+        else if(stateStokerAlarmState.getValue()!="NoAlarms"){
+        	// アラーム発生 ORANGE
+        	$("#state-crane-id input[name='colorText']").css('background-color','#FFA500');
+        }
+        else 
+        {
+        	//green
+        	$("#state-crane-id input[name='colorText']").css('background-color','#90EE90');
+        }
+        
+        //ALARM STATUS
+        if(stateStokerAvailable.getValue()!="Available"){
+        	// Error RED
+        	$("#state-crane-state input[name='colorText']").css('background-color','#FF5555');
+        }
+        else if(stateStokerAlarmState.getValue()!="NoAlarms"){
+        	// アラーム発生 ORANGE
+        	$("#state-crane-state input[name='colorText']").css('background-color','#FFA500');
+        }
+        else 
+        {
+        	//green
+        	$("#state-crane-state input[name='colorText']").css('background-color','#90EE90');
+        }
+        
+        //STOKER-AVAILABLE
+        if(stateStokerAvailable.getValue()!="Available"){
+        	// Error RED
+        	$("#state-stoker-available input[name='colorText']").css('background-color','#FF5555');
+        }
+        else if(stateStokerAlarmState.getValue()!="NoAlarms"){
+        	// アラーム発生 ORANGE
+        	$("#state-stoker-available input[name='colorText']").css('background-color','#FFA500');
+        }
+        else 
+        {
+        	//green
+        	$("#state-stoker-available input[name='colorText']").css('background-color','#90EE90');
+        }
+        
+        //STOKER-ALARM-STATE
+        if(stateStokerAvailable.getValue()!="Available"){
+        	// Error RED
+        	$("#state-stoker-alarm-state input[name='colorText']").css('background-color','#FF5555');
+        }
+        else if(stateStokerAlarmState.getValue()!="NoAlarms"){
+        	// アラーム発生 ORANGE
+        	$("#state-stoker-alarm-state input[name='colorText']").css('background-color','#FFA500');
+        }
+        else 
+        {
+        	//green
+        	$("#state-stoker-alarm-state input[name='colorText']").css('background-color','#90EE90');
+        }
+        
+        //
+        
+        // END APL 2020.03.01 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
        /* 
         //PIECE_MODE
