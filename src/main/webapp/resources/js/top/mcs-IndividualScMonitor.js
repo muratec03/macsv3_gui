@@ -38,21 +38,27 @@ $(function() {
 
   // 直近の検索成功時の検索条件(amhsId)
   var latestAmhsId;
+  var latestTscId;
 
   // AMHS選択用セレクトボックス生成
   var amhsSelBox = new McsSelectBox($('#sel-amhs'));
   var amhsNameList = screenValue.llcNames;  //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
-  var tscId = screenValue.tscId;  //2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
   amhsSelBox.setList(amhsNameList);
   amhsSelBox.setValue(screenValue.llcId); //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
 
+  //STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+  //var tscId = screenValue.tscId;  //2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
+  //END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+  
   amhsSelBox.onChange(function() {
     /* Step4 2017_08_16 */
     // エラー表示をクリア
     selComp.clearErrors();
 	// STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
     //getData(amhsSelBox.getValue(), true);//20200228 dqy del
-    getData(amhsSelBox.getValue(),tscId, true);//20200228 dqy add
+    //STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    getData(amhsSelBox.getValue().substring(0,3),amhsSelBox.getValue().substring(3), true);
+    //END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 	// END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
   });
@@ -161,7 +167,11 @@ $(function() {
     name: 'reserved',
     text: screenText.stokerZone.reserved,
     display: true
-  }];
+  }, {
+	    name: 'total',
+	    text: screenText.stokerZone.total,
+	    display: true
+	  }];
   
   // ヘッダ設定(状態テーブル)
   stokerZoneTable.setHeader(stokerZoneHeader);
@@ -344,12 +354,13 @@ $(function() {
   showStateScreen();
   // 状態画面のデータ取得、表示
 //  getState(amhsSelBox.getValue(), true);//20200228 DQY DEL
-  getState(amhsSelBox.getValue(),tscId, true);//20200228 DQY ADD
+  getState(amhsSelBox.getValue().substring(0,3),amhsSelBox.getValue().substring(3), true);//20200228 DQY ADD//20200302 DQY DEL
+//  getState(llcId,tscId, true);//20200302 DQY ADD
   // 自動更新有効化
   AutoReloadTimerManager.addTimeoutCallback(function() {
     if (latestAmhsId !== undefined) {
 //      getData(latestAmhsId, false, true, true);//20200228 dqy del
-      getData(latestAmhsId, false, true, true);//20200228 dqy add
+      getData(latestAmhsId,latestTscId, false, true, true);//20200302 dqy add
     }
     AutoReloadTimerManager.start();
   });
@@ -385,7 +396,7 @@ $(function() {
         selComp.clearErrors();
 
 //        getData(latestAmhsId, false, true);//20200228 dqy del
-        getData(latestAmhsId,tscId, false, true);//20200228 dqy add
+        getData(latestAmhsId,latestTscId, false, true);//20200302 dqy add
       }
     });
 
@@ -633,6 +644,7 @@ $(function() {
       // 直近の検索成功時のAMHSIDを更新
       //latestAmhsId = amhsId;   //20191223 Song Del
       latestAmhsId = llcId;  //2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
+      latestTscId = tscId;//20200302 DQY ADD
 
       // スクロール位置を保持
       var top = stateTable.getScrollTop();
@@ -833,42 +845,23 @@ $(function() {
         	$("#state-crane-id input[name='colorText']").css('background-color','#90EE90');
         }
         
-        //ALARM STATUS
-        if(stateStokerAvailable.getValue()!="Available"){
-        	// Error RED
-        	$("#state-crane-state input[name='colorText']").css('background-color','#FF5555');
-        }
-        else if(stateStokerAlarmState.getValue()!="NoAlarms"){
-        	// アラーム発生 ORANGE
-        	$("#state-crane-state input[name='colorText']").css('background-color','#FFA500');
-        }
-        else 
-        {
-        	//green
-        	$("#state-crane-state input[name='colorText']").css('background-color','#90EE90');
-        }
         
         //STOKER-AVAILABLE
         if(stateStokerAvailable.getValue()!="Available"){
         	// Error RED
         	$("#state-stoker-available input[name='colorText']").css('background-color','#FF5555');
         }
-        else if(stateStokerAlarmState.getValue()!="NoAlarms"){
-        	// アラーム発生 ORANGE
-        	$("#state-stoker-available input[name='colorText']").css('background-color','#FFA500');
-        }
         else 
         {
         	//green
         	$("#state-stoker-available input[name='colorText']").css('background-color','#90EE90');
         }
+        //Crane Status
+        	//green
+        	$("#state-crane-state input[name='colorText']").css('background-color','#90EE90');
         
         //STOKER-ALARM-STATE
-        if(stateStokerAvailable.getValue()!="Available"){
-        	// Error RED
-        	$("#state-stoker-alarm-state input[name='colorText']").css('background-color','#FF5555');
-        }
-        else if(stateStokerAlarmState.getValue()!="NoAlarms"){
+        if(stateStokerAlarmState.getValue()!="NoAlarms"){
         	// アラーム発生 ORANGE
         	$("#state-stoker-alarm-state input[name='colorText']").css('background-color','#FFA500');
         }

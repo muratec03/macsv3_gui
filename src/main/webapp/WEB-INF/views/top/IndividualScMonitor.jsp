@@ -48,7 +48,8 @@
     stokerZone: {
     	empty: '<spring:message code="IT-001-11-040"/>',
     	occupied: '<spring:message code="IT-001-11-041"/>',
-    	reserved: '<spring:message code="IT-001-11-042"/>'
+    	reserved: '<spring:message code="IT-001-11-042"/>',
+    	total: '<spring:message code="IT-001-11-043"/>'
       },
     
     port: {

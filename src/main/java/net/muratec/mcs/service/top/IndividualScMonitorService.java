@@ -172,6 +172,10 @@ public class IndividualScMonitorService extends BaseService {
         	resEntity.state.tscName = tscStateRec.getTscName();
         	resEntity.state.tscMode = tscStateRec.getTscMode();
         	resEntity.state.tscAvailable = tscStateRec.getTscAvailable();
+        	// STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        	resEntity.state.tscAlarmState = tscStateRec.getTscAlarmState();
+        	resEntity.state.downCount = tscStateRec.getDownCount();
+        	// END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 	 	}   
 	 	// END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 	 	
@@ -193,7 +197,12 @@ public class IndividualScMonitorService extends BaseService {
 	 		stockerZoneRes.total = stockerZoneStateRec.getTotal();
 	 		stockerZoneRes.empty = stockerZoneStateRec.getEmpty();
 	 		stockerZoneRes.occupied = stockerZoneStateRec.getOccupied();
+	 		if(stockerZoneStateRec.getReserved()!=null) {
 	 		stockerZoneRes.reserved = stockerZoneStateRec.getReserved();
+	 		}
+	 		else {
+	 			stockerZoneRes.reserved = "0";	
+	 		}
             resEntity.stokerZoneList.add(stockerZoneRes);
         }
 	 	// END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 Stocker Table Data
