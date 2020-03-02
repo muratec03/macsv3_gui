@@ -799,7 +799,9 @@ public class SelectBoxService extends BaseService {
     	
     	return amhsNameSelList;
     }*/
+		// STD APL 2020.03.01 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
     	public List<String[]> getControllerByType(List<String> tscTypeList) {
+    	// END APL 2020.03.01 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
     	
     	// 指定したAMHSタイプのAMHSIdの一覧を取得
     	LlcExample llcExample = new LlcExample();
@@ -808,13 +810,17 @@ public class SelectBoxService extends BaseService {
     		llcExample.or().andLlcTypeEqualTo(tscType);
         }
     	llcExample.setOrderByClause("LLC_ID asc");
-    	List<Llc> tscList = llcMapper.selectByExample(llcExample);
+//    	List<Llc> tscList = llcMapper.selectByExample(llcExample);
+    	List<Llc> tscList = llcMapper.selectByLlcTypeExample(llcExample);
     	
     	// セレクトボックス用の配列に変換
     	List<String[]> amhsNameSelList = new ArrayList<String[]>();
     	for (Llc llcs : tscList) {
-    		amhsNameSelList.add(new String[] { String.valueOf(llcs.getLlcId()), llcs.getLlcName() + "(" + String.valueOf(llcs.getLlcId()) + ")" ,
-                    String.valueOf(llcs.getLlcType()) });
+    		// STD APL 2020.03.01 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 tscId add
+    		//amhsNameSelList.add(new String[] { String.valueOf(llcs.getLlcId()), llcs.getLlcName() + "(" + String.valueOf(llcs.getLlcId()) + ")" ,
+    		amhsNameSelList.add(new String[] { String.valueOf(llcs.getLlcId())+llcs.getTscId(), llcs.getLlcName() + "(" + String.valueOf(llcs.getLlcId()) + ")" ,
+    		// END APL 2020.03.01 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    			String.valueOf(llcs.getLlcType()) });
     	}
     	
     	return amhsNameSelList;
