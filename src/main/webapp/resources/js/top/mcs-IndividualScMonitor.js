@@ -124,11 +124,11 @@ $(function() {
   stateTable.setNotRowSelect(true);
   
   // 状態テーブルヘッダ(状態テーブル)
-  var stateHeader = [{
+  var stateHeader = [/*{
     name: 'setTime',
     text: screenText.state.alarmDateTime,
     display: true
-  }, {
+  },*/ {
     name: 'alarmId',
     text: screenText.state.alarmId,
     display: true
@@ -140,11 +140,11 @@ $(function() {
     name: 'alarmLoc',
     text: screenText.state.alarmLoc,
     display: true
-  }, {
+  }/*, {
     name: 'vehicleId',
     text: screenText.state.vehicleId,
     display: true
-  }];
+  }*/];
 
   // ヘッダ設定(状態テーブル)
   stateTable.setHeader(stateHeader);
