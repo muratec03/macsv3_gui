@@ -826,55 +826,69 @@ $(function() {
         	$("#state-tsc-available input[name='colorText']").css('background-color','#90EE90');
         }
         // END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-        
+        // STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        if(stateCraneId.getValue()==null || stateCraneId.getValue() == "")
+        {
+        	stateCraneId.setDisabled(true);
+        	stateCraneState.setDisabled(true); 
+            stateStokerAvailable.setDisabled(true); 
+            stateStokerAlarmState.setDisabled(true);
+        }
+        else{
+        	stateCraneId.setDisabled(false);
+        	stateCraneState.setDisabled(false); 
+            stateStokerAvailable.setDisabled(false); 
+            stateStokerAlarmState.setDisabled(false);
+        // END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         // STD APL 2020.03.01 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         //STOCKER STATE COLOR
         
-        //CraneId color
-        if(stateStokerAvailable.getValue()!="Available"){
-        	// Error RED
-        	$("#state-crane-id input[name='colorText']").css('background-color','#FF5555');
-        }
-        else if(stateStokerAlarmState.getValue()!="NoAlarms"){
-        	// アラーム発生 ORANGE
-        	$("#state-crane-id input[name='colorText']").css('background-color','#FFA500');
-        }
-        else 
-        {
-        	//green
-        	$("#state-crane-id input[name='colorText']").css('background-color','#90EE90');
-        }
-        
-        
-        //STOKER-AVAILABLE
-        if(stateStokerAvailable.getValue()!="Available"){
-        	// Error RED
-        	$("#state-stoker-available input[name='colorText']").css('background-color','#FF5555');
-        }
-        else 
-        {
-        	//green
-        	$("#state-stoker-available input[name='colorText']").css('background-color','#90EE90');
-        }
-        //Crane Status
-        	//green
-        	$("#state-crane-state input[name='colorText']").css('background-color','#90EE90');
-        
-        //STOKER-ALARM-STATE
-        if(stateStokerAlarmState.getValue()!="NoAlarms"){
-        	// アラーム発生 ORANGE
-        	$("#state-stoker-alarm-state input[name='colorText']").css('background-color','#FFA500');
-        }
-        else 
-        {
-        	//green
-        	$("#state-stoker-alarm-state input[name='colorText']").css('background-color','#90EE90');
-        }
-        
-        //
+	        //CraneId color
+	        if(stateStokerAvailable.getValue()!="Available"){
+	        	// Error RED
+	        	$("#state-crane-id input[name='colorText']").css('background-color','#FF5555');
+	        }
+	        else if(stateStokerAlarmState.getValue()!="NoAlarms"){
+	        	// アラーム発生 ORANGE
+	        	$("#state-crane-id input[name='colorText']").css('background-color','#FFA500');
+	        }
+	        else 
+	        {
+	        	//green
+	        	$("#state-crane-id input[name='colorText']").css('background-color','#90EE90');
+	        }
+	        
+	        //STOKER-AVAILABLE
+	        if(stateStokerAvailable.getValue()!="Available"){
+	        	// Error RED
+	        	$("#state-stoker-available input[name='colorText']").css('background-color','#FF5555');
+	        }
+	        else 
+	        {
+	        	//green
+	        	$("#state-stoker-available input[name='colorText']").css('background-color','#90EE90');
+	        }
+	        //Crane Status
+	        	//green
+	        	$("#state-crane-state input[name='colorText']").css('background-color','#90EE90');
+	        
+	        //STOKER-ALARM-STATE
+	        if(stateStokerAlarmState.getValue()!="NoAlarms"){
+	        	// アラーム発生 ORANGE
+	        	$("#state-stoker-alarm-state input[name='colorText']").css('background-color','#FFA500');
+	        }
+	        else 
+	        {
+	        	//green
+	        	$("#state-stoker-alarm-state input[name='colorText']").css('background-color','#90EE90');
+	        }
         
         // END APL 2020.03.01 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-
+	    // STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+         }
+	    // END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        
+        
        /* 
         //PIECE_MODE
         if(textValue.pieceMode==null || textValue.pieceMode == "")

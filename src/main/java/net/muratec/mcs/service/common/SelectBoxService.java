@@ -809,18 +809,35 @@ public class SelectBoxService extends BaseService {
     	for (String tscType : tscTypeList) {
     		llcExample.or().andLlcTypeEqualTo(tscType);
         }
-    	llcExample.setOrderByClause("LLC_ID asc");
+    	
+    	// STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+//    	llcExample.setOrderByClause("LLC_ID asc");
+    	llcExample.setOrderByClause("T.TSC_ID asc");
+    	// END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 //    	List<Llc> tscList = llcMapper.selectByExample(llcExample);
     	List<Llc> tscList = llcMapper.selectByLlcTypeExample(llcExample);
     	
     	// セレクトボックス用の配列に変換
     	List<String[]> amhsNameSelList = new ArrayList<String[]>();
     	for (Llc llcs : tscList) {
+    		// STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 tscId add
+    		if(String.valueOf(llcs.getTscId()).equals("")||String.valueOf(llcs.getTscId()).equals(null)) {
+    			
+    			amhsNameSelList.add(new String[] { String.valueOf(llcs.getLlcId())+llcs.getTscId(), llcs.getLlcName() + "(" + String.valueOf(llcs.getLlcId()) + ")" ,
+    					String.valueOf(llcs.getLlcType()) });
+    		}
+    		else{
+    		amhsNameSelList.add(new String[] { String.valueOf(llcs.getLlcId())+llcs.getTscId(), llcs.getTscId() + "(" + String.valueOf(llcs.getLlcId()) + ")" ,
+    		    			String.valueOf(llcs.getLlcType()) });
+    		}
+    		/*}else {
+    		// END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
     		// STD APL 2020.03.01 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 tscId add
     		//amhsNameSelList.add(new String[] { String.valueOf(llcs.getLlcId()), llcs.getLlcName() + "(" + String.valueOf(llcs.getLlcId()) + ")" ,
     		amhsNameSelList.add(new String[] { String.valueOf(llcs.getLlcId())+llcs.getTscId(), llcs.getLlcName() + "(" + String.valueOf(llcs.getLlcId()) + ")" ,
     		// END APL 2020.03.01 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
     			String.valueOf(llcs.getLlcType()) });
+    		}*/
     	}
     	
     	return amhsNameSelList;
@@ -918,15 +935,19 @@ public class SelectBoxService extends BaseService {
         // 検索条件の生成
         OhbExample example = new OhbExample();
 //        example.createCriteria().andAmhsIdEqualTo(amhsId);
-        example.setOrderByClause("OHB_ID asc");
+        example.setOrderByClause("OHB_NAME asc");
 
         // OHB ID要素の取得
         List<Ohb> ohbList = ohbMapper.selectByExample(example);
         List<String[]> selBoxList = new ArrayList<String[]>();
         for (Ohb ohb : ohbList) {
             String[] data = new String[2];
-            data[0] = ohb.getOhbId();
-            data[1] = ohb.getOhbId();
+            // STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+//            data[0] = ohb.getOhbId();
+//            data[1] = ohb.getOhbId();
+            data[0] = ohb.getOhbName();
+            data[1] = ohb.getOhbName();
+            // END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
             selBoxList.add(data);
         }
 
@@ -981,10 +1002,15 @@ public class SelectBoxService extends BaseService {
 
         for (Ohb selItem : ohbGrList) {
             String[] data = new String[2];
-            data[0] = selItem.getOhbId();
+            // STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+
+//            data[0] = selItem.getOhbId();
+            data[0] = selItem.getOhbName();
             StringBuffer sb = new StringBuffer(selItem.getOhbName());
             sb.append("(");
-            sb.append(selItem.getOhbId());
+//            sb.append(selItem.getOhbId());
+            sb.append(selItem.getOhbName());
+            // END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
             sb.append(")");
             data[1] = sb.toString();
             selBoxList.add(data);
@@ -2501,8 +2527,12 @@ public class SelectBoxService extends BaseService {
 
         for (Ohb amhs : ohbList) {
             String[] data = new String[2];
-            data[0] = amhs.getOhbId();
-            data[1] = amhs.getOhbId();
+	       // STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+//            data[0] = amhs.getOhbId();
+//            data[1] = amhs.getOhbId();
+            data[0] = amhs.getOhbName();
+            data[1] = amhs.getOhbName();
+            // END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
             OhbSelBoxList.add(data);
         }
 

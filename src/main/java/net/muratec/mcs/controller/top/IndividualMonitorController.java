@@ -126,30 +126,8 @@ public class IndividualMonitorController extends BaseController {
 //        List<String> moduleNameList = new ArrayList<String>(); // MACS4#MACSV3 Add
         // END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
-        //20191217 DQY ADD START // MACS4#MACSV2 Add
-//        List<IconInfo> labelList = screenMonitorMemberMapper.selectIconType(); 
-        
-//        int typeNum = 0;
-//        String[] tscType= new String[labelList.size()];
-        /*String tscType;
-        for (IconInfo iconInfo : labelList) {
-//        	 tscType[typeNum] = iconInfo.getMemberGroup();
-        	 tscType = iconInfo.getMemberGroup();
-        	 if(tscType.equals(reqEntity.getMemberGroup())) 
-        	 {
-        		 
-        	 }
-//        	 typeNum++;
-        }*/
-        	
-        	
         // 画面からの入力AMHSタイプのチェック
-//        if (ComConst.AmhsType.STR_CODE_STC.equals(reqEntity.amhsType) || ComConst.AmhsType.STR_CODE_LFC.equals(reqEntity.amhsType) || ComConst.AmhsType.STR_CODE_TSTC.equals(reqEntity.amhsType)
-//                || ComConst.AmhsType.STR_CODE_RSBC.equals(reqEntity.amhsType) || ComConst.AmhsType.STR_CODE_OPC.equals(reqEntity.amhsType)) {
-        /*if (GuiEnvironment.TSC_TYPE_OCDC.equals(reqEntity.memberGroup) 
-        	|| GuiEnvironment.TSC_TYPE_XCDC.equals(reqEntity.memberGroup) 
-        	|| GuiEnvironment.TSC_TYPE_STC.equals(reqEntity.memberGroup)) */
-        	if (GuiEnvironment.TSC_TYPE_CDC.equals(reqEntity.llcType) )
+        if (GuiEnvironment.TSC_TYPE_CDC.equals(reqEntity.llcType) )
         {
             // SCモニタ AMHS_TYPE in (1, 21, 25, 31, 51)
             destJspFile = "/top/IndividualScMonitor";
@@ -157,11 +135,7 @@ public class IndividualMonitorController extends BaseController {
             // 取得するコントローラ要素のタイプを指定
             if(GuiEnvironment.TSC_TYPE_CDC.equals(reqEntity.llcType)) {
             	llcTypeList.add(GuiEnvironment.TSC_TYPE_CDC);
-            }/*else if(GuiEnvironment.TSC_TYPE_XCDC.equals(reqEntity.memberGroup)) {
-            	tscTypeList.add(GuiEnvironment.TSC_TYPE_XCDC);
-            }else if(GuiEnvironment.TSC_TYPE_STC.equals(reqEntity.memberGroup)) {
-            	tscTypeList.add(GuiEnvironment.TSC_TYPE_STC);
-            }*/
+            }
             
             model.addAttribute("llcType", reqEntity.llcType);	
            
@@ -170,58 +144,14 @@ public class IndividualMonitorController extends BaseController {
                     ComConst.LogOperationType.GET, 1L);*/
 
         } 
-/*  // STD APL 2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-      else if (GuiEnvironment.TSC_TYPE_LIMC.equals(reqEntity.llcType)) {
-            // TSCモニタ AMHS_TYPE in (81, 85)
-//            destJspFile = "/top/IndividualTscMonitor";
-            destJspFile = "/top/IndividualScMonitor";
-
-            // 取得するコントローラ要素のタイプを指定
-            llcTypeList.add(GuiEnvironment.TSC_TYPE_LIMC);
-            model.addAttribute("llcType", reqEntity.llcType);	//20200106 DQY ADD
-
-            //20191225 DQY DEL FOR OPERATOROG
-             * // 操作ログの情報設定（TSCモニタ）（アノテーション記載情報を転記）
-            opeLogInfo = ComFunction.createOpeLogInfo(session, ComConst.ScreenInfo.TOP_SYSTEMMONITOR,
-                    ComConst.LogOperationType.GET, 7L);
-
-        }
-        else if (GuiEnvironment.TSC_TYPE_SRC320.equals(reqEntity.llcType)) {//20191224 DQY ADD
-        	// TSCモニタ AMHS_TYPE in (81, 85)
-//        	destJspFile = "/top/IndividualTscMonitor";//20200102 DQY DEL
-            destJspFile = "/top/IndividualScMonitor";//20200102 DQY ADD
-        	
-        	// 取得するコントローラ要素のタイプを指定
-            llcTypeList.add(GuiEnvironment.TSC_TYPE_SRC320);
-            model.addAttribute("llcType", reqEntity.llcType);	//20200106 DQY ADD
-
-        	// 操作ログの情報設定（TSCモニタ）（アノテーション記載情報を転記）
-        	opeLogInfo = ComFunction.createOpeLogInfo(session, ComConst.ScreenInfo.TOP_SYSTEMMONITOR,
-        			ComConst.LogOperationType.GET, 7L);
-        	
-        }
-        else if (GuiEnvironment.TSC_TYPE_SRC350.equals(reqEntity.llcType)) {//20191224 DQY ADD
-        	// TSCモニタ AMHS_TYPE in (81, 85)
-//        	destJspFile = "/top/IndividualTscMonitor";//20200102 DQY DEL
-            destJspFile = "/top/IndividualScMonitor";//20200102 DQY ADD
-        	
-        	// 取得するコントローラ要素のタイプを指定
-            llcTypeList.add(GuiEnvironment.TSC_TYPE_SRC350);
-            model.addAttribute("memberGroupName", reqEntity.llcType);	//20200106 DQY ADD
-
-        	// 操作ログの情報設定（TSCモニタ）（アノテーション記載情報を転記）
-        	opeLogInfo = ComFunction.createOpeLogInfo(session, ComConst.ScreenInfo.TOP_SYSTEMMONITOR,
-        			ComConst.LogOperationType.GET, 7L);
-        	
-        }
-        // END APL 2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-        */
+	    // STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         else if (GuiEnvironment.TSC_TYPE_OHBC.equals(reqEntity.llcType)
-        		||GuiEnvironment.TSC_TYPE_OHBC2.equals(reqEntity.llcType)
-        		) {
+        		||GuiEnvironment.TSC_TYPE_OHBC2.equals(reqEntity.llcType)) 
+        {
             // OHBモニタ AMHS_TYPE = 61
-            destJspFile = "/top/IndividualOhbMonitor";//20191224 DQY DEL
-//        	destJspFile = "/top/IndividualTscMonitor"; //20191224 DQY ADD
+            //destJspFile = "/top/IndividualOhbMonitor";//20200302 DQY DEL
+            destJspFile = "/top/IndividualScMonitor";//20200302 DQY ADD
+
 
             // 取得するコントローラ要素のタイプを指定
             if(GuiEnvironment.TSC_TYPE_OHBC.equals(reqEntity.llcType)) {
@@ -242,30 +172,23 @@ public class IndividualMonitorController extends BaseController {
             opeLogInfo = ComFunction.createOpeLogInfo(session, ComConst.ScreenInfo.TOP_SYSTEMMONITOR,
                     ComConst.LogOperationType.GET, 5L);*/
 
-//        } else if (ComConst.AmhsType.STR_CODE_OHVC.equals(reqEntity.amhsType) || ComConst.AmhsType.STR_CODE_VLFT.equals(reqEntity.amhsType)) {//20191218 dqy del
-        } else if (GuiEnvironment.TSC_TYPE_OHTC.equals(reqEntity.llcType)
-        		/*|| GuiEnvironment.TSC_TYPE_LIFTERC.equals(reqEntity.llcType)
-        		||GuiEnvironment.TSC_TYPE_XLFT.equals(reqEntity.llcType)*/) {
+           } else if (GuiEnvironment.TSC_TYPE_OHTC.equals(reqEntity.llcType)
+        		   ||GuiEnvironment.TSC_TYPE_OHTC2.equals(reqEntity.llcType))
+            {
             // TSCモニタ AMHS_TYPE in (81, 85)
 //        	destJspFile = "/top/IndividualTscMonitor"; //20191224 DQY DEL
             destJspFile = "/top/IndividualScMonitor";//20200102 DQY ADD
 
             // 取得するコントローラ要素のタイプを指定
-            llcTypeList.add(GuiEnvironment.TSC_TYPE_OHTC);
-
-            /*
+            //llcTypeList.add(GuiEnvironment.TSC_TYPE_OHTC);
             if (GuiEnvironment.TSC_TYPE_OHTC.equals(reqEntity.llcType))
             {
             	llcTypeList.add(GuiEnvironment.TSC_TYPE_OHTC);
             }
-            else if(GuiEnvironment.TSC_TYPE_LIFTERC.equals(reqEntity.llcType))
+            else if(GuiEnvironment.TSC_TYPE_OHTC2.equals(reqEntity.llcType))
             {
-            	llcTypeList.add(GuiEnvironment.TSC_TYPE_LIFTERC);
+            	llcTypeList.add(GuiEnvironment.TSC_TYPE_OHTC2);
             }
-            else if(GuiEnvironment.TSC_TYPE_XLFT.equals(reqEntity.llcType)) 
-            {
-            	llcTypeList.add(GuiEnvironment.TSC_TYPE_XLFT);//20200103 DQY ADD
-            }*/
             		
             model.addAttribute("llcType", reqEntity.llcType);	//20200106 DQY ADD
 
@@ -273,7 +196,43 @@ public class IndividualMonitorController extends BaseController {
             opeLogInfo = ComFunction.createOpeLogInfo(session, ComConst.ScreenInfo.TOP_SYSTEMMONITOR,
                     ComConst.LogOperationType.GET, 7L);*/
 
-        } else {
+        } else if (GuiEnvironment.TSC_TYPE_AGVC.equals(reqEntity.llcType)
+     		   ||GuiEnvironment.TSC_TYPE_DWCC.equals(reqEntity.llcType)
+     		   ||GuiEnvironment.TSC_TYPE_TMU.equals(reqEntity.llcType)
+     		   ||GuiEnvironment.TSC_TYPE_PM.equals(reqEntity.llcType))
+         {
+         // TSCモニタ AMHS_TYPE in (81, 85)
+//     	destJspFile = "/top/IndividualTscMonitor"; //20191224 DQY DEL
+         destJspFile = "/top/IndividualScMonitor";//20200102 DQY ADD
+
+         // 取得するコントローラ要素のタイプを指定
+         //llcTypeList.add(GuiEnvironment.TSC_TYPE_OHTC);
+         if (GuiEnvironment.TSC_TYPE_AGVC.equals(reqEntity.llcType))
+         {
+         	llcTypeList.add(GuiEnvironment.TSC_TYPE_AGVC);
+         }
+         else if(GuiEnvironment.TSC_TYPE_DWCC.equals(reqEntity.llcType))
+         {
+         	llcTypeList.add(GuiEnvironment.TSC_TYPE_DWCC);
+         }
+         else if(GuiEnvironment.TSC_TYPE_TMU.equals(reqEntity.llcType))
+         {
+        	 llcTypeList.add(GuiEnvironment.TSC_TYPE_TMU);
+         }
+         else if(GuiEnvironment.TSC_TYPE_PM.equals(reqEntity.llcType))
+         {
+        	 llcTypeList.add(GuiEnvironment.TSC_TYPE_PM);
+         }
+         		
+         model.addAttribute("llcType", reqEntity.llcType);	//20200106 DQY ADD
+
+         /*// 操作ログの情報設定（TSCモニタ）（アノテーション記載情報を転記）
+         opeLogInfo = ComFunction.createOpeLogInfo(session, ComConst.ScreenInfo.TOP_SYSTEMMONITOR,
+                 ComConst.LogOperationType.GET, 7L);*/
+
+         }
+        // END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
+        else {
             // 上記以外はエラー
             String mes = messageSource.getMessage("ERR0044", new String[] { reqEntity.llcType }, "ERR0044", locale);
             throw new McsException(mes);
