@@ -749,4 +749,56 @@
 	ORDER BY TYPE,REPLACE(LLC_TYPE,'DWCC') ASC
   </select>
     <!-- END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
+    <!-- STD APL 2020.03.02 董 天津村研  MCSV4 開発  Ver2.0 Rev.000 -->
+    <sql id="LlcType_Column_List">
+      L.LLC_ID,
+	  L.PROTOCOL_TYPE,
+	  L.LLC_NAME,
+	  L.LLC_TYPE,
+	  L.LLC_MODEL,
+	  L.LLC_MODE,
+	  L.LLC_MODE_SET_TIME,
+	  L.LLC_MODE_SET_ORIGINATOR,
+	  L.AVAILABLE,
+	  L.SYSTEM_STATE,
+	  L.ALARM_STATE,
+	  L.COMM_STATE,
+	  L.CONTROL_STATE,
+	  L.FROM_LLC_QUEUE_NAME,
+	  L.TO_LLC_QUEUE_NAME,
+	  L.H_SHOW_STATE,
+	  L.H_SHOW_STATE_SET_TIME,
+	  L.H_SHOW_MODE,
+	  L.H_SHOW_MODE_SET_TIME,
+	  L.AREA,
+	  L.MACS_IP_ADDRESS,
+	  L.MACS_PORT_ID,
+	  L.MACS_DEVICE_ID,
+	  L.E10_STATE,
+	  L.E10_STATE_SET_TIME,
+	  L.E10_STATE_SET_ORIGINATOR,
+	  L.DISPLAY_FLG,
+	  L.DATA_SYNC_FLG,
+	  L.SYNC_RETRY,
+	  L.LAST_EXECUTION_TIME,
+	  L.FINISHED_TIME,
+	  L.TIME_SYNC_FLG,
+	  T.TSC_ID
+    </sql>
+    <select id="selectByLlcTypeExample" parameterType="net.muratec.mcs.model.LlcExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="LlcType_Column_List" />
+    from LLC L
+    left outer join TSC T on L.LLC_ID = T.LLC_ID
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  	</select>
+    <!-- END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
 </mapper>

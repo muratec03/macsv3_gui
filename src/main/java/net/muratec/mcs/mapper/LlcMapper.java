@@ -103,4 +103,8 @@ public interface LlcMapper {
 //	List<IconInfo> selectIconInfoByType(String moduleName,String llcType);
 	List<IconInfo> selectIconInfoByType(Llc record);//DQY ADD 20200218
 	// END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	
+	// STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	List<Llc> selectByLlcTypeExample(LlcExample example);
+	// END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 }
