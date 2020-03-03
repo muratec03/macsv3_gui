@@ -492,7 +492,7 @@ public class IndividualTscMonitorService extends BaseService {
             IndividualMonitorAlarmInfoEntity alarmRes = new IndividualMonitorAlarmInfoEntity();
 
             alarmRes.setTime = ComFunction.timestampToStringSmall(alarmRec[0]);
-            alarmRes.alarmId = (!alarmRec[1].isEmpty()) ? Long.parseLong(alarmRec[1]) : null;
+            alarmRes.alarmId = (!alarmRec[1].isEmpty()) ? alarmRec[1] : null;
             alarmRes.alarmText = alarmRec[2];
 
             resEntity.alarmList.add(alarmRes);

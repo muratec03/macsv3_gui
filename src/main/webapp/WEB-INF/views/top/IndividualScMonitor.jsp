@@ -53,11 +53,18 @@
       },
     
     port: {
-      portId: '<spring:message code="IT-001-12-005"/>',
-      ioMode: '<spring:message code="IT-001-12-007"/>',
-      available: '<spring:message code="IT-001-12-008"/>',
-      <%--  type: '<spring:message code="IT-001-12-006"/>',
-      logicalState: '<spring:message code="IT-001-12-009"/>' --%> <%-- 20191231 Song Del For v4  --%>
+        portId: '<spring:message code="IT-001-12-002"/>',
+        carrierId: '<spring:message code="IT-001-12-003"/>',
+        available: '<spring:message code="IT-001-12-004"/>',
+        ibsemAvail: '<spring:message code="IT-001-12-005"/>',
+        portMode: '<spring:message code="IT-001-12-006"/>'
+      },
+      
+     vehicle: {
+    	 vehicleId: '<spring:message code="IT-001-13-002"/>',
+    	 alarmText: '<spring:message code="IT-001-13-003"/>',
+    	 vehicleKind: '<spring:message code="IT-001-13-004"/>',
+    	 vehicleState: '<spring:message code="IT-001-13-005"/>'
     },
     
     
@@ -248,17 +255,26 @@
             
             <!-- 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
             <div id="state-stokerZoneTable-target"></div>
+            <div id="state-portTable-target"></div>
+            <div id="state-vehicleTable-target"></div>
             <div id="state-table-target"></div>
         </div> 
         <!-- 状態表示画面 end -->
-
-        <!-- ポート表示画面 start -->
-        <div id="port-screen">
+		<!-- Vehicle 表示画面 start -->
+        <!--<div id="port-screen">
             <div class="mcs-content-subtitle">
-                <span><spring:message code="IT-001-12-004" /></span>
+                <span><spring:message code="IT-001-12-001" /></span>
             </div>
             <div id="port-table-target"></div>
-        </div>
+        </div>-->
+        <!-- ポート表示画面 end -->
+        <!-- ポート表示画面 start -->
+        <!--<div id="vehicle-screen">
+            <div class="mcs-content-subtitle">
+                <span><spring:message code="IT-001-13-001" /></span>
+            </div>
+            <div id="vehicle-table-target"></div>
+        </div>-->
         <!-- ポート表示画面 end -->
 
         <!-- Microコマンド表示画面 start -->

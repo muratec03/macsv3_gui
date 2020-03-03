@@ -28,24 +28,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import net.muratec.mcs.common.Constants;
 import net.muratec.mcs.common.ComFunction;
 import net.muratec.mcs.common.defines.State;
 import net.muratec.mcs.entity.top.IndividualMonitorAlarmInfoEntity;
 import net.muratec.mcs.entity.top.IndividualMonitorMicroCmdEntity;
-import net.muratec.mcs.entity.top.ReqIndividualMonitorEntity;
-import net.muratec.mcs.exception.McsException;
 import net.muratec.mcs.entity.top.IndividualMonitorPortEntity;
 import net.muratec.mcs.entity.top.IndividualMonitorStateEntity;
 import net.muratec.mcs.entity.top.IndividualMonitorStokerInfoEntity;
 import net.muratec.mcs.entity.top.IndividualMonitorTransferJobEntity;
+import net.muratec.mcs.entity.top.IndividualMonitorVehicleEntity;
+import net.muratec.mcs.entity.top.ReqIndividualMonitorEntity;
+import net.muratec.mcs.exception.McsException;
 import net.muratec.mcs.mapper.AlarmMapper;
 import net.muratec.mcs.mapper.GuiColorMapper;
 import net.muratec.mcs.mapper.IndividualMonitorMapper;
 import net.muratec.mcs.mapper.JobPriorityMapper;
 import net.muratec.mcs.mapper.LlcMapper;
+import net.muratec.mcs.mapper.PortMapper;
 import net.muratec.mcs.mapper.StockerMapper;
 import net.muratec.mcs.mapper.TscMapper;
+import net.muratec.mcs.mapper.VehicleMapper;
 import net.muratec.mcs.model.Alarm;
 import net.muratec.mcs.model.AlarmExample;
 import net.muratec.mcs.model.GuiColor;
@@ -55,10 +57,13 @@ import net.muratec.mcs.model.IndividualMonitorTransferJob;
 import net.muratec.mcs.model.JobPriority;
 import net.muratec.mcs.model.Llc;
 import net.muratec.mcs.model.LlcExample;
+import net.muratec.mcs.model.Port;
+import net.muratec.mcs.model.PortExample;
 import net.muratec.mcs.model.Stocker;
 import net.muratec.mcs.model.StockerExample;
 import net.muratec.mcs.model.Tsc;
-import net.muratec.mcs.model.TscExample;
+import net.muratec.mcs.model.Vehicle;
+import net.muratec.mcs.model.VehicleExample;
 import net.muratec.mcs.service.common.BaseService;
 import net.muratec.mcs.service.common.ExeForeignFileService;
 
@@ -118,6 +123,10 @@ public class IndividualScMonitorService extends BaseService {
     
     // STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
     @Autowired private StockerMapper stockerMapper;
+    // END APL 2020.02.85 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    // STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    @Autowired private PortMapper portMapper;
+    @Autowired private VehicleMapper vehicleMapper;
     // END APL 2020.02.85 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
     //@formatter:off
@@ -206,7 +215,43 @@ public class IndividualScMonitorService extends BaseService {
             resEntity.stokerZoneList.add(stockerZoneRes);
         }
 	 	// END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 Stocker Table Data
-	 	
+		// STD APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+//	 	 	PortExample portExample = new PortExample();
+//	 	 	portExample.createCriteria().andTscIdEqualTo(reqEntity.tscId);
+	 	 	Port portPa = new Port();
+	 	 	portPa.setTscId(reqEntity.tscId);
+	        List<Port> portList = portMapper.selectPortList(portPa);//tscIdによって、Portのデータを探す
+	 	 	
+	 	 	for (Port portListRec : portList) {
+	 	 		IndividualMonitorPortEntity portRes = new IndividualMonitorPortEntity();
+
+	 	 		portRes.portId = portListRec.getPortId();
+	 	 		portRes.tscId = portListRec.getTscId();
+	 	 		portRes.alarmText = portListRec.getAlarmText();
+	 	 		portRes.available = portListRec.getAvailable();
+	 	 		portRes.ibsemAavail = portListRec.getIbsemAvail();
+	 	 		portRes.portMode = portListRec.getPortMode();
+	 	 		portRes.carrierId = portListRec.getCarrierId();
+	 	 		resEntity.portList.add(portRes);
+	 	 	} 
+	 	 	
+	 	 	VehicleExample vehicleExample = new VehicleExample();
+	 	 	vehicleExample.createCriteria().andLlcIdEqualTo(reqEntity.llcId);
+	        List<Vehicle> vehicleList = vehicleMapper.selectVehicleList(vehicleExample);//tscIdによって、Portのデータを探す
+	 	 	
+	 	 	for (Vehicle vehicleListRec : vehicleList) {
+	 	 		IndividualMonitorVehicleEntity vehicleRes = new IndividualMonitorVehicleEntity();
+
+	 	 		vehicleRes.vehicleId = vehicleListRec.getVehicleId();
+	 	 		vehicleRes.llcId = vehicleListRec.getLlcId();
+	 	 		vehicleRes.llcName = vehicleListRec.getLlcName();
+	 	 		vehicleRes.alarmText = vehicleListRec.getAlarmText();
+	 	 		vehicleRes.vehicleKind = vehicleListRec.getVehicleKind();
+	 	 		vehicleRes.vehicleState = vehicleListRec.getVehicleState();
+	 	 		resEntity.vehicleList.add(vehicleRes);
+	 	 	} 
+	 	// END APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+
         if (llcState == null ) {
             return null;
         }
@@ -238,7 +283,6 @@ public class IndividualScMonitorService extends BaseService {
             	resEntity.state.systemState = State.TSC_SYSTEM_NONE;
             	resEntity.state.available = State.TSC_SYSTEM_NONE;
             	resEntity.state.tscMode = State.TSC_SYSTEM_NONE;
-//            	resEntity.state.alarmState = tscStateRec.getAlarmState();
             }
             else 
             {
@@ -251,8 +295,6 @@ public class IndividualScMonitorService extends BaseService {
     	        resEntity.state.alarmState = llcStateRec.getAlarmState();
     	        resEntity.state.commState = llcStateRec.getCommState();
     	        resEntity.state.systemState = llcStateRec.getSystemState();
-//    	        resEntity.state.tscMode = tscStateRec.getTscMode();
-//    	        resEntity.state.tscAvailable = tscStateRec.getTscAvailable();
             }
         }
         //20191225 Song Mod End FOR MCSV2
@@ -325,17 +367,13 @@ public class IndividualScMonitorService extends BaseService {
         resEntity.state.controlState = stateRec[1];
         resEntity.state.systemState = stateRec[2];
         resEntity.state.available = stateRec[3];
-//        resEntity.state.zoneOccupied = stateRec[4].length() > 0 ? Short.parseShort(stateRec[4]) : null;
-//        resEntity.state.zoneCapacity = stateRec[5].length() > 0 ? Short.parseShort(stateRec[5]) : null;
-//        resEntity.state.zoneUtility = decimalToPerNumString(stateRec[6]);
-//        resEntity.state.amhsLState = stateRec[7];
 
         // アラーム一覧
         for (String[] alarmRec : alarmColumnList) {
             IndividualMonitorAlarmInfoEntity alarmRes = new IndividualMonitorAlarmInfoEntity();
 
             alarmRes.setTime = ComFunction.timestampToStringSmall(alarmRec[0]);
-            alarmRes.alarmId = (!alarmRec[1].isEmpty()) ? Long.parseLong(alarmRec[1]) : null;
+            alarmRes.alarmId = (!alarmRec[1].isEmpty()) ? alarmRec[1] : null;
             alarmRes.alarmText = alarmRec[2];
 
             resEntity.alarmList.add(alarmRes);

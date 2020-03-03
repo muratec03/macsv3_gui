@@ -52,10 +52,13 @@ public class IndividualMonitorPortEntity {
     //20191227 DQY ADD START
     public String portAbbreviation = null;
     public String portMode = null;
-    public String Available = null;
+    public String available = null;
     public String ibsemAavail = null;
     public String managementTscId = null;
     public String tscId = null;
     //20191227 DQY ADD END
+	// STD APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    public String alarmText = null;
+	// END APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
 }

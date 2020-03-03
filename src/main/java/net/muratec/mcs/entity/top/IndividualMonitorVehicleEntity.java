@@ -42,4 +42,11 @@ public class IndividualMonitorVehicleEntity {
 
     public String vehicleId = null;
     public String vehicleState = null;
+    // STD APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    public String alarmText = null;
+    public String llcId = null;
+    public String llcName = null;
+    public String vehicleKind = null;
+	// END APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+
 }

@@ -42,7 +42,7 @@ import net.muratec.mcs.entity.common.AjaxResBaseEntity;
 public class IndividualMonitorAlarmInfoEntity extends AjaxResBaseEntity {
 
     public String setTime = null;
-    public Long alarmId = null;
+    public String alarmId = null;
     public String alarmText = null;
     public String alarmLoc = null;
     public String vehicleId = null;

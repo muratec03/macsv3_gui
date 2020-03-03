@@ -178,59 +178,69 @@ $(function() {
   stokerZoneTable.setBodyHeight($('.mcs-content.mcs-with-subheader.mcs-with-subtitle').outerHeight() - 40);
   //END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
+  //STD APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+  var vehicleTable = new McsTable($('#state-vehicleTable-target'));
+  vehicleTable.setNotRowSelect(true);
+  
+  // 状態テーブルヘッダ(状態テーブル)
+  var vehicleHeader = [{
+    name: 'vehicleId',
+    text: screenText.vehicle.vehicleId,
+    display: true
+  }, {
+    name: 'alarmText',
+    text: screenText.vehicle.alarmText,
+    display: true
+  }, {
+    name: 'vehicleKind',
+    text: screenText.vehicle.vehicleKind,
+    display: true
+  }, {
+	    name: 'vehicleState',
+	    text: screenText.vehicle.vehicleState,
+	    display: true
+	  }];
+  
+  // ヘッダ設定(状態テーブル)
+  vehicleTable.setHeader(vehicleHeader);
+  vehicleTable.setBodyHeight($('.mcs-content.mcs-with-subheader.mcs-with-subtitle').outerHeight() - 40);
+ 
   // ---------------------------------------
   // ポート画面コンポーネント生成
   // ---------------------------------------
   // ポートテーブル生成
-  var portTable = new McsTable($('#port-table-target'));
+//  var portTable = new McsTable($('#port-table-target'));
+  var portTable = new McsTable($('#state-portTable-target'));
   portTable.setNotRowSelect(true);
 
-  /*
-  //20191231 Song Del Start For v4 
   // ポートテーブルヘッダ
   var portHeader = [{
     name: 'portId',
     text: screenText.port.portId,
     display: true
   }, {
-    name: 'portType',
-    text: screenText.port.type,
+    name: 'carrierId',
+    text: screenText.port.carrierId,
     display: true
   }, {
-    name: 'portIo',
-    text: screenText.port.ioMode,
-    display: true
-  }, {
-    name: 'portAvail',
+    name: 'available',
     text: screenText.port.available,
     display: true
   }, {
-    name: 'portLState',
-    text: screenText.port.logicalState,
+    name: 'ibsemAvail',
+    text: screenText.port.ibsemAvail,
     display: true
-  }];
-  //20191231 Song Del End For v4 
-  */
-  //20191231 Song Add Start For v2 
-  var portHeader = [{
-	    name: 'portAbbreviation',
-	    text: screenText.port.portId,
-	    display: true
-	  },  {
+  },{
 	    name: 'portMode',
 	    text: screenText.port.ioMode,
 	    display: true
-	  }, {
-	    name: 'Available',
-	    text: screenText.port.available,
-	    display: true
 	  }];
-  //20191231 Song Add End For v2 
   
   // ヘッダ設定(ポートテーブル)
   portTable.setHeader(portHeader);
   portTable.setBodyHeight($('.mcs-content.mcs-with-subheader.mcs-with-subtitle').outerHeight() - 40);
-
+  //END APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+  
   // ---------------------------------------
   // Microコマンド画面コンポーネント生成
   // ---------------------------------------
@@ -652,7 +662,8 @@ $(function() {
 
       // 表示をクリア
       clearState();
-
+      showPortScreen()
+      
       if (retObj.body) {
         // テキストボックスのデータ
         var textValue = retObj.body.state;
