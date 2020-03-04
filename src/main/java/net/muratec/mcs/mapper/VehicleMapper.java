@@ -132,7 +132,7 @@ public interface VehicleMapper {
     ******************************************************************************
     */
    //@formatter:on
-   List<Vehicle> selectVehicleList(VehicleExample example);
+   List<VehiclesModel> selectVehicleList(Vehicle example);
     //@formatter:off
     /**
      ******************************************************************************

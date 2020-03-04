@@ -71,4 +71,7 @@ public class AlarmModel {
     public String llcName;
     public String setTime;
     //ADD END APL 2020.02.22 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
+	// STD APL 2020.03.04 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    public String vehicleId;
+	// END APL 2020.03.04 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 }

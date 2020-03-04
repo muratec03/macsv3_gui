@@ -84,6 +84,9 @@ public interface AlarmMapper {
      */
     //@formatter:on
     List<AlarmModel> selectList(ReqGetAlarmListEntity reqEntity);
+	// STD APL 2020.03.04 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    List<AlarmModel> selectAlarmList(Alarm record);
+	// END APL 2020.03.04 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
     //@formatter:off
     /**

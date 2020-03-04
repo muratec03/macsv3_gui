@@ -50,6 +50,7 @@ import net.muratec.mcs.mapper.TscMapper;
 import net.muratec.mcs.mapper.VehicleMapper;
 import net.muratec.mcs.model.Alarm;
 import net.muratec.mcs.model.AlarmExample;
+import net.muratec.mcs.model.AlarmModel;
 import net.muratec.mcs.model.GuiColor;
 import net.muratec.mcs.model.GuiColorExample;
 import net.muratec.mcs.model.IconInfo;
@@ -59,11 +60,13 @@ import net.muratec.mcs.model.Llc;
 import net.muratec.mcs.model.LlcExample;
 import net.muratec.mcs.model.Port;
 import net.muratec.mcs.model.PortExample;
+import net.muratec.mcs.model.PortsModel;
 import net.muratec.mcs.model.Stocker;
 import net.muratec.mcs.model.StockerExample;
 import net.muratec.mcs.model.Tsc;
 import net.muratec.mcs.model.Vehicle;
 import net.muratec.mcs.model.VehicleExample;
+import net.muratec.mcs.model.VehiclesModel;
 import net.muratec.mcs.service.common.BaseService;
 import net.muratec.mcs.service.common.ExeForeignFileService;
 
@@ -218,28 +221,30 @@ public class IndividualScMonitorService extends BaseService {
 		// STD APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 //	 	 	PortExample portExample = new PortExample();
 //	 	 	portExample.createCriteria().andTscIdEqualTo(reqEntity.tscId);
-	 	 	Port portPa = new Port();
+	 		Port portPa = new Port();
 	 	 	portPa.setTscId(reqEntity.tscId);
-	        List<Port> portList = portMapper.selectPortList(portPa);//tscIdによって、Portのデータを探す
+	        List<PortsModel> portList = portMapper.selectPortList(portPa);//tscIdによって、Portのデータを探す
 	 	 	
-	 	 	for (Port portListRec : portList) {
+	 	 	for (PortsModel portListRec : portList) {
 	 	 		IndividualMonitorPortEntity portRes = new IndividualMonitorPortEntity();
 
 	 	 		portRes.portId = portListRec.getPortId();
 	 	 		portRes.tscId = portListRec.getTscId();
 	 	 		portRes.alarmText = portListRec.getAlarmText();
 	 	 		portRes.available = portListRec.getAvailable();
-	 	 		portRes.ibsemAavail = portListRec.getIbsemAvail();
+	 	 		portRes.ibsemAvail = portListRec.getIbsemAvail();
 	 	 		portRes.portMode = portListRec.getPortMode();
 	 	 		portRes.carrierId = portListRec.getCarrierId();
 	 	 		resEntity.portList.add(portRes);
 	 	 	} 
 	 	 	
-	 	 	VehicleExample vehicleExample = new VehicleExample();
-	 	 	vehicleExample.createCriteria().andLlcIdEqualTo(reqEntity.llcId);
-	        List<Vehicle> vehicleList = vehicleMapper.selectVehicleList(vehicleExample);//tscIdによって、Portのデータを探す
+//	 	 	VehicleExample vehicleExample = new VehicleExample();
+//	 	 	vehicleExample.createCriteria().andLlcIdEqualTo(reqEntity.llcId);
+	 	 	Vehicle vehiclePa = new Vehicle();
+	 	 	vehiclePa.setLlcId(reqEntity.llcId);
+	        List<VehiclesModel> vehicleList = vehicleMapper.selectVehicleList(vehiclePa);//tscIdによって、Portのデータを探す
 	 	 	
-	 	 	for (Vehicle vehicleListRec : vehicleList) {
+	 	 	for (VehiclesModel vehicleListRec : vehicleList) {
 	 	 		IndividualMonitorVehicleEntity vehicleRes = new IndividualMonitorVehicleEntity();
 
 	 	 		vehicleRes.vehicleId = vehicleListRec.getVehicleId();
@@ -259,11 +264,19 @@ public class IndividualScMonitorService extends BaseService {
         // -----------------------------------------
         // アラーム一覧取得
         // -----------------------------------------
-        AlarmExample example = new AlarmExample();//2025 del dqy
-        //example.createCriteria().andAmhsIdEqualTo(reqEntity.amhsId);  //v4版本用的是amhsId , 现在v2版本用下面的displayId  //20191223 Song Del
+        
+	    // STD APL 2020.03.04 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        /*AlarmExample example = new AlarmExample();//2025 del dqy
         example.createCriteria().andLlcIdEqualTo(reqEntity.llcId);  //20191223 Song Add
         example.setOrderByClause("SET_TIME desc");
-        List<Alarm> alarmRecList = alarmMapper.selectByExample(example);
+        List<Alarm> alarmRecList = alarmMapper.selectByExample(example);*/
+        
+        Alarm alarmPa = new Alarm();
+        alarmPa.setLlcId(reqEntity.llcId);
+        alarmPa.setTscId(reqEntity.tscId);
+        alarmPa.setSetVendor(reqEntity.llcId);
+        List<AlarmModel> alarmRecList = alarmMapper.selectAlarmList(alarmPa);//tscIdによって、Portのデータを探す
+        // END APL 2020.03.04 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         
         // -----------------------------------------
         // エンティティ形式に変換
@@ -301,13 +314,13 @@ public class IndividualScMonitorService extends BaseService {
             
             
         // アラーム一覧
-        for (Alarm alarmRec : alarmRecList) {
+        for (AlarmModel alarmRec : alarmRecList) {
             IndividualMonitorAlarmInfoEntity alarmRes = new IndividualMonitorAlarmInfoEntity();
 
             alarmRes.setTime = ComFunction.timestampToStringSmall(alarmRec.getSetTime());
             alarmRes.alarmId = alarmRec.getAlarmId();
             alarmRes.alarmText = alarmRec.getAlarmText();
-            alarmRes.alarmLoc = alarmRec.getAlarmLoc();
+            alarmRes.alarmLoc = alarmRec.getAlarmLocation();
             alarmRes.vehicleId = alarmRec.getVehicleId();
             resEntity.alarmList.add(alarmRes);
         }

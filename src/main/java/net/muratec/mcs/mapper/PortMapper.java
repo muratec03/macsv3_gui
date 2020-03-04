@@ -135,7 +135,7 @@ public interface PortMapper {
      ******************************************************************************
      */
     //@formatter:on
-    List<Port> selectPortList(Port record);
+    List<PortsModel> selectPortList(Port record);
     // END APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
   //@formatter:off
     /**

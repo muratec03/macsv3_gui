@@ -53,7 +53,7 @@ public class IndividualMonitorPortEntity {
     public String portAbbreviation = null;
     public String portMode = null;
     public String available = null;
-    public String ibsemAavail = null;
+    public String ibsemAvail = null;
     public String managementTscId = null;
     public String tscId = null;
     //20191227 DQY ADD END

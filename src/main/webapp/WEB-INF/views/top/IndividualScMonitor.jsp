@@ -254,7 +254,13 @@
             </div>
             
             <!-- 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+            <div class="mcs-content-subtitle">
+                <span><spring:message code="IT-001-11-004" /></span>
+            </div>
             <div id="state-stokerZoneTable-target"></div>
+            <div class="mcs-content-subtitle">
+                <span><spring:message code="IT-001-11-004" /></span>
+            </div>
             <div id="state-portTable-target"></div>
             <div id="state-vehicleTable-target"></div>
             <div id="state-table-target"></div>

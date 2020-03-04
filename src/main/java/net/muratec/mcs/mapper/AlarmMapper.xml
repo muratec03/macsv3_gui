@@ -609,7 +609,7 @@
   </select>
   -->
   
-    <select id="selectList" parameterType="net.muratec.mcs.entity.top.ReqGetAlarmListEntity" resultMap="SearchResultMap">
+<select id="selectList" parameterType="net.muratec.mcs.entity.top.ReqGetAlarmListEntity" resultMap="SearchResultMap">
        select
 			alarm.set_time,
 			alarm.llc_id,  
@@ -624,7 +624,25 @@
           set_time DESC
   </select>
   <!-- MODEL END APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
-  
+  <!-- STD APL 2020.03.04 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
+  <select id="selectAlarmList" parameterType="net.muratec.mcs.model.AlarmModel" resultMap="SearchResultMap">
+     SELECT alarm.llc_id,
+		  NVL(tsc.tsc_id, NVL(llc.llc_name, alarm.llc_id)) llc_name,
+		  alarm.alarm_id,
+		  alarm.alarm_loc,
+		  alarm.alarm_text,
+		  alarm.set_time
+		FROM alarm
+		LEFT OUTER JOIN llc ON alarm.llc_id = llc.llc_id
+		LEFT OUTER JOIN tsc ON alarm.tsc_id IS NOT NULL AND alarm.tsc_id = tsc.tsc_id
+		WHERE (alarm.llc_id  = #{llcId,jdbcType=VARCHAR}
+				AND (alarm.tsc_id    = #{tscId,jdbcType=VARCHAR}
+				OR alarm.tsc_id     IS NULL ))
+				OR ((alarm.tsc_id    = #{tscId,jdbcType=VARCHAR})
+				OR (alarm.alarm_loc IN (SELECT ohb_port_id FROM ohb_port WHERE set_vendor = #{llcId,jdbcType=VARCHAR})))
+		ORDER BY set_time DESC
+  </select>
+  <!-- END APL 2020.03.04 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
   
   <!--
     条件に合致したCarrier情報のレコード数を取得する。

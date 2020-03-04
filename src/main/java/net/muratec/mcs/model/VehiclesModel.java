@@ -45,4 +45,7 @@ public class VehiclesModel {
     public String alarmText;
     public String vehicleKind;
     public String vehicleState; 
+	// STD APL 2020.03.04 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    public String llcId;
+	// END APL 2020.03.04 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 }

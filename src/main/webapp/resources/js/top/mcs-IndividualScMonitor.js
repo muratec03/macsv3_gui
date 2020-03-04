@@ -148,7 +148,7 @@ $(function() {
 
   // ヘッダ設定(状態テーブル)
   stateTable.setHeader(stateHeader);
-  stateTable.setBodyHeight($('.mcs-content.mcs-with-subheader.mcs-with-subtitle').outerHeight() - 40);
+//  stateTable.setBodyHeight($('.mcs-content.mcs-with-subheader.mcs-with-subtitle').outerHeight() - 40);
 
   //STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
   var stokerZoneTable = new McsTable($('#state-stokerZoneTable-target'));
@@ -175,7 +175,8 @@ $(function() {
   
   // ヘッダ設定(状態テーブル)
   stokerZoneTable.setHeader(stokerZoneHeader);
-  stokerZoneTable.setBodyHeight($('.mcs-content.mcs-with-subheader.mcs-with-subtitle').outerHeight() - 40);
+  //stokerZoneTable.setBodyHeight($('.mcs-content.mcs-with-subheader.mcs-with-subtitle').outerHeight() - 40);
+  //stokerZoneTable.setBodyHeight(50);
   //END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
   //STD APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
@@ -203,7 +204,7 @@ $(function() {
   
   // ヘッダ設定(状態テーブル)
   vehicleTable.setHeader(vehicleHeader);
-  vehicleTable.setBodyHeight($('.mcs-content.mcs-with-subheader.mcs-with-subtitle').outerHeight() - 40);
+//  vehicleTable.setBodyHeight($('.mcs-content.mcs-with-subheader.mcs-with-subtitle').outerHeight() - 40);
  
   // ---------------------------------------
   // ポート画面コンポーネント生成
@@ -232,13 +233,13 @@ $(function() {
     display: true
   },{
 	    name: 'portMode',
-	    text: screenText.port.ioMode,
+	    text: screenText.port.portMode,
 	    display: true
 	  }];
   
   // ヘッダ設定(ポートテーブル)
   portTable.setHeader(portHeader);
-  portTable.setBodyHeight($('.mcs-content.mcs-with-subheader.mcs-with-subtitle').outerHeight() - 40);
+//  portTable.setBodyHeight($('.mcs-content.mcs-with-subheader.mcs-with-subtitle').outerHeight() - 40);
   //END APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
   
   // ---------------------------------------
@@ -670,6 +671,8 @@ $(function() {
         // テーブルのデータ
         var tableValue = retObj.body.alarmList;
         var stokerZoneTableValue = retObj.body.stokerZoneList;
+        var portTableValue = retObj.body.portList;
+        var vehicleTableValue = retObj.body.vehicleList;
 
 	    // STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         var tscMode = textValue.tscMode;
@@ -899,7 +902,6 @@ $(function() {
          }
 	    // END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         
-        
        /* 
         //PIECE_MODE
         if(textValue.pieceMode==null || textValue.pieceMode == "")
@@ -920,9 +922,62 @@ $(function() {
         // データをテーブルにセット
         stateTable.addDataList(tableValue);
         
-     // STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        // STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         stokerZoneTable.addDataList(stokerZoneTableValue);
-     // END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        
+        // END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        // STD APL 2020.03.04 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        portTable.addDataList(portTableValue);
+        vehicleTable.addDataList(vehicleTableValue);
+        
+        var stateTableSize = stateTable.getRowCount();
+        if(stateTableSize == 0){
+        	$('#state-table-target').hide();
+        }
+        else if(stateTableSize < 11){
+        	stateTable.setBodyHeight(50*stateTableSize);
+        }
+        else{
+        	stateTable.setBodyHeight(50*10);
+        }
+        
+        var stokerZoneTableSize = stokerZoneTable.getRowCount();
+        if(stokerZoneTableSize == 0){
+        	$('#state-stokerZoneTable-target').hide();
+        }
+        else if(stokerZoneTableSize < 11){
+        	stokerZoneTable.setBodyHeight(50*stokerZoneTableSize);
+        }
+        else{
+        	stokerZoneTable.setBodyHeight(50*10);
+        }
+        
+        var portTableSize = portTable.getRowCount();
+        if(portTableSize == 0){
+        	$('#state-portTable-target').hide();
+        }
+        else if(portTableSize < 11){
+        	portTable.setBodyHeight(50*portTableSize);
+        }
+        else{
+        	portTable.setBodyHeight(50*10);
+        }
+        
+        var vehicleTableSize = vehicleTable.getRowCount();
+        if(vehicleTableSize == 0){
+        	$('#state-vehicleTable-target').hide();
+        }
+        else if(vehicleTableSize < 11){
+        	vehicleTable.setBodyHeight(50*vehicleTableSize);
+        }
+        else{
+        	vehicleTable.setBodyHeight(50*10);
+        }
+        stokerZoneTable.resizeColWidth();
+        portTable.resizeColWidth();
+        vehicleTable.resizeColWidth();
+        stateTable.resizeColWidth();
+        // END APL 2020.03.04 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
       }
 
       // 選択したコントローラのAMHSタイプによる状態の項目表示切替
