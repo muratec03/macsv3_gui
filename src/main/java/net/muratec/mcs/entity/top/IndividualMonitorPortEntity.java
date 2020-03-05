@@ -60,5 +60,8 @@ public class IndividualMonitorPortEntity {
 	// STD APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
     public String alarmText = null;
 	// END APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	// STD APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+//	public String  portsSize;
+	// END APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
 }

@@ -682,6 +682,10 @@ $(function() {
 //        var tscMode = textValue.tscMode;
 //        var tscMode = textValue.tscMode;
         // END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	    // STD APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        var portSize = retObj.body.portSize;
+        $("#portsSize").html(portSize);
+	    // END APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
         // データをテキストボックスにセット
         stateLlcName.setValue(textValue.llcName);
@@ -843,7 +847,7 @@ $(function() {
         // STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         if(stateCraneId.getValue()==null || stateCraneId.getValue() == "")
         {
-        	stateCraneId.setDisabled(true);
+        	stateCraneId.setEnabled(false);
         	stateCraneState.setDisabled(true); 
             stateStokerAvailable.setDisabled(true); 
             stateStokerAlarmState.setDisabled(true);
@@ -934,44 +938,44 @@ $(function() {
         if(stateTableSize == 0){
         	$('#state-table-target').hide();
         }
-        else if(stateTableSize < 11){
-        	stateTable.setBodyHeight(50*stateTableSize);
+        else if(stateTableSize < 4){
+        	stateTable.setBodyHeight(80*stateTableSize);
         }
         else{
-        	stateTable.setBodyHeight(50*10);
+        	stateTable.setBodyHeight(80*3);
         }
         
         var stokerZoneTableSize = stokerZoneTable.getRowCount();
         if(stokerZoneTableSize == 0){
         	$('#state-stokerZoneTable-target').hide();
         }
-        else if(stokerZoneTableSize < 11){
-        	stokerZoneTable.setBodyHeight(50*stokerZoneTableSize);
+        else if(stokerZoneTableSize < 4){
+        	stokerZoneTable.setBodyHeight(80*stokerZoneTableSize);
         }
         else{
-        	stokerZoneTable.setBodyHeight(50*10);
+        	stokerZoneTable.setBodyHeight(80*3);
         }
         
         var portTableSize = portTable.getRowCount();
         if(portTableSize == 0){
         	$('#state-portTable-target').hide();
         }
-        else if(portTableSize < 11){
-        	portTable.setBodyHeight(50*portTableSize);
+        else if(portTableSize < 4){
+        	portTable.setBodyHeight(80*portTableSize);
         }
         else{
-        	portTable.setBodyHeight(50*10);
+        	portTable.setBodyHeight(80*3);
         }
         
         var vehicleTableSize = vehicleTable.getRowCount();
         if(vehicleTableSize == 0){
         	$('#state-vehicleTable-target').hide();
         }
-        else if(vehicleTableSize < 11){
-        	vehicleTable.setBodyHeight(50*vehicleTableSize);
+        else if(vehicleTableSize < 4){
+        	vehicleTable.setBodyHeight(80*vehicleTableSize);
         }
         else{
-        	vehicleTable.setBodyHeight(50*10);
+        	vehicleTable.setBodyHeight(80*3);
         }
         stokerZoneTable.resizeColWidth();
         portTable.resizeColWidth();
@@ -1255,18 +1259,25 @@ $(function() {
     stateControlState.clear();
     stateSystemState.clear();
     stateAvailable.clear();
-    //20191225 Song Mod Start
-    //stateZoneOccupied.clear();
-    //stateZoneCapacity.clear();
-    //stateZoneUtility.clear();
-    //stateAmhsLState.clear();
-/*    alarmState.clear();
-    ocdcMode.clear();
-    pieceMode.clear();
-    pieceAvailable.clear();*/
-    //20191225 Song Mod End
+    
+	//STD APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	//TSC DATA
+	stateTscName.clear();
+	stateTscMode.clear();
+	stateTscAvailable.clear();
+	//STOKER DATA
+	stateCraneId.clear();
+	stateCraneState.clear();
+	stateStokerAvailable.clear();
+	stateStokerAlarmState.clear();
+	//END APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    
     // 状態画面のテーブルをクリア
     stateTable.clear();
     stokerZoneTable.clear();//DQY ADD 20200228
+	// STD APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    portTable.clear();
+    vehicleTable.clear();
+	// END APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
   }
 });

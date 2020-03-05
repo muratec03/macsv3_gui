@@ -53,5 +53,8 @@ public class ReqOpenIndMonEntity {
 	public String  llcType;
 	public String  tscId;// DQY ADD 20200227
     // END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	// STD APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	public String  portsSize;
+	// END APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
 }

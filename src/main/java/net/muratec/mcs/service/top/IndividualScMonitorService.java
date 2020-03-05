@@ -224,7 +224,11 @@ public class IndividualScMonitorService extends BaseService {
 	 		Port portPa = new Port();
 	 	 	portPa.setTscId(reqEntity.tscId);
 	        List<PortsModel> portList = portMapper.selectPortList(portPa);//tscIdによって、Portのデータを探す
-	 	 	
+	 	 	// STD APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	        String  portsSize = String.valueOf(portList.size()) ;
+	        resEntity.portSize = portsSize;
+	 		// END APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	        
 	 	 	for (PortsModel portListRec : portList) {
 	 	 		IndividualMonitorPortEntity portRes = new IndividualMonitorPortEntity();
 
@@ -235,6 +239,8 @@ public class IndividualScMonitorService extends BaseService {
 	 	 		portRes.ibsemAvail = portListRec.getIbsemAvail();
 	 	 		portRes.portMode = portListRec.getPortMode();
 	 	 		portRes.carrierId = portListRec.getCarrierId();
+	 	 		
+
 	 	 		resEntity.portList.add(portRes);
 	 	 	} 
 	 	 	

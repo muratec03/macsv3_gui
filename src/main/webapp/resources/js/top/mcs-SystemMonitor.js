@@ -1336,8 +1336,12 @@ $(function() {
         	// END APL 2020.02.19 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         },
         limitWindow: screenValue.LimitIndividualMonitorNum,
-        width: 1280,
-        height: 800
+	    // STD APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        //width: 1280,
+        //height: 800
+         width: 700,
+         height: 700
+        // END APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
       };
       iconPopup.open(options);
     };

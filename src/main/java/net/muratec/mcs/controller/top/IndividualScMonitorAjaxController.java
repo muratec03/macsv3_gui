@@ -107,6 +107,7 @@ public class IndividualScMonitorAjaxController extends BaseAjaxController {
             @Valid @RequestBody ReqIndividualMonitorValidateEntity reqValidate, Errors errors, Locale locale,
             Model model) throws AjaxAurgumentException, McsException {
 
+    	
         // ------------------------------------
         // アクセス権チェック
         // ------------------------------------
@@ -129,6 +130,13 @@ public class IndividualScMonitorAjaxController extends BaseAjaxController {
         // ------------------------------------
         resEntity.body = scMonitorService.getStateInfo(reqEntity);
 
+        /*if(resEntity.body.portList!=null) {
+        	String portSize = resEntity.body.portList.get(0).portsSize;
+//        	model.addAttribute("portSize", portSize);
+        }
+        else {
+        	model.addAttribute("portSize", "");
+        }*/
         resEntity.result.status = ComConst.AjaxStatus.SUCCESS;
         resEntity.result.message = "";
 
