@@ -428,4 +428,18 @@
       and TSC_ID = #{tscId,jdbcType=VARCHAR}
       and ZONE_ID = #{zoneId,jdbcType=VARCHAR}
   </update>
+  
+  <select id="selectForSystemMonitor" parameterType="net.muratec.mcs.model.StockerZone" resultMap="BaseResultMap">
+    SELECT stocker_zone.llc_id,   
+	    stocker_zone.tsc_id,   
+	    stocker_zone.zone_id,   
+	    stocker_zone.total_shelves,   
+	    stocker_zone.empty_shelves,   
+	    stocker_zone.l_empty_shelves,   
+	    stocker_zone.initial_shelves,   
+	    stocker_zone.hwm_r_rate,   
+	    stocker_zone.hwm_y_rate  
+	FROM stocker_zone 
+	ORDER BY stocker_zone.llc_id,stocker_zone.tsc_id,stocker_zone.zone_id 
+  </select>
 </mapper>

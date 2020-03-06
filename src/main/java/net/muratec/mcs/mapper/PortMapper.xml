@@ -919,14 +919,30 @@
     where PORT_ID = #{portId,jdbcType=VARCHAR}
   </update>
   
-   <!--
-    条件に合致したCarrier情報のレコード数を取得する。
-  -->
-  <select id="getCount" parameterType="net.muratec.mcs.entity.top.ReqGetPortsListEntity" resultType="java.lang.Integer">
-    select
-      count(*)
-    from
-      Port
+  <!-- 以下独自SQL -->
+  <!-- レコード取得範囲決定部 -->
+  <sql id="selectRecordWhere">
+    <where>
+      <if test="fromRecordNum != null and toRecordNum != null">
+       rn between #{fromRecordNum,jdbcType=DECIMAL} and #{toRecordNum,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </sql>
+  
+  <select id="getCount" parameterType="net.muratec.mcs.entity.top.ReqGetPortsListEntity" resultType="java.lang.Integer"> 
+       SELECT  
+		count(*)
+		FROM ( 
+			SELECT port_id, tsc_id, available, ibsem_avail, port_mode FROM port  
+			UNION  
+			SELECT ohb_port_id port_id, tsc_id, available, ibsem_avail, ohb_port_mode port_mode FROM ohb_port  
+		) p  
+		LEFT OUTER JOIN alarm a ON p.port_id = a.alarm_loc  
+		LEFT OUTER JOIN carrier c ON p.port_id = c.current_loc  
+		WHERE (a.alarm_text IS NOT NULL  
+			OR ( 
+			    p.available &lt;&gt; 'Available' OR p.ibsem_avail &lt;&gt; 'Available' OR p.port_mode &lt;&gt; 'Up'  
+			)) 	
   </select>
   
   <resultMap id="SearchResultMap" type="net.muratec.mcs.model.PortsModel">
@@ -939,27 +955,40 @@
     <result column="CARRIER_ID" jdbcType="VARCHAR" property="carrierId" />
   </resultMap>
   <!--  Ports情報一覧を取得する。 -->
-   <select id="selectList" parameterType="net.muratec.mcs.entity.top.ReqGetPortsListEntity" resultMap="SearchResultMap">
+  <select id="selectList" parameterType="net.muratec.mcs.entity.top.ReqGetPortsListEntity" resultMap="SearchResultMap">
+   
       SELECT  
-			p.port_id,  
-			p.tsc_id,  
-			NVL(a.alarm_text, '-') alarm_text,  
-			p.available,  
-			p.ibsem_avail,  
-			p.port_mode,  
-			NVL(c.carrier_id, ' ') carrier_id  
-		FROM ( 
-			SELECT port_id, tsc_id, available, ibsem_avail, port_mode FROM port  
-			UNION  
-			SELECT ohb_port_id port_id, tsc_id, available, ibsem_avail, ohb_port_mode port_mode FROM ohb_port  
-		) p  
-		LEFT OUTER JOIN alarm a ON p.port_id = a.alarm_loc  
-		LEFT OUTER JOIN carrier c ON p.port_id = c.current_loc  
-		WHERE (a.alarm_text IS NOT NULL  
-			OR ( 
-			    p.available &lt;&gt; 'Available' OR p.ibsem_avail &lt;&gt; 'Available' OR p.port_mode &lt;&gt; 'Up'  
-			)) 
-       ORDER BY tsc_id, port_id
+			port_id,  
+			tsc_id,  
+			alarm_text,  
+			available,  
+			ibsem_avail,  
+			port_mode,  
+            carrier_id  
+	  FROM (
+	        SELECT
+	          row_number() over(order by p.port_id asc) rn,
+	          p.port_id,  
+	          p.tsc_id,  
+	          NVL(a.alarm_text, '-') alarm_text,  
+	          p.available,  
+	          p.ibsem_avail,  
+	          p.port_mode,  
+	          NVL(c.carrier_id, ' ') carrier_id  
+	        FROM ( 
+	          SELECT port_id, tsc_id, available, ibsem_avail, port_mode FROM port  
+	          UNION  
+	          SELECT ohb_port_id port_id, tsc_id, available, ibsem_avail, ohb_port_mode port_mode FROM ohb_port  
+	        ) p  
+	        LEFT OUTER JOIN alarm a ON p.port_id = a.alarm_loc  
+	        LEFT OUTER JOIN carrier c ON p.port_id = c.current_loc  
+	        WHERE (a.alarm_text IS NOT NULL  
+	          OR ( 
+	              p.available &lt;&gt; 'Available' OR p.ibsem_avail &lt;&gt; 'Available' OR p.port_mode &lt;&gt; 'Up'  
+	          )) 
+	           ORDER BY tsc_id, port_id
+      )
+       <include refid="selectRecordWhere" />
   </select>
   
   <!-- STD APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->

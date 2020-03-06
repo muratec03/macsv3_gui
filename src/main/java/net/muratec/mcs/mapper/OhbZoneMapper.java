@@ -4,6 +4,8 @@ import java.util.List;
 import net.muratec.mcs.model.OhbZone;
 import net.muratec.mcs.model.OhbZoneExample;
 import net.muratec.mcs.model.OhbZoneKey;
+import net.muratec.mcs.model.StockerZone;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface OhbZoneMapper {
@@ -94,4 +96,6 @@ public interface OhbZoneMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(OhbZone record);
+    
+    List<OhbZone>  selectForSystemMonitor();  // ADD APL 2020.03.02 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 }

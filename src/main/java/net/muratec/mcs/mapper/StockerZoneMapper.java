@@ -94,4 +94,7 @@ public interface StockerZoneMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(StockerZone record);
+    
+    
+    List<StockerZone>  selectForSystemMonitor();  // ADD APL 2020.03.02 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 }

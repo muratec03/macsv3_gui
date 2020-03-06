@@ -544,4 +544,30 @@ ORDER BY tsc.tsc_id
 	ORDER BY tsc.tsc_id
 </select>
 <!-- END APL 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+
+
+<!-- STD APL 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
+<select id="selectTscInfoByTscId" parameterType="net.muratec.mcs.model.Tsc"  resultType="net.muratec.mcs.model.IconInfo" >
+  SELECT  
+	  NVL(down_ports.down_count, 0)   portDownCount
+  FROM tsc
+	LEFT OUTER JOIN ( 
+		SELECT p.tsc_id, COUNT(p.port_id) down_count  
+		FROM ( 
+			SELECT port_id, tsc_id, available, ibsem_avail, port_mode FROM port  
+			UNION  
+			SELECT ohb_port_id port_id, tsc_id, available, ibsem_avail, ohb_port_mode port_mode FROM ohb_port  
+		) p 
+		WHERE (p.available  &lt;&gt; 'Available' OR p.ibsem_avail  &lt;&gt; 'Available' OR p.port_mode  &lt;&gt; 'Up')  
+		GROUP BY p.tsc_id  
+		UNION  
+		SELECT t.tsc_id, COUNT(op.ohb_port_id) down_count  
+		FROM ohb_port op, tsc t  
+		WHERE op.set_vendor = t.llc_id AND set_vendor IS NOT NULL   
+		AND(op.available  &lt;&gt; 'Available' OR op.ibsem_avail  &lt;&gt; 'Available' OR op.ohb_port_mode  &lt;&gt; 'Up')  
+		GROUP BY t.tsc_id  
+	) down_ports ON tsc.tsc_id = down_ports.tsc_id
+	WHERE tsc.tsc_id = #{tscId,jdbcType=VARCHAR}
+</select>
+<!-- END APL 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
 </mapper>

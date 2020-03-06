@@ -54,6 +54,7 @@ import org.w3c.dom.Element;
 
 import net.muratec.mcs.common.ComConst;
 import net.muratec.mcs.common.ComFunction;
+import net.muratec.mcs.common.style.ColorUtilities;
 import net.muratec.mcs.entity.common.McsHandsOnTableBorderInfoEntity;
 import net.muratec.mcs.entity.common.McsHandsOnTableCellDataElemEntity;
 import net.muratec.mcs.entity.common.McsHandsOnTableIconColorEntity;
@@ -65,9 +66,11 @@ import net.muratec.mcs.mapper.GuiColorMapper;
 import net.muratec.mcs.mapper.HandsOnTableConfigMapper;
 import net.muratec.mcs.mapper.LlcMapper;
 import net.muratec.mcs.mapper.ModuleMapper;
+import net.muratec.mcs.mapper.OhbZoneMapper;
 import net.muratec.mcs.mapper.ScreenColorMasterMapper;
 import net.muratec.mcs.mapper.ScreenMonitorMapper;
 import net.muratec.mcs.mapper.ScreenMonitorMemberMapper;
+import net.muratec.mcs.mapper.StockerZoneMapper;
 import net.muratec.mcs.mapper.TscMapper;
 import net.muratec.mcs.model.GuiColor;
 import net.muratec.mcs.model.GuiColorExample;
@@ -78,11 +81,15 @@ import net.muratec.mcs.model.Llc;
 import net.muratec.mcs.model.LlcExample;
 import net.muratec.mcs.model.Module;
 import net.muratec.mcs.model.ModuleExample;
+import net.muratec.mcs.model.OhbZone;
 import net.muratec.mcs.model.ScreenColorMaster;
 import net.muratec.mcs.model.ScreenMonitor;
 import net.muratec.mcs.model.ScreenMonitorMember;
 import net.muratec.mcs.model.ScreenMonitorMemberExample;
+import net.muratec.mcs.model.StockerZone;
 import net.muratec.mcs.model.Tsc;
+
+import net.muratec.mcs.common.Constants;
 
 //@formatter:off
 /**
@@ -132,6 +139,7 @@ public class McsHandsOnTableService extends BaseService {
     @Autowired private ModuleMapper moduleMapper; // MACS4#MACSV3 Add
     @Autowired private LlcMapper llcMapper; // MACS4#MACSV3 Add
     // END APL 2020.02.14 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    @Autowired private TscMapper tscMapper; // ADD APL 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
 
     /** 色設定テーブルマッパー */
     @Autowired private GuiColorMapper guiColorMapper;    
@@ -144,6 +152,10 @@ public class McsHandsOnTableService extends BaseService {
     
     /** メッセージリソース */
     @Autowired private MessageSource messageSource;
+    
+    /**  */
+    @Autowired private StockerZoneMapper stockerZoneMapper; // ADD APL 2020.03.02 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
+    @Autowired private OhbZoneMapper ohbZoneMapper; // ADD APL 2020.03.02 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
 
     /** アイコンの色設定格納用配列 */
     private String[] iconColors = new String[1000];
@@ -212,7 +224,6 @@ public class McsHandsOnTableService extends BaseService {
         // END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
    	 		
    	 	for (IconInfo iconInfo : labelList) {
- 			int colNum = 0;//列号
  			
  			// STD APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 	        String moduleName = iconInfo.getModuleName();   //tscType里面放的是类型名称
@@ -222,52 +233,93 @@ public class McsHandsOnTableService extends BaseService {
 	        
 	   	 	List<IconInfo> llcTypeList = llcMapper.selectLlcType(moduleName); // MACS4#MACSV3 Add  //全てLLCType種類を査問する「CDC,OHBC,OHTC,OHTC2......」
 	        for (IconInfo llcInfo : llcTypeList) {
+	        	
+	        	int colNum = 0;//列号
+	        	
 	        	String llcType = llcInfo.getLlcType();   //llcTypeはLLC_TYPE
 	        	Llc llcPa = new Llc();
 	        	llcPa.setLlcType(llcType);
 	        	llcPa.setModuleName(moduleName);
 	        	
 	   	 		List<IconInfo> iconListType = llcMapper.selectIconInfoByType(llcPa);  //llcTypeによって、設備のデータを探す
+	   	 		
+	   	 	   for (int i = 0; i < iconListType.size(); i++) {
+	   	 		   if(iconListType.get(i).getTscId() == null) {
+	   	 			   iconListType.remove(i);
+	   	 		   }
+	   	 	   }
 	   	 	// END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-	   	 		// STD APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-        		String llcTypeM = moduleName+llcType;
-        		Integer llcTypeNum = llcTypeMap.get(llcTypeM)+1;//llcType番号 里面放的是所有表头的类型和所在行号 ，再加1是Icon的行号
-        		String llcDataM = moduleName+llcType+"Data";
-        		Integer dataNum = typeDataMap.get(llcDataM)+1;  //typeDataMap里面放的是tscType类型的所有Icon需要占的最大行数，加上Data只是区分看labelMap里面的数据
-        		// END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+   	 		// STD APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    		String llcTypeM = moduleName+llcType;
+    		Integer llcTypeNum = llcTypeMap.get(llcTypeM)+1;//llcType番号 里面放的是所有表头的类型和所在行号 ，再加1是Icon的行号
+    		String llcDataM = moduleName+llcType+"Data";
+    		Integer dataNum = typeDataMap.get(llcDataM)+1;  //typeDataMap里面放的是tscType类型的所有Icon需要占的最大行数，加上Data只是区分看labelMap里面的数据
+    		// END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
-		   	 	for (IconInfo LlclList : iconListType) {
-		   	 		// アイコンを生成
-		   	 		McsHandsOnTableIconEntity iconEntity = new McsHandsOnTableIconEntity();
-		   	 		
-		   	 		McsHandsOnTableCellDataElemEntity cellData = new McsHandsOnTableCellDataElemEntity();
-		   	 		
-		   	 		//if(iconNum < dataNum && colNum <8 ) {
-		   	 		if(llcTypeNum < dataNum && colNum < dataNumRow ) {  //dataNumRow里面放的是一行最多显示几个Icon
-		   	 			iconEntity.llcId = LlclList.getLlcId();
-		   	 			iconEntity.llcName = LlclList.getLlcName();
-		   	 			iconEntity.iconType    = LlclList.getIconType();
-		   	 			iconEntity.iconDomStr  = createIconDomStr(LlclList);
-		   	 			
-		   	 			cellData.row 	  = Integer.valueOf(llcTypeNum); //row里面放的是Icon的行数
-		   	 			cellData.col	  = Integer.valueOf(0);   //col里面根据v4的数据库，应该放的都是0
-		   	 			cellData.priority = colNum;    //priority里面放的是Icon的列数
-		   	 			cellData.icon	  = iconEntity;
-		   	 			cellDataElemList.add(cellData);
-		   	 			colNum++;
+	   	 	for (IconInfo LlclList : iconListType) {
+	   	 	
+	   	 	// STD ADD APL 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	   	 		Tsc tsc = new Tsc();
+	   	 		tsc.setTscId(LlclList.getTscId());
+	   	 		List<IconInfo> incon = tscMapper.selectTscInfoByTscId(tsc);
+	   	 		if(incon.size() == 0) {
+	   	 			//System.out.println("size0 LlcId:" + LlclList.getLlcId() + "size0 TscId:" + LlclList.getTscId()); //20200303 Song test
+	   	 		    LlclList.setPortDownCount(0);
+	   	 		}else {
+		   	 		int i = incon.get(0).getPortDownCount();
+		   	 		LlclList.setPortDownCount(i);
+		   	 		if(i>0) {
+		   	 			//System.out.println(i);
 		   	 		}
-		   	 		
-		   	 		//if(colNum > 7) {
-		   	 		if(colNum > dataNumRow - 1) { 
-		   	 			// STD APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-		   	 			llcTypeNum ++;   //当每行放到最多dataNumRow，就换行
-		   	 			// END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-		   	 			colNum = 0;
-		   	 		}
-				}
+	   	 		}
+	   	 		
+	   	 	// END ADD APL 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	   	 		
+	   	 		// アイコンを生成
+	   	 		McsHandsOnTableIconEntity iconEntity = new McsHandsOnTableIconEntity();
+	   	 		
+	   	 		McsHandsOnTableCellDataElemEntity cellData = new McsHandsOnTableCellDataElemEntity();
+	   	 		
+	   	 		//if(iconNum < dataNum && colNum <8 ) {
+	   	 		if(llcTypeNum < dataNum && colNum < dataNumRow ) {  //dataNumRow里面放的是一行最多显示几个Icon
+	   	 			iconEntity.llcId = LlclList.getLlcId();
+	   	 			iconEntity.llcName = LlclList.getLlcName();
+	   	 			iconEntity.iconType    = LlclList.getIconType();
+	   	 			iconEntity.iconDomStr  = createIconDomStr(LlclList);
+	   	 			
+	   	 			cellData.row 	  = Integer.valueOf(llcTypeNum); //row里面放的是Icon的行数
+	   	 			cellData.col	  = Integer.valueOf(0);   //col里面根据v4的数据库，应该放的都是0
+	   	 			cellData.priority = colNum;    //priority里面放的是Icon的列数
+	   	 			cellData.icon	  = iconEntity;
+	   	 			cellDataElemList.add(cellData);
+	   	 			colNum++;
+	   	 		}
+	   	 		
+	   	 		//if(colNum > 7) {
+	   	 		if(colNum > dataNumRow - 1) { 
+	   	 			// STD APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	   	 			llcTypeNum ++;   //当每行放到最多dataNumRow，就换行
+	   	 			// END APL 2020.02.21 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	   	 			colNum = 0;
+	   	 		}
+			}
 		   	// STD APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+		   	 	
+		   	//20200303 song test  start
+	   	 	/*
+	   	 	    System.out.println( moduleName + " " + "llcType : " + llcType +  " iconListType.size() : " + iconListType.size());//20200303 song test
+
+		        for (IconInfo iconInfo2 : iconListType) {
+		        	System.out.println("module: " + moduleName + "  llcType: " + iconInfo2.getLlcType() + "  llcId: " + iconInfo2.getLlcId() +"  tscId: " + iconInfo2.getTscId() + "  PortDownCount: "+ iconInfo2.getPortDownCount());		   	 		
+				}
+		        System.out.println("end");
+		     */
+		    //20200303 song test end	
 	        }
 		   	// END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	        
+	      
+
 		}
 
         return cellDataElemList;
@@ -1023,12 +1075,120 @@ public class McsHandsOnTableService extends BaseService {
      */
     //@formatter:on
     private Element createIconSvg1(Document svgDoc, IconInfo iconInfo) {
+    	
+    //STD ADD APL 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    	
+    	String statusColor = getLlcTscState(iconInfo,true);
+    	McsHandsOnTableIconColorEntity statusColor1 = new McsHandsOnTableIconColorEntity();
+    	statusColor1.color = statusColor;
+    	
+    	String type = iconInfo.getLlcType();
+    	String llcId = iconInfo.getLlcId();
+    	String tscId = iconInfo.getTscId();
+    	int intRate = 0;
+    	McsHandsOnTableIconColorEntity controllerStateColor = new McsHandsOnTableIconColorEntity();
+    	List<StockerZone> stockerZoneList1 = new ArrayList<StockerZone>();
+    	List<OhbZone> ohbZoneList1 = new ArrayList<OhbZone>();
+    	
+    	
+    	if("CDC".equals(type)) {
+    		List<StockerZone> stockerZoneList = stockerZoneMapper.selectForSystemMonitor();
+    		for (StockerZone stockerZone : stockerZoneList) {
+    			if(stockerZone.getLlcId().equals(llcId) && stockerZone.getTscId().equals(tscId)) {
+    				stockerZoneList1.add(stockerZone);
+    			}
+			}
+    		if(stockerZoneList1.size() == 0) {
+    	    	controllerStateColor.color = "#33FF00";
+    		}else {
+    			int shelves = -1;
+    			int tmpshelves = 0;
+    			for (StockerZone stockerZone : stockerZoneList1) {
+    				int l_ttl = stockerZone.getTotalShelves();
+        			int l_emp = stockerZone.getEmptyShelves();
+        			tmpshelves = Math.round((((float)l_ttl - (float)l_emp)*100/(float)l_ttl));
+        			if( shelves < tmpshelves )
+        			{
+        				shelves = tmpshelves;
+        				controllerStateColor.color = ColorUtilities.getColorCode("lime");
 
-        McsHandsOnTableIconColorEntity controllerStateColor = getControllerStateColor(iconInfo);
+        				Integer totalShelves = stockerZone.getTotalShelves();
+        				Integer emptyShelves = stockerZone.getEmptyShelves();
+        				Short hwm = stockerZone.getHwmRRate();
+        				Short lwm = stockerZone.getHwmYRate();
+        				
+        				int intRate1 = Math.round((((float)totalShelves - (float)emptyShelves)*100/(float)totalShelves));
+
+        				if(l_ttl == 0)
+        				{
+        					controllerStateColor.color = ColorUtilities.getColorCode("lightred");
+        				}
+        				else if(intRate1 >= hwm)
+        				{
+        					controllerStateColor.color  = ColorUtilities.getColorCode("lightred");
+        				}
+        				else if( (hwm > intRate1) && (intRate1 >= lwm) )
+        				{
+        					controllerStateColor.color  = ColorUtilities.getColorCode("yellow");
+        				}
+        				else
+        				{
+        					controllerStateColor.color = ColorUtilities.getColorCode("lime");
+        				}
+        			}
+				}
+    			
+    			intRate = shelves;
+    		}
+    	}else if ("OHBC".equals(type) || "OHBC2".equals(type) ) {
+    		List<OhbZone> ohbZoneList = ohbZoneMapper.selectForSystemMonitor();
+    		for (OhbZone ohbZone : ohbZoneList) {
+    			if(ohbZone.getTscId().equals(tscId)) {
+    				ohbZoneList1.add(ohbZone);
+    			}
+			}
+    		if(ohbZoneList1.size() == 0) {
+    	    	controllerStateColor.color = "#33FF00";
+    		}else {
+    			int shelves = -1;
+    			int tmpshelves = 0;
+    			for (OhbZone ohbZone : ohbZoneList1) {
+    				int l_ttl = ohbZone.getTotalShelves();
+        			int l_emp = ohbZone.getEmptyShelves();
+        			tmpshelves = Math.round((((float)l_ttl - (float)l_emp)*100/(float)l_ttl));
+        			
+        			if( shelves < tmpshelves )
+        			{
+        				shelves = tmpshelves;
+        				controllerStateColor.color = ColorUtilities.getColorCode("lime");
+
+        				Integer totalShelves = ohbZone.getTotalShelves();
+        				Integer emptyShelves = ohbZone.getEmptyShelves();
+        				
+        				int intRate1 = Math.round((((float)totalShelves - (float)emptyShelves)*100/(float)totalShelves));
+
+        				if(intRate1 == 100)
+        				{
+        					controllerStateColor.color = ColorUtilities.getColorCode("lightred");
+        				}
+        				else
+        				{
+        					controllerStateColor.color = ColorUtilities.getColorCode("lime");
+        				}
+        			}
+				}
+    			
+    			intRate = shelves;
+    		}
+    	}
+    	
+	//END ADD APL 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+
+
+        //McsHandsOnTableIconColorEntity controllerStateColor = getControllerStateColor(iconInfo);//20191230 Song Del
         //McsHandsOnTableIconColorEntity commStateColor = getCommStateColor(iconInfo);  //20191230 Song Del
-        McsHandsOnTableIconColorEntity portStateColor = getPortStateColor(iconInfo);
-        McsHandsOnTableIconColorEntity shelfOccupancyColor = getShelfOccupancyColor(iconInfo);
-        
+        //McsHandsOnTableIconColorEntity portStateColor = getPortStateColor(iconInfo);  //20200302 Song Del
+        //McsHandsOnTableIconColorEntity shelfOccupancyColor = getShelfOccupancyColor(iconInfo); //20200302 Song Del
         //McsHandsOnTableIconColorEntity issueStateColor = getIssueStateColor(iconInfo); //20191230 Song Del
 
         Element rootDiv = svgDoc.createElement("div");
@@ -1045,7 +1205,7 @@ public class McsHandsOnTableService extends BaseService {
 
         Element polygon = createPolygon(svgDoc, iconInfo,
 //                "0.5 32.52 0.5 8.21 8.21 0.5 23.79 0.5 31.5 8.21 31.5 32.52 0.5 32.52", controllerStateColor);//20191218 dqy del
-        		  "0.5 42.52 0.5 8.21 8.21 0.5 33.81 0.5 41.5 8.21 41.5 42.52 0.5 42.52", controllerStateColor);//20191218 dqy del
+        		  "0.5 42.52 0.5 8.21 8.21 0.5 33.81 0.5 41.5 8.21 41.5 42.52 0.5 42.52", controllerStateColor);
         svg.appendChild(polygon);
 
         Element path = svgDoc.createElement("path");
@@ -1056,9 +1216,22 @@ public class McsHandsOnTableService extends BaseService {
 //        Element text = createText(svgDoc, "translate(16 8)", iconInfo.getText());//MACS4#MACSV2 Del
         // STD APL 2020.02.18 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 //        Element text = createText(svgDoc, "translate(16 8)", iconInfo.getDisplayName());//MACS4#MACSV2 Add
-        Element text = createText(svgDoc, "translate(16 8)", iconInfo.getLlcName());//MACS4#MACSV3 Add
-        // END APL 2020.02.18 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        //Element text = createText(svgDoc, "translate(16 8)", iconInfo.getLlcName());//MACS4#MACSV3 Add ////20200302 Song Del
+        //svg.appendChild(text);
+        Element text = createText(svgDoc, "translate(16 16.51)", iconInfo.getTscName());//20200301 Song ADD
         svg.appendChild(text);
+        /*
+        if(iconInfo.getTscName() == null) {
+        	System.out.println(iconInfo.getLlcId());
+        	 Element text = createText(svgDoc, "translate(16 16.51)", iconInfo.getLlcName());//20200301 Song ADD
+             svg.appendChild(text);
+        }else {
+        	 Element text = createText(svgDoc, "translate(16 16.51)", iconInfo.getTscName());//20200301 Song ADD
+             svg.appendChild(text);
+        }
+        */
+        // END APL 2020.02.18 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        
 
         // STD APL 2020.02.18 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 carrier circle del
         //20191230 Song Mod Start
@@ -1078,9 +1251,11 @@ public class McsHandsOnTableService extends BaseService {
         //Element rect4 = createStatusBoxRect(svgDoc, iconInfo, 4, issueStateColor, "21.2", "22.01"); //Song Del
         //svg.appendChild(rect4); //Song Del
         
-        Element rect0 = createStatusBoxRect_0(svgDoc, iconInfo, 0, controllerStateColor, "7.37", "12.01");
+       //Element rect0 = createStatusBoxRect_0(svgDoc, iconInfo, 0, controllerStateColor, "7.37", "12.01");  //20200302 Song Del
+        Element rect0 = createStatusBoxRect_Occupancy(svgDoc, iconInfo, 0, statusColor1, "5.5", "20",intRate+"%"); //20200302 Song Add
         svg.appendChild(rect0);
         
+        /*  //20200302 Song DEL
         Element rectOcc = createStatusBoxRect_Occupancy(svgDoc, iconInfo, 2, shelfOccupancyColor, "7.37", "22.01",occupancy); 
         svg.appendChild(rectOcc);
         
@@ -1088,6 +1263,7 @@ public class McsHandsOnTableService extends BaseService {
         svg.appendChild(rectPort);
         
         occupancy = null;
+        */
         
         
         /*// STD APL 2020.02.24 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
@@ -1332,10 +1508,17 @@ public class McsHandsOnTableService extends BaseService {
      */
     //@formatter:on
     private Element createIconSvg7(Document svgDoc, IconInfo iconInfo) {
+    	
+    //STD ADD APL 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    	String statusColor = getLlcTscState(iconInfo,true);
+    	McsHandsOnTableIconColorEntity statusColor1 = new McsHandsOnTableIconColorEntity();
+    	statusColor1.color = statusColor;
+    	McsHandsOnTableIconColorEntity controllerStateColor = new McsHandsOnTableIconColorEntity();
+    	controllerStateColor.color = "#33FF00";
+	//END ADD APL 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
-        McsHandsOnTableIconColorEntity controllerStateColor = getControllerStateColor(iconInfo);
-        
-        McsHandsOnTableIconColorEntity portStateColor = getPortStateColor(iconInfo);
+        //McsHandsOnTableIconColorEntity controllerStateColor = getControllerStateColor(iconInfo);//20200301 Song DEL
+        //McsHandsOnTableIconColorEntity portStateColor = getPortStateColor(iconInfo); //20200301 Song DEL
 
         Element rootDiv = svgDoc.createElement("div");
         rootDiv.setAttribute("class", "container");
@@ -1359,14 +1542,27 @@ public class McsHandsOnTableService extends BaseService {
 
 //        Element text = createText(svgDoc, "translate(16 16.51)", iconInfo.getText());// MACS4#MACSV2 Del
 //        Element text = createText_svg7(svgDoc, "translate(16 16.51)", iconInfo.getDisplayName());//20200218 DQY Del
-        Element text = createText_svg7(svgDoc, "translate(16 16.51)", iconInfo.getLlcName());//20200218 DQY Add
+        //Element text = createText_svg7(svgDoc, "translate(16 16.51)", iconInfo.getLlcName());//20200218 DQY Add //20200301 Song DEL
+        Element text = createText_svg7(svgDoc, "translate(16 16.51)", iconInfo.getTscName());//20200301 Song ADD
         svg.appendChild(text);
+        /*
+        if(iconInfo.getTscName() == null) {
+        	System.out.println(iconInfo.getLlcId());
+        	 Element text = createText_svg7(svgDoc, "translate(16 16.51)", iconInfo.getLlcName());//20200301 Song ADD
+             svg.appendChild(text);
+        }else {
+        	 Element text = createText_svg7(svgDoc, "translate(16 16.51)", iconInfo.getTscName());//20200301 Song ADD
+             svg.appendChild(text);
+        }
+        */
         
-        Element rect0 = createStatusBoxRect_0(svgDoc, iconInfo, 0, controllerStateColor, "7.37", "16.01");
+        //Element rect0 = createStatusBoxRect_0(svgDoc, iconInfo, 0, controllerStateColor, "7.37", "16.01"); //20200301 Song Del
+        //Element rect0 = createStatusBoxRect_0(svgDoc, iconInfo, 0, statusColor1, "7.37", "16.01");
+        Element rect0 = createStatusBoxRect_0(svgDoc, iconInfo, 0, statusColor1, "5.5", "18");
         svg.appendChild(rect0);
         
-        Element rectPort = createStatusBoxRect_Port(svgDoc, iconInfo, 1, portStateColor, "7.37", "27.01");
-        svg.appendChild(rectPort);
+        //Element rectPort = createStatusBoxRect_Port(svgDoc, iconInfo, 1, portStateColor, "7.37", "27.01");  //20200301 Song Del
+        //svg.appendChild(rectPort);  //20200301 Song Del
         
 	     // STD APL 2020.02.18 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 carrier circle
         /*
@@ -1682,7 +1878,8 @@ public class McsHandsOnTableService extends BaseService {
 		    Element tspan = svgDoc.createElement("tspan");
 		    tspan.setAttribute("x", "6"); 
 		    //tspan.setAttribute("y", String.valueOf(8));
-		    tspan.setAttribute("y", String.valueOf(2));
+		    //tspan.setAttribute("y", String.valueOf(2));
+		    tspan.setAttribute("y", String.valueOf(-1));
 		    tspan.setTextContent(text); 
 		    textElm.appendChild(tspan);
 			 
@@ -1708,7 +1905,8 @@ public class McsHandsOnTableService extends BaseService {
         if (text != null) {
 		    Element tspan = svgDoc.createElement("tspan");
 		    tspan.setAttribute("x", "5"); 
-		    tspan.setAttribute("y", String.valueOf(-5));
+		    //tspan.setAttribute("y", String.valueOf(-5));
+		    tspan.setAttribute("y", String.valueOf(-4));
 		    tspan.setTextContent(text); 
 		    textElm.appendChild(tspan);
         }
@@ -2231,4 +2429,37 @@ public class McsHandsOnTableService extends BaseService {
 
         return retEntity;
     }
+    
+    
+ // STD ADD APL 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    public String getLlcTscState(IconInfo iconInfo, boolean alarmCheckFlg) {
+		String setColor = ColorUtilities.getColorCode("lime");
+
+		if(!Constants.COMM_STATE_COMMUNICATING.equals(iconInfo.getCommState())) {
+			setColor = ColorUtilities.getColorCode("fuchsia");
+		} else if(Constants.STATE_DOWN.equals(iconInfo.getTscMode())) {
+			setColor = ColorUtilities.getColorCode("yellow");
+		} else if(!Constants.LLC_MODE_UP.equals(iconInfo.getLlcMode())) {
+			setColor = ColorUtilities.getColorCode("gold");
+		} else if(!Constants.LLC_AVAILABLE.equals(iconInfo.getTscAvailable())) {
+			setColor = ColorUtilities.getColorCode("lightred");
+		} else if(!Constants.LLC_AVAILABLE.equals(iconInfo.getAvailable())) {
+			setColor = ColorUtilities.getColorCode("red");
+		} else if(Constants.STATE_OUT_ONLY.equals(iconInfo.getTscMode())) {
+			setColor = ColorUtilities.getColorCode("darkpurple");
+		} else if(alarmCheckFlg && !Constants.LLC_NO_ALARMS.equals(iconInfo.getTscAlarmState())) {
+			setColor = ColorUtilities.getColorCode("orange");
+		} else if(alarmCheckFlg && !Constants.LLC_NO_ALARMS.equals(iconInfo.getAlarmState())) {
+			setColor = ColorUtilities.getColorCode("mikan");
+		} else if(!Constants.LLC_CONTROL_ONLINE_REMOTE.equals(iconInfo.getControlState())) {
+			setColor = ColorUtilities.getColorCode("lightpurple");
+		} else if(!Constants.LLC_SYSTEM_AUTO.equals(iconInfo.getSystemState())) {
+			setColor = ColorUtilities.getColorCode("lightblue");
+		} else if (iconInfo.getPortDownCount() > 0) {
+			setColor = ColorUtilities.getColorCode("khaki");
+		}
+
+		return setColor;
+	}
+ // END ADD APL 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 }

@@ -85,12 +85,12 @@ public class IconInfo {
      private String  commState;
 	 private String  systemState;
  // END APL 2020.02.17 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-	// STD APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+ // STD APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 	 private String  tscId;
 	 private String  tscName;
 	 private String  tscMode;
-	// END APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-	 // STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+ // END APL 2020.02.26 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+ // STD APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 	 private String  type;
 	 private String  tscAvailable;
 	 private String  tscAlarmState;
@@ -104,8 +104,12 @@ public class IconInfo {
 	 private String  occupied;
 	 private String  reserved;
 	 private String  total;
-	 // END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-
+ // END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
+	 
+ // STD APL 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 	
+	 private int portDownCount = 0;
+ // END APL 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
+	 
     //@formatter:off
     /**
      ******************************************************************************

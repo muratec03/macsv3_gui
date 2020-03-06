@@ -601,9 +601,13 @@ public class SelectBoxService extends BaseService {
             // TODO Host名をValueに設定
             // data[0] = host.getHostDrvSrvId().toString();
             // data[1] = host.getHostName().toString() + "(" + data[0] + ")";
-            data[0] = host.getHostName().toString();
-            data[1] = host.getHostName().toString() + "(" + host.getHostDrvSrvId().toString() + ")";
-
+            
+            //MODEL STD APL 2020.03.04 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+            //data[0] = host.getHostName().toString();
+            //data[1] = host.getHostName().toString() + "(" + host.getHostDrvSrvId().toString() + ")";
+            data[0] = host.getHostId().toString();
+            data[1] = host.getHostId().toString() + "(" + host.getHostId().toString() + ")";
+            //MODEL END APL 2020.03.04 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
             selBoxList.add(data);
         }
 

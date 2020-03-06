@@ -1069,10 +1069,21 @@ $(function() {
    ******************************************************************************
    */
   function setStates(data) {
-    communicationText.text(data.body.commState);
-    controlText.text(data.body.controlState);
-    softVerText.text(data.body.mcsVer);
-    schmVerText.text(data.body.guiVer);
+	//20200303 Song mod Start  
+    //communicationText.text(data.body.commState);
+    //controlText.text(data.body.controlState);
+    //softVerText.text(data.body.mcsVer);
+    //schmVerText.text(data.body.guiVer);
+    mesText.text(data.body.mesText);
+    macsText.text(data.body.macsText);
+    macsVersionText.text(data.body.macsVersionText);
+    //guiVersionText.text(data.body.guiVersionText);
+    guiVersionText.text("G2.3.1");
+    $("#mes").css("background-color",data.body.mesColor);
+    $("#macs").css("background-color",data.body.macsColor);
+    $("#mes").css("color","#000000");
+    $("#macs").css("color","#000000");
+    //2020303 Song mod End  
   }
 
   /**
@@ -1251,18 +1262,35 @@ $(function() {
   };
   setInterval(sessionCheck, 300000);
 
+  //20200303 Song Mod Start
+  // MESテキスト
+  var mesText = $('#mes');
+  
+  //MACS状態テキスト
+  var macsText = $('#macs');
+  
+  //MACS Version状態テキスト
+  var macsVersionText = $('#macsVersion');
+  
+  //GUI Version状態テキスト
+  var guiVersionText = $('#guiVersion');
+  
+  
+  
   // 通信テキスト
-  var communicationText = $('#mcs-info-com-value');
+  //var communicationText = $('#mcs-info-com-value');
 
   // 制御状態テキスト
-  var controlText = $('#mcs-info-cntrl-value');
+  //var controlText = $('#mcs-info-cntrl-value');
 
   // ソフトバージョン表示テキスト
-  var softVerText = $('#mcs-info-soft-value');
+  //var softVerText = $('#mcs-info-soft-value');
 
   // DBスキーマバージョン表示
-  var schmVerText = $('#mcs-info-schm-value');
+  //var schmVerText = $('#mcs-info-schm-value');
 
+  //20200303 Song Mod End
+  
   // ログインボタン
   var login = new McsButton($('#mcs-btn-login'), screenText.headerText.loginBtn);
 

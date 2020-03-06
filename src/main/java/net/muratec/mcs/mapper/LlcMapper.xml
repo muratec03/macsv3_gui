@@ -717,11 +717,12 @@
            WHEN L.LLC_TYPE = 'CDC' THEN 1
            WHEN L.LLC_TYPE = 'OHBC' THEN 1
            WHEN L.LLC_TYPE = 'OHBC2' THEN 1
-           ELSE 7  END)ICON_TYPE
-      ,T.TSC_ID <!-- 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
-      <!-- ,T.TSC_MODE,
-      T.AVAILABLE,
-      T.ALARM_STATE -->
+            ELSE 7  END)ICON_TYPE,
+      T.TSC_ID ,<!-- 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 --><!-- MOD 2020.03.01 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
+      T.TSC_MODE,
+      T.TSC_NAME,
+      T.AVAILABLE TSC_AVAILABLE,
+      T.ALARM_STATE  TSC_ALARM_STATE
     FROM
       LLC L
       left outer join TSC T on L.LLC_ID = T.LLC_ID <!-- 2020.02.27 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
@@ -734,7 +735,8 @@
 		  AND L.LLC_TYPE !='DWCC'-->
       <!-- L.LLC_TYPE = #{llcType,jdbcType=VARCHAR}
       and M.MODULE_NAME = #{moduleName,jdbcType=VARCHAR} -->
-      ORDER BY L.LLC_ID
+        <!-- ORDER BY L.LLC_ID -->
+      ORDER BY T.TSC_ID
   </select>
   
   <select id="selectLlcType" resultType="net.muratec.mcs.model.IconInfo">
