@@ -239,34 +239,65 @@
     <div id="mcs-top-info" class="mcs-top-info-block">
         <ul class="mcs-top-info-ul">
             <!-- 通信状態 -->
+            <!--
             <li class="mcs-info-com">
                 <h2 class="mcs-info-com-ttl">
                     <spring:message code="IT-001-01-005" />
                 </h2> <span id="mcs-info-com-value"></span>
             </li>
-
+			-->
+			<!-- 20200303 Song Mod -->
+			<li class="mcs-info-com">
+                <h2 class="mes">    <!-- macs -->
+                    <spring:message code="IT-001-01-011" /> 
+                </h2> <span id="mes" ></span>  
+            </li>
             <!-- 制御状態 -->
+            <!-- 
             <li class="mcs-info-cntrl">
                 <h2 class="mcs-info-cntrl-ttl">
                     <spring:message code="IT-001-01-006" />
                 </h2> <span id="mcs-info-cntrl-value"></span>
             </li>
+            -->
+            <!-- 20200303 Song Mod -->
+              <li class="mcs-info-cntrl">
+                 <h2 class="macs">    <!-- host -->
+                	<spring:message code="IT-001-01-012" /> 
+                 </h2> <span id="macs" ></span>
+            </li>
+            
+            <!-- MACS Version情報 -->  <%-- 20200303 Song Add --%>
+            <li class="mcs-info-soft">
+                <h2 class="mcs-info-soft-ttl" x-ms-format-detection="none">
+                    <spring:message code="IT-001-01-013" /> 
+                </h2> 
+                <span id="macsVersion"></span>
+            </li>
+            
+            <!-- GUI Version情報 -->  <%-- 20200303 Song Add --%>
+            <li class="mcs-info-soft">
+                <h2 class="mcs-info-soft-ttl" x-ms-format-detection="none">
+                    <spring:message code="IT-001-01-014" />
+                </h2> 
+                <span id="guiVersion"></span>
+            </li>
 
             <!-- ソフトウェアバージョン情報 -->
-            <li class="mcs-info-soft">
+       <%-- <li class="mcs-info-soft"> --%>
 <%--            <h2 class="mcs-info-soft-ttl">                                   MACS4#0158 Del --%>
-                <h2 class="mcs-info-soft-ttl" x-ms-format-detection="none"> <%-- MACS4#0158 Add --%>
-                    <spring:message code="IT-001-01-007" />
+                <%--<h2 class="mcs-info-soft-ttl" x-ms-format-detection="none">--%> <%-- MACS4#0158 Add --%>
+                <%--   <spring:message code="IT-001-01-007" />
                 </h2> <span id="mcs-info-soft-value"></span>
-            </li>
+            </li>--%>
 
             <!-- DBスキーマ情報 -->
-            <li class="mcs-info-schm">
+          <%--  <li class="mcs-info-schm">--%>
 <%--            <h2 class="mcs-info-schm-ttl">                                   MACS4#0158 Del --%>
-                <h2 class="mcs-info-schm-ttl" x-ms-format-detection="none"> <%-- MACS4#0158 Add --%>
-                    <spring:message code="IT-001-01-008" />
+          <%--      <h2 class="mcs-info-schm-ttl" x-ms-format-detection="none"> --%> <%-- MACS4#0158 Add --%>
+          <%--         <spring:message code="IT-001-01-008" />
                 </h2> <span id="mcs-info-schm-value"></span>
-            </li>
+            </li>--%>
 
             <!-- ログインログアウトボタン -->
             <li class="mcs-btn-login-wrapper">
