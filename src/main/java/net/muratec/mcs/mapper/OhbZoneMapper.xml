@@ -268,4 +268,14 @@
     where TSC_ID = #{tscId,jdbcType=VARCHAR}
       and OHB_ZONE_ID = #{ohbZoneId,jdbcType=VARCHAR}
   </update>
+  
+   <select id="selectForSystemMonitor" parameterType="net.muratec.mcs.model.OhbZone" resultMap="BaseResultMap">
+    SELECT ohb_zone.tsc_id,   
+	   ohb_zone.ohb_zone_id,   
+	   ohb_zone.ohb_zone_name,   
+	   ohb_zone.total_shelves,   
+	   ohb_zone.empty_shelves   
+	FROM ohb_zone
+	ORDER BY ohb_zone.tsc_id,ohb_zone.ohb_zone_id
+  </select>
 </mapper>

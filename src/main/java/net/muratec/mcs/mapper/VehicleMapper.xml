@@ -395,15 +395,25 @@
     where LLC_ID = #{llcId,jdbcType=VARCHAR}
       and VEHICLE_ID = #{vehicleId,jdbcType=VARCHAR}
   </update>
-  <!--
-    条件に合致したCarrier情報のレコード数を取得する。
-  -->
+  
+ <!-- 以下独自SQL -->
   <select id="getCount" parameterType="net.muratec.mcs.entity.top.ReqGetVehiclesListEntity" resultType="java.lang.Integer">
-    select
-      count(*)
-    from
-      Port
+      SELECT  
+		count(*)
+	  FROM vehicle v  
+	  JOIN llc l ON v.llc_id = l.llc_id  
+	  LEFT OUTER JOIN alarm a ON v.vehicle_id = a.machine_id  
+	  WHERE ((v.vehicle_state IN ('Offline', 'Removed')) OR a.alarm_text IS NOT NULL)
   </select>
+  
+  <!-- レコード取得範囲決定部 -->
+  <sql id="selectRecordWhere">
+    <where>
+      <if test="fromRecordNum != null and toRecordNum != null">
+       rn between #{fromRecordNum,jdbcType=DECIMAL} and #{toRecordNum,jdbcType=DECIMAL}
+      </if>
+    </where>
+  </sql>
   
   <resultMap id="SearchResultMap" type="net.muratec.mcs.model.VehiclesModel">
     <id column="Vehicle_ID" jdbcType="VARCHAR" property="vehicleId" />
@@ -412,21 +422,33 @@
     <result column="Vehicle_Kind" jdbcType="VARCHAR" property="vehicleKind" />
     <result column="Vehicle_State" jdbcType="VARCHAR" property="vehicleState" />
   </resultMap>
-  <!--  Vehicles情報一覧を取得する。 -->
+  <!--  Vehicle情報一覧を取得する。 -->
    <select id="selectList" parameterType="net.muratec.mcs.entity.top.ReqGetVehiclesListEntity" resultMap="SearchResultMap">
-      SELECT  
-			v.vehicle_id,  
-			l.llc_id,  
-			l.llc_name,  
-			NVL(a.alarm_text, '-') alarm_text,  
-			v.vehicle_carrier_type_id vehicle_kind,  
-			v.vehicle_state  
-		FROM vehicle v  
-		JOIN llc l ON v.llc_id = l.llc_id  
-		LEFT OUTER JOIN alarm a ON v.vehicle_id = a.machine_id  
-		WHERE ((v.vehicle_state IN ('Offline', 'Removed')) OR a.alarm_text IS NOT NULL)
-	    ORDER BY llc_name, vehicle_id
+	    SELECT  
+			vehicle_id,  
+			llc_id,  
+			llc_name,  
+			alarm_text,  
+			vehicle_kind,  
+			vehicle_state  
+		FROM(
+	       SELECT
+	         row_number() over(order by v.vehicle_id asc) rn,
+	         v.vehicle_id,  
+	         l.llc_id,  
+	         l.llc_name,  
+	         NVL(a.alarm_text, '-') alarm_text,  
+	         v.vehicle_carrier_type_id vehicle_kind,  
+	         v.vehicle_state  
+	       FROM vehicle v  
+	       JOIN llc l ON v.llc_id = l.llc_id  
+	       LEFT OUTER JOIN alarm a ON v.vehicle_id = a.machine_id  
+	       WHERE ((v.vehicle_state IN ('Offline', 'Removed')) OR a.alarm_text IS NOT NULL)
+	       ORDER BY llc_name, vehicle_id
+       )
+	   <include refid="selectRecordWhere" />
   </select>
+  
    <!-- STD APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
    <!--  llcIdによってVehicles情報を取得する。 -->
    <select id="selectVehicleList" parameterType="net.muratec.mcs.model.VehiclesModel" resultMap="SearchResultMap">
