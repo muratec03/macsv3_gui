@@ -100,8 +100,10 @@
     stroke: #000000;
     stroke-width: 0.5;
     stroke-miterlimit: 10;
-    width: 28px;
-    height: 8px;
+    width: 32px;
+    height: 12px;
+    /*width: 28px;
+    height: 8px;*/
 }
 
 /* 未定義のアイコンとサンプルアイコン2のステータス */

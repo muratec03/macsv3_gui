@@ -35,10 +35,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import net.muratec.mcs.common.ComConst;
 import net.muratec.mcs.common.ComFunction;
+import net.muratec.mcs.common.Constants;
+import net.muratec.mcs.common.style.ColorUtilities;
 import net.muratec.mcs.entity.top.SiteMapInfoEntity;
 import net.muratec.mcs.entity.top.SystemMonitorEntity;
 import net.muratec.mcs.exception.McsException;
 import net.muratec.mcs.mapper.GuiFuncGroupRltMapper;
+import net.muratec.mcs.mapper.HostMapper;
+import net.muratec.mcs.mapper.MacsMapper;
 import net.muratec.mcs.mapper.McsConstsMapper;
 import net.muratec.mcs.mapper.McsMapper;
 import net.muratec.mcs.mapper.ScreenColorMasterMapper;
@@ -46,6 +50,8 @@ import net.muratec.mcs.mapper.SitemapTableConfigMapper;
 import net.muratec.mcs.mapper.UserAccountMapper;
 import net.muratec.mcs.model.GuiFuncGroupRltExample;
 import net.muratec.mcs.model.GuiFuncGroupRltKey;
+import net.muratec.mcs.model.Host;
+import net.muratec.mcs.model.Macs;
 import net.muratec.mcs.model.McsConsts;
 import net.muratec.mcs.model.McsState;
 import net.muratec.mcs.model.ScreenColorMaster;
@@ -92,6 +98,14 @@ public class SystemMonitorService extends BaseService {
 
     // GuiFuncGroupRltマッパー生成
     @Autowired private GuiFuncGroupRltMapper guiFuncGroupRltMapper;
+    
+    //ADD STD APL 2020.03.04 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    // HostMapperマッパー生成
+    @Autowired private  HostMapper hostMapper;
+    
+    // MacsMapperマッパー生成
+    @Autowired private  MacsMapper macsMapper;
+    //ADD STD APL 2020.03.04 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
 
     // メッセージリソース
     @Autowired private MessageSource messageSource;
@@ -121,13 +135,64 @@ public class SystemMonitorService extends BaseService {
         // ------------------------------------
         // ステータスの取得
         // ------------------------------------
-        List<McsState> mcsStateList = mcsMapper.selectState();
+    	
+    	/* //20200304 Song Del
+        List<McsState> mcsStateList = mcsMapper.selectState();  
         // MCSテーブルのレコード数が1つ以外ならば例外を投げる
         if (mcsStateList == null || mcsStateList.size() != 1) {
             String errorMessage = messageSource.getMessage("ERR0034", null, "ERR0034", LocaleContextHolder.getLocale());
             throw new McsException(errorMessage);
         }
+        */
+        //MOD STD APL 2020.03.04 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        
+        List<Host> hostList = hostMapper.selectAll();
+        if (hostList == null || hostList.size() < 1) {
+            String errorMessage = messageSource.getMessage("ERR0034", null, "ERR0034", LocaleContextHolder.getLocale());
+            throw new McsException(errorMessage);
+        }
+        
+        List<Macs> macsList = macsMapper.selectAll();
+        if (macsList == null || macsList.size() < 1) {
+            String errorMessage = messageSource.getMessage("ERR0034", null, "ERR0034", LocaleContextHolder.getLocale());
+            throw new McsException(errorMessage);
+        }
+        
+        String macsControlState = macsList.get( 0 ).getControlState();
+        SystemMonitorEntity sysmonEntity = new SystemMonitorEntity();
+        sysmonEntity.macsVersionText = macsList.get( 0 ).getSoftRev();
+        if(macsControlState.equals( Constants.MACS_STATE_ONLINE ))
+		{
+        	sysmonEntity.macsColor = ColorUtilities.getColorCode("lime");
+        	sysmonEntity.macsText = "Communicating,Up/OnLine";
+		}
+		else
+		{
+			sysmonEntity.macsColor = ColorUtilities.getColorCode("red");
+			sysmonEntity.macsText = "NotCommunicating,OffLine";
+		}
+        
+        for(int i=0;i<hostList.size();i++)
+		{
+			String MakerName  = hostList.get( i ).getMakerName();
+			if(MakerName!=null)
+			{
+				String commState = hostList.get( i ).getCommState();
 
+				if(commState.equals( Constants.COMM_STATE_COMMUNICATING ))
+				{
+					sysmonEntity.mesColor = ColorUtilities.getColorCode("lime");
+					sysmonEntity.mesText = "Communicating,Up/OnLine";
+				}
+				else
+				{
+					sysmonEntity.mesColor = ColorUtilities.getColorCode("red");
+					sysmonEntity.mesText = "NotCommunicating,OffLine";
+				}
+			}
+		}
+     
+        /*
         // ------------------------------------
         // エンティティに格納
         // ------------------------------------
@@ -137,7 +202,9 @@ public class SystemMonitorService extends BaseService {
         sysmonEntity.guiVer = mcsState.getGuiVersion();
         sysmonEntity.controlState = mcsState.getSystemState();
         sysmonEntity.commState = mcsState.getCommState();
-
+        */
+        //MOD END APL 2020.02.04 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000
+        
         return sysmonEntity;
 
     }
