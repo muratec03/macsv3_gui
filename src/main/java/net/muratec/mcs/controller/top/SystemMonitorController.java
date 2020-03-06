@@ -311,6 +311,7 @@ public class SystemMonitorController extends BaseController {
         // ----------------------------------------------
         // DBより凡例の閾値を取得
         // ----------------------------------------------
+        /*//20200304 Song Del
         Map<String, String> occuRateMap = sysMonitorService.getOccupiedRate();
         model.addAttribute("IT_001_27_009", super.objectToJson(occuRateMap.get("lowRate")));
         model.addAttribute("IT_001_27_010", super.objectToJson(occuRateMap.get("middleRate")));
@@ -336,6 +337,7 @@ public class SystemMonitorController extends BaseController {
 			  }
 			  i++;				  
 		 }
+		*/
         // バージョン情報付与
         ComFunction.setVersion(model);
 

@@ -113,7 +113,7 @@ public class SystemMonitorAjaxController extends BaseAjaxController {
         ResSystemMonitorEntity resEntity = new ResSystemMonitorEntity();
 
         SystemMonitorEntity sysMonEntity = sysmonService.getState();
-
+          
         resEntity.body = sysMonEntity;
 
         resEntity.result.status = ComConst.AjaxStatus.SUCCESS;

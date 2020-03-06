@@ -44,5 +44,16 @@ public class SystemMonitorEntity {
     public String userName;
     public String description;
     public String autoLogoutTime;
+    
+    //20200303 Song Add Start
+    public String mesText;
+    public String mesColor;
+    public String macsText;
+    public String macsColor;
+    public String macsVersionText;
+    public String guiVersionText;
+    //20200303 Song Add End
+    
+    
 
 }

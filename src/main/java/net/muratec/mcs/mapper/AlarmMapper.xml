@@ -609,8 +609,17 @@
   </select>
   -->
   
-<select id="selectList" parameterType="net.muratec.mcs.entity.top.ReqGetAlarmListEntity" resultMap="SearchResultMap">
-       select
+  <select id="selectList" parameterType="net.muratec.mcs.entity.top.ReqGetAlarmListEntity" resultMap="SearchResultMap">
+    select
+		set_time,
+		llc_id,  
+		llc_name,  
+		alarm_id,  
+		alarm_loc,  
+		alarm_text 
+	from 
+    ( select
+            row_number() over(order by alarm.alarm_id asc) rn,
 			alarm.set_time,
 			alarm.llc_id,  
 			NVL(TSC.tsc_id, NVL(LLC.llc_name, alarm.llc_id)) llc_name,  
@@ -621,7 +630,8 @@
 		  left outer join LLC on alarm.llc_id = LLC.llc_id
 		  left outer join TSC on alarm.tsc_id is not null and  alarm.tsc_id = TSC.tsc_id
         order by
-          set_time DESC
+          set_time DESC)
+    <include refid="selectRecordWhere" />
   </select>
   <!-- MODEL END APL 2020.02.20 song 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000  -->
   <!-- STD APL 2020.03.04 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
