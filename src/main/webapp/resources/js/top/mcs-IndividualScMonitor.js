@@ -844,20 +844,19 @@ $(function() {
         	$("#state-tsc-available input[name='colorText']").css('background-color','#90EE90');
         }
         // END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
-        // STD APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+    	// STD APL 2020.03.06 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         if(stateCraneId.getValue()==null || stateCraneId.getValue() == "")
         {
-        	stateCraneId.setEnabled(false);
-        	stateCraneState.setDisabled(true); 
-            stateStokerAvailable.setDisabled(true); 
-            stateStokerAlarmState.setDisabled(true);
+//        	$('#craneIdDiv').style.display = 'none';
+//        	stateCraneId.setDisabled(false);
+        	$('#craneIdDiv').hide();
+        	$('#craneStateDiv').hide();
+        	$('#craneAvailableDiv').hide();
+        	$('#craneAlarmStateDiv').hide();
+        	
         }
         else{
-        	stateCraneId.setDisabled(false);
-        	stateCraneState.setDisabled(false); 
-            stateStokerAvailable.setDisabled(false); 
-            stateStokerAlarmState.setDisabled(false);
-        // END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        // END APL 2020.03.06 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         // STD APL 2020.03.01 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         //STOCKER STATE COLOR
         
@@ -906,23 +905,6 @@ $(function() {
          }
 	    // END APL 2020.03.02 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         
-       /* 
-        //PIECE_MODE
-        if(textValue.pieceMode==null || textValue.pieceMode == "")
-        {
-        	pieceMode.setDisabled(true);
-        }
-        else{
-        	pieceMode.setDisabled(false);
-        	if(pieceMode.getValue()!="Up"){
-        		$("#piece-mode input[name='colorText']").css('background-color','#ff0000');
-            }
-            else{
-            	$("#piece-mode input[name='colorText']").css('background-color','#38FF61');
-            }
-        	
-        }*/
-        
         // データをテーブルにセット
         stateTable.addDataList(tableValue);
         
@@ -937,6 +919,9 @@ $(function() {
         var stateTableSize = stateTable.getRowCount();
         if(stateTableSize == 0){
         	$('#state-table-target').hide();
+        	// STD APL 2020.03.06 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        	//$('#alarmDiv').hide();
+        	// END APL 2020.03.06 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         }
         else if(stateTableSize < 4){
         	stateTable.setBodyHeight(80*stateTableSize);
@@ -959,6 +944,9 @@ $(function() {
         var portTableSize = portTable.getRowCount();
         if(portTableSize == 0){
         	$('#state-portTable-target').hide();
+        	// STD APL 2020.03.06 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        	//$('#portDiv').hide();
+        	// END APL 2020.03.06 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         }
         else if(portTableSize < 4){
         	portTable.setBodyHeight(80*portTableSize);
@@ -970,6 +958,9 @@ $(function() {
         var vehicleTableSize = vehicleTable.getRowCount();
         if(vehicleTableSize == 0){
         	$('#state-vehicleTable-target').hide();
+        	// STD APL 2020.03.06 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+        	//$('#vehicleDiv').hide();
+        	// END APL 2020.03.06 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         }
         else if(vehicleTableSize < 4){
         	vehicleTable.setBodyHeight(80*vehicleTableSize);

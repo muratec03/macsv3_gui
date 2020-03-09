@@ -215,7 +215,11 @@ public class IndividualScMonitorService extends BaseService {
 	 		else {
 	 			stockerZoneRes.reserved = "0";	
 	 		}
-            resEntity.stokerZoneList.add(stockerZoneRes);
+	 		// STD APL 2020.03.06 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
+	 		if(!stockerZoneStateRec.getTotal().equals("0")) {
+	 			resEntity.stokerZoneList.add(stockerZoneRes);
+	 		}
+	 		// END APL 2020.03.06 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 
         }
 	 	// END APL 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 Stocker Table Data
 		// STD APL 2020.03.03 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 

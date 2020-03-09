@@ -228,25 +228,25 @@
                     </div>
                     <div id="state-tsc-available"></div>
                 </div>
-                <div>
+                <div id='craneIdDiv' style="display:block;">
                     <div>
                         <span><spring:message code="IT-001-11-032" /></span>
                     </div>
                     <div id="state-crane-id"></div>
                 </div>
-                <div>
+                <div id='craneStateDiv'>
                     <div>
                         <span><spring:message code="IT-001-11-034" /></span>
                     </div>
                     <div id="state-crane-state"></div>
                 </div>
-                <div>
+                <div id='craneAvailableDiv'>
                     <div>
                         <span><spring:message code="IT-001-11-036" /></span>
                     </div>
                     <div id="state-stoker-available"></div>
                 </div>
-                <div>
+                <div id='craneAlarmStateDiv'>
                     <div>
                         <span><spring:message code="IT-001-11-038" /></span>
                     </div>
@@ -257,15 +257,15 @@
             <!-- 2020.02.28 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
             <div id="state-stokerZoneTable-target"></div>
             <!-- STD APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
-            <div class="portTable-header" align="center">
+            <div id='state-portTable-target' class="portTable-header" align="center">
                 <span style="font-size:24px"><spring:message code="IT-001-12-001" />(<span id="portsSize" style="font-size:24px">></span>)</span>
             </div>
             <div id="state-portTable-target"></div>
-            <div class="vehicleTable-header" align="center">
+            <div id='state-vehicleTable-target' class="vehicleTable-header" align="center">
                 <span style="font-size:24px"><spring:message code="IT-001-13-001" /></span>
             </div>
             <div id="state-vehicleTable-target"></div>
-            <div class="alarmTable-header" align="center">
+            <div id='state-table-target' class="alarmTable-header" align="center">
                 <span style="font-size:24px"><spring:message code="IT-001-11-044" /></span>
             </div>
             <!-- END APL 2020.03.05 董 天津村研  MCSV4　GUI開発  Ver3.0 Rev.000 -->
